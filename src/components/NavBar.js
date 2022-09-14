@@ -8,13 +8,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Offcanvas } from 'react-bootstrap';
 import { List } from 'react-bootstrap-icons';
 
-function OffcanvasExample() {
+function NavBar(props) {
   return (
     <>
       {['sm'].map((expand) => (
         <Container className='' fluid>
           <Row>
-            <Navbar className='fixed-top' key={expand}  bg='dark' variant='dark' expand={expand}>
+            <Navbar className='' key={expand}  bg='dark' variant='dark' expand={expand}>
                   <Col className=''>
                     <Nav>
                     <List className='m-2' size={25} color="white" />
@@ -25,6 +25,8 @@ function OffcanvasExample() {
                     <Nav className='justify-content-center'>
                       <Form className="d-flex">
                           <Form.Control
+                            onChange={props.onSearchChange}
+                            value={props.value}
                             type="search"
                             placeholder="Search"
                             className="me-2 "
@@ -48,9 +50,9 @@ function OffcanvasExample() {
                       </Offcanvas.Header>
                       <Offcanvas.Body>
                         <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
-                          <Nav.Link href="#collection">Collection</Nav.Link>
-                          <Nav.Link href="#notifications">Notifications</Nav.Link>   
-                          <Nav.Link href="#profile">Profile</Nav.Link>
+                          <Nav.Link key='collection' href="#collection">Collection</Nav.Link>
+                          <Nav.Link key='notifications' href="#notifications">Notifications</Nav.Link>   
+                          <Nav.Link key='profile' href="#profile">Profile</Nav.Link>
                         </Nav>
                       </Offcanvas.Body>
                     </Navbar.Offcanvas>
@@ -63,4 +65,4 @@ function OffcanvasExample() {
   );
 }
 
-export default OffcanvasExample;
+export default NavBar;
