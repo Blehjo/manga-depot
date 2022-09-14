@@ -25,16 +25,24 @@ const Container = (props) => {
 
     return (
         <>
-            <NavBar 
+            <div className="fixed-top">
+                <NavBar 
                 onSearchChange={handleInputChange}
                 value={value}
-            />
-            <Row key={1}>
-                <Col xs="1" lg="1" key={1}><SideBarMenu/></Col>
-                <Col key={2}><Body results={results}/></Col>
+                />
+            </div>
+            <Row className='pt-5'key={1}>
+                <Col xs="1" lg="1" key={1}>
+                    <div className='sticky-top'>
+                        <SideBarMenu/>
+                    </div>
+                </Col>
+                <Col key={2}>
+                    <Body results={results}/>
+                </Col>
             </Row>
+            {/* <Footer/> */}
             {/* <Cards/> */}
-            <Footer/>
         </>
     )
 }

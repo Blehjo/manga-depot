@@ -23,6 +23,9 @@ const Saved = () => {
             <Nav.Link>
                 <Star className='m-2' action='true' color="white" size={40}/>
             </Nav.Link>
+            <Nav.Link>
+                <Star className='m-2' action='true' color="white" size={40}/>
+            </Nav.Link>
         </>
     )
 }

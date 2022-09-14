@@ -38,7 +38,10 @@ const SideBarMenu = () => {
 
     return (
         <div className='bg-dark h-100'>
-            <Nav className='justify-content-center'>
+            <Nav 
+                navbarScroll 
+                className='justify-content-center'
+            >
                 {listItems}
                 <Saved/>
             </Nav>

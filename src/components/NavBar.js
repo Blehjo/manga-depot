@@ -14,7 +14,7 @@ function NavBar(props) {
       {['sm'].map((expand) => (
         <Container className='' fluid>
           <Row>
-            <Navbar className='' key={expand}  bg='dark' variant='dark' expand={expand}>
+            <Navbar fixed='' className='' key={expand}  bg='dark' variant='dark' expand={expand}>
                   <Col className=''>
                     <Nav>
                     <List className='m-2' size={25} color="white" />
