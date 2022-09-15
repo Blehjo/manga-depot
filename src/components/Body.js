@@ -1,22 +1,24 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Button } from 'react-bootstrap';
+import { Heart, BookFill } from 'react-bootstrap-icons';
 
 function Body(props) {
   return (
     <>
     <Row xs={1} sm={2} md={3} className="g-4 pt-3" key={1}>
       {props.results.map((result) => (
-        <Col className='' key={result.id}>
-          <Card key={result.id}>
-            <Card.Img className='img-fluid' variant="top" src={result.images.original.url} />
+        <Col className='' key={result._id}>
+          <Card key={result._id}>
+            <Card.Img className='img-fluid' variant="top" src={result.image} />
             <Card.Body>
               <Card.Title>{result.title}</Card.Title>
               <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                {result.synopsis}
               </Card.Text>
+              <BookFill className='m-2' color='maroon' size={40}/>
+              <Heart className='m-2' color='maroon' size={40}/>
             </Card.Body>
           </Card>
         </Col>

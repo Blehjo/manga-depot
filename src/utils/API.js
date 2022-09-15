@@ -1,10 +1,28 @@
-// Axios is a popular NPM package used for preforming API requests
 import axios from 'axios';
+import { useState } from 'react';
 
-// Using axios, we create a search method that is specific to our use case and export it at the bottom
-const search = (query) =>
-  axios.get(`https://api.giphy.com/v1/gifs/search?q=${query}$&api_key=BIbQmyF07hQAXiGSSEseC64Ko3YZ4sEL&limit=20`
-);
+const token = (token) => {
+  // const [token, setToken] = useState([]);
+  // const [errorMessage, setErrorMessage] = useState([]);
+
+  const options = {
+    method: 'POST',
+    url: `https://id.twitch.tv/oauth2/token?client_id=${process.env.REACT_APP_CLIENT_ID}&client_secret=${process.env.REACT_APP_SECRET_KEY}&grant_type=client_credentials`,
+  };
+
+  if (token.length === 0) {
+      axios.request(options)
+        .then(function (response) {
+          token = response.data.access_token;
+          console.log(token);
+      }).catch(function (error) {
+          // setErrorMessage(error)
+          console.error(error);
+      });
+  }
+
+  return token;
+};
 
 // Export an object with a "search" method that searches the Giphy API for the passed query
-export default search;
+export default token;

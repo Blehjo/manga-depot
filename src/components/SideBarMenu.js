@@ -37,7 +37,7 @@ const SideBarMenu = () => {
     ) 
 
     return (
-        <div className='bg-dark h-100'>
+        <div className='sticky-top bg-dark h-100'>
             <Nav 
                 navbarScroll 
                 className='justify-content-center'
