@@ -10,7 +10,7 @@ import Genre from "./SidebarAttributes/Genre";
 const Container = (props) => {
     const [value, setValue] = useState(props.value);
     const [results, setResults] = useState([]);
-    const [item, setToken] = useState([]);
+    const [accessToken, setToken] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     
     function handleInputChange(evt) {
@@ -19,15 +19,15 @@ const Container = (props) => {
     };
 
     // Method to get search results and set state
-    const getToken = async (item) => {
-        const response = await token(item);
+    const getToken = async (accessToken) => {
+        const response = await token(accessToken);
         setToken(response.data);
     };
 
     // We want to run this method when the component first loads so that we have images of kittens to display
     // The second argument is the dependency array. This means that this method will only run when the component first loads
     useEffect(() => {
-        getToken(item);
+        getToken(accessToken);
     }, []);
 
     return (
@@ -46,6 +46,10 @@ const Container = (props) => {
                     </div>
                 </Col>
                 <Col key={2}>
+                    <Genre 
+                        accessToken={accessToken} 
+                        value={value}
+                    />
                     <Body results={results}/>
                 </Col>
             </Row>

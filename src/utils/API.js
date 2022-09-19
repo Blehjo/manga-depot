@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useState } from 'react';
 
 const token = (token) => {
-  // const [token, setToken] = useState([]);
-  // const [errorMessage, setErrorMessage] = useState([]);
 
   const options = {
     method: 'POST',
