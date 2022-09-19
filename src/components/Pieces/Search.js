@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import search from '../utils/API';
+import search from '../../utils/API';
 
 export default function Search() {
     const [criteria, setCriteria] = useState('');

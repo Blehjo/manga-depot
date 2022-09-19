@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./main/NavBar";
 import Body from "./Body";
 import { Row, Col} from 'react-bootstrap';
-import SideBarMenu from "./SideBarMenu";
+import SideBarMenu from "./main/SideBarMenu";
 import axios from "axios";
 import token from "../utils/API";
 import Genre from "./SidebarAttributes/Genre";
+import TournamentCarousel from "./Carousels/TournamentCarousel";
 
 const Container = (props) => {
     const [value, setValue] = useState(props.value);
@@ -41,16 +42,15 @@ const Container = (props) => {
             </div>
             <Row className='pt-5'key={1}>
                 <Col xs="1" lg="1" key={1}>
-                    <div className='sticky-top'>
                         <SideBarMenu/>
-                    </div>
                 </Col>
                 <Col key={2}>
-                    <Genre 
+                    <TournamentCarousel/>
+                    {/* <Genre 
                         accessToken={accessToken} 
                         value={value}
                     />
-                    <Body results={results}/>
+                    <Body results={results}/> */}
                 </Col>
             </Row>
         </>

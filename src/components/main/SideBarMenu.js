@@ -1,5 +1,5 @@
 import { Nav } from 'react-bootstrap';
-import Saved from './Saved';
+import Saved from '../Pieces/Saved'
 
 const SideBarMenu = () => {
     const sideBarTabs = [

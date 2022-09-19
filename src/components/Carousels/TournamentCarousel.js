@@ -5,8 +5,12 @@ const TournamentCarousel = () => {
     return (
         <>
             <Row>
+                <Col>
                 
+                </Col>
             </Row>
         </>
     )
 }
+
+export default TournamentCarousel;
