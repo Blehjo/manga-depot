@@ -109,4 +109,11 @@
 
 #newSidebar {
   height: 100vh;
+  padding-top: 30px;
+  position: relative;
 }
+
+/* #nutty {
+  top: 0;
+  position: sticky;
+} */

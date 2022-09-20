@@ -33,15 +33,15 @@ const Container = (props) => {
 
     return (
         <>
-            <div className="fixed-top">
+            <div id="nutty" className="fixed-top">
                 <NavBar 
                 key={'navbar'}
                 onSearchChange={handleInputChange}
                 value={value}
                 />
             </div>
-            <Row className='pt-5'key={1}>
-                <Col xs="1" lg="1" key={1}>
+            <Row className='mw-100'key={1}>
+                <Col className=""xs="1" lg="1" key={1}>
                         <SideBarMenu/>
                 </Col>
                 <Col key={2}>
