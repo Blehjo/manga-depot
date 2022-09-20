@@ -6,25 +6,25 @@ const Saved = () => {
     return (
         <>
             <Nav.Link>
-                <Collection className='m-2' color="white" size={40}/>
+                <Collection className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Bookmark className='m-2' color="white" size={40}/>
+                <Bookmark className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Globe className='m-2' color="white" size={40}/>
+                <Globe className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Heart className='m-2' color="white" size={40}/>
+                <Heart className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Search className='m-2' color="white" size={40}/>
+                <Search className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Star className='m-2' action='true' color="white" size={40}/>
+                <Star className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link>
-                <Star className='m-2' action='true' color="white" size={40}/>
+                <Star className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
         </>
     )
