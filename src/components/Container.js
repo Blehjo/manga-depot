@@ -7,6 +7,7 @@ import axios from "axios";
 import token from "../utils/API";
 import Genre from "./SidebarAttributes/Genre";
 import TournamentCarousel from "./Carousels/TournamentCarousel";
+import SidebarOverlay from "./Pieces/SidebarOverlay";
 
 const Container = (props) => {
     const [value, setValue] = useState(props.value);
@@ -42,7 +43,8 @@ const Container = (props) => {
             </div>
             <Row className='mw-100'key={1}>
                 <Col className=""xs="1" lg="1" key={1}>
-                        <SideBarMenu/>
+                    <SideBarMenu/>
+                    <SidebarOverlay/>
                 </Col>
                 <Col key={2}>
                     <TournamentCarousel/>

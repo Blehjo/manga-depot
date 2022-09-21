@@ -38,24 +38,11 @@ function NavBar(props) {
                   </Col>
                   <Col>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-                    <Navbar.Offcanvas
-                      id={`offcanvasNavbar-expand-${expand}`}
-                      aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                      placement="end"
-                    >
-                      <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                          Offcanvas
-                        </Offcanvas.Title>
-                      </Offcanvas.Header>
-                      <Offcanvas.Body>
-                        <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
-                          <Nav.Link key='collection' href="#collection">Collection</Nav.Link>
-                          <Nav.Link key='notifications' href="#notifications">Notifications</Nav.Link>   
-                          <Nav.Link key='profile' href="#profile">Profile</Nav.Link>
-                        </Nav>
-                      </Offcanvas.Body>
-                    </Navbar.Offcanvas>
+                      <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
+                        <Nav.Link key='collection' href="#collection">Collection</Nav.Link>
+                        <Nav.Link key='notifications' href="#notifications">Notifications</Nav.Link>   
+                        <Nav.Link key='profile' href="#profile">Profile</Nav.Link>
+                      </Nav>
                   </Col>
             </Navbar>
           </Row>

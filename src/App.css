@@ -110,10 +110,11 @@
 #newSidebar {
   height: 100vh;
   padding-top: 30px;
-  position: relative;
+  position: absolute;
 }
 
-/* #nutty {
-  top: 0;
-  position: sticky;
-} */
+#extendedSidebar {
+  height: 100vh;
+  padding-top: 30px;
+  position: absolute;
+}
