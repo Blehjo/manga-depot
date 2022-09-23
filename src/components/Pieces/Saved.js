@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import { Collection, Bookmark, Globe, Heart, Search, Star, House } from 'react-bootstrap-icons';
+import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb } from 'react-bootstrap-icons';
 
 
 const Saved = () => {
@@ -25,6 +25,12 @@ const Saved = () => {
             </Nav.Link>
             <Nav.Link>
                 <Star className='mt-4' action='true' color="white" size={40}/>
+            </Nav.Link>
+            <Nav.Link>
+                <Recycle className='mt-4' action='true' color="white" size={40}/>
+            </Nav.Link>
+            <Nav.Link>
+                <Usb className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
         </>
     )

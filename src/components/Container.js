@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./main/NavBar";
-import Body from "./Body";
-import { Row, Col} from 'react-bootstrap';
-import SideBarMenu from "./main/SideBarMenu";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from "axios";
 import token from "../utils/API";
-import Genre from "./SidebarAttributes/Genre";
 import TournamentCarousel from "./Carousels/TournamentCarousel";
-import SidebarOverlay from "./Pieces/SidebarOverlay";
+import SidebarIndex from "./main/SidebarIndex";
 
 const Container = (props) => {
     const [value, setValue] = useState(props.value);
+    const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
     const [accessToken, setToken] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
@@ -18,6 +17,11 @@ const Container = (props) => {
     function handleInputChange(evt) {
         evt.preventDefault();
         setValue(evt.target.value);
+    };
+
+    function handleClickEvent(evt) {
+        evt.preventDefault();
+        setShow(!show);
     };
 
     // Method to get search results and set state
@@ -34,17 +38,17 @@ const Container = (props) => {
 
     return (
         <>
-            <div id="nutty" className="fixed-top">
+            <div className="fixed-top">
                 <NavBar 
                 key={'navbar'}
                 onSearchChange={handleInputChange}
+                onClickEvent={handleClickEvent}
                 value={value}
                 />
             </div>
             <Row className='mw-100'key={1}>
                 <Col className=""xs="1" lg="1" key={1}>
-                    <SideBarMenu/>
-                    <SidebarOverlay/>
+                    <SidebarIndex show={show}/>
                 </Col>
                 <Col key={2}>
                     <TournamentCarousel/>

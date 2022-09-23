@@ -5,7 +5,6 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Offcanvas } from 'react-bootstrap';
 import { List } from 'react-bootstrap-icons';
 
 function NavBar(props) {
@@ -17,8 +16,8 @@ function NavBar(props) {
             <Navbar fixed='' className='' key={expand}  bg='dark' variant='dark' expand={expand}>
               <Col className=''>
                 <Nav>
-                <List className='ms-3 m-2' size={25} color="white" />
-                <Navbar.Brand href="#home" className='text-white'>Manga Depot</Navbar.Brand>
+                  <List style={{cursor: "pointer"}} ref={props.target} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
+                  <Navbar.Brand href="#home" className='text-white'>Manga Depot</Navbar.Brand>
                 </Nav>
               </Col>
               <Col>
