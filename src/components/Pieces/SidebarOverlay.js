@@ -1,88 +1,88 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
-import { Collection, Bookmark, Globe, Heart, Search, Star, House } from 'react-bootstrap-icons';
+import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb } from 'react-bootstrap-icons';
 
 const SidebarOverlay = () => {
 
     return (
-        <div id="extendedSidebar"className='sticky-top bg-dark' style={{width: 200}}>
+        <div id="extendedSidebar"className='sticky-top pt-5 bg-dark' style={{width: 200}}>
             <Row 
-            className="mw-100 justify-content-center" style={{color: "white"}} 
+            className="mw-100 pt-3" style={{color: "white"}} 
             xs={1} 
             >
-                <Col >
-                <div>
-                    <h1>
-                        <House/>
-                        {''}Home
-                    </h1>
-                </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Search size={30}/>
+                <a href="" className="anchorTag">
+                    <Nav.Item className="mb-3 ms-3 d-flex inline-block ">
+                        <House className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
+                            Home
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item className="mb-3 ms-3 d-flex inline-block ">
+                        <Search className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             Explore
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Collection/>
-                            Dash
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Bookmark/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Collection className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
+                            Dashboard
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Bookmark className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             Saved
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Globe/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Globe className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             World
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Heart/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Heart className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             Likes
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <Star/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Star className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             Favorites
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <House/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Recycle className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             History
-                        </h1>
-                    </div>
-                </Col>
-                <Col>
-                    <div>
-                        <h1>
-                            <House/>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
+                <a href="" className="anchorTag">
+                    <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
+                        <Usb className='' color="white" size={20}/>
+                        <Nav.Link className="ms-4">
                             Connections
-                        </h1>
-                    </div>
-                </Col>
+                        </Nav.Link>
+                    </Nav.Item>
+                </a>
             </Row>
         </div>
     )

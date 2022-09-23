@@ -118,3 +118,12 @@
   padding-top: 30px;
   position: absolute;
 }
+
+.anchorTag {
+  text-decoration: none;
+  color: white;
+}
+
+.anchorTag:hover {
+  color: rgb(97, 219, 251);
+}
