@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from "axios";
-import NavBar from "./main/NavBar";
-import SidebarIndex from "./main/SidebarIndex";
-import RoutesIndex from "./routes/RoutesIndex";
-import token from "../utils/API";
+import NavBar from "./NavBar";
+import SidebarIndex from "./SidebarIndex";
+import RoutesIndex from "../routes/RoutesIndex";
+import token from "../../utils/API";
 
 
 const Container = (props) => {
