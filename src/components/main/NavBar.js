@@ -11,19 +11,19 @@ function NavBar(props) {
   return (
     <>
       {['sm'].map((expand) => (
-        <Container className='' fluid>
-          <Row>
+        <Container key="navbarContainer" className='' fluid>
+          <Row key="rowOne">
             <Navbar fixed='' className='' key={expand}  bg='dark' variant='dark' expand={expand}>
-              <Col className=''>
-                <Nav className=''>
+              <Col key="listColumn" className=''>
+                <Nav key="listColumn" className=''>
                   <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
                   <Navbar.Brand href="#home" className='text-white'>Shell Mate</Navbar.Brand>
                 </Nav>
               </Col>
-              <Navbar.Toggle aria-controls={`navBarItems}`} />
-              <Navbar.Collapse id="navBarItems">
-                <Col>
-                  <Nav className='justify-content-center'>
+              <Navbar.Toggle key="navbarToggle" aria-controls={`navBarItems}`} />
+              <Navbar.Collapse key="navbarCollapse" id="navBarItems">
+                <Col key="searchColumn">
+                  <Nav key="navForm" className='justify-content-center'>
                     <Form className="d-flex">
                       <Form.Control
                         onChange={props.onSearchChange}
@@ -37,8 +37,8 @@ function NavBar(props) {
                     </Form>
                   </Nav>
                 </Col>
-                <Col>
-                    <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
+                <Col key="navigationIcons">
+                    <Nav key="navIcons" variant='dark'className="justify-content-end flex-grow-1 pe-3">
                       <Nav.Link key='notifications' href="#notifications"><Inbox size={25}/></Nav.Link>
                       <Nav.Link key='profile' href="#profile"><PersonCircle size={25}/></Nav.Link>
                     </Nav>

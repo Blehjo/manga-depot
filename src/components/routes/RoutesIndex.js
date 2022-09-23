@@ -11,16 +11,6 @@ import Connections from "../../pages/Connections";
 import About from "../../pages/About"
 
 const RoutesIndex = () => {
-    // const routes = useRoutes([
-    //     { path: "/", element: <Home /> },
-    //     { path: '/dashboard', element: <Dashboard />},
-    //     { path: '/explore', element: <Explore />},
-    //     { path: '/savedgames', element: <SavedGames />},
-    //     { path: '/groups', element: <Groups />},
-    //     { path: '/likedposts', element: <LikedPosts />},
-    //     { path: '/friends', element: <Friends />},
-    //     { path: '/connections', element: <Connections />}
-    // ])
     return (
         <BrowserRouter>
             <Routes>

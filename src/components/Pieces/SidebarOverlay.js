@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
 import { Nav } from "react-bootstrap";
 import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb } from 'react-bootstrap-icons';
 
@@ -11,7 +11,7 @@ const SidebarOverlay = () => {
             className="mw-100 pt-3" style={{color: "white"}} 
             xs={1} 
             >
-                <a href="" className="anchorTag">
+                <a href="/" className="anchorTag">
                     <Nav.Item className="mb-3 ms-3 d-flex inline-block ">
                         <House className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -19,7 +19,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/explore" className="anchorTag">
                     <Nav.Item className="mb-3 ms-3 d-flex inline-block ">
                         <Search className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -27,7 +27,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/dashboard" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Collection className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -35,7 +35,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/savedgames" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Bookmark className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -43,7 +43,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Globe className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -51,7 +51,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/likedposts" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Heart className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -59,7 +59,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Star className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -67,7 +67,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/history" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Recycle className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
@@ -75,7 +75,7 @@ const SidebarOverlay = () => {
                         </Nav.Link>
                     </Nav.Item>
                 </a>
-                <a href="" className="anchorTag">
+                <a href="/connections" className="anchorTag">
                     <Nav.Item href="" className="mb-3 ms-3 d-flex inline-block ">
                         <Usb className='' color="white" size={20}/>
                         <Nav.Link className="ms-4">
