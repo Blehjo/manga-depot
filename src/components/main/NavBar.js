@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { List } from 'react-bootstrap-icons';
+import { List, PersonCircle, Inbox } from 'react-bootstrap-icons';
 
 function NavBar(props) {
   return (
@@ -15,34 +15,35 @@ function NavBar(props) {
           <Row>
             <Navbar fixed='' className='' key={expand}  bg='dark' variant='dark' expand={expand}>
               <Col className=''>
-                <Nav>
-                  <List style={{cursor: "pointer"}} ref={props.target} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
-                  <Navbar.Brand href="#home" className='text-white'>Manga Depot</Navbar.Brand>
+                <Nav className=''>
+                  <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
+                  <Navbar.Brand href="#home" className='text-white'>Shell Mate</Navbar.Brand>
                 </Nav>
               </Col>
-              <Col>
-                <Nav className='justify-content-center'>
-                  <Form className="d-flex">
-                    <Form.Control
-                      onChange={props.onSearchChange}
-                      value={props.value}
-                      type="search"
-                      placeholder="Search"
-                      className="me-2 "
-                      aria-label="Search"
-                    />
-                    <Button variant="info">Search</Button>
-                  </Form>
-                </Nav>
-              </Col>
-              <Col>
-                <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-                  <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link key='collection' href="#collection">Collection</Nav.Link>
-                    <Nav.Link key='notifications' href="#notifications">Notifications</Nav.Link>   
-                    <Nav.Link key='profile' href="#profile">Profile</Nav.Link>
+              <Navbar.Toggle aria-controls={`navBarItems}`} />
+              <Navbar.Collapse id="navBarItems">
+                <Col>
+                  <Nav className='justify-content-center'>
+                    <Form className="d-flex">
+                      <Form.Control
+                        onChange={props.onSearchChange}
+                        value={props.value}
+                        type="search"
+                        placeholder="Search"
+                        className="me-2 "
+                        aria-label="Search"
+                        />
+                      <Button variant="info">Search</Button>
+                    </Form>
                   </Nav>
-              </Col>
+                </Col>
+                <Col>
+                    <Nav variant='dark'className="justify-content-end flex-grow-1 pe-3">
+                      <Nav.Link key='notifications' href="#notifications"><Inbox size={25}/></Nav.Link>
+                      <Nav.Link key='profile' href="#profile"><PersonCircle size={25}/></Nav.Link>
+                    </Nav>
+                </Col>
+              </Navbar.Collapse>
             </Navbar>
           </Row>
         </Container>
