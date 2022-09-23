@@ -8,6 +8,7 @@ import Groups from "../../pages/Groups";
 import LikedPosts from "../../pages/LikedPosts";
 import Friends from "../../pages/Friends";
 import Connections from "../../pages/Connections";
+import About from "../../pages/About"
 
 const RoutesIndex = () => {
     // const routes = useRoutes([
@@ -26,12 +27,13 @@ const RoutesIndex = () => {
                 <Route path="/" element={<Home />}>
                     <Route index element={<Home />}/>
                     <Route path="/dashboard" element={<Dashboard />}/>
-                    <Route path='/explore' element={<Explore/>}/>
-                    <Route path='/savedgames' element={<SavedGames/>}/>
-                    <Route path='/groups' element={<Groups/>}/>
-                    <Route path='/likedposts' element={<LikedPosts/>}/>
-                    <Route path='/friends' element={<Friends/>}/>
-                    {/* <Route path='/connections' element={<Connections/>}/> */}
+                    <Route path='/explore' element={<Explore />}/>
+                    <Route path='/savedgames' element={<SavedGames />}/>
+                    <Route path='/groups' element={<Groups />}/>
+                    <Route path='/likedposts' element={<LikedPosts />}/>
+                    <Route path='/friends' element={<Friends />}/>
+                    <Route path='/connections' element={<Connections />}/>
+                    <Route path='/about' element={<About />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
