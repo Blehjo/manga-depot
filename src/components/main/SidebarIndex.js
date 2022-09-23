@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import SidebarOverlay from '../Pieces/SidebarOverlay';
-import SideBarMenu from './SideBarMenu';
+import SidebarMenu from '../Pieces/SidebarMenu';
 import Collapse from 'react-bootstrap/Collapse';
 
 function SidebarIndex(props) {
   return (
     <>
-      <SideBarMenu/>
+      <SidebarMenu/>
       <Collapse in={props.show}>
         <div>
           <SidebarOverlay/>

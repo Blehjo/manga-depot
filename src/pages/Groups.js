@@ -1,11 +1,11 @@
 import React from "react";
 
-const Home = () => {
+const Groups = () => {
     return (
         <>
-            <h1>Home</h1>
+            <h1>Groups</h1>
         </>
     )
 }
 
-export default Home;
+export default Groups;

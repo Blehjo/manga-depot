@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./main/NavBar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from "axios";
-import token from "../utils/API";
-import TournamentCarousel from "./Carousels/TournamentCarousel";
+import NavBar from "./main/NavBar";
 import SidebarIndex from "./main/SidebarIndex";
+import RoutesIndex from "./routes/RoutesIndex";
+import token from "../utils/API";
+
 
 const Container = (props) => {
     const [value, setValue] = useState(props.value);
@@ -51,7 +52,7 @@ const Container = (props) => {
                     <SidebarIndex show={show}/>
                 </Col>
                 <Col key={2}>
-                    <TournamentCarousel/>
+                    <RoutesIndex className=""/>
                     {/* <Genre 
                         accessToken={accessToken} 
                         value={value}

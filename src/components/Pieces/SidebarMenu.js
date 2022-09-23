@@ -1,7 +1,7 @@
 import { Nav } from 'react-bootstrap';
-import Saved from '../Pieces/Saved'
+import Saved from './Saved'
 
-const SideBarMenu = () => {
+const SidebarMenu = () => {
     return (
         <div id="newSidebar" className='sticky-top bg-dark' style={{width: 100}}>
             <Nav 
@@ -13,4 +13,4 @@ const SideBarMenu = () => {
     )
 }
 
-export default SideBarMenu;
+export default SidebarMenu;
