@@ -52,7 +52,7 @@ const Container = (props) => {
                     <SidebarIndex show={show}/>
                 </Col>
                 <Col key={2}>
-                    <RoutesIndex className=""/>
+                    <RoutesIndex/>
                     {/* <Genre 
                         accessToken={accessToken} 
                         value={value}

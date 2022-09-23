@@ -3,7 +3,7 @@ import React from "react";
 const Connections = () => {
     return (
         <>
-        <h1>Connections</h1>
+            <h1>Connections</h1>
         </>
     )
 }
