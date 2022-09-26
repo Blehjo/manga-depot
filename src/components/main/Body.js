@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { Heart, BookFill } from 'react-bootstrap-icons';
 
 function Body(props) {
+  if (props === undefined) 
   return (
     <>
     <Row xs={1} sm={2} md={3} className="g-4 pt-3" key={1}>

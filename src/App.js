@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Container from './components/main/Container';
+import Bontainer from './components/main/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <Container/>
+      <Bontainer/>
     </div>
   );
 }

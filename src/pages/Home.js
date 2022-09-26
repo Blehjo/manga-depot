@@ -1,9 +1,11 @@
 import React from "react";
+import Body from "../components/main/Body";
 
-const Home = () => {
+const Home = (props) => {
+    const { results } = props
     return (
         <>
-            <h1>Home</h1>
+            <Body results={results}/>
         </>
     )
 }

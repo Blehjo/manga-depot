@@ -6,9 +6,12 @@ import NavBar from "./NavBar";
 import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
 import token from "../../utils/API";
+import gameData from "../../utils/RAWG";
+import { Container } from "react-bootstrap";
 
 
-const Container = (props) => {
+
+const Bontainer = (props) => {
     const [value, setValue] = useState(props.value);
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
@@ -25,6 +28,10 @@ const Container = (props) => {
         setShow(!show);
     };
 
+    const getGameData = async () => {
+        const response = await gameData();
+        setResults(response);
+    }
     // Method to get search results and set state
     const getToken = async (accessToken) => {
         const response = await token(accessToken);
@@ -37,31 +44,31 @@ const Container = (props) => {
         getToken(accessToken);
     }, []);
 
+    useEffect(() => {
+        getGameData();
+    }, []);
+
     return (
         <>
-            <div className="fixed-top">
+        <Container>
                 <NavBar 
+                sticky="top"
                 key={'navbar'}
                 onSearchChange={handleInputChange}
                 onClickEvent={handleClickEvent}
                 value={value}
                 />
-            </div>
-            <Row className='mw-100'key={1}>
-                <Col className=""xs="1" lg="1" key={1}>
+            </Container>
+            <Row className="mw-100" key="site-body">
+                <Col className=""xs="1" lg="1" key="sidebar-index">
                     <SidebarIndex show={show}/>
                 </Col>
-                <Col key={2}>
-                    <RoutesIndex/>
-                    {/* <Genre 
-                        accessToken={accessToken} 
-                        value={value}
-                    />
-                    <Body results={results}/> */}
+                <Col key="routes-index">
+                    <RoutesIndex results={results}/>
                 </Col>
             </Row>
         </>
     )
 }
 
-export default Container;
+export default Bontainer;
