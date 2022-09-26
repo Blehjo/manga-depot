@@ -5,7 +5,6 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
-import token from "../../utils/API";
 import gameData from "../../utils/RAWG";
 
 
@@ -26,24 +25,15 @@ const Container = (props) => {
         setShow(!show);
     };
 
-    const getGameData = async () => {
-        const response = await gameData();
+    const getGameData = async (value) => {
+        const response = await gameData(value);
         setResults(response);
     }
-    // Method to get search results and set state
-    const getToken = async (accessToken) => {
-        const response = await token(accessToken);
-        setToken(response.data);
-    };
 
     // We want to run this method when the component first loads so that we have images of kittens to display
     // The second argument is the dependency array. This means that this method will only run when the component first loads
     useEffect(() => {
-        getToken(accessToken);
-    }, []);
-
-    useEffect(() => {
-        getGameData();
+        getGameData(value);
     }, []);
 
     return (

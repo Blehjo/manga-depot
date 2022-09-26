@@ -17,7 +17,7 @@ function NavBar(props) {
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>
                   <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
-                  <Navbar.Brand href="#home" className='text-white'>Shell Mate</Navbar.Brand>
+                  <Navbar.Brand href="/" className='text-white'>Shell Mate</Navbar.Brand>
                 </Nav>
               </Col>
               <Navbar.Toggle key="navbarToggle" aria-controls={`navBarItems}`} />

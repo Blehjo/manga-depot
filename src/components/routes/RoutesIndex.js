@@ -10,11 +10,11 @@ import Friends from "../../pages/Friends";
 import Connections from "../../pages/Connections";
 import About from "../../pages/About"
 
-const RoutesIndex = () => {
+const RoutesIndex = (props) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />}>
+                <Route path="/" element={<Home results={props.results}/>}>
                     <Route index element={<Home />}/>
                     <Route path="/dashboard" element={<Dashboard />}/>
                     <Route path='/explore' element={<Explore />}/>

@@ -1,22 +1,21 @@
 import axios from 'axios';
 
-// import { useState } from 'react';
+const gameData = (value) => {
 
-const gameData = () => {
-
-  const options = axios({
-    url: `https://u1o3w9sxzg.execute-api.us-west-2.amazonaws.com/production/v4/games`,
+  axios({
+    url: `https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/games`,
     method: 'POST',
     headers: {
-        'x-api-key': process.env.REACT_APP_API_KEY
+        'x-api-key': process.env.REACT_APP_X_API_KEY,
     },
-    data: `fields *; search ${'halo'};`
-  });
-
-//   console.log(options)
-
-  return options;
+    data: `fields name, first_release_date, platforms, summary, storyline, rating; search "${value}";`
+  })
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 };
 
-// Export an object with a "search" method that searches the Giphy API for the passed query
 export default gameData;
