@@ -5,31 +5,31 @@ import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb }
 const Saved = () => {
     return (
         <>
-            <Nav.Link>
+            <Nav.Link href="/">
                 <House className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/explore">
                 <Search className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/dashboard">
                 <Collection className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/savedgames">
                 <Bookmark className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/">
                 <Globe className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/likedposts">
                 <Heart className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/">
                 <Star className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/history">
                 <Recycle className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/connections">
                 <Usb className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
         </>
