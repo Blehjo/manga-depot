@@ -7,11 +7,9 @@ import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
 import token from "../../utils/API";
 import gameData from "../../utils/RAWG";
-import { Container } from "react-bootstrap";
 
 
-
-const Bontainer = (props) => {
+const Container = (props) => {
     const [value, setValue] = useState(props.value);
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
@@ -50,15 +48,14 @@ const Bontainer = (props) => {
 
     return (
         <>
-        <Container>
+            <div className="fixed-top">
                 <NavBar 
-                sticky="top"
                 key={'navbar'}
                 onSearchChange={handleInputChange}
                 onClickEvent={handleClickEvent}
                 value={value}
                 />
-            </Container>
+            </div>
             <Row className="mw-100" key="site-body">
                 <Col className=""xs="1" lg="1" key="sidebar-index">
                     <SidebarIndex show={show}/>
@@ -71,4 +68,4 @@ const Bontainer = (props) => {
     )
 }
 
-export default Bontainer;
+export default Container;
