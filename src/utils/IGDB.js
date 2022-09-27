@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const gameData = async (value) => {
-
   const options = await axios({
     url: process.env.REACT_APP_URL,
     method: 'POST',
