@@ -1,6 +1,6 @@
 import React from 'react';
-import SidebarOverlay from '../pieces/SidebarOverlay';
-import SidebarMenu from '../pieces/SidebarMenu';
+import SidebarOverlay from '../Pieces/SidebarOverlay';
+import SidebarMenu from '../Pieces/SidebarMenu';
 import Collapse from 'react-bootstrap/Collapse';
 
 function SidebarIndex(props) {

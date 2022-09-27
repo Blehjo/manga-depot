@@ -29,31 +29,29 @@ const Container = (props) => {
         const response = await gameData(value)
             .then(response => {
                 setResults(response.data);
-                console.log(response.data);
             })
             .catch(err => {
                 console.error(err);
             });
-        }
-        console.log(results);
-
+    }
     // We want to run this method when the component first loads so that we have images of kittens to display
     // The second argument is the dependency array. This means that this method will only run when the component first loads
     useEffect(() => {
-        getGameData('halo');
+        getGameData(value);
     }, []);
 
     return (
         <>
-            <div className="fixed-top">
+            <div style={{zIndex:2}}className="fixed-top">
                 <NavBar 
+                style={{zIndex:2}}
                 key={'navbar'}
                 onSearchChange={handleInputChange}
                 onClickEvent={handleClickEvent}
                 value={value}
                 />
             </div>
-            <div className="fixed-top">
+            <div style={{zIndex:1}}className="fixed-top">
                 <SidebarIndex show={show}/>
             </div>
             <Row className="mw-100" key="site-body">

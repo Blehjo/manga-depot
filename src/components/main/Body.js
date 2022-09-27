@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import { Heart, BookFill } from 'react-bootstrap-icons';
 
 function Body(props) {
-  console.log(props)
   return (
     <>
     <Row xs={1} sm={2} md={4} className="g-4 pt-3" key={1}>
@@ -16,10 +15,14 @@ function Body(props) {
             <Card.Body>
               <Card.Title>{result.name}</Card.Title>
               <Card.Text>
+                {/* {result.first_release_date} */}
+                {result.platforms}
+                {result.rating}
+                {}
                 {/* {result.storyline} */}
               </Card.Text>
-              <BookFill className='m-2' color='maroon' size={40}/>
-              <Heart className='m-2' color='maroon' size={40}/>
+              <BookFill className='m-2' color='rgb(97, 219, 251)' size={40}/>
+              <Heart className='m-2' color='rgb(97, 219, 251)' size={40}/>
             </Card.Body>
           </Card>
         </Col>
