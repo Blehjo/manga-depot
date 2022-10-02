@@ -11,7 +11,7 @@ function Body(props) {
       {props.results.map((result) => (
         <Col className='' key={result.id}>
           <Card className="" key={result.id}>
-            {typeof result.cover.image_id != undefined ? <Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover.image_id}.jpg`} /> : <p>hello</p>}
+            {/* {result.cover.image_id !== undefined ? <Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover.image_id}.jpg`} /> : <p>hello</p>} */}
             <Card.Body>
               <Card.Title>
                 <Card.Link className='card-info' href={`/${result.name}`}>

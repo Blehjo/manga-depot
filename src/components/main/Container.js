@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NavBar from "./NavBar";
@@ -12,6 +12,8 @@ const Container = (props) => {
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
     
     function handleInputChange(evt) {
         evt.preventDefault();
@@ -23,22 +25,26 @@ const Container = (props) => {
         setShow(!show);
     };
 
-    function handleSearchClick(evt) {
+    const handleSearchClick = async (evt) => {
         evt.preventDefault();
-        gameData(value)
-        .then(response => {
-            setResults(response.data);
-        })
-        .catch(err => {
-            setErrorMessage(err);
+        setIsLoading(true);
+        setHasError(false);
+        try {
+            gameData(value)
+            .then(response => {
+                // console.log(response)
+                setResults(response.data);
+        })} catch (error) {
+            setHasError(true);
+            setErrorMessage(error);
             console.error(errorMessage);
-        });
-    }
+        }
+        setIsLoading(false);
+    };
 
     // We want to run this method when the component first loads so that we have images of games to display
     // The second argument is the dependency array. This means that this method will only run when the component first loads
     useEffect(() => {
-        
         gameData('halo')
             .then(response => {
                 setResults(response.data);
@@ -67,7 +73,7 @@ const Container = (props) => {
                 <Col className=""xs="1" lg="1" key="sidebar-index">
                 </Col>
                 <Col className="m-5 px-2" key="routes-index">
-                    <RoutesIndex results={results}/>
+                    {hasError && <p>Something Went Wrong.</p>}{isLoading ? (<p>Loading...</p>) : <RoutesIndex results={results}/>}
                 </Col>
             </Row>
         </>
