@@ -67,7 +67,7 @@ const Container = (props) => {
             <Row className="mw-100 pt-5" key="site-body">
                 <Col className=""xs="1" lg="1" key="sidebar-index">
                 </Col>
-                <Col className="m-5 p-5" key="routes-index">
+                <Col className="m-5 px-5" key="routes-index">
                     <RoutesIndex results={results}/>
                 </Col>
             </Row>
