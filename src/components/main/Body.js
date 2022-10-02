@@ -14,10 +14,9 @@ function Body(props) {
             <Card.Body>
               <Card.Title>{result.name}</Card.Title>
               <Card.Text>
-                {/* {result.first_release_date} */}
+                {result.first_release_date}
                 {result.platforms}
                 {result.rating}
-                {}
                 {/* {result.storyline} */}
               </Card.Text>
               <BookFill className='m-2' color='rgb(97, 219, 251)' size={40}/>

@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { List, PersonCircle, Inbox } from 'react-bootstrap-icons';
+import { useState } from 'react';
 
 function NavBar(props) {
   return (
@@ -27,13 +28,12 @@ function NavBar(props) {
                     <Form className="d-flex">
                       <Form.Control
                         onChange={props.onSearchChange}
-                        value={props.value}
                         type="search"
                         placeholder="Search"
                         className="me-2 "
                         aria-label="Search"
                         />
-                      <Button variant="info">Search</Button>
+                      <Button onClick={props.onSearchClick} variant="info">Search</Button>
                     </Form>
                   </Nav>
                 </Col>
