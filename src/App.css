@@ -106,3 +106,7 @@
   justify-content: space-evenly;
   margin: auto;
 }
+
+.card-info {
+  text-decoration: none;
+}

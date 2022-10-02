@@ -11,26 +11,26 @@ function Body(props) {
       {props.results.map((result) => (
         <Col className='' key={result.id}>
           <Card className="" key={result.id}>
-            <Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover.image_id}.jpg`} />
+            {typeof result.cover.image_id != undefined ? <Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover.image_id}.jpg`} /> : <p>hello</p>}
             <Card.Body>
               <Card.Title>
-                <Card.Link href={`/${result.name}`}>
+                <Card.Link className='card-info' href={`/${result.name}`}>
                   {result.name}
                 </Card.Link>
               </Card.Title>
               <Card.Text>
-                {result.first_release_date}
+                {typeof result.first_release_date != undefined ? result.first_release_date : <p>no release date</p>}
                 {result.platforms}
                 {result.rating}
                 {/* {result.storyline} */}
               </Card.Text>
               <div className='collect'>
-              <Button variant='dark'>
-                <BookFill className='m-2' color='rgb(97, 219, 251)' size={40}/>
-              </Button>
-              <Button variant='dark'>
-                <HeartFill className='m-2' color='rgb(97, 219, 251)' size={40}/>
-              </Button>
+                <Button variant='dark'>
+                  <BookFill className='m-2' color='rgb(97, 219, 251)' size={40}/>
+                </Button>
+                <Button variant='dark'>
+                  <HeartFill className='m-2' color='rgb(97, 219, 251)' size={40}/>
+                </Button>
               </div>
             </Card.Body>
           </Card>

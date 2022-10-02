@@ -7,7 +7,7 @@ const gameData = async (value) => {
     headers: {
         'x-api-key': process.env.REACT_APP_X_API_KEY,
     },
-    data: `fields name, first_release_date, platforms, summary, storyline, rating, cover.image_id; search "${value}";`
+    data: `fields name, first_release_date, platforms, summary, storyline, rating; search "${value}";`
   })
 
   return options

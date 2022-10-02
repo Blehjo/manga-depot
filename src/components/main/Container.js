@@ -24,7 +24,6 @@ const Container = (props) => {
     };
 
     function handleSearchClick(evt) {
-        console.log('clicked');
         evt.preventDefault();
         gameData(value)
         .then(response => {
@@ -38,17 +37,17 @@ const Container = (props) => {
 
     // We want to run this method when the component first loads so that we have images of games to display
     // The second argument is the dependency array. This means that this method will only run when the component first loads
-    // useEffect(() => {
+    useEffect(() => {
         
-    //     gameData(value)
-    //         .then(response => {
-    //             setResults(response.data);
-    //         })
-    //         .catch(err => {
-    //             setErrorMessage(err);
-    //             console.error(errorMessage);
-    //         });
-    // }, [value]);
+        gameData('halo')
+            .then(response => {
+                setResults(response.data);
+            })
+            .catch(err => {
+                setErrorMessage(err);
+                console.error(errorMessage);
+            });
+    }, []);
 
     return (
         <>
@@ -67,7 +66,7 @@ const Container = (props) => {
             <Row className="mw-100 pt-5" key="site-body">
                 <Col className=""xs="1" lg="1" key="sidebar-index">
                 </Col>
-                <Col className="m-5 px-5" key="routes-index">
+                <Col className="m-5 px-2" key="routes-index">
                     <RoutesIndex results={results}/>
                 </Col>
             </Row>
