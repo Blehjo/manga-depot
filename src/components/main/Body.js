@@ -13,7 +13,7 @@ function Body(props) {
         <Col className='' key={result.id}>
           <Card style={{ }} className="h-100" key={result.id}>
             {<Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover?.image_id}.jpg`} />}
-            <Card.Body>
+            <Card.Body className='bg-dark'>
               <Card.Title>
                 <Card.Link className='card-info' href={`/${result.name}`}>
                   {result.name}
@@ -26,7 +26,7 @@ function Body(props) {
                 {result.rating !== undefined ? `Rating: ${Math.round(result.rating)}` : ''}
               </Card.Text>
               <Card.Text>
-                {`Platforms: ${result.platforms?.map((element) => (element.abbreviation))}`}
+                {`Platforms: ${result.platforms?.map((element) => (`\n${element.abbreviation}`))}`}
               </Card.Text>
               <div className='collect'>
                 <Button variant='dark'>
