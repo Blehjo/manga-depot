@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { List, PersonCircle, Inbox } from 'react-bootstrap-icons';
-import { useState } from 'react';
 
 function NavBar(props) {
   return (

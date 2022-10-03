@@ -5,6 +5,8 @@ import NavBar from "./NavBar";
 import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
 import gameData from "../../utils/IGDB";
+import axios from "axios";
+import moment from "moment";
 
 
 const Container = (props) => {
@@ -32,7 +34,6 @@ const Container = (props) => {
         try {
             gameData(value)
             .then(response => {
-                // console.log(response)
                 setResults(response.data);
         })} catch (error) {
             setHasError(true);
@@ -41,11 +42,17 @@ const Container = (props) => {
         }
         setIsLoading(false);
     };
-
-    // We want to run this method when the component first loads so that we have images of games to display
-    // The second argument is the dependency array. This means that this method will only run when the component first loads
+ 
     useEffect(() => {
-        gameData('halo')
+        const releaseDate = moment(new Date()).subtract(1, 'year').unix();
+        axios({
+            url: process.env.REACT_APP_URL,
+            method: 'POST',
+            headers: {
+                'x-api-key': process.env.REACT_APP_X_API_KEY,
+            },
+            data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; where rating >= 90 & release_dates.date >= ${releaseDate}; limit 72;`
+          })
             .then(response => {
                 setResults(response.data);
             })
@@ -53,7 +60,7 @@ const Container = (props) => {
                 setErrorMessage(err);
                 console.error(errorMessage);
             });
-    }, []);
+    }, [errorMessage]);
 
     return (
         <>
@@ -69,7 +76,7 @@ const Container = (props) => {
             <div style={{zIndex:1}}className="fixed-top hidden">
                 <SidebarIndex show={show}/>
             </div>
-            <Row className="mw-100 pt-3" key="site-body">
+            <Row className="mw-100 pt-3 background" key="site-body">
                 <Col className=""xs="1" lg="1" key="sidebar-index">
                 </Col>
                 <Col className="m-5 px-2" key="routes-index">

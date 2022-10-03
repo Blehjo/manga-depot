@@ -13,7 +13,7 @@ function Body(props) {
         <Col className='' key={result.id}>
           <Card style={{ }} className="h-100" key={result.id}>
             {<Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover?.image_id}.jpg`} />}
-            <Card.Body className='bg-dark'>
+            <Card.Body className=''>
               <Card.Title>
                 <Card.Link className='card-info' href={`/${result.name}`}>
                   {result.name}
