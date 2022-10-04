@@ -34,7 +34,7 @@ const Explore = () => {
                         <Card className="h-100" key={result.id}>
                             <Card.Body className="">
                                 <Card.Title>
-                                    <Card.Link href={`/genre/${result.name}`}>
+                                    <Card.Link className="card-info"href={`/genre/${result.name}`}>
                                         {result.name}
                                     </Card.Link>
                                 </Card.Title>
