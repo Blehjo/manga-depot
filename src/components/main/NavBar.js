@@ -14,16 +14,16 @@ function NavBar(props) {
         <Container key="navbarContainer" className='' fluid>
           <Row key="rowOne">
             <Navbar fixed=''  key={expand}  bg='dark' variant='dark' expand={expand}>
+              <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>
-                  <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
                   <Navbar.Brand href="/" className='text-white'>Shell Mate</Navbar.Brand>
                 </Nav>
               </Col>
               <Navbar.Toggle className=""key="navbarToggle" aria-controls={`navBarItems}`} />
-              <Navbar.Collapse className="d-flex justify-content-center" key="navbarCollapse" id="navBarItems">
-                <Col key="searchColumn">
-                  <Nav key="navForm" className='justify-content-center'>
+              <Navbar.Collapse className="" key="navbarCollapse" id="navBarItems">
+                <Col key="searchColumn" className=''>
+                  <Nav key="navForm" className='m-auto'>
                     <Form onSubmit={props.onSearchClick} className="d-flex">
                       <Form.Control
                         onChange={props.onSearchChange}

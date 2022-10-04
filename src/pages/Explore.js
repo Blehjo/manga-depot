@@ -32,7 +32,7 @@ const Explore = () => {
                 {results?.map((result) => (
                     <Col key={result.id}>
                         <Card className="h-100" key={result.id}>
-                            <Card.Body className="">
+                            <Card.Body className="genre-card">
                                 <Card.Title>
                                     <Card.Link className="card-info"href={`/genre/${result.name}`}>
                                         {result.name}

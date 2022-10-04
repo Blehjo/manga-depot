@@ -73,7 +73,7 @@ const Container = (props) => {
                 value={value}
                 />
             </div>
-            <div style={{zIndex:1}}className="fixed-top hidden">
+            <div style={{zIndex:1}}className="fixed-top">
                 <SidebarIndex show={show}/>
             </div>
             <Row className="mw-100 pt-3 " key="site-body">
