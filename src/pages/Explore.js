@@ -31,10 +31,10 @@ const Explore = () => {
             <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-4 pt-3" key="genres">
                 {results?.map((result) => (
                     <Col key={result.id}>
-                        <Card className="h-100" key={result.id}>
+                        <Card className=" bg-dark text-white h-100" key={result.id}>
                             <Card.Body className="genre-card">
                                 <Card.Title>
-                                    <Card.Link className="card-info"href={`/genre/${result.name}`}>
+                                    <Card.Link className="genre-card card-info"href={`/genre/${result.name}`}>
                                         {result.name}
                                     </Card.Link>
                                 </Card.Title>
