@@ -9,9 +9,6 @@
 }
 
 @media screen and (min-width: 40em) {
-  /* .hidden {
-    display: none;
-  } */
   .cards {
       display: flex;
       flex-wrap: wrap;
@@ -73,7 +70,6 @@
   flex:1 1 200px;
 }
 
-
 #newSidebar {
   height: 100vh;
   padding-top: 30px;
@@ -99,14 +95,6 @@
   background-color: blue;
 }
 
-.collect {
-  /* justify-content: center; */
-  text-align: center;
-  display: flex;
-  justify-content: space-evenly;
-  margin: auto;
-}
-
 .card-info {
   text-decoration: none;
 }
@@ -118,4 +106,53 @@
 .genre-card {
   background-color: rgb(27, 23, 23);
   border-radius: .3rem;
+}
+  
+
+p {
+  color: #a1b2bc;
+  font-size: 0.8rem;
+}
+
+.icon {
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  width: 10%;
+  height: auto;
+  top: 2%;
+  left: 10%;
+  text-align: center;
+}
+  
+.card-container {
+  position: relative;
+}
+
+.icon-item {
+  padding-right: 10px;
+}
+
+.icon2 {
+  color: white;
+  font-size: 25px;
+  display: flex;
+  float: left;
+  width: 10%;
+  height: auto;
+  margin-left: 10px;
+  position: absolute;
+  bottom: 0%;
+}
+
+.icon3 {
+  color: white;
+  font-size: 25px;
+  /* display: flex; */
+  float: right;
+  width: 10%;
+  height: auto;
+  position: absolute;
+  bottom: 4%;
+  left: 80%;
 }
