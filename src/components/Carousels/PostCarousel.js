@@ -5,7 +5,7 @@ import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
-const EventCarousel = () => {
+const PostCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [genres, setGenres] = useState([]);
 
@@ -26,11 +26,11 @@ const EventCarousel = () => {
                 console.error(errorMessage);
             });
     }, [errorMessage]);
-
+    
     return (
         <>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
-                <h1 className="text-white">Events</h1>
+                <h1 className="text-white">Groups</h1>
                 <Col >
                     <Carousel
                         additionalTransfrom={0}
@@ -103,4 +103,4 @@ const EventCarousel = () => {
     )
 }
 
-export default EventCarousel;
+export default PostCarousel;

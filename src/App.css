@@ -154,6 +154,10 @@ p {
   width: 10%;
   height: auto;
   position: absolute;
-  bottom: 4%;
-  left: 80%;
+  bottom: 2%;
+  left: 85%;
+}
+
+.introduction-card {
+  background-color: rgb(20, 20, 35);
 }

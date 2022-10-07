@@ -1,15 +1,13 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { BookFill, HeartFill } from 'react-bootstrap-icons';
-import { Button } from 'react-bootstrap';
 import unixConverter from '../../utils/Date';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faDownload, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faDownload, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function Body({ results }) {
+function Games({ results }) {
   return (
     <>
     <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-4 pt-3" key={1}>
@@ -24,14 +22,14 @@ function Body({ results }) {
                 <Card.Text>
                   <FontAwesomeIcon className="icon" icon={faEye} />
                 </Card.Text>
-                <Card.Text className='icon2'>
-                  <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                  <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                  <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                </Card.Text>
-                <Card.Text className="icon3">
-                  <FontAwesomeIcon className="" icon={faDownload} />
-                </Card.Text>
+                  <Card.Text className='icon2'>
+                    <FontAwesomeIcon className="icon-item" icon={faHeart} />
+                    <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
+                    <FontAwesomeIcon className="icon-item" icon={faRetweet} />
+                  </Card.Text>
+                  <Card.Text className="icon3">
+                    <FontAwesomeIcon className="" icon={faDownload} />
+                  </Card.Text>
               </Card.ImgOverlay>
               </div>
               <Card.Body className=''>
@@ -53,4 +51,4 @@ function Body({ results }) {
   );
 }
 
-export default Body;
+export default Games;
