@@ -40,9 +40,9 @@ const GameCarousel = () => {
                         additionalTransfrom={0}
                         arrows
                         autoPlaySpeed={3000}
-                        centerMode={true}
+                        centerMode={false}
                         className=""
-                        containerClass="container-with-dots"
+                        containerClass=""
                         dotListClass=""
                         draggable
                         focusOnSelect={false}
@@ -60,8 +60,8 @@ const GameCarousel = () => {
                                     max: 3000,
                                     min: 1024
                                 },
-                                items: 5,
-                                partialVisibilityGutter: 40
+                                items: 4,
+                                partialVisibilityGutter: 0
                             },
                             mobile: {
                                 breakpoint: {

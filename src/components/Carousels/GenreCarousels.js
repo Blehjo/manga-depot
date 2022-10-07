@@ -36,7 +36,7 @@ const GenreCarousel = () => {
                         additionalTransfrom={0}
                         arrows
                         autoPlaySpeed={3000}
-                        centerMode={true}
+                        centerMode={false}
                         className=""
                         containerClass="container-with-dots"
                         dotListClass=""
@@ -56,7 +56,7 @@ const GenreCarousel = () => {
                                 max: 3000,
                                 min: 1024
                             },
-                            items: 5,
+                            items: 4,
                             partialVisibilityGutter: 40
                             },
                             mobile: {
