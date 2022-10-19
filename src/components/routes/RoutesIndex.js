@@ -8,8 +8,7 @@ import LikedPosts from "../../pages/LikedPosts";
 import Friends from "../../pages/Friends";
 import Connections from "../../pages/Connections";
 import About from "../../pages/About";
-import Login from "../../pages/Login";
-import Signup from "../../pages/Signup";
+import Authentication from "../../pages/Authentication";
 
 const RoutesIndex = (props) => {
     return (
@@ -25,8 +24,8 @@ const RoutesIndex = (props) => {
                 <Route path='/friends' element={<Friends />}/>
                 <Route path='/connections' element={<Connections />}/>
                 <Route path='/about' element={<About />}/>
-                <Route path='/login' element={<Login />}/>
-                <Route path='/signup' element={<Signup />}/>
+                <Route path='/authentication' element={<Authentication />}/>
+                {/* <Route path='/signup' element={<Signup />}/>  */}
             </Routes>
         </BrowserRouter>
     )

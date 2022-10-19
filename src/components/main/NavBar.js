@@ -1,15 +1,19 @@
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Fragment, useContext } from 'react';
+import { Outlet } from 'react-router-dom';
+
+import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
+
 import { List, PersonCircle, Inbox } from 'react-bootstrap-icons';
 
+import { UserContext } from '../../contexts/user.context';
+
+import { signOutUser } from '../../utils/firebase/firebase.utils';
+
 function NavBar(props) {
+  const { currentUser } = useContext(UserContext);
+
   return (
-    <>
+    <Fragment>
       {['sm'].map((expand) => (
         <Container key="navbarContainer" className='' fluid>
           <Row key="rowOne">
@@ -39,7 +43,16 @@ function NavBar(props) {
                 <Col key="navigationIcons">
                     <Nav key="navIcons" variant='dark'className="justify-content-end flex-grow-1 pe-3">
                       <Nav.Link key='notifications' href="#notifications"><Inbox size={25}/></Nav.Link>
-                      <Nav.Link key='profile' href="#profile"><PersonCircle size={25}/></Nav.Link>
+                      {
+                        currentUser ? (
+                            // <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
+                            <Nav.Link key='profile' href="#profile" ><PersonCircle size={25}/></Nav.Link>
+                        ) : (
+                            <Nav.Link className='nav-link' href='/authentication'>
+                                SIGN IN
+                            </Nav.Link>
+                        )
+                      }
                     </Nav>
                 </Col>
               </Navbar.Collapse>
@@ -47,7 +60,8 @@ function NavBar(props) {
           </Row>
         </Container>
       ))}
-    </>
+      <Outlet/>
+    </Fragment>
   );
 }
 
