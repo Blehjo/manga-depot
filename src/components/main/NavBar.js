@@ -3,14 +3,19 @@ import { Outlet } from 'react-router-dom';
 
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
 
-import { List, PersonCircle, Inbox } from 'react-bootstrap-icons';
+import { List, Inbox } from 'react-bootstrap-icons';
+
+import ProfileIcon from '../profile-icon/profile-icon';
+import ProfileDropdown from '../profile-dropdown/profile-dropdown';
 
 import { UserContext } from '../../contexts/user.context';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { ProfileContext } from '../../contexts/profile.context';
 
 function NavBar(props) {
   const { currentUser } = useContext(UserContext);
+  const { isProfileOpen } = useContext(ProfileContext);
 
   return (
     <Fragment>
@@ -46,13 +51,14 @@ function NavBar(props) {
                       {
                         currentUser ? (
                             // <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
-                            <Nav.Link key='profile' href="#profile" ><PersonCircle size={25}/></Nav.Link>
+                            <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>
                         ) : (
                             <Nav.Link className='nav-link' href='/authentication'>
                                 SIGN IN
                             </Nav.Link>
                         )
                       }
+                      {isProfileOpen && <ProfileDropdown />}
                     </Nav>
                 </Col>
               </Navbar.Collapse>
