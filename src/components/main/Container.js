@@ -76,13 +76,13 @@ const Container = (props) => {
             <div style={{zIndex:1}}className="fixed-top">
                 <SidebarIndex show={show}/>
             </div>
-            <Row className="mw-100 pt-3 " key="site-body">
-                <Col className=""xs="1" lg="1" key="sidebar-index">
-                </Col>
-                <Col className="m-5 px-2" key="routes-index">
-                    {hasError && <p>Something Went Wrong.</p>}{isLoading ? (<p>Loading...</p>) : <RoutesIndex results={results}/>}
-                </Col>
-            </Row>
+            <div className="container-margin">
+                <Row className="" key="site-body">
+                    <Col className="" key="routes-index">
+                        {hasError && <p>Something Went Wrong.</p>}{isLoading ? (<p>Loading...</p>) : <RoutesIndex results={results}/>}
+                    </Col>
+                </Row>
+            </div>
         </>
     )
 }

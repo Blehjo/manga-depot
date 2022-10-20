@@ -28,7 +28,7 @@ const EventCarousel = () => {
     }, [errorMessage]);
 
     return (
-        <>
+        <div className="container-class">
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
                 <h1 className="text-white">Events</h1>
                 <Col >
@@ -99,7 +99,7 @@ const EventCarousel = () => {
                     </Carousel>
                 </Col>
             </Row>
-        </>
+        </div>
     )
 }
 

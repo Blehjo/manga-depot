@@ -6,7 +6,7 @@ import EventCarousel from "../components/carousels/EventCarousel";
 
 const Explore = () => {
     return (
-        <div className="carousel-container ps-5 pe-3">
+        <div className="">
             <h1>Explore</h1>
             <GenreCarousel/>
             <GameCarousel/>
