@@ -90,7 +90,7 @@ const GameCarousel = () => {
                         swipeable
                         >
                         {games?.map((game) => (
-                            <Card style={{ }} className="mx-2 bg-dark card-container h-100" key={game.id}>
+                            <Card style={{ }} className="mx-2 bg-dark card-container" key={game.id}>
                             <div className='card-container'>
                             <Card.Link className='card-info' href={`/${game.name}`}>
                             {<Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${game.cover?.image_id}.jpg`} />}

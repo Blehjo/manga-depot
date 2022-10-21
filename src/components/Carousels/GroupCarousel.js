@@ -86,7 +86,7 @@ const GroupCarousel = () => {
                         swipeable
                     >
                         {genres?.map((genre) => (
-                                <Card className="mx-2 bg-dark text-white h-100" key={genre.id}>
+                                <Card className="mx-2 bg-dark text-white" key={genre.id}>
                                     <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
                                         <Card.Body className="genre-card">
                                             <Card.Title>

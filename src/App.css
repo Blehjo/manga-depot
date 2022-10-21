@@ -18,6 +18,10 @@
   .card {
       flex: 0 1 calc(25% - 1em);
   }
+  .container-margin {
+    margin: 100px auto; 
+    width: 80%; 
+  }
 }
 
 @media screen and (max-width: 49em) {
@@ -26,6 +30,11 @@
   }
   .card {
       flex: 0 1 calc(25% - 1em);
+  }
+  .container-margin {
+    margin: 100px auto; 
+    padding-left: 0px;
+    width: 80%; 
   }
 }
 
@@ -173,6 +182,7 @@ p {
 
 .container-margin {
   margin: 100px auto; 
+
   width: 80%; 
 }
 
