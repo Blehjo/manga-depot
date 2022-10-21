@@ -69,7 +69,7 @@ const Home = () => {
     return (
         <div className="">
             <Row className='pb-5'>
-                <Col xs="12"lg="6">
+                <Col xs="12"lg="7">
                         <h1 className="text-white">Welcome to Shell Geist</h1>
                         <p className="text-white">Whatever game you’re interested in getting better at this year, Shell Geist can help. Join the community today and help others by leaving advice or learn from others and ask questions. Think of Shell Geist as a virtual meetup. You can attend events by getting a code and joining video game lobbies, joining live discussions, and leaving your own feed back from first-hand experience. Your fellow mates have turned to Shell Geist to meet people, make friends, find support, grow a business, and explore their interests. Thousands of events are happening every day—join the fun.</p>
                 </Col>
@@ -104,11 +104,11 @@ const Home = () => {
                     <Col className="text-white pb-5">
                         <Card className="bg-dark" key={title}>
                             <Card.Img style={{ objectFit: 'none'}} variant="top" /*{src={require(`/Users/blehjo/projects/shell-geist/src/assets/${image}`)}}*/ alt={title}/>
-                            <Card.Body>
+                            <Card.Body className="activities">
                                 <Card.Title>
                                     <a href={link}><span>{title}</span></a>
                                 </Card.Title>
-                                <Card.Text>
+                                <Card.Text className="description">
                                     {description}
                                 </Card.Text>
                             </Card.Body>

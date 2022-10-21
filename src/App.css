@@ -182,13 +182,18 @@ p {
 
 .container-margin {
   margin: 100px auto; 
-
   width: 80%; 
 }
 
 .activities a {
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description {
   display: flex;
   align-items: center;
   justify-content: center;

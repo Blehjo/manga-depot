@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { UserProvider } from './contexts/user.context';
 import { ProfileProvider } from './contexts/profile.context';
+import { SearchProvider } from './contexts/search.context';
 
 
 import './index.css';
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
       <UserProvider>
         <ProfileProvider>
-          <App />
+          <SearchProvider>
+            <App />
+          </SearchProvider>
         </ProfileProvider>
       </UserProvider>
   </React.StrictMode>

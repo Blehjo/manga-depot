@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import NavBar from "./NavBar";
@@ -8,8 +8,11 @@ import gameData from "../../utils/IGDB";
 import axios from "axios";
 import moment from "moment";
 
+import { SearchContext } from "../../contexts/search.context";
+
 
 const Container = (props) => {
+    // const [searchField, setSearchField] = useContext(SearchContext);
     const [value, setValue] = useState('');
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
