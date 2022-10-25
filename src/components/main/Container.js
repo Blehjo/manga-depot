@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React, { useState, useEffect } from "react";
+import { Row, Col } from 'react-bootstrap';
+
 import NavBar from "./NavBar";
 import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
+
 import gameData from "../../utils/IGDB";
+
 import axios from "axios";
 import moment from "moment";
 
-import { SearchContext } from "../../contexts/search.context";
-
-
 const Container = (props) => {
-    // const [searchField, setSearchField] = useContext(SearchContext);
     const [value, setValue] = useState('');
     const [show, setShow] = useState(false);
     const [results, setResults] = useState([]);
@@ -32,18 +30,18 @@ const Container = (props) => {
 
     const handleSearchClick = async (evt) => {
         evt.preventDefault();
-        setIsLoading(true);
-        setHasError(false);
-        try {
-            gameData(value)
-            .then(response => {
-                setResults(response.data);
-        })} catch (error) {
-            setHasError(true);
-            setErrorMessage(error);
-            console.error(errorMessage);
-        }
-        setIsLoading(false);
+        // setIsLoading(true);
+        // setHasError(false);
+        // try {
+        //     gameData(value)
+        //     .then(response => {
+        //         setResults(response.data);
+        // })} catch (error) {
+        //     setHasError(true);
+        //     setErrorMessage(error);
+        //     console.error(errorMessage);
+        // }
+        // setIsLoading(false);
     };
  
     useEffect(() => {

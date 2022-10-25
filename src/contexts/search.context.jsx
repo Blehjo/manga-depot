@@ -1,10 +1,10 @@
 import { createContext, useState } from 'react';
 
 export const SearchContext = createContext({
+    searchField: '',
     setSearchField: () => {
         
     },
-    searchField: null,
 });
 
 export const SearchProvider = ({ children }) => {

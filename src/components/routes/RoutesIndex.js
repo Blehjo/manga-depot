@@ -25,7 +25,6 @@ const RoutesIndex = (props) => {
                 <Route path='/connections' element={<Connections />}/>
                 <Route path='/about' element={<About />}/>
                 <Route path='/authentication' element={<Authentication />}/>
-                {/* <Route path='/signup' element={<Signup />}/>  */}
             </Routes>
         </BrowserRouter>
     )

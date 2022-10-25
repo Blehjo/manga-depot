@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
@@ -9,13 +9,45 @@ import ProfileIcon from '../profile-icon/profile-icon';
 import ProfileDropdown from '../profile-dropdown/profile-dropdown';
 
 import { UserContext } from '../../contexts/user.context';
+import { ResultContext } from '../../contexts/result.context';
 
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+// import { signOutUser } from '../../utils/firebase/firebase.utils';
 import { ProfileContext } from '../../contexts/profile.context';
+import { SearchContext } from '../../contexts/search.context';
+
+import gameData from '../../utils/IGDB';
+import moment from 'moment';
+import axios from 'axios';
 
 function NavBar(props) {
   const { currentUser } = useContext(UserContext);
   const { isProfileOpen } = useContext(ProfileContext);
+  const { searchField, setSearchField } = useContext(SearchContext);
+  const { results, setResults } = useContext(ResultContext);
+
+  // const handleInputChange = (evt) => {
+  //   evt.preventDefault();
+  //   setSearchField(evt.target.value);
+  // };
+
+  const handleInputChange = async (evt) => {
+    evt.preventDefault();
+    setSearchField(evt.target.value);
+    console.log(searchField)
+    // setIsLoading(true);
+    // setHasError(false);
+    try {
+      await gameData(searchField)
+      .then(response => {
+          setResults(response.data);
+          console.log(response.data)
+    })} catch (error) {
+      // setHasError(true);
+      // setErrorMessage(error);
+      console.error(error);
+    }
+    // setIsLoading(false);
+  };
 
   return (
     <Fragment>
@@ -35,7 +67,8 @@ function NavBar(props) {
                   <Nav key="navForm" className='m-auto'>
                     <Form onSubmit={props.onSearchClick} className="d-flex">
                       <Form.Control
-                        onChange={props.onSearchChange}
+                        onChange={handleInputChange}
+                        // onClick={props.onSearchClick}
                         type="search"
                         placeholder="Search"
                         className="me-2 "

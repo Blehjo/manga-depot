@@ -9,6 +9,7 @@ const gameData = async (value) => {
     },
     data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; search "${value}";`
   })
+  
 
   return options
 };

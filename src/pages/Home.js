@@ -76,9 +76,9 @@ const Home = () => {
             </Row>
             <Row className="" style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={3} md={3} lg={3} xl={3}>
                 {activities.map(({ title, imageSource, link, id }) => (
-                    <Col className="text-white pb-5">
+                    <Col key={id} className="text-white pb-5">
                         <Card className="bg-dark" key={id}>
-                            <Card.Img height='155' style={{ objectFit:'cover'}} variant="top" src={require(`/Users/blehjo/playground/shell-geist/src/assets/${imageSource}`)} alt={title}/>
+                            <Card.Img height='155' style={{ objectFit:'cover'}} variant="top" src={require(`/Users/blehjo/projects/shell-geist/src/assets/${imageSource}`)} alt={title}/>
                             <Card.Body className="bg-dark activities">
                                 <Card.Title>
                                     <a href={link}><span>{title}</span></a>
@@ -101,7 +101,7 @@ const Home = () => {
             </Row>
             <Row className="" style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={3} md={3} lg={3} xl={3}>
                 {items.map(({ title, image, link, description }) => (
-                    <Col className="text-white pb-5">
+                    <Col key={title} className="text-white pb-5">
                         <Card className="bg-dark" key={title}>
                             <Card.Img style={{ objectFit: 'none'}} variant="top" /*{src={require(`/Users/blehjo/projects/shell-geist/src/assets/${image}`)}}*/ alt={title}/>
                             <Card.Body className="activities">
