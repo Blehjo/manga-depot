@@ -1,10 +1,10 @@
-import { Button } from "react-bootstrap";
-
 import './profile-dropdown.styles.scss';
 
 import Row from "react-bootstrap/Row";
 import { Nav } from "react-bootstrap";
-import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb } from 'react-bootstrap-icons';
+import { Inbox, Gear, Search, Laptop, DoorOpen, QuestionCircle, MenuApp } from 'react-bootstrap-icons';
+
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 const ProfileDropdown = () => {
     return (
@@ -16,37 +16,37 @@ const ProfileDropdown = () => {
                 xs={1} 
                 >
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                        <House className='' color="white" size={20}/>
+                        <Inbox className='' color="white" size={20}/>
                         <Nav.Link href="/" className="ms-4">
                         Notifications
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
-                        <Search className='' color="white" size={20}/>
+                        <Laptop className='' color="white" size={20}/>
                         <Nav.Link href="/explore" className="ms-4">
                         Dashboard
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
-                        <Collection className='' color="white" size={20}/>
-                        <Nav.Link href="/dashboard" className="ms-4">
-                        Sign out
-                        </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
-                        <Bookmark className='' color="white" size={20}/>
+                        <MenuApp className='' color="white" size={25}/>
                         <Nav.Link href="/savedgames" className="ms-4">
                         Appearance: Device theme
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                        <Globe className='' color="white" size={20}/>
+                        <Gear className='' color="white" size={20}/>
                         <Nav.Link href="/" className="ms-4">
                         Settings
                         </Nav.Link>
                     </Nav.Item>
+                    <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
+                        <DoorOpen className='' color="white" size={20}/>
+                        <Nav.Link href="/dashboard" className="ms-3">
+                        <span className='nav-link' onClick={signOutUser}>Sign out</span>
+                        </Nav.Link>
+                    </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                        <Heart className='' color="white" size={20}/>
+                        <QuestionCircle className='' color="white" size={20}/>
                         <Nav.Link href="/likedposts" className="ms-4">
                         Help
                         </Nav.Link>

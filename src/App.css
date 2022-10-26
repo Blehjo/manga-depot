@@ -190,3 +190,11 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.authentication-container {
+  color: white;
+  display: inline-block;
+  /* width: 100%; */
+  /* margin: auto; */
+}
+

@@ -3,7 +3,9 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
 
-import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
+import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
+
+import './sign-in-form.styles.scss';
 
 const defaultFormFields = {
     email: '',
@@ -19,7 +21,7 @@ const SignInForm = () => {
     }
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
+        const { user } = await signInWithGoogleRedirect();
     }
 
     const handleChange = (event) => {
@@ -74,8 +76,8 @@ const SignInForm = () => {
                     value={password} 
                 />
                 <div className="buttons-container">
-                    <Button variant="info" type="submit">Sign In</Button>
-                    <Button onClick={signInWithGoogle} variant="info" type='button'>Sign In With Google</Button>
+                    <Button variant="info" type="submit">Sign in</Button>
+                    <Button onClick={signInWithGoogle} variant="info" type='button'>Sign in with Google</Button>
                 </div>
             </form>
         </div>

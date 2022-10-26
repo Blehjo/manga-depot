@@ -8,6 +8,8 @@ import {
     createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
+import './sign-up-form.styles.scss';
+
 const defaultFormFields = {
     displayName: '',
     email: '',
@@ -95,7 +97,7 @@ const SignUpForm = () => {
                     value={confirmPassword} 
                 />
 
-                <Button buttonType='inverted' type="submit">Submit</Button>
+                <Button type="submit">Submit</Button>
             </form>
         </div>
     )

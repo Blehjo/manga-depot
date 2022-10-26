@@ -28,8 +28,8 @@ const EventCarousel = () => {
     }, [errorMessage]);
 
     return (
-        <div className="">
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 " key="genres">
+        <>
+            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
                 <h1 className="text-white">Events</h1>
                 <Col >
                     <Carousel
@@ -84,9 +84,9 @@ const EventCarousel = () => {
                         sliderClass=""
                         slidesToSlide={1}
                         swipeable
-                    >
+                    >    
                         {genres?.map((genre) => (
-                                <Card className="ms-3 bg-dark text-white" key={genre.id}>
+                                <Card className="mx-2 bg-dark text-white" key={genre.id}>
                                     <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
                                         <Card.Body className="genre-card">
                                             <Card.Title>
@@ -95,11 +95,11 @@ const EventCarousel = () => {
                                         </Card.Body>
                                     </Card.Link>
                                 </Card>
-                        ))} 
+                        ))}   
                     </Carousel>
                 </Col>
             </Row>
-        </div>
+        </>
     )
 }
 

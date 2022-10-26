@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SidebarOverlay from '../pieces/SidebarOverlay';
 import SidebarMenu from '../pieces/SidebarMenu';
-import Collapse from 'react-bootstrap/Collapse';
+import { ListContext } from '../../contexts/list.context';
 
-function SidebarIndex(props) {
+function SidebarIndex() {
+  const { isNavOpen } = useContext(ListContext);
+
   return (
     <>
       <SidebarMenu/>
-      <Collapse in={props.show}>
-        <div>
-          <SidebarOverlay/>
-        </div>
-      </Collapse>
+      {isNavOpen && <SidebarOverlay/>}
     </>
   );
 }

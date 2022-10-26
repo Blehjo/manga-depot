@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Badge, Button } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 
 import { ProfileContext } from '../../contexts/profile.context';
 
@@ -12,7 +12,7 @@ const ProfileIcon = () => {
     
     return (
         <div className='' onClick={toggleIsProfileOpen}>
-            <PersonCircle size={25} className='' ></PersonCircle>
+            <PersonCircle size={30} className='' ></PersonCircle>
             <Badge bg="info">9</Badge>
             {/* <span className='item-count'>0</span> */}
         </div>

@@ -1,13 +1,13 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
-import { List, Inbox } from 'react-bootstrap-icons';
+import { Inbox } from 'react-bootstrap-icons';
+
+import ListIcon from '../list-icon/list-icon';
 
 import ProfileIcon from '../profile-icon/profile-icon';
 import ProfileDropdown from '../profile-dropdown/profile-dropdown';
 
-
-// import { signOutUser } from '../../utils/firebase/firebase.utils';
 import { UserContext } from '../../contexts/user.context';
 import { ResultContext } from '../../contexts/result.context';
 import { ProfileContext } from '../../contexts/profile.context';
@@ -45,7 +45,7 @@ function NavBar(props) {
         <Container key="navbarContainer" className='' fluid>
           <Row key="rowOne">
             <Navbar fixed=''  key={expand}  bg='dark' variant='dark' expand={expand}>
-              <List style={{cursor: "pointer"}} onClick={props.onClickEvent} className='ms-3 m-2' size={25} color="white" />
+              <ListIcon />
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>
                   <Navbar.Brand href="/" className='text-white'>Shell Geist</Navbar.Brand>
@@ -70,10 +70,8 @@ function NavBar(props) {
                 </Col>
                 <Col key="navigationIcons">
                     <Nav key="navIcons" variant='dark'className="justify-content-end flex-grow-1 pe-3">
-                      <Nav.Link key='notifications' href="#notifications"><Inbox size={25}/></Nav.Link>
                       {
                         currentUser ? (
-                            // <span className='nav-link' onClick={signOutUser}>SIGN OUT</span>
                             <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>
                         ) : (
                             <Nav.Link className='nav-link' href='/authentication'>
