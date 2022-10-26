@@ -1,9 +1,9 @@
 import { React } from "react";
 
-import GenreCarousel from "../components/carousels/GenreCarousels";
-import GroupCarousel from "../components/carousels/GroupCarousel";
-import GameCarousel from "../components/carousels/GameCarousel";
-import EventCarousel from "../components/carousels/EventCarousel";
+import GenreCarousel from "../carousels/GenreCarousels";
+import GroupCarousel from "../carousels/GroupCarousel";
+import GameCarousel from "../carousels/GameCarousel";
+import EventCarousel from "../carousels/EventCarousel";
 
 const Explore = () => {
     
