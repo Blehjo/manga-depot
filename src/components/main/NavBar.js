@@ -1,7 +1,6 @@
-import { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
-import { Inbox } from 'react-bootstrap-icons';
 
 import ListIcon from '../list-icon/list-icon';
 

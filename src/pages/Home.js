@@ -78,7 +78,7 @@ const Home = () => {
                 {activities.map(({ title, imageSource, link, id }) => (
                     <Col key={id} className="text-white pb-5">
                         <Card className="bg-dark" key={id}>
-                            <Card.Img height='155' style={{ objectFit:'cover'}} variant="top" src={require(`/Users/blehjo/projects/shell-geist/src/assets/${imageSource}`)} alt={title}/>
+                            <Card.Img height='155' style={{ objectFit:'cover'}} variant="top" src={require(`/Users/blehjo/playground/shell-geist/src/assets/${imageSource}`)} alt={title}/>
                             <Card.Body className="bg-dark activities">
                                 <Card.Title>
                                     <a href={link}><span>{title}</span></a>

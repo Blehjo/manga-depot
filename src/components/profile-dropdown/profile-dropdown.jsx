@@ -2,7 +2,7 @@ import './profile-dropdown.styles.scss';
 
 import Row from "react-bootstrap/Row";
 import { Nav } from "react-bootstrap";
-import { Inbox, Gear, Search, Laptop, DoorOpen, QuestionCircle, MenuApp } from 'react-bootstrap-icons';
+import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp } from 'react-bootstrap-icons';
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 

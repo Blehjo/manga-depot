@@ -3,7 +3,7 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
 
-import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup, createUserDocumentFromAuth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
+import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
 import './sign-in-form.styles.scss';
 

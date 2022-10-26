@@ -4,8 +4,7 @@ import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
 
 import { 
-    createAuthUserWithEmailAndPassword, 
-    createUserDocumentFromAuth,
+    createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
 
 import './sign-up-form.styles.scss';
