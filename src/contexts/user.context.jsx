@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from 'react';
 
 import { createUserDocumentFromAuth, onAuthStateChangedListener, signOutUser } from '../utils/firebase/firebase.utils';
 
-// Actual value you want to access
 export const UserContext = createContext({
     setCurrentUser: () => null,
     currentUser: null,

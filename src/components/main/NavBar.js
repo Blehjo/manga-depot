@@ -1,23 +1,19 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
-
 import { List, Inbox } from 'react-bootstrap-icons';
 
 import ProfileIcon from '../profile-icon/profile-icon';
 import ProfileDropdown from '../profile-dropdown/profile-dropdown';
 
-import { UserContext } from '../../contexts/user.context';
-import { ResultContext } from '../../contexts/result.context';
 
 // import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { UserContext } from '../../contexts/user.context';
+import { ResultContext } from '../../contexts/result.context';
 import { ProfileContext } from '../../contexts/profile.context';
 import { SearchContext } from '../../contexts/search.context';
 
 import gameData from '../../utils/IGDB';
-import moment from 'moment';
-import axios from 'axios';
 
 function NavBar(props) {
   const { currentUser } = useContext(UserContext);
@@ -25,28 +21,22 @@ function NavBar(props) {
   const { searchField, setSearchField } = useContext(SearchContext);
   const { results, setResults } = useContext(ResultContext);
 
-  // const handleInputChange = (evt) => {
-  //   evt.preventDefault();
-  //   setSearchField(evt.target.value);
-  // };
-
-  const handleInputChange = async (evt) => {
+  const handleInputChange = (evt) => {
     evt.preventDefault();
     setSearchField(evt.target.value);
-    console.log(searchField)
-    // setIsLoading(true);
-    // setHasError(false);
+    console.log(searchField);
+  };
+
+  const handleClickEvent = async (evt) => {
+    // evt.preventDefault();
     try {
       await gameData(searchField)
       .then(response => {
           setResults(response.data);
-          console.log(response.data)
+          console.log(results)
     })} catch (error) {
-      // setHasError(true);
-      // setErrorMessage(error);
       console.error(error);
     }
-    // setIsLoading(false);
   };
 
   return (
@@ -68,7 +58,7 @@ function NavBar(props) {
                     <Form onSubmit={props.onSearchClick} className="d-flex">
                       <Form.Control
                         onChange={handleInputChange}
-                        // onClick={props.onSearchClick}
+                        onClick={handleClickEvent}
                         type="search"
                         placeholder="Search"
                         className="me-2 "

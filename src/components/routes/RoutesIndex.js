@@ -14,7 +14,7 @@ const RoutesIndex = (props) => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home results={props.results}/>}/>
+                {/* <Route index element={<Home results={props.results}/>}/> */}
                 <Route path="/" element={<Home results={props.results}/>}/>
                 <Route path='/explore' element={<Explore />}/>
                 <Route path="/dashboard" element={<Dashboard />}/>

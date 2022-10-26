@@ -13,10 +13,10 @@ function Games({ results }) {
     <Row xs={1} sm={1} md={2} lg={3} xl={4} className="g-4 pt-3" key={1}>
       {results?.map((result) => (
         <Col className='' key={result.id}>
-          <Card style={{ }} className="bg-dark card-container h-100" key={result.id}>
+          <Card className="bg-dark card-container h-100" key={result.id}>
             <div className='card-container'>
             <Card.Link className='card-info' href={`/${result.name}`}>
-              {<Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover?.image_id}.jpg`} />}
+              {<Card.Img height='485' style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${result.cover?.image_id}.jpg`} />}
             </Card.Link>
               <Card.ImgOverlay>
                 <Card.Text>

@@ -93,7 +93,7 @@ const GameCarousel = () => {
                             <Card style={{ }} className="mx-2 bg-dark card-container" key={game.id}>
                             <div className='card-container'>
                             <Card.Link className='card-info' href={`/${game.name}`}>
-                            {<Card.Img className='img-fluid' variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${game.cover?.image_id}.jpg`} />}
+                            {<Card.Img height='485' style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${game.cover?.image_id}.jpg`} />}
                             </Card.Link>
                             <Card.ImgOverlay>
                                 <Card.Text>
