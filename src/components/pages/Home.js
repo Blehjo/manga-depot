@@ -37,7 +37,7 @@ const Home = () => {
         {
             image: "cloudnetwork.png",
             title: "Find an event",
-            description: "Events are happening on just about any topic you can think of, from online gaming and photography to yoga and hiking.",
+            description: "Events are happening on just about any topic you can think of, from online gaming to photography.",
             link: "",
         },
         {
