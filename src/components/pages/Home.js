@@ -1,7 +1,7 @@
 import React from "react";
 import EventCarousel from "../carousels/EventCarousel";
 import { Row, Col, Card } from "react-bootstrap";
-import GameCarousel from "..//carousels/GameCarousel";
+import GameCarousel from "../carousels/GameCarousel";
 
 
 
@@ -47,24 +47,6 @@ const Home = () => {
             link: "/explore",
         },
     ]
-
-    // const stories = [
-    //     {
-    //         title: "",
-    //         image: "",
-    //         description: "",
-    //     },
-    //     {
-    //         title: "",
-    //         image: "",
-    //         description: "",
-    //     },
-    //     {
-    //         title: "",
-    //         image: "",
-    //         description: "",
-    //     },
-    // ]
 
     return (
         <div className="">
