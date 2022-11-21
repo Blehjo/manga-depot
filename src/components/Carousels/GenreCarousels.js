@@ -52,28 +52,31 @@ const GenreCarousel = () => {
                         renderDotsOutside={false}
                         responsive={{
                             desktop: {
-                            breakpoint: {
-                                max: 3000,
-                                min: 1024
-                            },
-                            items: 4,
-                            partialVisibilityGutter: 40
+                                breakpoint: {
+                                    max: 3000,
+                                    min: 1024
+                                },
+                                items: 4,
+                                partialVisibilityGutter: 0,
+                                slidesToSlide: 4
                             },
                             mobile: {
-                            breakpoint: {
-                                max: 464,
-                                min: 0
-                            },
-                            items: 1,
-                            partialVisibilityGutter: 30
+                                breakpoint: {
+                                    max: 464,
+                                    min: 0
+                                },
+                                items: 1,
+                                partialVisibilityGutter: 30,
+                                slidesToSlide: 1
                             },
                             tablet: {
-                            breakpoint: {
-                                max: 1024,
-                                min: 464
-                            },
-                            items: 2,
-                            partialVisibilityGutter: 30
+                                breakpoint: {
+                                    max: 1024,
+                                    min: 464
+                                },
+                                items: 2,
+                                partialVisibilityGutter: 30,
+                                slidesToSlide: 2
                             }
                         }}
                         rewind={false}
@@ -82,7 +85,6 @@ const GenreCarousel = () => {
                         shouldResetAutoplay
                         showDots={false}
                         sliderClass=""
-                        slidesToSlide={1}
                         swipeable
                     >    
                         {genres?.map((genre) => (

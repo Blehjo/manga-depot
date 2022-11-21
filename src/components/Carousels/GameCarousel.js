@@ -61,7 +61,8 @@ const GameCarousel = () => {
                                     min: 1024
                                 },
                                 items: 4,
-                                partialVisibilityGutter: 0
+                                partialVisibilityGutter: 0,
+                                slidesToSlide: 4
                             },
                             mobile: {
                                 breakpoint: {
@@ -69,7 +70,8 @@ const GameCarousel = () => {
                                     min: 0
                                 },
                                 items: 1,
-                                partialVisibilityGutter: 30
+                                partialVisibilityGutter: 30,
+                                slidesToSlide: 1
                             },
                             tablet: {
                                 breakpoint: {
@@ -77,7 +79,8 @@ const GameCarousel = () => {
                                     min: 464
                                 },
                                 items: 2,
-                                partialVisibilityGutter: 30
+                                partialVisibilityGutter: 30,
+                                slidesToSlide: 2
                             }
                         }}
                         rewind={false}
@@ -86,7 +89,6 @@ const GameCarousel = () => {
                         shouldResetAutoplay
                         showDots={false}
                         sliderClass=""
-                        slidesToSlide={1}
                         swipeable
                         >
                         {games?.map((game) => (
