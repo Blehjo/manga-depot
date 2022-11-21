@@ -29,19 +29,19 @@ const Home = () => {
 
     const items = [
         {
-            image: "",
+            image: "develop.png",
             title: "Start a group",
             description: "You don’t have to be an expert to gather people together and explore shared interests.",
             link: "",
         },
         {
-            image: "",
+            image: "cloudnetwork.png",
             title: "Find an event",
             description: "Events are happening on just about any topic you can think of, from online gaming and photography to yoga and hiking.",
             link: "",
         },
         {
-            image: "",
+            image: "cyberspace.png",
             title: "Find a game",
             description: "Do what you love, meet others who love it, find your community. The rest is history!",
             link: "/explore",
@@ -103,7 +103,7 @@ const Home = () => {
                 {items.map(({ title, image, link, description }) => (
                     <Col key={title} className="text-white pb-5">
                         <Card className="bg-dark" key={title}>
-                            <Card.Img style={{ objectFit: 'none'}} variant="top" /*{src={require(`/Users/blehjo/projects/shell-geist/src/assets/${image}`)}}*/ alt={title}/>
+                            <Card.Img height='400' style={{ objectFit: 'cover'}} variant="top" src={require(`/Users/blehjo/projects/shells/shell-geist/src/assets/${image}`)} alt={title}/>
                             <Card.Body className="activities">
                                 <Card.Title>
                                     <a href={link}><span>{title}</span></a>
