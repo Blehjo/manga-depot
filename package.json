@@ -1,5 +1,5 @@
 {
-  "name": "anime-app",
+  "name": "shell-geist",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -61,5 +61,6 @@
   },
   "devDependencies": {
     "react-router-dom": "^6.4.1"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
