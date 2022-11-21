@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Shell Geist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  ![Shell Geist's logo](https://drive.google.com/file/d/1RC9_sx1ISGCp7hN_z14AhZ3-RE2350ih/view?usp=sharing)
+  
+  ![License: MIT](<https://img.shields.io/badge/License-MIT-yellow.svg>)
+  
+  Shell Geist is a safe space for the gaming community. Our goal is to provide you with a place where you can play competitively or with others who are interested in the same games as, without any judgement or bias. Shell Geist welcomes anyone looking for personal growth from discovering more about themselves as well as improving their ability to have healthy relationships with others.
+  
+  The motivation for creating Shell Geist is to make gaming more community based and easy to connect with other players. With Shell Geist, you will be able to create meaningful and healthy relationships while building strong bonds with others around you. Shell Geist is here to help facilitate connecting to other gamers via console or pc, so joining groups and events is seamless.
 
-## Available Scripts
+  Whatever game you’re interested in getting better at this year, Shell Geist can help. Join the community today and help others by leaving advice or learn from others and ask questions. Think of Shell Geist as a virtual meetup. You can attend events by getting a code and joining video game lobbies, joining live discussions, and leaving your own feed back from first-hand experience. Your fellow mates have turned to Shell Geist to meet people, make friends, find support, grow a business, and explore their interests. Thousands of events are happening every day—join the fun.
 
-In the project directory, you can run:
+  [React](https://reactjs.org/), [Bootstrap](https://react-bootstrap.github.io/), [Node.js](https://nodejs.org/en/), [Express](https://expressjs.com/), and [Sequelize](https://www.sequelize.org/) were used to create this application.
 
-### `npm start`
+ The deployed site can be found [here](https://discord.gg/sKywbh5R).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  &nbsp;
+  # Table of Contents:
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Future Developments](#future)
+  * [Questions](#questions)
+  
+---
+&nbsp;
+  ## Installation:
+The application is deployed [here](https://)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  However, if you would like to clone to your local machine:
+  &nbsp;
+  1. `git clone` this repository and the [backend repo](https://github.com/Blehjo/shell-geist-back-end)
+  2. In the project's terminal, run `yarn` to install the dependencies
+  4. Run `npm run seed` in the backend repository
+  5. To run the application, run `yarn start` in both repositories
 
-### `npm run build`
+  &nbsp;
+  ## Usage:
+  The application is fully responsive. These screenshots are taken from a desktop computer.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+&nbsp;
+> Landing Page
+![Landing Page](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/landingpage.png) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+&nbsp;
+![Explore Page](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/explorepage.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+&nbsp;
+> Log in & Sign Up
+![Log in](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/signinpage.png)
 
-### `npm run eject`
+&nbsp;
+  ## Future:
+In a future development, Shell Geist:
+  
+  * Will use AWS to store photos
+  * Will allow users to upload multiple photos
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  &nbsp;
+  ## Questions:
+  If you need any further assistance, the contact information of the group members is below. Additionally, you may email gheistshell@gmail.com or visit us on Discord [@ShellGeist](https://discord.gg/sKywbh5R)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  #### Bleh Seton: 
+  * Github: [blehjo](https://github.com/Blehjo)
