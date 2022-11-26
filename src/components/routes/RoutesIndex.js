@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Explore from "../pages/Explore";
-import SavedGames from "../pages/SavedGames";
+import Interactions from "../pages/Interactions";
 import Groups from "../pages/Groups";
 import LikedPosts from "../pages/LikedPosts";
 import Friends from "../pages/Friends";
@@ -18,7 +18,7 @@ const RoutesIndex = (props) => {
                 <Route path="/" element={<Home results={props.results}/>}/>
                 <Route path='/explore' element={<Explore />}/>
                 <Route path="/dashboard" element={<Dashboard />}/>
-                <Route path='/savedgames' element={<SavedGames />}/>
+                <Route path='/interactions' element={<Interactions />}/>
                 <Route path='/groups' element={<Groups />}/>
                 <Route path='/likedposts' element={<LikedPosts />}/>
                 <Route path='/friends' element={<Friends />}/>

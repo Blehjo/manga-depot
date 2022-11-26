@@ -31,7 +31,7 @@ const SidebarOverlay = () => {
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
                         <Bookmark className='' color="white" size={20}/>
-                        <Nav.Link href="/savedgames" className="ms-4">
+                        <Nav.Link href="/interactions" className="ms-4">
                             Saved
                         </Nav.Link>
                     </Nav.Item>

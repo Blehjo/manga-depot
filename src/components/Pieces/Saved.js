@@ -14,7 +14,7 @@ const Saved = () => {
             <Nav.Link href="/dashboard">
                 <Collection className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/savedgames">
+            <Nav.Link href="/interactions">
                 <Bookmark className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link href="/">
