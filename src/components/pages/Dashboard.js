@@ -38,14 +38,15 @@ const Dashboard = () => {
                                         <FontAwesomeIcon className="icon-item" icon={faHeart} />
                                         <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
                                         <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                                        <FontAwesomeIcon className="icon-item" icon={faEye} />
+                                        <Card.Link href={`/dashboard/${id}`}>
+                                            <FontAwesomeIcon className="icon-item" icon={faEye} />
+                                        </Card.Link>
                                     </Card.Text>
                                 </Card.ImgOverlay>
                                 </div>
                                 <Card.Body className=''>
                                     <Card.Title>{group_name}</Card.Title>
                                     {group_description.length > 20 ? `Show description` : <Card.Subtitle>{group_description}</Card.Subtitle>}
-                                    
                                     <Card.Text>{`Platform: ${platform}`}</Card.Text>
                                     <Card.Text>{`Created ${utcConverter(created_date_time)}`}</Card.Text>
                                 </Card.Body>
