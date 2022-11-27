@@ -149,7 +149,6 @@ p {
 .icon3 {
   color: white;
   font-size: 25px;
-  /* display: flex; */
   float: right;
   width: 10%;
   height: auto;
@@ -167,13 +166,8 @@ p {
   margin: auto;
 }
 
-/* .react-multi-carousel-list{
-  position: relative;
-} */
-
 .container-margin {
   margin: 100px auto; 
-  /* padding-left: 100px; */
   width: 80%; 
 }
 
@@ -194,12 +188,23 @@ p {
 .authentication-container {
   color: white;
   display: inline-block;
-  /* width: 100%; */
-  /* margin: auto; */
 }
 
 .groups {
   display: flex ;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.queries-container {
+  margin: auto;
+  width: 60%;
+}
+
+.query-container {
+  margin: auto;
+  display: flex;
   align-items: center;
   justify-content: center;
   color: white;

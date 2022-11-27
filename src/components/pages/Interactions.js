@@ -24,11 +24,12 @@ const Interactions = () => {
     return (
         <>
             <h1>Interactions</h1>
+            <div className="queries-container">
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
                 <Col>
                     <div className="">
                         {Array.from(users)?.map((user) => (
-                            <Card style={{ width: '18rem' }} className="groups mx-2 my-5 bg-dark card-container" key={user.id}>
+                            <Card style={{ }} className="groups mx-2 mb-5 bg-dark card-container" key={user.id}>
                                 <div className='card-container'>
                                 <Card.Link className='card-info' href={`/${user.id}`}>
                                     {<Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />}
@@ -51,6 +52,7 @@ const Interactions = () => {
                     </div>
                 </Col>
             </Row>
+            </div>
         </>
     )
 }
