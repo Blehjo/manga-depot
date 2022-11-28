@@ -30,7 +30,7 @@ const RoutesIndex = (props) => {
                 <Route path='/about' element={<About />}/>
                 <Route path='/authentication' element={<Authentication />}/>
                 <Route path='/posts' element={<Posts />}/>
-                <Route path='/posts/:id' element={<Post />}/>
+                <Route path='/posts/:profile_id/:id' element={<Post />}/>
             </Routes>
         </BrowserRouter>
     )
