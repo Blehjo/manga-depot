@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
 import utcConverter from "../../utils/Date";
 
+
 const Dashboard = () => {
     const [groups, setGroups] = useState([]);
-    
     function getGroups() {
         axios.get("http://localhost:3001/",
         {
@@ -27,7 +27,7 @@ const Dashboard = () => {
             <div className="query-container">
                 <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={1} md={2} lg={2} xl={3} className="" key="groups">
                     {Array.from(groups)?.map(({ id, group_name, media_location_url, group_description, country, platform, created_date_time, userprofile }) => (
-                        <Col>
+                        <Col key={id}>
                             <Card style={{ }} className="mx-2 my-5 bg-dark card-container" key={id}>
                                 <div className='card-container'>
                                 <Card.Link className='card-info' href={`/${id}`}>
