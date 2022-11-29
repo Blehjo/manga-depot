@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import SidebarIndex from "./SidebarIndex";
 import RoutesIndex from "../routes/RoutesIndex";
 
-const Container = (props) => {
+const Container = () => {
     const [show, setShow] = useState(false);
 
     function handleClickEvent(evt) {
@@ -15,7 +15,7 @@ const Container = (props) => {
 
     return (
         <>
-            <div style={{zIndex:2}}className="fixed-top">
+            <div style={{zIndex:2000}}className="fixed-top">
                 <NavBar 
                 key={'navbar'}
                 onClickEvent={handleClickEvent}

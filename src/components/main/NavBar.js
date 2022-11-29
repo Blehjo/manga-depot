@@ -12,7 +12,6 @@ import { ResultContext } from '../../contexts/result.context';
 import { ProfileContext } from '../../contexts/profile.context';
 import { SearchContext } from '../../contexts/search.context';
 
-import gameData from '../../utils/IGDB';
 import axios from 'axios';
 
 function NavBar(props) {
@@ -72,7 +71,6 @@ function NavBar(props) {
                     <Form onSubmit={handleClickEvent} className="d-flex">
                       <Form.Control
                         onChange={handleInputChange}
-                        // onClick={handleClickEvent}
                         type="search"
                         placeholder="Search"
                         className="me-2 "

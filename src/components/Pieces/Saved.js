@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import { Collection, Router, Bookmark, Globe, Heart, Search, House, Recycle, Usb, Eye, Speedometer, Speedometer2, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
+import { Collection, Router, Globe, Heart, House, Eye, Speedometer2, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
 
 
 const Saved = () => {

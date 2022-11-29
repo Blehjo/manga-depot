@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import { Nav } from "react-bootstrap";
-import { Collection, Bookmark, Globe, Heart, Search, Star, House, Recycle, Usb, Eye, Speedometer, Speedometer2, Router, HeartArrow, ArrowRightCircle, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
+import { Collection, Globe, Heart, House, Eye, Speedometer2, Router, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
 
 const SidebarOverlay = () => {
 

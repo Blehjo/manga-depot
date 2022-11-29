@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Card } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { utcConverter } from "../../utils/Date";
+import { Row, Col, Tab, ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const Group = () => {
@@ -22,32 +19,33 @@ const Group = () => {
         getGroup();
     }, []);
 
+    const channels = group.groupchannels;
+
     return (
-            <div className="queries-container">
-                <h1>Groups</h1>
-                <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
-                    <Col>
-                        <Card style={{ }} className="groups mx-2 mb-5 bg-dark card-container" key={group.id}>
-                            <div className='card-container'>
-                            <Card.Link className='card-info' href={`/${group.id}`}>
-                                {<Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />}
-                            </Card.Link>
-                            <Card.ImgOverlay>
-                                <Card.Text className="icon2">
-                                    <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                                    <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                                    <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                                </Card.Text>
-                            </Card.ImgOverlay>
-                            </div>
-                            <Card.Body className=''>
-                                <Card.Subtitle>{group.written_text}</Card.Subtitle>
-                                <Card.Text>{`Posted ${utcConverter(group.created_date_time)}`}</Card.Text>
-                            </Card.Body>
-                        </Card>
+        <>
+            <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+                <Row>
+                    <Col sm={4} md={4} lg={2} xl={2}>
+                        <ListGroup>
+                            {channels?.map((channel) => (
+                                <ListGroup.Item action href={`#${channel.id}`} key={channel.id}>
+                                    {channel.channel_name}
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
+                    </Col>
+                    <Col sm={8}>
+                        <Tab.Content>
+                            {channels?.map((channel) => (
+                                <Tab.Pane key={channel.id} eventKey={`#${channel.id}`}>
+                                {channel.channel_description}
+                                </Tab.Pane>
+                            ))}
+                        </Tab.Content>
                     </Col>
                 </Row>
-            </div>
+            </Tab.Container>
+        </>
     )
 }
 
