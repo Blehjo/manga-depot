@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col, Card, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { unixConverter } from "../../utils/Date";
@@ -31,7 +31,7 @@ const Search = () => {
             headers: {
                 'x-api-key': process.env.REACT_APP_X_API_KEY,
             },
-            data: `fields name, platforms, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
+            data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
         })
         .then(response => {
             setGames(response.data);
@@ -64,19 +64,24 @@ const Search = () => {
                         <Col key={id}>
                             <Card className="groups mx-2 mb-5 bg-dark card-container" >
                                 <div className='card-container'>
-                                <Card.Link className='card-info' href={`/games/${cover}`}>
-                                    <Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${cover ? `https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg` : "https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
-                                </Card.Link>
-                                <Card.ImgOverlay>
-                                    <Card.Text className="icon2">
-                                        <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                                        <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                                        <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                                    </Card.Text>
-                                </Card.ImgOverlay>
+                                    <Card.Link className='card-info' href={`/games/${cover}`}>
+                                        <Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${cover ? `https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg` : "https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
+                                    </Card.Link>
+                                    <Card.ImgOverlay>
+                                        <Card.Text className="icon2">
+                                            <FontAwesomeIcon className="icon-item" icon={faHeart} />
+                                            <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
+                                            <FontAwesomeIcon className="icon-item" icon={faRetweet} />
+                                        </Card.Text>
+                                    </Card.ImgOverlay>
                                 </div>
                                 <Card.Body className=''>
                                     <Card.Text>{unixConverter(first_release_date)}</Card.Text>
+                                    {platforms.map((platform) => (
+                                        <Badge key={platform.id} pill bg="primary">
+                                            {`${platform.abbreviation}`}
+                                        </Badge>
+                                    ))}
                                 </Card.Body>
                             </Card>
                         </Col>
