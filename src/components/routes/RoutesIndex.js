@@ -12,6 +12,7 @@ import About from "../pages/About";
 import Authentication from "../pages/Authentication";
 import Posts from "../pages/Posts";
 import Post from "../pages/Post";
+import Search from "../pages/Search";
 
 const RoutesIndex = (props) => {
     return (
@@ -31,6 +32,7 @@ const RoutesIndex = (props) => {
                 <Route path='/authentication' element={<Authentication />}/>
                 <Route path='/posts' element={<Posts />}/>
                 <Route path='/posts/:profile_id/:id' element={<Post />}/>
+                <Route path='/search' element={<Search />}/>
             </Routes>
         </BrowserRouter>
     )

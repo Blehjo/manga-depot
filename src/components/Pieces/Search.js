@@ -10,7 +10,9 @@ export default function Search() {
         const response = await search(query);
         setResults(response.data.data);
     };
-
+    
+    console.log(results);
+    
     useEffect(() => {
         searchGiphy(criteria);
     });
