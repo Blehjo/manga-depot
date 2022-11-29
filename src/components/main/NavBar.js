@@ -14,7 +14,7 @@ import { SearchContext } from '../../contexts/search.context';
 
 import axios from 'axios';
 
-function NavBar(props) {
+function NavBar() {
   const { currentUser } = useContext(UserContext);
   const { isProfileOpen } = useContext(ProfileContext);
   const { searchField, setSearchField } = useContext(SearchContext);
