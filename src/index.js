@@ -10,6 +10,7 @@ import { SearchProvider } from './contexts/search.context';
 import './index.css';
 import { ResultProvider } from './contexts/result.context';
 import { ListProvider } from './contexts/list.context';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +20,9 @@ root.render(
           <ListProvider>
             <SearchProvider>
               <ResultProvider>
-                <App />
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
               </ResultProvider>
             </SearchProvider>
           </ListProvider>

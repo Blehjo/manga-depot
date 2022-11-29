@@ -1,5 +1,5 @@
-import { Fragment, useContext } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Fragment, useContext, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
 
 import ListIcon from '../list-icon/list-icon';
@@ -13,29 +13,44 @@ import { ProfileContext } from '../../contexts/profile.context';
 import { SearchContext } from '../../contexts/search.context';
 
 import gameData from '../../utils/IGDB';
+import axios from 'axios';
 
 function NavBar(props) {
   const { currentUser } = useContext(UserContext);
   const { isProfileOpen } = useContext(ProfileContext);
   const { searchField, setSearchField } = useContext(SearchContext);
-  const { results, setResults } = useContext(ResultContext);
+  const { setResults } = useContext(ResultContext);
+  const navigate = useNavigate();
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (evt) => {
     evt.preventDefault();
     setSearchField(evt.target.value);
-    console.log(searchField);
   };
 
   const handleClickEvent = async (evt) => {
-    // evt.preventDefault();
-    try {
-      await gameData(searchField)
-      .then(response => {
-          setResults(response.data);
-          console.log(results)
-    })} catch (error) {
-      console.error(error);
-    }
+    evt.preventDefault();
+
+    axios({
+      url: process.env.REACT_APP_URL,
+      method: 'POST',
+      headers: {
+          'x-api-key': process.env.REACT_APP_X_API_KEY,
+      },
+      data: `fields name, platforms, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
+    })
+    .then(response => {
+      console.log(response.data)
+        setResults(response.data);
+    })
+    .then(() => {
+      navigate('/search');
+    })
+    .catch(err => {
+        setErrorMessage(err);
+        console.error(errorMessage);
+    });
   };
 
   return (
@@ -54,10 +69,10 @@ function NavBar(props) {
               <Navbar.Collapse className="" key="navbarCollapse" id="navBarItems">
                 <Col key="searchColumn" className=''>
                   <Nav key="navForm" className='m-auto'>
-                    <Form onSubmit={props.onSearchClick} className="d-flex">
+                    <Form onSubmit={handleClickEvent} className="d-flex">
                       <Form.Control
                         onChange={handleInputChange}
-                        onClick={handleClickEvent}
+                        // onClick={handleClickEvent}
                         type="search"
                         placeholder="Search"
                         className="me-2 "

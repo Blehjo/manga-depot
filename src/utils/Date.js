@@ -1,12 +1,10 @@
-import moment from "moment";
-
-export function unixConverter(timestamp) {
-    let convertedTime = moment.unix(timestamp).format('ll');
-    return `Released: ${convertedTime}`;
+export const unixConverter = (unixTimestamp) => {
+    const convertedTimestamp = new Date(unixTimestamp * 1000).toLocaleDateString("en-US");
+    return `Released: ${convertedTimestamp}`;
 }
 
-export default function utcConverter(timestamp) {
-    const date = new Date(timestamp)
+export const utcConverter = (unixTimestamp) => {
+    const date = new Date(unixTimestamp);
     const convertedTime = date.toLocaleDateString();
     return convertedTime;
 }

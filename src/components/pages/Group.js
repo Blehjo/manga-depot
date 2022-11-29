@@ -3,7 +3,7 @@ import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
-import utcConverter from "../../utils/Date";
+import { utcConverter } from "../../utils/Date";
 import { useParams } from "react-router-dom";
 
 const Group = () => {
