@@ -6,27 +6,34 @@ import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-ic
 import utcConverter from "../../utils/Date";
 import { useParams } from "react-router-dom";
 
-const Post = () => {
-    const [post, setPost] = useState([]);
-    const { id, profile_id } = useParams();
+const Search = () => {
+    const [searchParameters, setSearchParameters] = useState([]);
+    const [games, setGames] = useState([]);
+    const [errorMessage, setErrorMessage] = useState([]);
     
-    function getPost() {
-        axios.get(`http://localhost:3001/api/posts/${profile_id}/${id}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setPost(response.data));
-    }
-
     useEffect(() => {
-        getPost();
-    }, [id, profile_id]); 
+        axios({
+            url: process.env.REACT_APP_URL,
+            method: 'POST',
+            headers: {
+                'x-api-key': process.env.REACT_APP_X_API_KEY,
+            },
+            data: `fields name, platforms, rating, genres, first_release_date, cover, age_ratings, summary; search ${searchParameters}; limit 50;`
+          })
+            .then(response => {
+                setGames(response.data);
+            })
+            .catch(err => {
+                setErrorMessage(err);
+                console.error(errorMessage);
+            });
+    }, [errorMessage]);
 
     return (
         <div className="queries-container">
             <h1>{profile_id}</h1>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
-                {Array.from(post).map(({ written_text, media_location_url, created_date_time }) => (
+                {Array.from(games).map(({ name, platforms, rating, genres, first_release_date, cover, age_ratings, summary }) => (
                     <Col>
                     <Card className="groups mx-2 mb-5 bg-dark card-container" key={id}>
                         <div className='card-container'>
@@ -53,4 +60,4 @@ const Post = () => {
     )
 }
 
-export default Post;
+export default Search;

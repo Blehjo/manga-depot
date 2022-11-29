@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +22,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <h1>Dashboard</h1>
+            <h1 style={{ color: 'white' }}>Dashboard</h1>
             <div className="query-container">
                 <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={1} md={2} lg={2} xl={3} className="" key="groups">
                     {Array.from(groups)?.map(({ id, group_name, media_location_url, group_description, country, platform, created_date_time, userprofile }) => (
@@ -38,7 +37,7 @@ const Dashboard = () => {
                                         <FontAwesomeIcon className="icon-item" icon={faHeart} />
                                         <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
                                         <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                                        <Card.Link href={`/dashboard/${id}`}>
+                                        <Card.Link href={`/groups/${id}`}>
                                             <FontAwesomeIcon className="icon-item" icon={faEye} />
                                         </Card.Link>
                                     </Card.Text>

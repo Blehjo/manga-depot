@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import { Collection, Bookmark, Globe, Heart, Search, House, Recycle, Usb } from 'react-bootstrap-icons';
+import { Collection, Router, Bookmark, Globe, Heart, Search, House, Recycle, Usb, Eye, Speedometer, Speedometer2, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
 
 
 const Saved = () => {
@@ -8,26 +8,29 @@ const Saved = () => {
             <Nav.Link href="/">
                 <House className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/explore">
-                <Search className='mt-4' color="white" size={40}/>
-            </Nav.Link>
             <Nav.Link href="/dashboard">
+                <Speedometer2 className='mt-4' color="white" size={40}/>
+            </Nav.Link>
+            <Nav.Link href="/messages">
+                <ChatDots className='mt-4' action='true' color="white" size={40}/>
+            </Nav.Link>
+            <Nav.Link href="/groups">
                 <Collection className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/interactions">
-                <Bookmark className='mt-4' color="white" size={40}/>
+            <Nav.Link href="/explore">
+                <Eye className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/">
-                <Globe className='mt-4' color="white" size={40}/>
+            <Nav.Link href="/interactions">
+                <Router className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link href="/likedposts">
                 <Heart className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link href="/history">
-                <Recycle className='mt-4' action='true' color="white" size={40}/>
+                <ArrowRepeat className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/connections">
-                <Usb className='mt-4' action='true' color="white" size={40}/>
+            <Nav.Link href="/search">
+                <Globe className='mt-4' color="white" size={40}/>
             </Nav.Link>
         </>
     )
