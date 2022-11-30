@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { utcConverter } from "../../utils/Date";
 
 
 const Dashboard = () => {
     const [groups, setGroups] = useState([]);
+    const [display, setDisplay] = useState(false);
+
     function getGroups() {
-        axios.get("http://localhost:3001/",
+        axios.get("/api/groups",
         {
             mode: 'no-cors',
         })
@@ -27,20 +29,33 @@ const Dashboard = () => {
                 <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={1} md={2} lg={2} xl={3} className="" key="groups">
                     {Array.from(groups)?.map(({ id, group_name, media_location_url, group_description, country, platform, created_date_time, userprofile }) => (
                         <Col key={id}>
-                            <Card style={{ }} className="mx-2 my-5 bg-dark card-container" key={id}>
+                            <Card 
+                                style={{ }} 
+                                className="mx-2 my-5 bg-dark card-container" 
+                                key={id}
+                                onMouseEnter={() => (
+                                    setDisplay(true)
+                                )}
+                                onMouseLeave={() => (
+                                    setDisplay(false)
+                                )}
+                            >
                                 <div className='card-container'>
                                 <Card.Link className='card-info' href={`/${id}`}>
                                 {<Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />}
                                 </Card.Link>
                                 <Card.ImgOverlay>
-                                    <Card.Text className="icon2">
-                                        <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                                        <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                                        <FontAwesomeIcon className="icon-item" icon={faRetweet} />
+                                <div 
+                                    className="icon2"
+                                >
+                                    <div className={`icon-item ${display ? '' : 'card-actions'}`}>
+                                        <FontAwesomeIcon className="icon-item" icon={faArrowRight} />
+                                        <FontAwesomeIcon className="icon-item" icon={faDownload} />
                                         <Card.Link href={`/groups/${id}`}>
                                             <FontAwesomeIcon className="icon-item" icon={faEye} />
                                         </Card.Link>
-                                    </Card.Text>
+                                    </div>
+                                </div>
                                 </Card.ImgOverlay>
                                 </div>
                                 <Card.Body className=''>

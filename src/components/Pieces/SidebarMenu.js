@@ -13,4 +13,4 @@ const SidebarMenu = () => {
     )
 }
 
-export default SidebarMenu;
+export default SidebarMenu

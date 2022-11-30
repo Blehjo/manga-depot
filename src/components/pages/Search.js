@@ -78,7 +78,7 @@ const Search = () => {
                                 <Card.Body className=''>
                                     <Card.Text>{unixConverter(first_release_date)}</Card.Text>
                                     {platforms.map((platform) => (
-                                        <Badge key={platform.id} pill bg="primary">
+                                        <Badge key={platform.abbreviation} pill bg="primary">
                                             {`${platform.abbreviation}`}
                                         </Badge>
                                     ))}

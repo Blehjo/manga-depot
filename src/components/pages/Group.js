@@ -25,20 +25,21 @@ const Group = () => {
         <>
             <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
                 <Row>
-                    <Col sm={4} md={4} lg={2} xl={2}>
+                    <Col className='sticky-top' style={{ backgroundColor: 'black', height: '100vh', width: 'fit-content', position: 'absolute', paddingTop: '60px', marginLeft: '', zIndex: '-1' }} key='list' sm={4} md={4} lg={2} xl={2}>
                         <ListGroup>
-                            {channels?.map((channel) => (
-                                <ListGroup.Item action href={`#${channel.id}`} key={channel.id}>
-                                    {channel.channel_name}
+                            <h1>Channels</h1>
+                            {channels?.map(({id, channel_name}) => (
+                                <ListGroup.Item  variant="light" style={{ color: 'white', backgroundColor: 'black', width: 'fit-content'}}action href={`#${id}`} key={id}>
+                                    {channel_name}
                                 </ListGroup.Item>
                             ))}
                         </ListGroup>
                     </Col>
-                    <Col sm={8}>
+                    <Col key='content' sm={8}>
                         <Tab.Content>
-                            {channels?.map((channel) => (
-                                <Tab.Pane key={channel.id} eventKey={`#${channel.id}`}>
-                                {channel.channel_description}
+                            {channels?.map(({id, channel_description}) => (
+                                <Tab.Pane key={id} eventKey={`#${id}`}>
+                                    {channel_description}
                                 </Tab.Pane>
                             ))}
                         </Tab.Content>
