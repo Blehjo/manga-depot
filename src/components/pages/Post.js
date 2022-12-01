@@ -24,7 +24,6 @@ const Post = () => {
 
     return (
         <div className="queries-container">
-            <h1>{profile_id}</h1>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
                 {Array.from(post).map(({ written_text, media_location_url, created_date_time }) => (
                     <Col>

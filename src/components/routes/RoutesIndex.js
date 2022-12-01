@@ -13,6 +13,8 @@ import Authentication from "../pages/Authentication";
 import Posts from "../pages/Posts";
 import Post from "../pages/Post";
 import Search from "../pages/Search";
+import Messages from "../pages/Messages";
+import Message from "../pages/Message";
 
 const RoutesIndex = (props) => {
     return (
@@ -32,6 +34,8 @@ const RoutesIndex = (props) => {
             <Route path='/posts' element={<Posts />}/>
             <Route path='/posts/:profile_id/:id' element={<Post />}/>
             <Route path='/search' element={<Search />}/>
+            <Route path='/messages' element={<Messages />}/>
+            <Route path='/messages/:id' element={<Message />}/>
         </Routes>
     )
 }

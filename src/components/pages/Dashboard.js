@@ -9,6 +9,7 @@ import { utcConverter } from "../../utils/Date";
 const Dashboard = () => {
     const [groups, setGroups] = useState([]);
     const [display, setDisplay] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     function getGroups() {
         axios.get("/api/groups",

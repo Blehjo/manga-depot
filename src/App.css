@@ -213,3 +213,8 @@ p {
 .card-actions {
   display: none;
 }
+
+.groups-container {
+  margin: auto;
+  width: 70%;
+}

@@ -7,25 +7,19 @@ import 'react-multi-carousel/lib/styles.css';
 
 const GroupCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
-    const [genres, setGenres] = useState([]);
+    const [groups, setGroups] = useState([]);
+
+    function getGroups() {
+        axios.get("/api/groups",
+        {
+            mode: 'no-cors',
+        })
+        .then((response) => setGroups(response.data));
+    }
 
     useEffect(() => {
-        axios({
-            url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/genres",
-            method: 'POST',
-            headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
-            },
-            data: `fields name; limit 50;`
-          })
-            .then(response => {
-                setGenres(response.data);
-            })
-            .catch(err => {
-                setErrorMessage(err);
-                console.error(errorMessage);
-            });
-    }, [errorMessage]);
+        getGroups();
+    }, []);
 
     return (
         <>
@@ -87,12 +81,13 @@ const GroupCarousel = () => {
                         sliderClass=""
                         swipeable
                     >
-                        {genres?.map((genre) => (
-                                <Card className="mx-2 bg-dark text-white" key={genre.id}>
-                                    <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
+                        {groups?.map(({id, group_name}) => (
+                                <Card className="mx-2 bg-dark text-white" key={id}>
+                                    {<Card.Img style={{ objectFit:'cover'}} variant="top" src={`https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg`} />}
+                                    <Card.Link className="genre-card card-info"href={`/genre/${group_name}`}>
                                         <Card.Body className="genre-card">
                                             <Card.Title>
-                                                    {genre.name}
+                                                    {group_name}
                                             </Card.Title>
                                         </Card.Body>
                                     </Card.Link>
