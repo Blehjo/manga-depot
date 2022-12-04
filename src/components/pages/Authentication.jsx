@@ -1,13 +1,27 @@
 import SignUpForm from '../../components/sign-up-form/sign-up-form';
 import SignInForm from '../../components/sign-in-form/sign-in-form';
 
+import { UserContext } from '../../contexts/user.context';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router';
+
 const Authentication = () => {
+    const { currentUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     return (
-        <div className=''>
-            <SignInForm/>
-            <SignUpForm/>
-        </div>
+        <>
+        {
+            currentUser ? (
+                navigate('/dashboard')
+            ) : ( 
+                <div className=''>
+                    <SignInForm/>
+                    <SignUpForm/>
+                </div>
+            )
+        }
+        </>
     )
 }
 

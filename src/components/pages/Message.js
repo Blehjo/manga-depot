@@ -27,7 +27,7 @@ export default function Message() {
         <div className="groups-container">
             <h1 style={{ color: 'white' }}>Messages</h1>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
-                {Array.from(messages)?.map(({ from_profile, message_text, sent_datetime}) => (
+                {messages?.map(({ from_profile, message_text, sent_datetime}) => (
                     <Card.Link style={{ textDecoration: 'none' }} href={`/messages/${from_profile}`}>
                         <Card text='white' className='' bg='dark'>
                             <Row>
