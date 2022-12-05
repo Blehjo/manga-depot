@@ -7285,7 +7285,7 @@ p-try@^2.0.0:
 
 packages@^0.0.8:
   version "0.0.8"
-  resolved "https://registry.npmjs.org/packages/-/packages-0.0.8.tgz"
+  resolved "https://registry.yarnpkg.com/packages/-/packages-0.0.8.tgz#f32d0cd71d49e47bed486614cd1969e2745732c8"
   integrity sha512-rstHZWH1UyHUAwtU8GI4JSIFWTYUEkRf+MseFG/p3lO/HgZHvXGZR7XN+1eA/Km7JDnItW4mgn5zfpP23aITgQ==
   dependencies:
     express "~3.4.0"
