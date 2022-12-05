@@ -3,6 +3,8 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
 
+import axios from "axios";
+
 import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
 import './sign-in-form.styles.scss';
@@ -15,6 +17,15 @@ const defaultFormFields = {
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
+
+    const signInWithReact = (evt) => {
+        // evt.preventDefault();
+        axios.post(`/api/users/login/`,
+        {
+            email: email,
+            password: password
+        })
+    }
 
     const resetFormFields = () => {
         setFormFields();
@@ -38,6 +49,7 @@ const SignInForm = () => {
                 email, 
                 password
             );
+            signInWithReact();
             resetFormFields();
         } catch(error) {
             switch (error.code) {

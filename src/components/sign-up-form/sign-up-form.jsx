@@ -3,6 +3,10 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
 
+import CountrySelect from 'react-bootstrap-country-select';
+
+import axios from "axios";
+
 import { 
     createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
@@ -18,10 +22,26 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const { displayName, email, password, confirmPassword } = formFields;
+    const [country, setCountry] = useState(null);
+    const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
 
     const resetForm = () => {
         setFormFields();
+    }
+
+    const signInWithReact = () => {
+        // evt.preventDefault();
+        axios.post(`/api/users/`,
+        {
+            username: displayName,
+            email: email,
+            password: password,
+            country: country,
+            date_of_birth: dateOfBirth,
+            first_name: firstName,
+            last_name: lastName
+
+        })
     }
 
     const handleChange = (event) => {
@@ -44,6 +64,7 @@ const SignUpForm = () => {
             );
 
             await createAuthUserWithEmailAndPassword(user, { displayName });
+            signInWithReact();
             resetForm();
 
         } catch(error) {
@@ -94,6 +115,37 @@ const SignUpForm = () => {
                     onChange={handleChange} 
                     name="confirmPassword" 
                     value={confirmPassword} 
+                />
+
+                <CountrySelect
+                    value={country}
+                    onChange={setCountry}
+                />
+
+                <FormInput 
+                    label=""
+                    type="date" 
+                    required 
+                    onChange={handleChange} 
+                    name="dateOfBirth" 
+                    value={dateOfBirth} 
+                />
+
+                <FormInput 
+                    label="First Name"
+                    type="text" 
+                    required 
+                    onChange={handleChange} 
+                    name="firstName" 
+                    value={firstName} 
+                />
+                <FormInput 
+                    label="Last Name"
+                    type="text" 
+                    required 
+                    onChange={handleChange} 
+                    name="lastName" 
+                    value={lastName} 
                 />
 
                 <Button type="submit">Submit</Button>

@@ -32,7 +32,7 @@ export default function Messages() {
                             </Col>
                             <Col xl={8} key={id}>
                                 <Card.Body>
-                                    <Card.Subtitle>{messages[0].message_text}</Card.Subtitle>
+                                    <Card.Subtitle>{messages[messages.length-1].message_text}</Card.Subtitle>
                                     <Card.Text>{`Delivered ${utcConverter(messages[0].sent_datetime)}`}</Card.Text>
                                 </Card.Body>
                             </Col>

@@ -1,12 +1,12 @@
 import { Card, Col, Row, Form, Button } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { utcConverter } from '../../utils/Date';
 
 export default function Message() {
+    const bottomRef = useRef(null);
     const [groups, setMessages] = useState({});
-    // const [display, setDisplay] = useState(false);
     const { id } = useParams();
     const [messageText, setMessageText] = useState('');
     
@@ -19,26 +19,29 @@ export default function Message() {
     }
 
     function postMessages(evt) {
-        evt.preventDefault();
+        // evt.preventDefault();
         axios.post(`/api/messages/${id}/`,
         {
+            from_profile: id,
             message_text: messageText
         })
         .then((response) => setMessages(response.data));
-        setMessageText('');
     }
 
     function messageHandler(evt) {
         const content = evt.target.value;
-        console.log(messageText)
         setMessageText(content);
     }
 
     useEffect(() => {
         getMessages();
     }, [id]);
-
+    
     const messages = groups.messages;
+
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [messages])
 
     return (
         <div className="groups-container">
@@ -62,7 +65,7 @@ export default function Message() {
                             </Card>
                         </Card.Link>
                     ))}
-                    <Form onSubmit={postMessages}>
+                    <Form ref={bottomRef} onSubmit={postMessages}>
                         <Row>
                             <Col lg={10} xl={10}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
