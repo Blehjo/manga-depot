@@ -1,6 +1,5 @@
 # Shell Geist
-
-  ![Shell Geist's logo](https://drive.google.com/file/d/1RC9_sx1ISGCp7hN_z14AhZ3-RE2350ih/view?usp=sharing)
+<img src='./public/logo.png' width="83">
   
   ![License: MIT](<https://img.shields.io/badge/License-MIT-yellow.svg>)
   
