@@ -18,15 +18,6 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
-    const signInWithReact = (evt) => {
-        // evt.preventDefault();
-        axios.post(`/api/users/login/`,
-        {
-            email: email,
-            password: password
-        })
-    }
-
     const resetFormFields = () => {
         setFormFields();
     }
@@ -39,18 +30,28 @@ const SignInForm = () => {
         const { name, value } = event.target;
 
         setFormFields({ ...formFields, [name]: value })
+        console.log(formFields)
     };
+
+    const signInWithReact = async (event) => {
+        event.preventDefault();
+        await axios.post(`/api/users/login`,
+        {
+            email: email,
+            password: password,
+        })
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(
-                email, 
-                password
-            );
+            // const { user } = await signInAuthUserWithEmailAndPassword(
+            //     email, 
+            //     password
+            // );
             signInWithReact();
-            resetFormFields();
+            // resetFormFields();
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -87,10 +88,10 @@ const SignInForm = () => {
                     name="password" 
                     value={password} 
                 />
-                <div className="buttons-container">
-                    <Button variant="info" type="submit">Sign in</Button>
+                {/* <div className="buttons-container"> */}
+                    <Button type="submit">Sign in</Button>
                     <Button onClick={signInWithGoogle} variant="info" type='button'>Sign in with Google</Button>
-                </div>
+                {/* </div> */}
             </form>
         </div>
     )

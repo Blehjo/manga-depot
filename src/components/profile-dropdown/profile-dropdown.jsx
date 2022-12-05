@@ -41,7 +41,7 @@ const ProfileDropdown = () => {
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
                         <DoorOpen className='' color="white" size={20}/>
-                        <Nav.Link href="/groups" className="ms-3">
+                        <Nav.Link href="/authentication" className="ms-3">
                         <span className='nav-link' onClick={signOutUser}>Sign out</span>
                         </Nav.Link>
                     </Nav.Item>

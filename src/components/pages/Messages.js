@@ -8,7 +8,7 @@ export default function Messages() {
     const [display, setDisplay] = useState(false);
     
     function getGroups() {
-        axios.get(`/api/conversations/`,
+        axios.get(`/api/conversations/:id`,
         {
             mode: 'no-cors',
         })
@@ -23,7 +23,7 @@ export default function Messages() {
     <div className="groups-container">
         <h1 style={{ color: 'white' }}>Messages</h1>
         <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
-            {Array.from(groups)?.map(({ id, messages,  }) => (
+            {groups.length ? (Array.from(groups)?.map(({ id, messages,  }) => (
                 <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/messages/${id}`}>
                     <Card text='white' className='' bg='dark'>
                         <Row>
@@ -39,7 +39,9 @@ export default function Messages() {
                         </Row>
                     </Card>
                 </Card.Link>
-            ))}
+            ))) : (
+                <div style={{ color: 'white' }}>Write a message to a mate, so you can have messages to view.</div>
+            )}
         </Row>
     </div>
   );

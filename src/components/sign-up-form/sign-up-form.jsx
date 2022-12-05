@@ -29,18 +29,16 @@ const SignUpForm = () => {
         setFormFields();
     }
 
-    const signInWithReact = () => {
-        // evt.preventDefault();
-        axios.post(`/api/users/`,
+    const signInWithReact = async () => {
+        await axios.post(`/api/users/`,
         {
             username: displayName,
             email: email,
             password: password,
-            country: country,
+            country: country.name,
             date_of_birth: dateOfBirth,
             first_name: firstName,
             last_name: lastName
-
         })
     }
 
@@ -63,8 +61,8 @@ const SignUpForm = () => {
                 password
             );
 
-            await createAuthUserWithEmailAndPassword(user, { displayName });
-            signInWithReact();
+            await signInWithReact();
+            await createAuthUserWithEmailAndPassword(user);
             resetForm();
 
         } catch(error) {
