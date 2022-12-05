@@ -41,17 +41,47 @@ The application is deployed [here](https://)
 
 &nbsp;
 > Landing Page
-![Landing Page](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/landingpage.png)
-
-> Landing Page
-![Landing Page](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/parttwo.png)
+![Landing Page](./.github/images/landingpage.png) 
 
 &nbsp;
-![Explore Page](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/explorepage.png)
+![Landing Page](./.github/images/parttwo.png) 
+
+&nbsp;
+> Group Pages
+![Groups Page](./.github/images/groups.png) 
+
+&nbsp;
+![Groups Page Continued](./.github/images/groupspage.png) 
+
+&nbsp;
+> Interactions page
+![Interactions Page](./.github/images/interactionspage.png) 
+
+&nbsp;
+> User Interfaces
+![User Interfaces](./.github/images/interfaces.png) 
+
+&nbsp;
+> Explore Page
+![Explore Page](./.github/images/explorepage.png)
+
+&nbsp;
+> Messages Page
+![Messages Page](./.github/images/messagespage.png)
+
+&nbsp;
+> Search Pages
+![Search Page](./.github/images/searchpage.png)
+
+&nbsp;
+![Search Page Continued](./.github/images/searchpage2.png)
+
+&nbsp;
+![Search Page Continued](./.github/images/searchpage3.png)
 
 &nbsp;
 > Log in & Sign Up
-![Log in](https://raw.githubusercontent.com/Blehjo/shell-geist-back-end/main/.github/images/signinpage.png)
+![Log in](./.github/images/signinpage.png)
 
 &nbsp;
   ## Future:

@@ -23,10 +23,10 @@ const Interactions = () => {
     console.log(posts);
     return (
         <>
-            <h1>Interactions</h1>
             <div className="queries-container">
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
                 <Col>
+                    <h1 style={{ color: 'white'}}>Interactions</h1>
                     <div className="">
                         {Array.from(posts)?.map(({ id, profile_id, media_location_url, written_text, created_date_time }) => (
                             <Card style={{ }} className="groups mx-2 mb-5 bg-dark card-container" key={id}>
