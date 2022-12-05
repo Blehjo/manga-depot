@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.7.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -26,7 +25,6 @@
     "react-bootstrap-country-select": "^1.0.0",
     "react-bootstrap-icons": "^1.8.4",
     "react-bootstrap-sidebar-menu": "^2.0.3",
-    "react-country-region-selector": "^3.6.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-multi-carousel": "^2.8.2",
