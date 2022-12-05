@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import SidebarOverlay from '../pieces/SidebarOverlay';
+// import SidebarOverlay from '../pieces/SidebarOverlay';
 import SidebarMenu from '../pieces/SidebarMenu';
 import { ListContext } from '../../contexts/list.context';
 
@@ -9,7 +9,7 @@ function SidebarIndex() {
   return (
     <>
       <SidebarMenu/>
-      {isNavOpen && <SidebarOverlay/>}
+      {/* {isNavOpen && <SidebarOverlay/>} */}
     </>
   );
 }
