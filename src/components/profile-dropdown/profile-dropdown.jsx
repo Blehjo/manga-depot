@@ -2,7 +2,7 @@ import './profile-dropdown.styles.scss';
 
 import Row from "react-bootstrap/Row";
 import { Nav } from "react-bootstrap";
-import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp } from 'react-bootstrap-icons';
+import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
@@ -15,6 +15,12 @@ const ProfileDropdown = () => {
                 className="" style={{color: "white"}} 
                 xs={1} 
                 >
+                    <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
+                        <Person className='' color="white" size={20}/>
+                        <Nav.Link href="/profile" className="ms-4">
+                        Profile
+                        </Nav.Link>
+                    </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
                         <Inbox className='' color="white" size={20}/>
                         <Nav.Link href="/" className="ms-4">
