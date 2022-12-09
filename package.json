@@ -62,5 +62,5 @@
   "devDependencies": {
     "react-router-dom": "^6.4.3"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "https://shellgeistapi.herokuapp.com/"
 }
