@@ -81,13 +81,17 @@ const EventCarousel = () => {
                         sliderClass=""
                         swipeable
                     >    
-                        {events?.map((event) => (
-                                <Card className="mx-2 bg-dark text-white" key={event.id}>
-                                    <Card.Link className="event-card card-info"href={`/event/${event.name}`}>
+                        {events?.map(({ event_name, event_description, id, media_location_url }) => (
+                                <Card className="mx-2 bg-dark text-white" key={id}>
+                                    <Card.Link className="event-card card-info"href={`/event/${event_name}`}>
+                                        <Card.Img src={media_location_url}/>
                                         <Card.Body className="event-card">
                                             <Card.Title>
-                                                    {event.name}
+                                                {event_name}
                                             </Card.Title>
+                                            <Card.Text>
+                                                {event_description}
+                                            </Card.Text>
                                         </Card.Body>
                                     </Card.Link>
                                 </Card>
