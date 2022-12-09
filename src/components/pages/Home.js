@@ -1,7 +1,7 @@
 import React from "react";
-import EventCarousel from "../carousels/EventCarousel";
+import EventCarousel from "../Carousels/EventCarousel";
 import { Row, Col, Card } from "react-bootstrap";
-import GameCarousel from "../carousels/GameCarousel";
+import GameCarousel from "../Carousels/GameCarousel";
 
 
 
