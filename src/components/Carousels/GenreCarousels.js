@@ -5,6 +5,8 @@ import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
+import env from "react-dotenv";
+
 const GenreCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [genres, setGenres] = useState([]);
@@ -14,7 +16,7 @@ const GenreCarousel = () => {
             url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/genres",
             method: 'POST',
             headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
+                'x-api-key': env.REACT_APP_X_API_KEY,
             },
             data: `fields name; limit 50;`
           })

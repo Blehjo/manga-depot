@@ -47,18 +47,6 @@ const SidebarOverlay = () => {
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                    <Heart className='' color="white" size={20}/>
-                    <Nav.Link href="/likedposts" className="ms-4">
-                        Likes
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                    <ArrowRepeat className='' color="white" size={20}/>
-                    <Nav.Link href="/history" className="ms-4">
-                        History
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
                     <Globe className='' color="white" size={20}/>
                     <Nav.Link href="/" className="ms-4">
                         Search

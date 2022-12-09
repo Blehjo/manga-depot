@@ -14,6 +14,8 @@ import { SearchContext } from '../../contexts/search.context';
 
 import axios from 'axios';
 
+import env from 'react-dotenv';
+
 function NavBar() {
   const { currentUser } = useContext(UserContext);
   const { isProfileOpen } = useContext(ProfileContext);
@@ -32,10 +34,10 @@ function NavBar() {
     evt.preventDefault();
 
     axios({
-      url: process.env.REACT_APP_URL,
+      url: env.REACT_APP_URL,
       method: 'POST',
       headers: {
-          'x-api-key': process.env.REACT_APP_X_API_KEY,
+          'x-api-key': env.REACT_APP_X_API_KEY,
       },
       data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
     })

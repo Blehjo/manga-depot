@@ -11,7 +11,7 @@ const Post = () => {
     const { id, profile_id } = useParams();
     
     function getPost() {
-        axios.get(`http://localhost:3001/api/posts/${profile_id}/${id}`,
+        axios.get(`/api/posts/${profile_id}/${id}`,
         {
             mode: 'no-cors',
         })

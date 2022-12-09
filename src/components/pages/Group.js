@@ -11,7 +11,7 @@ const Group = () => {
     const { id } = useParams();
     
     function getGroup() {
-        axios.get(`http://localhost:3001/api/groups/${id}`,
+        axios.get(`/api/groups/${id}`,
         {
             mode: 'no-cors',
         })

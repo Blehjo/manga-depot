@@ -9,7 +9,7 @@ import { utcConverter } from "../../utils/Date";
 const Interactions = () => {
     const [posts, setPosts] = useState([]);
     function getPosts() {
-        axios.get(`http://localhost:3001/api/posts/`,
+        axios.get(`/api/posts/`,
         {
             mode: 'no-cors',
         })

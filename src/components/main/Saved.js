@@ -23,9 +23,6 @@ const Saved = () => {
             <Nav.Link href="/interactions">
                 <Router className='mt-4' color="white" size={40}/>
             </Nav.Link>
-            <Nav.Link href="/likedposts">
-                <Heart className='mt-4' color="white" size={40}/>
-            </Nav.Link>
             <Nav.Link href="/history">
                 <ArrowRepeat className='mt-4' action='true' color="white" size={40}/>
             </Nav.Link>

@@ -9,7 +9,7 @@ const Posts = () => {
     const [posts, setPosts] = useState({});
     
     function getPosts() {
-        axios.get(`http://localhost:3001/api/posts/`,
+        axios.get(`/api/posts/`,
         {
             mode: 'no-cors',
         })

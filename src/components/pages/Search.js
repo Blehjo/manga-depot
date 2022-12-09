@@ -7,6 +7,8 @@ import { unixConverter } from "../../utils/Date";
 import { Form, Button } from "react-bootstrap";
 import { ResultContext } from '../../contexts/result.context';
 
+import env from "react-dotenv";
+
 const Search = () => {
     const [games, setGames] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
@@ -26,10 +28,10 @@ const Search = () => {
         evt.preventDefault();
 
         axios({
-            url: process.env.REACT_APP_URL,
+            url: env.REACT_APP_URL,
             method: 'POST',
             headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
+                'x-api-key': env.REACT_APP_X_API_KEY,
             },
             data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
         })

@@ -7,29 +7,23 @@ import 'react-multi-carousel/lib/styles.css';
 
 const EventCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
-    const [genres, setGenres] = useState([]);
+    const [events, setEvents] = useState([]);
+
+    function getEvents() {
+        axios.get("/api/events",
+        {
+            mode: 'no-cors',
+        })
+        .then((response) => setEvents(response.data));
+    }
 
     useEffect(() => {
-        axios({
-            url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/genres",
-            method: 'POST',
-            headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
-            },
-            data: `fields name; limit 50;`
-          })
-            .then(response => {
-                setGenres(response.data);
-            })
-            .catch(err => {
-                setErrorMessage(err);
-                console.error(errorMessage);
-            });
-    }, [errorMessage]);
+        getEvents();
+    }, []);
 
     return (
         <>
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
+            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="events">
                 <h1 className="text-white">Events</h1>
                 <Col >
                     <Carousel
@@ -87,12 +81,12 @@ const EventCarousel = () => {
                         sliderClass=""
                         swipeable
                     >    
-                        {genres?.map((genre) => (
-                                <Card className="mx-2 bg-dark text-white" key={genre.id}>
-                                    <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
-                                        <Card.Body className="genre-card">
+                        {events?.map((event) => (
+                                <Card className="mx-2 bg-dark text-white" key={event.id}>
+                                    <Card.Link className="event-card card-info"href={`/event/${event.name}`}>
+                                        <Card.Body className="event-card">
                                             <Card.Title>
-                                                    {genre.name}
+                                                    {event.name}
                                             </Card.Title>
                                         </Card.Body>
                                     </Card.Link>

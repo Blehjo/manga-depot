@@ -18,9 +18,9 @@ import {
     doc,
     getDoc,
     setDoc,
-} from 'firebase/firestore'
+} from 'firebase/firestore';
 
-import env from 'react-dotenv'
+import env from 'react-dotenv';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
