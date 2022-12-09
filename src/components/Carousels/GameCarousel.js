@@ -21,6 +21,7 @@ const GameCarousel = () => {
             headers: {
                 'x-api-key': env.REACT_APP_X_API_KEY,
             },
+            mode: 'no-cors',
             data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; where rating >= 90; limit 72;`
           })
             .then(response => {

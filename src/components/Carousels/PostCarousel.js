@@ -18,6 +18,7 @@ const PostCarousel = () => {
             headers: {
                 'x-api-key': env.REACT_APP_X_API_KEY,
             },
+            mode: 'no-cors',
             data: `fields name; limit 50;`
           })
             .then(response => {

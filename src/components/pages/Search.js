@@ -33,6 +33,7 @@ const Search = () => {
             headers: {
                 'x-api-key': env.REACT_APP_X_API_KEY,
             },
+            mode: 'no-cors',
             data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
         })
         .then(response => {
