@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import SidebarOverlay from '../pieces/SidebarOverlay';
-import SidebarMenu from '../pieces/SidebarMenu';
+import SidebarOverlay from './SidebarOverlay';
+import SidebarMenu from './SidebarMenu';
 import { ListContext } from '../../contexts/list.context';
 
 function SidebarIndex() {
