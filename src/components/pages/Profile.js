@@ -2,14 +2,16 @@ import React from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 
 export default function Profile() {
   const [errorMessage, setErrorMessage] = useState('');
   const [profile, setProfile] = useState({});
+  const { id } = useParams();
 
   function getProfile() {
-    axios.get("/api/users/:id",
+    axios.get(`/api/users/${id}`,
     {
       mode: 'no-cors',
     })
@@ -40,22 +42,22 @@ export default function Profile() {
                   <Card.Text>{country}</Card.Text>
                 </div>
               </div>
-              <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
+              {/* <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
                 <div className="d-flex justify-content-end text-center py-1">
                   <div>
-                    <Card.Text className="mb-1 h5">{userposts.length}</Card.Text>
+                    <Card.Text className="mb-1 h5">{userposts.length && userposts.length}</Card.Text>
                     <Card.Text className="small text-muted mb-0">Posts</Card.Text>
                   </div>
                   <div className="px-3">
-                    <Card.Text className="mb-1 h5">{friendships.length}</Card.Text>
+                    <Card.Text className="mb-1 h5">{friendships.length && friendships.length}</Card.Text>
                     <Card.Text className="small text-muted mb-0">Mates</Card.Text>
                   </div>
                   <div>
-                    <Card.Text className="mb-1 h5">{games.length}</Card.Text>
+                    <Card.Text className="mb-1 h5">{games.length && games.length}</Card.Text>
                     <Card.Text className="small text-muted mb-0">Games</Card.Text>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <Card.Body className="text-black p-4">
                 <div className="mb-5">
                   <p className="lead fw-normal mb-1">About</p>

@@ -5,7 +5,7 @@ import { Collection, Router, Globe, Heart, House, Eye, Speedometer2, ArrowRepeat
 const Saved = () => {
     return (
         <>
-            <Nav.Link href="/">
+            <Nav.Link href="/profile">
                 <House className='mt-4' color="white" size={40}/>
             </Nav.Link>
             <Nav.Link href="/dashboard">
