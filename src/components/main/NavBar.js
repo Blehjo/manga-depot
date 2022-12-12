@@ -43,8 +43,7 @@ function NavBar() {
       data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
     })
     .then(response => {
-      console.log(response.data)
-        setResults(response.data);
+      setResults(response.data);
     })
     .then(() => {
       navigate('/search');
