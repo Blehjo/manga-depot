@@ -57,9 +57,8 @@ function NavBar() {
   return (
     <Fragment>
       {['sm'].map((expand) => (
-        <Container key="navbarContainer" className='' fluid>
-          <Row key="rowOne">
-            <Navbar fixed=''  key={expand}  bg='dark' variant='dark' expand={expand}>
+          <Row style={{ margin: '2rem' }} >
+            <Navbar fixed='top' style={{ zIndex: 400 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
               <ListIcon />
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>
@@ -99,9 +98,7 @@ function NavBar() {
               </Navbar.Collapse>
             </Navbar>
           </Row>
-        </Container>
       ))}
-      <Outlet/>
     </Fragment>
   );
 }

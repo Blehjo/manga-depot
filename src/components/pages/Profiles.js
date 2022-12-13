@@ -21,8 +21,8 @@ export default function Profiles() {
   return (
       <Fragment>
         <Row className="justify-content-center">
-        {Array.from(profiles)?.map(({ username, first_name, userposts, games, friendships }) => (
-          <Col md="9" lg="7" xl="5" className="mt-5">
+        {Array.from(profiles)?.map(({ id, username, first_name, userposts, games, friendships }) => (
+          <Col key={id} md="9" lg="7" xl="5" className="mt-5">
             <Card style={{ borderRadius: '15px' }}>
               <Card.Body className="p-4">
                 <div className="d-flex text-black">
@@ -31,7 +31,7 @@ export default function Profiles() {
                       style={{ width: '180px', borderRadius: '10px' }}
                       src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
                       alt='Generic placeholder image'
-                      fluid />
+                    />
                   </div>
                   <div className="flex-grow-1 ms-3">
                     <Card.Title>{username}</Card.Title>

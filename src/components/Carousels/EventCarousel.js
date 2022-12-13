@@ -1,6 +1,5 @@
-import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
@@ -22,7 +21,7 @@ const EventCarousel = () => {
     }, []);
 
     return (
-        <>
+        <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="events">
                 <h1 className="text-white">Events</h1>
                 <Col >
@@ -82,24 +81,24 @@ const EventCarousel = () => {
                         swipeable
                     >    
                         {events?.map(({ event_name, event_description, id, media_location_url }) => (
-                                <Card className="mx-2 bg-dark text-white" key={id}>
-                                    <Card.Link className="event-card card-info"href={`/event/${event_name}`}>
-                                        <Card.Img src={media_location_url}/>
-                                        <Card.Body className="event-card">
-                                            <Card.Title>
-                                                {event_name}
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {event_description}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card.Link>
-                                </Card>
+                            <Card style={{ height: '13rem' }} className="mx-2 bg-dark text-white" key={id}>
+                                <Card.Link className="event-card card-info"href={`/event/${event_name}`}>
+                                    <Card.Img src={media_location_url}/>
+                                    <Card.Body className="event-card">
+                                        <Card.Title>
+                                            {event_name}
+                                        </Card.Title>
+                                        <Card.Text>
+                                            {event_description}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card.Link>
+                            </Card>
                         ))}   
                     </Carousel>
                 </Col>
             </Row>
-        </>
+        </Fragment>
     )
 }
 
