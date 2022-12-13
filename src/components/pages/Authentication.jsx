@@ -2,7 +2,7 @@ import SignUpForm from '../../components/sign-up-form/sign-up-form';
 import SignInForm from '../../components/sign-in-form/sign-in-form';
 
 import { UserContext } from '../../contexts/user.context';
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
 const Authentication = () => {
@@ -15,10 +15,10 @@ const Authentication = () => {
             currentUser ? (
                 navigate('/dashboard')
             ) : ( 
-                <div className=''>
+                <Fragment>
                     <SignInForm/>
                     <SignUpForm/>
-                </div>
+                </Fragment>
             )
         }
         </>

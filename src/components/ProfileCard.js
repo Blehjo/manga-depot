@@ -2,15 +2,16 @@ import { Fragment } from "react";
 import { Card, Col, Row, Nav } from "react-bootstrap";
 import { LinkedinFilled, GithubFilled, MailFilled, PaperClipOutlined } from '@ant-design/icons';
 
-const ProfileCard = () => {
+const ProfileCard = ({ profileData }) => {
     return (
         <Fragment>
-            <Card >
-                {/* <Card.Img variant="top" src={require("../assets/profilepicture/newprofilepic.jpg")} /> */}
-                <Card.Body>
-                    <Card.Title>Bleh Seton</Card.Title>
-                    <Card.Text>Chicago, Illinois</Card.Text> 
-                    <Card.Subtitle>Main Expertise</Card.Subtitle>
+            {profileData?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts }) => (
+            <Card className="bg-dark" key={id}>
+                    <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                <Card.Body style={{ color: 'white'}}>
+                    <Card.Title>{first_name}</Card.Title>
+                    <Card.Text>{country}</Card.Text> 
+                    <Card.Subtitle>{about}</Card.Subtitle>
                     <Card style={{ margin: '1rem' }}>
                         <Row xs={2} sm={2} md={2} lg={2} xl={2}>
                             <Col xs={2} sm={2} md={2} lg={2} xl={2}>
@@ -71,6 +72,7 @@ const ProfileCard = () => {
                     </Nav>
                 </Card.Footer>
             </Card>
+            ))}
         </Fragment>
     )
 }

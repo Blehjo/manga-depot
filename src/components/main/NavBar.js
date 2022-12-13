@@ -55,7 +55,7 @@ function NavBar() {
   return (
     <Fragment>
       {['sm'].map((expand) => (
-          <Row style={{ margin: '2rem' }} >
+          <Row key="sm"style={{ margin: '2rem' }} >
             <Navbar fixed='top' style={{ zIndex: 1000 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
               <ListIcon key='listicon'/>
               <Col key="listColumn" className=''>
@@ -74,8 +74,9 @@ function NavBar() {
                         placeholder="Search"
                         className="me-2 "
                         aria-label="Search"
+                        key="form-controller"
                         />
-                      <Button type="submit" variant="info">Search</Button>
+                      <Button key="button-search" type="submit" variant="info">Search</Button>
                     </Form>
                   </Nav>
                 </Col>

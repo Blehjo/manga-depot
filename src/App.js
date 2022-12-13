@@ -40,7 +40,7 @@ function App() {
         <Route path='/messages' element={<Messages />}/>
         <Route path='/messages/:id' element={<Message />}/>
         <Route path='/posts' element={<Posts />}/>
-        <Route path='/posts/:profile_id/:id' element={<Post />}/>
+        <Route path='/posts/:id' element={<Post />}/>
         <Route path='/profile/' element={<Profile />}/>
         <Route path='/profile/*' element={<Profile />}/>
         <Route path='/profiles/' element={<Profiles />}/>

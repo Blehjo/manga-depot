@@ -8,10 +8,10 @@ import { useParams } from "react-router-dom";
 
 const Post = () => {
     const [post, setPost] = useState([]);
-    const { id, profile_id } = useParams();
+    const { id } = useParams();
     
     function getPost() {
-        axios.get(`/api/posts/${profile_id}/${id}`,
+        axios.get(`/api/posts/${id}`,
         {
             mode: 'no-cors',
         })
@@ -20,7 +20,7 @@ const Post = () => {
 
     useEffect(() => {
         getPost();
-    }, [id, profile_id]); 
+    }, [id]); 
 
     return (
         <div className="queries-container">

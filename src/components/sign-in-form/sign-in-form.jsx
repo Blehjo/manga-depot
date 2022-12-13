@@ -15,43 +15,61 @@ const defaultFormFields = {
 }
 
 const SignInForm = () => {
-    const [formFields, setFormFields] = useState(defaultFormFields);
-    const { email, password } = formFields;
+    // const [formFields, setFormFields] = useState(defaultFormFields);
+    // const { email, password } = formFields;
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
     const resetFormFields = () => {
-        setFormFields();
+        setEmail('');
+        setPassword('');
     }
 
     const signInWithGoogle = async () => {
         const { user } = await signInWithGoogleRedirect();
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleEmailChange = (event) => {
+        event.preventDefault();
+        setEmail(event.target.value);
+        console.log(email);
+    }
 
-        setFormFields({ ...formFields, [name]: value })
-        console.log(formFields)
+    const handlePasswordChange = (event) => {
+        event.preventDefault();
+        setPassword(event.target.value);
+        console.log(password);
+    }
+
+    const handleChange = (event) => {
+        // const { name, value } = event.target;
+
+        // setFormFields({ ...formFields, [name]: value })
+        // console.log(formFields)
     };
 
-    const signInWithReact = async (event) => {
-        event.preventDefault();
-        await axios.post(`/api/users/login`,
-        {
-            email: email,
-            password: password,
-        })
+    const signInWithReact = async () => {
+        try {
+            const response = await axios.post(`/api/users/login`, {
+                email: email,
+                password: password,
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log(error.response);
+        }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            // const { user } = await signInAuthUserWithEmailAndPassword(
-            //     email, 
-            //     password
-            // );
-            signInWithReact();
-            // resetFormFields();
+            const { user } = await signInAuthUserWithEmailAndPassword(
+                email, 
+                password
+            );
+            await signInWithReact();
+            resetFormFields();
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -75,7 +93,7 @@ const SignInForm = () => {
                     label="Email"
                     type="email" 
                     required 
-                    onChange={handleChange} 
+                    onChange={handleEmailChange} 
                     name="email" 
                     value={email} 
                 />
@@ -84,14 +102,14 @@ const SignInForm = () => {
                     label="Password"
                     type="password" 
                     required 
-                    onChange={handleChange} 
+                    onChange={handlePasswordChange} 
                     name="password" 
                     value={password} 
                 />
-                {/* <div className="buttons-container"> */}
+                <div className="buttons-container">
                     <Button type="submit">Sign in</Button>
                     <Button onClick={signInWithGoogle} variant="info" type='button'>Sign in with Google</Button>
-                {/* </div> */}
+                </div>
             </form>
         </div>
     )
