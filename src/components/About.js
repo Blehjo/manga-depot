@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { Row, Col } from "react-bootstrap";
 
 const About = () => {

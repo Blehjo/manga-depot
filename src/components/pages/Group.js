@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
-import { Row, Col, Tab, ListGroup, Card, Form, Button } from "react-bootstrap";
+import { Row, Col, Tab, ListGroup, Card, Form, Button, Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { utcConverter } from "../../utils/Date";
 
@@ -51,28 +51,30 @@ const Group = () => {
     const messages = groups.messages;
 
     return (
-        <>
+        <Fragment>
             <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
                 <Row>
-                    <Col className='sticky-top' style={{ backgroundColor: 'black', height: '100vh', width: 'fit-content', position: 'absolute', paddingTop: '60px', marginLeft: '', zIndex: '-1' }} key='list' sm={4} md={4} lg={2} xl={2}>
-                        <ListGroup>
+                    <Col key='list' sm={4} md={4} lg={2} xl={2}>
+                        <Nav variant="pills" className="flex-column">
                             <h1>Channels</h1>
                             {channels?.map(({id, channel_name}) => (
-                                <ListGroup.Item  variant="light" style={{ color: 'white', backgroundColor: 'black', width: 'fit-content'}}action href={`#${id}`} key={id}>
-                                    {channel_name}
-                                </ListGroup.Item>
+                                <Nav.Item  variant="light" style={{ color: 'white' }} href={`#${id}`} key={id}>
+                                    <Nav.Link eventKey={id}>
+                                        {channel_name}
+                                    </Nav.Link>
+                                </Nav.Item>
                             ))}
-                        </ListGroup>
+                        </Nav>
                     </Col>
-                    <Col style={{ margin: 'auto' }}key='content' sm={8}>
+                    <Col style={{ margin: 'auto' }}key='content' sm={8} md={8} lg={10} xl={10}>
                         <Tab.Content>
                             {channels?.map(({id, channel_description}) => (
                                 <Tab.Pane key={id} eventKey={`#${id}`}>
                                     {channel_description}
-                                    <h1 style={{ color: 'white' }}>Messages</h1>
-                                    <div style={{ padding: '15px' }}>
-                                        <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
-                                            <div style={{ overflowY: 'auto', height: '300px' }}>
+                                    {/* <h1 style={{ color: 'white' }}>Messages</h1> */}
+                                    {/* <div> */}
+                                        {/* <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups"> */}
+                                            {/* <div style={{ overflowY: 'auto', height: '300px' }}>
                                             {messages?.map(({ from_profile, message_text, sent_datetime}) => (
                                                 <Card.Link style={{ textDecoration: 'none', margin: '5px' }} href={`/messages/${from_profile}`}>
                                                     <Card text='white' className='' bg='dark'>
@@ -90,8 +92,8 @@ const Group = () => {
                                                     </Card>
                                                 </Card.Link>
                                             ))}
-                                            </div>
-                                            <Form onSubmit={postMessages}>
+                                            </div> */}
+                                            {/* <Form onSubmit={postMessages}>
                                                 <Row>
                                                     <Col lg={10} xl={10}>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -104,16 +106,16 @@ const Group = () => {
                                                         </Button>
                                                     </Col>
                                                 </Row>
-                                            </Form>
-                                        </Row>
-                                    </div>
+                                            </Form> */}
+                                        {/* </Row> */}
+                                    {/* </div> */}
                                 </Tab.Pane>
                             ))}
                         </Tab.Content>
                     </Col>
                 </Row>
             </Tab.Container>
-        </>
+        </Fragment>
     )
 }
 

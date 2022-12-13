@@ -58,7 +58,7 @@ function NavBar() {
     <Fragment>
       {['sm'].map((expand) => (
           <Row style={{ margin: '2rem' }} >
-            <Navbar fixed='top' style={{ zIndex: 400 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
+            <Navbar fixed='top' style={{ zIndex: 1000 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
               <ListIcon />
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>

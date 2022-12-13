@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import { utcConverter } from "../../utils/Date";
@@ -20,7 +20,7 @@ const Groups = () => {
     }, []);
 
     return (
-        <div className="groups-container">
+        <Fragment>
             <h1 style={{ color: 'white' }}>Groups</h1>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
                 {Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time }) => (
@@ -45,7 +45,7 @@ const Groups = () => {
                     </Card.Link>
                 ))}
             </Row>
-        </div>
+        </Fragment>
     )
 }
 

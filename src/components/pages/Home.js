@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import EventCarousel from "../Carousels/EventCarousel";
 import GameCarousel from "../Carousels/GameCarousel";
 import About from "../About";
