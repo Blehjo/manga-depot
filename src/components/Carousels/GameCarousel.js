@@ -8,8 +8,6 @@ import { unixConverter } from '../../utils/Date';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faDownload, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
 
-import env from "react-dotenv";
-
 const GameCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [games, setGames] = useState([]);
@@ -19,7 +17,7 @@ const GameCarousel = () => {
             url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/games",
             method: 'POST',
             headers: {
-                'x-api-key': env.REACT_APP_X_API_KEY,
+                'x-api-key': process.env.REACT_APP_X_API_KEY,
             },
             mode: 'no-cors',
             data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; where rating >= 90; limit 72;`

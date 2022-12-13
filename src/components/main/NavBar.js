@@ -1,6 +1,6 @@
 import { Fragment, useContext, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import {Button, Container, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import {Button, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
 
 import ListIcon from '../list-icon/list-icon';
 
@@ -13,8 +13,6 @@ import { ProfileContext } from '../../contexts/profile.context';
 import { SearchContext } from '../../contexts/search.context';
 
 import axios from 'axios';
-
-import env from 'react-dotenv';
 
 function NavBar() {
   const { currentUser } = useContext(UserContext);
@@ -34,10 +32,10 @@ function NavBar() {
     evt.preventDefault();
 
     axios({
-      url: env.REACT_APP_URL,
+      url: process.env.REACT_APP_URL,
       method: 'POST',
       headers: {
-          'x-api-key': env.REACT_APP_X_API_KEY,
+          'x-api-key': process.env.REACT_APP_X_API_KEY,
       },
       mode: 'no-cors',
       data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
@@ -59,14 +57,14 @@ function NavBar() {
       {['sm'].map((expand) => (
           <Row style={{ margin: '2rem' }} >
             <Navbar fixed='top' style={{ zIndex: 1000 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
-              <ListIcon />
+              <ListIcon key='listicon'/>
               <Col key="listColumn" className=''>
                 <Nav key="listColumn" className=''>
                   <Navbar.Brand href="/" className='text-white'>Shell Geist</Navbar.Brand>
                 </Nav>
               </Col>
-              <Navbar.Toggle className=""key="navbarToggle" aria-controls={`navBarItems}`} />
-              <Navbar.Collapse className="" key="navbarCollapse" id="navBarItems">
+              <Navbar.Toggle key="navbarToggle" aria-controls={`navBarItems}`} />
+              <Navbar.Collapse key="navbarCollapse" id="navBarItems">
                 <Col key="searchColumn" className=''>
                   <Nav key="navForm" className='m-auto'>
                     <Form onSubmit={handleClickEvent} className="d-flex">

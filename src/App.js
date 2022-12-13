@@ -22,6 +22,7 @@ import Profile from "./components/pages/Profile";
 import './App.css';
 import SidebarIndex from "./components/main/SidebarIndex";
 import Footer from "./components/main/Footer";
+import Discovery from "./components/pages/Discovery";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route path='/connections' element={<Connections />}/>
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path='/explore' element={<Explore />}/>
-        <Route path='/groups/' element={<Groups />}/>
+        <Route path='/discovery/' element={<Discovery />}/>
         <Route path='/groups/:id' element={<Group />}/>
         <Route path='/interactions' element={<Interactions />}/>
         <Route path='/messages' element={<Messages />}/>

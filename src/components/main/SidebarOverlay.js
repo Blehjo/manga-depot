@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, Row } from "react-bootstrap";
-import { Collection, Globe, Heart, House, Eye, Speedometer2, Router, ArrowRepeat, ChatDots } from 'react-bootstrap-icons';
+import { Collection, Globe, House, Eye, Speedometer2, Router, ChatDots } from 'react-bootstrap-icons';
 
 const SidebarOverlay = () => {
 
@@ -30,7 +30,7 @@ const SidebarOverlay = () => {
                 </Nav.Item>
                 <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
                     <Collection className='' color="white" size={20}/>
-                    <Nav.Link href="/groups" className="ms-4">
+                    <Nav.Link href="/discovery" className="ms-4">
                         Groups
                     </Nav.Link>
                 </Nav.Item>

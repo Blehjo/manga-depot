@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { useParams } from "react-router";
 import axios from "axios";
+
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -7,21 +9,21 @@ import { utcConverter } from "../../utils/Date";
 
 const Posts = () => {
     const [posts, setPosts] = useState({});
-    
-    function getPosts() {
-        axios.get(`/api/posts/`,
+    const { id } = useParams();
+
+    useEffect(() => {
+        const getPosts = () => {
+            axios.get(`/api/posts/${id}`,
         {
             mode: 'no-cors',
         })
         .then((response) => setPosts(response.data));
-    }
-
-    useEffect(() => {
+        } 
         getPosts();
-    }, []);
+    }, [id]);
 
     return (
-        <div className="queries-container">
+        <Fragment>
             <h1>Posts</h1>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="posts">
                 {Array.from(posts)?.map(({ id, profile_id, written_text, created_date_time }) => (
@@ -50,7 +52,7 @@ const Posts = () => {
                     </Col>
                 ))}
             </Row>
-        </div>
+        </Fragment>
     )
 }
 
