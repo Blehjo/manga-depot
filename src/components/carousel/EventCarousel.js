@@ -5,18 +5,16 @@ import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
 const EventCarousel = () => {
-    const [errorMessage, setErrorMessage] = useState('');
     const [events, setEvents] = useState([]);
 
-    function getEvents() {
-        axios.get("/api/events",
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setEvents(response.data));
-    }
-
     useEffect(() => {
+        async function getEvents() {
+            await axios.get("/api/events",
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setEvents(response.data));
+        }
         getEvents();
     }, []);
 

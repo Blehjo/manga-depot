@@ -6,18 +6,16 @@ import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
 const GroupCarousel = () => {
-    const [errorMessage, setErrorMessage] = useState('');
     const [groups, setGroups] = useState([]);
 
-    function getGroups() {
-        axios.get("/api/groups",
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setGroups(response.data));
-    }
-
     useEffect(() => {
+        async function getGroups() {
+            await axios.get("/api/groups",
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setGroups(response.data));
+        }
         getGroups();
     }, []);
 

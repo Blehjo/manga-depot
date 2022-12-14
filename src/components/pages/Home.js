@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import EventCarousel from "../Carousels/EventCarousel";
-import GameCarousel from "../Carousels/GameCarousel";
+import EventCarousel from "../carousel/EventCarousel";
+import GameCarousel from "../carousel/GameCarousel";
 import About from "../About";
 import Activities from "../Activities";
 import OnlineActivities from "../OnlineActivities";
