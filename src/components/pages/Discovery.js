@@ -11,6 +11,9 @@ const Discovery = () => {
             id="justify-tab-example"
             justify
             className="m-5"
+            variant='pills'
+            bg='dark'
+            // style={{ backgroundColor: 'black'}}
             >
                 <Tab eventKey="groups" title="Groups">
                     <Groups/>

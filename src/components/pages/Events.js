@@ -8,7 +8,7 @@ const Events = () => {
 
     useEffect(() => {
         async function getEvents() {
-            await axios.get(`/api/events/`,
+            await axios.get(`/events/`,
             {
                 mode: 'no-cors',
             })

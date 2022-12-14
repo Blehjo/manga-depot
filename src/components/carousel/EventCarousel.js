@@ -9,7 +9,7 @@ const EventCarousel = () => {
 
     useEffect(() => {
         async function getEvents() {
-            await axios.get("/api/events",
+            await axios.get("/events",
             {
                 mode: 'no-cors',
             })
@@ -20,7 +20,7 @@ const EventCarousel = () => {
 
     return (
         <Fragment>
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="events">
+            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="my-5" key="events">
                 <h1 className="text-white">Events</h1>
                 <Col >
                     <Carousel
@@ -65,9 +65,9 @@ const EventCarousel = () => {
                                     max: 1024,
                                     min: 464
                                 },
-                                items: 2,
+                                items: 1,
                                 partialVisibilityGutter: 30,
-                                slidesToSlide: 2
+                                slidesToSlide: 1
                             }
                         }}
                         rewind={false}

@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         async function getGroups() {
-            await axios.get("/api/groups",
+            await axios.get("/groups",
             {
                 mode: 'no-cors',
             })

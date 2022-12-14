@@ -18,7 +18,7 @@ function SidebarIndex() {
           {isNavOpen && <SidebarOverlay/>}
         </div>
       </Col>
-      <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+      <Col style={{ margin: '2rem'}} xs={10} sm={10} md={10} lg={10} xl={10}>
         <Outlet/>
       </Col>
     </Row>

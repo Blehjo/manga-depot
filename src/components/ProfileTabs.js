@@ -11,6 +11,8 @@ const ProfileTabs = () => {
         id="justify-tab-example"
         justify
         className='mb-5'
+        variant='pills'
+        bg='dark'
         >
             <Tab eventKey="posts" title="Posts">
                 <PostsTab />

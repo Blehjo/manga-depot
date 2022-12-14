@@ -7,7 +7,7 @@ const Groups = () => {
     const [groups, setGroups] = useState({});
     
     function getGroups() {
-        axios.get(`/api/groups/`,
+        axios.get(`/groups/`,
         {
             mode: 'no-cors',
         })

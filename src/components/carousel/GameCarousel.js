@@ -79,9 +79,9 @@ const GameCarousel = () => {
                                     max: 1024,
                                     min: 464
                                 },
-                                items: 2,
+                                items: 1,
                                 partialVisibilityGutter: 30,
-                                slidesToSlide: 2
+                                slidesToSlide: 1
                             }
                         }}
                         rewind={false}

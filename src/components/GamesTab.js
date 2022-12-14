@@ -24,11 +24,11 @@ const GamesTab = () => {
                         <Card.Title>{written_text}</Card.Title>
                     </Card.Body>
                 </Card>
-            )) : 
-            <Card style={{ color: 'white' }}className="bg-dark">
-                <Card.Title>"Stay tuned. Currently no games..."</Card.Title>
-            </Card>
-            }
+            )) : (
+                <Card style={{ color: 'white' }}className="bg-dark">
+                    <Card.Title>"Stay tuned. Currently no games..."</Card.Title>
+                </Card>
+            )}
         </Fragment>
     );
 }
