@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
+import SidebarIndex from "./components/SidebarIndex";
+import Footer from "./components/Footer";
 
 import Home from "./components/pages/Home";
 import Dashboard from "./components/pages/Dashboard";
@@ -18,11 +20,10 @@ import Messages from "./components/pages/Messages";
 import Message from "./components/pages/Message";
 import Profiles from "./components/pages/Profiles";
 import Profile from "./components/pages/Profile";
+import Games from "./components/Games";
+import Discovery from "./components/pages/Discovery";
 
 import './App.css';
-import SidebarIndex from "./components/SidebarIndex";
-import Footer from "./components/Footer";
-import Discovery from "./components/pages/Discovery";
 
 function App() {
   return (

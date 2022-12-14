@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useContext } from "react";
 import { Card } from "react-bootstrap";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ const PostsTab = () => {
 
     return (
         <Fragment>
-            {posts ? posts?.map(({ id, media_location_url, written_text, created_date_time }) => (
+            {posts?.length > 0 ? posts?.map(({ id, media_location_url, written_text, created_date_time }) => (
                 <Card key={id} style={{ color: 'white' }} className="bg-dark">
                     <Card.Img src={media_location_url}/>
                     <Card.Body>

@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
 
@@ -11,6 +11,7 @@ import { UserContext } from '../contexts/user.context';
 import { ResultContext } from '../contexts/result.context';
 import { ProfileContext } from '../contexts/profile.context';
 import { SearchContext } from '../contexts/search.context';
+import { UserProfilesContext } from '../contexts/userprofiles.context';
 
 import axios from 'axios';
 
@@ -19,6 +20,7 @@ function NavBar() {
   const { isProfileOpen } = useContext(ProfileContext);
   const { searchField, setSearchField } = useContext(SearchContext);
   const { setResults } = useContext(ResultContext);
+  const { userProfiles, setUserProfiles } = useContext(UserProfilesContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -31,26 +33,43 @@ function NavBar() {
   const handleClickEvent = async (evt) => {
     evt.preventDefault();
 
-    axios({
-      url: process.env.REACT_APP_URL,
-      method: 'POST',
-      headers: {
-          'x-api-key': process.env.REACT_APP_X_API_KEY,
-      },
-      mode: 'no-cors',
-      data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
-    })
-    .then(response => {
-      setResults(response.data);
-    })
-    .then(() => {
-      navigate('/search');
-    })
-    .catch(err => {
-        setErrorMessage(err);
-        console.error(errorMessage);
-    });
+    async function getGames () {
+      await axios({
+        url: process.env.REACT_APP_URL,
+        method: 'POST',
+        headers: {
+            'x-api-key': process.env.REACT_APP_X_API_KEY,
+        },
+        mode: 'no-cors',
+        data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
+      })
+      .then(response => {
+        setResults(response.data);
+      })
+      .then(() => {
+        navigate('/search');
+      })
+      .catch(err => {
+          setErrorMessage(err);
+          console.error(errorMessage);
+      });
+    }
+
+    getGames();
   };
+
+  useEffect(() => {
+    function searchUsers () {
+      axios.get('/users', {
+        mode: 'no-cors'
+      })
+      .then((response) => {
+        setUserProfiles(response.data)
+      });
+      console.log(userProfiles);
+    }
+    searchUsers();
+  }, [])
 
   return (
     <Fragment>

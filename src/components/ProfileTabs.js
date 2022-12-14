@@ -4,7 +4,7 @@ import GamesTab from './GamesTab';
 import GroupsTab from './GroupsTab';
 import PostsTab from './PostsTab';
 
-const ProfileTabs = ({ profileData }) => {
+const ProfileTabs = () => {
     return (
         <Tabs
         defaultActiveKey="posts"
@@ -13,16 +13,16 @@ const ProfileTabs = ({ profileData }) => {
         className='mb-5'
         >
             <Tab eventKey="posts" title="Posts">
-                <PostsTab profileData={profileData} />
+                <PostsTab />
             </Tab>
             <Tab eventKey="games" title="Games">
-                <GamesTab profileData={profileData} />
+                <GamesTab />
             </Tab>
             <Tab eventKey="groups" title="Groups">
-                <GroupsTab profileData={profileData} />
+                <GroupsTab />
             </Tab>
             <Tab eventKey="events" title="Events">
-                <EventsTab profileData={profileData} />
+                <EventsTab />
             </Tab>
         </Tabs>
     );

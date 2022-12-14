@@ -1,13 +1,26 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const AuthContext = createContext({
-    auth: {},
-    setAuth: () => {},
+    setAuth: () => null,
+    auth: null,
 });
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(null);
     const value = { auth, setAuth };
 
+    useEffect(() => {
+        const information = async () => {
+            await axios.get('/api/users/', {
+                mode: 'no'
+            })
+            .then((response) => setAuth(response.data));
+        };
+
+        return information;
+    }, []);
+
+
     return <AuthContext.Provider value={value} >{children}</AuthContext.Provider>
-}
+};

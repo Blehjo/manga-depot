@@ -3,13 +3,12 @@ import { Card, Col, Row, Nav } from "react-bootstrap";
 import { LinkedinFilled, GithubFilled, MailFilled, PaperClipOutlined } from '@ant-design/icons';
 import { AuthContext } from "../contexts/auth.context";
 
-const ProfileCard = ({ profileData }) => {
+const ProfileCard = () => {
     const { auth } = useContext(AuthContext);
-
-    console.log(auth);
+    
     return (
         <Fragment>
-            {profileData?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts }) => (
+            {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts }) => (
             <Card className="bg-dark" key={id}>
                     <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body style={{ color: 'white'}}>

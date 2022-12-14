@@ -1,39 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
-import App from './App';
 import { UserProvider } from './contexts/user.context';
 import { ProfileProvider } from './contexts/profile.context';
 import { SearchProvider } from './contexts/search.context';
-
-
-import './index.css';
 import { ResultProvider } from './contexts/result.context';
 import { ListProvider } from './contexts/list.context';
-import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './contexts/auth.context';
+import { UserProfilesProvider } from './contexts/userprofiles.context';
 
+import App from './App';
+
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
-import { AuthProvider } from './contexts/auth.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <UserProvider>
+    <UserProvider>
+      <AuthProvider>
         <ProfileProvider>
           <ListProvider>
             <SearchProvider>
               <ResultProvider>
-                <BrowserRouter>
-                  <App />
-                </BrowserRouter>
+                <UserProfilesProvider>
+                  <BrowserRouter>
+                    <App />
+                  </BrowserRouter>
+                </UserProfilesProvider>
               </ResultProvider>
             </SearchProvider>
           </ListProvider>
         </ProfileProvider>
-      </UserProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 

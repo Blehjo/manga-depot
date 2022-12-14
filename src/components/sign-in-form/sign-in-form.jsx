@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
@@ -9,10 +9,7 @@ import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '..
 
 import './sign-in-form.styles.scss';
 
-import { AuthContext } from "../../contexts/auth.context";
-
 const SignInForm = () => {
-    const { setAuth } = useContext(AuthContext);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
@@ -25,13 +22,12 @@ const SignInForm = () => {
         await axios.post(`/api/users/login`, {
             email: email,
             password: password,
-        })
-        .then((resp) => setAuth(resp.data));
+        });
     }
 
     const signInWithGoogle = async () => {
         const { user } = await signInWithGoogleRedirect();
-        console.log(user)
+        console.log(user);
     }
 
     const handleEmailChange = (event) => {

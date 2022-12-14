@@ -10,7 +10,7 @@ const Group = () => {
     const [messageText, setMessageText] = useState('');
     const { id } = useParams();
 
-    function postMessages(evt) {
+    function postMessages() {
         // evt.preventDefault();
         axios.post(`/api/messages/${id}/`,
         {
@@ -21,8 +21,7 @@ const Group = () => {
     }
 
     function messageHandler(evt) {
-        const content = evt.target.value;
-        setMessageText(content);
+        setMessageText(evt.target.value);
     }
 
     useEffect(() => {
