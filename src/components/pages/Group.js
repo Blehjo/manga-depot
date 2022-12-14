@@ -2,29 +2,13 @@ import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Row, Col, Tab, ListGroup, Card, Form, Button, Nav } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { utcConverter } from "../../utils/Date";
+import { utcConverter } from "../../utils/date/Date";
 
 const Group = () => {
     const [group, setGroup] = useState({});
     const [groups, setMessages] = useState({});
     const [messageText, setMessageText] = useState('');
     const { id } = useParams();
-    
-    function getGroup() {
-        axios.get(`/api/groups/${id}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setGroup(response.data));
-    }
-
-    function getMessages() {
-        axios.get(`/api/conversations/${id}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setMessages(response.data));
-    }
 
     function postMessages(evt) {
         // evt.preventDefault();
@@ -42,9 +26,25 @@ const Group = () => {
     }
 
     useEffect(() => {
+        async function getMessages() {
+            await axios.get(`/api/conversations/${id}`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setMessages(response.data));
+        }
+
+        async function getGroup() {
+            await axios.get(`/api/groups/${id}`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setGroup(response.data));
+        }
+
         getGroup();
         getMessages();
-    }, []);
+    }, [id]);
 
     const channels = group.groupchannels;
 

@@ -1,11 +1,10 @@
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Row, Col, Card, Badge } from "react-bootstrap";
-import { utcConverter } from "../../utils/Date";
+import { utcConverter } from "../../utils/date/Date";
 
 const Groups = () => {
     const [groups, setGroups] = useState({});
-    const [display, setDisplay] = useState(false);
     
     function getGroups() {
         axios.get(`/api/groups/`,
@@ -36,7 +35,7 @@ const Groups = () => {
                                             {group_description}
                                         </Card.Text>
                                         <Card.Text>{`Established ${utcConverter(created_date_time)}`}</Card.Text>
-                                        <Badge pill='info'>{platform}</Badge>{' '}
+                                        {'Platform:  '}<Badge pill='info'>{platform}</Badge>
                                     </Card.Body>
                                 </Col>
                             </Row>

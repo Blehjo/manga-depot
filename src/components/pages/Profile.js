@@ -9,6 +9,7 @@ export default function Profile() {
   const [profile, setProfile] = useState();
 
   useEffect( () => {
+
     const getProfile = async () => {
         await axios.get('/api/users/',
        {

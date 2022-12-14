@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import NavBar from "./components/main/NavBar";
+import NavBar from "./components/NavBar";
 
 import Home from "./components/pages/Home";
 import Dashboard from "./components/pages/Dashboard";
@@ -20,8 +20,8 @@ import Profiles from "./components/pages/Profiles";
 import Profile from "./components/pages/Profile";
 
 import './App.css';
-import SidebarIndex from "./components/main/SidebarIndex";
-import Footer from "./components/main/Footer";
+import SidebarIndex from "./components/SidebarIndex";
+import Footer from "./components/Footer";
 import Discovery from "./components/pages/Discovery";
 
 function App() {

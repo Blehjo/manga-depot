@@ -1,21 +1,19 @@
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
-import { Row, Col, Card, Badge } from "react-bootstrap";
-import { utcConverter } from "../../utils/Date";
+import { Row, Col, Card } from "react-bootstrap";
+import { utcConverter } from "../../utils/date/Date";
 
 const Events = () => {
     const [events, setEvents] = useState({});
-    const [display, setDisplay] = useState(false);
-    
-    function getEvents() {
-        axios.get(`/api/events/`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setEvents(response.data));
-    }
 
     useEffect(() => {
+        async function getEvents() {
+            await axios.get(`/api/events/`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setEvents(response.data));
+        }
         getEvents();
     }, []);
 

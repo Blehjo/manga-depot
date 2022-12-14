@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import FormInput from "../form-input/form-input";
 import { Button } from "react-bootstrap";
@@ -9,14 +9,10 @@ import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '..
 
 import './sign-in-form.styles.scss';
 
-const defaultFormFields = {
-    email: '',
-    password: '',
-}
+import { AuthContext } from "../../contexts/auth.context";
 
 const SignInForm = () => {
-    // const [formFields, setFormFields] = useState(defaultFormFields);
-    // const { email, password } = formFields;
+    const { setAuth } = useContext(AuthContext);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
@@ -25,39 +21,27 @@ const SignInForm = () => {
         setPassword('');
     }
 
+    const signInWithReact = async () => {
+        await axios.post(`/api/users/login`, {
+            email: email,
+            password: password,
+        })
+        .then((resp) => setAuth(resp.data));
+    }
+
     const signInWithGoogle = async () => {
         const { user } = await signInWithGoogleRedirect();
+        console.log(user)
     }
 
     const handleEmailChange = (event) => {
         event.preventDefault();
         setEmail(event.target.value);
-        console.log(email);
     }
 
     const handlePasswordChange = (event) => {
         event.preventDefault();
         setPassword(event.target.value);
-        console.log(password);
-    }
-
-    const handleChange = (event) => {
-        // const { name, value } = event.target;
-
-        // setFormFields({ ...formFields, [name]: value })
-        // console.log(formFields)
-    };
-
-    const signInWithReact = async () => {
-        try {
-            const response = await axios.post(`/api/users/login`, {
-                email: email,
-                password: password,
-            });
-            console.log(response.data);
-        } catch (error) {
-            console.log(error.response);
-        }
     }
 
     const handleSubmit = async (event) => {
@@ -68,7 +52,7 @@ const SignInForm = () => {
                 email, 
                 password
             );
-            await signInWithReact();
+            signInWithReact();
             resetFormFields();
         } catch(error) {
             switch (error.code) {

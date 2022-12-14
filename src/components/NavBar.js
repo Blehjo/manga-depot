@@ -2,15 +2,15 @@ import { Fragment, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
 
-import ListIcon from '../list-icon/list-icon';
+import ListIcon from './list-icon/list-icon';
 
-import ProfileIcon from '../profile-icon/profile-icon';
-import ProfileDropdown from '../profile-dropdown/profile-dropdown';
+import ProfileIcon from './profile-icon/profile-icon';
+import ProfileDropdown from './profile-dropdown/profile-dropdown';
 
-import { UserContext } from '../../contexts/user.context';
-import { ResultContext } from '../../contexts/result.context';
-import { ProfileContext } from '../../contexts/profile.context';
-import { SearchContext } from '../../contexts/search.context';
+import { UserContext } from '../contexts/user.context';
+import { ResultContext } from '../contexts/result.context';
+import { ProfileContext } from '../contexts/profile.context';
+import { SearchContext } from '../contexts/search.context';
 
 import axios from 'axios';
 

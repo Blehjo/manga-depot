@@ -1,8 +1,12 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Card, Col, Row, Nav } from "react-bootstrap";
 import { LinkedinFilled, GithubFilled, MailFilled, PaperClipOutlined } from '@ant-design/icons';
+import { AuthContext } from "../contexts/auth.context";
 
 const ProfileCard = ({ profileData }) => {
+    const { auth } = useContext(AuthContext);
+
+    console.log(auth);
     return (
         <Fragment>
             {profileData?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts }) => (

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Outlet } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 
-import { ListContext } from '../../contexts/list.context';
+import { ListContext } from '../contexts/list.context';
 
 import SidebarOverlay from './SidebarOverlay';
 import SidebarMenu from './SidebarMenu';

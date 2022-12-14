@@ -1,29 +1,31 @@
-import { Card, Col, Row, Badge } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import { Card, Col, Row } from 'react-bootstrap';
+import { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
-import { utcConverter } from '../../utils/Date';
+
+import { utcConverter } from '../../utils/date/Date';
+
+import ProfileCard from '../ProfileCard';
 
 export default function Messages() {
-    const [groups, setGroups] = useState({});
-    const [display, setDisplay] = useState(false);
-    
-    function getGroups() {
-        axios.get(`/api/conversations/:id`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setGroups(response.data));
-    }
+    const [conversations, setConversations] = useState({});
 
     useEffect(() => {
-        getGroups();
+        const getConversations = async () => {
+            await axios.get(`/api/conversations/:id`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setConversations(response.data));
+        }
+        getConversations();
     }, []);
 
   return (
-    <div className="groups-container">
+    <Fragment>
+        <ProfileCard/>
         <h1 style={{ color: 'white' }}>Messages</h1>
-        <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
-            {groups.length ? (Array.from(groups)?.map(({ id, messages,  }) => (
+        <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="conversations">
+            {conversations.length ? (Array.from(conversations)?.map(({ id, messages,  }) => (
                 <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/messages/${id}`}>
                     <Card text='white' className='' bg='dark'>
                         <Row>
@@ -43,6 +45,6 @@ export default function Messages() {
                 <div style={{ color: 'white' }}>Write a message to a mate, so you can have messages to view.</div>
             )}
         </Row>
-    </div>
+    </Fragment>
   );
 }

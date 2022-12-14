@@ -3,22 +3,21 @@ import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { utcConverter } from "../../utils/Date";
+import { utcConverter } from "../../utils/date/Date";
 import { useParams } from "react-router-dom";
 
 const Post = () => {
     const [post, setPost] = useState([]);
     const { id } = useParams();
     
-    function getPost() {
-        axios.get(`/api/posts/${id}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setPost(response.data));
-    }
-
     useEffect(() => {
+        async function getPost() {
+            await axios.get(`/api/posts/${id}`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setPost(response.data));
+        }
         getPost();
     }, [id]); 
 

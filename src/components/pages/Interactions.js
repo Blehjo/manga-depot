@@ -4,7 +4,7 @@ import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { utcConverter } from "../../utils/Date";
+import { utcConverter } from "../../utils/date/Date";
 
 const Interactions = () => {
     const [posts, setPosts] = useState([]);

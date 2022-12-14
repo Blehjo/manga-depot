@@ -2,7 +2,7 @@ import { Card, Col, Row, Form, Button } from 'react-bootstrap';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { utcConverter } from '../../utils/Date';
+import { utcConverter } from '../../utils/date/Date';
 
 export default function Message() {
     const bottomRef = useRef(null);
@@ -10,14 +10,6 @@ export default function Message() {
     const { id } = useParams();
     const [messageText, setMessageText] = useState('');
     
-    function getMessages() {
-        axios.get(`/api/conversations/${id}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setMessages(response.data));
-    }
-
     function postMessages(evt) {
         // evt.preventDefault();
         axios.post(`/api/messages/${id}/`,
@@ -34,6 +26,13 @@ export default function Message() {
     }
 
     useEffect(() => {
+        async function getMessages() {
+            await axios.get(`/api/conversations/${id}`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setMessages(response.data));
+        }
         getMessages();
     }, [id]);
     

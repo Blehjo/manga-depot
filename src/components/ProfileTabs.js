@@ -10,6 +10,7 @@ const ProfileTabs = ({ profileData }) => {
         defaultActiveKey="posts"
         id="justify-tab-example"
         justify
+        className='mb-5'
         >
             <Tab eventKey="posts" title="Posts">
                 <PostsTab profileData={profileData} />

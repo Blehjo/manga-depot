@@ -1,4 +1,4 @@
-const { Fragment } = require("react");
+import { Fragment } from 'react';
 
 const GroupsTab = ({ profileData }) => {
     return (
