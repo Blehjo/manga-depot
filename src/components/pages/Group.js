@@ -8,7 +8,13 @@ const Group = () => {
     const [group, setGroup] = useState({});
     const [messages, setMessages] = useState({});
     const [messageText, setMessageText] = useState('');
+    const [value, setValue] = useState('');
     const { id } = useParams();
+
+    function handleChange(event) {
+        event.preventDefault();
+        setValue(event.target.value);
+    }
 
     function postMessages() {
         // evt.preventDefault();
@@ -74,12 +80,11 @@ const Group = () => {
                         <Form>
                             <Row md={1} lg={2} xl={2}>
                                 <Col lg={10} xl={10}>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                        <Form.Control type="email" placeholder="Write your response here" />
-                                        <Form.Text className="text-muted">
-                                        We'll never share your email with anyone else.
-                                        </Form.Text>
-                                    </Form.Group>
+                                    <form>
+                                        <textarea style={{ width: '100%'}} value={value} onChange={handleChange}>
+
+                                        </textarea>
+                                    </form>
                                 </Col>
                                 <Col lg={2} xl={2}>
                                     <Button variant="primary" type="submit">

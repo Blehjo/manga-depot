@@ -1,13 +1,21 @@
-import { Card, Col, Row } from 'react-bootstrap';
 import { useState, useEffect, Fragment } from 'react';
+import { Card, Col, Row, Form } from 'react-bootstrap';
 import axios from 'axios';
 
 import { utcConverter } from '../../utils/date/Date';
 
 import ProfileCard from '../ProfileCard';
 
+
 export default function Messages() {
     const [conversations, setConversations] = useState([]);
+    const [friends, setFriends] = useState([]);
+    const [query, setQuery] = useState('');
+
+    function handleChange(event) {
+        event.preventDefault();
+        setQuery(event.target.value);
+    }
 
     useEffect(() => {
         const getConversations = async () => {
@@ -17,12 +25,44 @@ export default function Messages() {
             })
             .then((response) => setConversations(response.data));
         }
+
         getConversations();
     }, []);
 
+    useEffect(() => {
+        const getFriends = async () => {
+            await axios.get(`/users/`, {
+                mode: 'no-cors',
+            })
+            .then((response) => setFriends(response.data));
+        }
+
+        getFriends();
+    }, []);
+
+    function friendCheck(event) {
+        event.preventDefault();
+        setQuery(event.target.value);
+        const search = friends.find((element) => element.username == query);
+        setFriends(search);
+    }
+
+    console.log(friends);
+
   return (
     <Fragment>
-        <h1 style={{ color: 'white' }}>Messages</h1>
+        <Row md={2} lg={2} xl={2}>
+            <Col md={4} lg={4} xl={4}>
+                <h1 style={{ color: 'white' }}>Messages</h1>
+            </Col>
+            <Col md={3} lg={3} xl={3}>
+                <Form>
+                    <Form.Group>
+                        <Form.Control value={query} onChange={friendCheck} type="search" placeholder="Search for a friend to message" />
+                    </Form.Group>
+                </Form>
+            </Col>
+        </Row>
         <Row xs={1} sm={1} md={2} lg={2} xl={2} className="g-4 pt-3" key="conversations">
             <Col md={6} lg={4} xl={4}>
                 <ProfileCard/>
@@ -45,7 +85,9 @@ export default function Messages() {
                         </Card>
                     </Card.Link>
                 ))) : (
-                    <div style={{ color: 'white' }}>Write a message to a mate, so you can have messages to view.</div>
+                    <Fragment>
+                        <div style={{ color: 'white' }}>Write a message to a mate, so you can have messages to view.</div>
+                    </Fragment>
                 )}
             </Col>
         </Row>

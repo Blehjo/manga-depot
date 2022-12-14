@@ -20,8 +20,6 @@ import {
     setDoc,
 } from 'firebase/firestore';
 
-import env from 'react-dotenv';
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
