@@ -1,12 +1,27 @@
-import './profile-dropdown.styles.scss';
-
-import Row from "react-bootstrap/Row";
-import { Nav } from "react-bootstrap";
+import { useContext } from "react";
+import axios from 'axios';
+import { Nav, Row } from "react-bootstrap";
 import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { AuthContext } from "../../contexts/auth.context";
+
+import './profile-dropdown.styles.scss';
+
 
 const ProfileDropdown = () => {
+    const { auth, setAuth } = useContext(AuthContext);
+
+    async function handleSignOut() {
+        signOutUser();
+        await axios.post('api/users/logout', {
+            mode: 'no-cors'
+        })
+        .then((response) => setAuth(response.data));
+    }
+
+    console.log(auth);
+
     return (
         <div className='profile-dropdown-container'>
             <div className='profile-options' />
@@ -48,7 +63,7 @@ const ProfileDropdown = () => {
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
                         <DoorOpen className='' color="white" size={20}/>
                         <Nav.Link href="/authentication" className="ms-3">
-                        <span className='nav-link' onClick={signOutUser}>Sign out</span>
+                        <span className='nav-link' onClick={handleSignOut}>Sign out</span>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
