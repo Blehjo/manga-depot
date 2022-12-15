@@ -24,10 +24,10 @@ export default function Profile() {
     <Fragment>
       <Row className="m-5" lg={2} xl={2}>
         <Col md={4} lg={4} xl={4}>
-          <ProfileCard profileData={profile} />
+          <ProfileCard />
         </Col>
         <Col md={8} lg={8} xl={8}>
-          <ProfileTabs profileData={profile} />
+          <ProfileTabs />
         </Col>
       </Row>
     </Fragment>

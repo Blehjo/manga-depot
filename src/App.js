@@ -22,6 +22,7 @@ import Profiles from "./components/pages/Profiles";
 import Profile from "./components/pages/Profile";
 import Games from "./components/Games";
 import Discovery from "./components/pages/Discovery";
+import SingleProfile from "./components/pages/SingleProfile";
 
 import './App.css';
 
@@ -43,9 +44,10 @@ function App() {
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
         <Route path='/profile/' element={<Profile />}/>
-        <Route path='/profile/*' element={<Profile />}/>
+        <Route path='/profile/:id' element={<SingleProfile />}/>
         <Route path='/profiles/' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>
+        <Route path='/games' element={<Games />}/>
       </Route>
     </Routes>
   );

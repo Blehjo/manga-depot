@@ -11,7 +11,7 @@ const GenreCarousel = () => {
 
     useEffect(() => {
         axios({
-            url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/genres",
+            url: process.env.REACT_APP_URL,
             method: 'POST',
             headers: {
                 'x-api-key': process.env.REACT_APP_X_API_KEY,

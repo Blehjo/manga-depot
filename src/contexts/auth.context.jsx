@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const information = async () => {
             await axios.get('/api/users/', {
-                mode: 'no'
+                mode: 'no-cors'
             })
             .then((response) => setAuth(response.data));
         };

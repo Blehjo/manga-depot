@@ -1,37 +1,26 @@
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
-import env from "react-dotenv";
-
 const PostCarousel = () => {
-    const [errorMessage, setErrorMessage] = useState('');
-    const [genres, setGenres] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios({
-            url: "https://5f5gh8905l.execute-api.us-west-2.amazonaws.com/production/v4/genres",
-            method: 'POST',
-            headers: {
-                'x-api-key': env.REACT_APP_X_API_KEY,
-            },
-            mode: 'no-cors',
-            data: `fields name; limit 50;`
-          })
-            .then(response => {
-                setGenres(response.data);
+        async function getPosts() {
+            await axios.get('/posts', {
+                mode: 'no-cors'
             })
-            .catch(err => {
-                setErrorMessage(err);
-                console.error(errorMessage);
-            });
-    }, [errorMessage]);
+            .then((response) => setPosts(response.data));
+        }
+
+        getPosts();
+    }, []);
     
     return (
-        <>
+        <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
                 <h1 className="text-white">Groups</h1>
                 <Col >
@@ -104,7 +93,7 @@ const PostCarousel = () => {
                     </Carousel>
                 </Col>
             </Row>
-        </>
+        </Fragment>
     )
 }
 

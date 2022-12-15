@@ -1,16 +1,27 @@
-import { Fragment, useContext } from "react";
-import { Card, Col, Row, Nav } from "react-bootstrap";
-import { LinkedinFilled, GithubFilled, MailFilled, PaperClipOutlined } from '@ant-design/icons';
-import { AuthContext } from "../contexts/auth.context";
+import { Fragment, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import axios from "axios";
 
-const ProfileCard = () => {
-    const { auth } = useContext(AuthContext);
-    
+const UserProfileCard = () => {
+    const [profile, setProfile] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        async function getProfile(id) {
+            await axios.get(`/api/users/${id}`, {
+                mode: 'no-cors'
+            })
+            .then((response) => setProfile(response.data))
+        } 
+        getProfile(id);
+    }, [id])
+
     return (
         <Fragment>
-            {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
+            {profile?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
-                <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                    <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
                     <Card.Title>{username}</Card.Title>
                     <Card.Subtitle>{first_name}</Card.Subtitle>
@@ -38,13 +49,12 @@ const ProfileCard = () => {
                         <Card className="bg-dark">
                             <Card.Text>No Games</Card.Text>
                         </Card>
-                    )
-                }
+                    )}
                 </Card.Footer>
             </Card>
             ))}
         </Fragment>
-    )
+    );
 }
 
-export default ProfileCard;
+export default UserProfileCard;

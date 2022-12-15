@@ -1,68 +1,53 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
-import axios from 'axios';
+import { UserProfilesContext } from '../../contexts/userprofiles.context';
 
 export default function Profiles() {
-    const [profiles, setProfiles] = useState([]);
-
-    function getProfiles() {
-        axios.get("/api/users",
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setProfiles(response.data));
-    }
-
-    useEffect(() => {
-        getProfiles();
-    }, []);
+  const { userProfiles } = useContext(UserProfilesContext);
 
   return (
       <Fragment>
-        <Row className="justify-content-center">
-        {Array.from(profiles)?.map(({ id, username, first_name, userposts, games, friendships }) => (
-          <Col key={id} md="9" lg="7" xl="5" className="mt-5">
-            <Card style={{ borderRadius: '15px' }}>
-              <Card.Body className="p-4">
-                <div className="d-flex text-black">
-                  <div className="flex-shrink-0">
-                    <Card.Img
-                      style={{ width: '180px', borderRadius: '10px' }}
-                      src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp'
-                      alt='Generic placeholder image'
-                    />
-                  </div>
-                  <div className="flex-grow-1 ms-3">
-                    <Card.Title>{username}</Card.Title>
-                    <Card.Text>{first_name}</Card.Text>
-                    <Card.Text>Bio</Card.Text>
-
-                    <div className="d-flex justify-content-start rounded-3 p-2 mb-2"
-                      style={{ backgroundColor: '#efefef' }}>
-                      <div>
-                        <p className="small text-muted mb-1">Games</p>
-                        <p className="mb-0">{games.length}</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Posts</p>
-                        <p className="mb-0">{userposts.length}</p>
-                      </div>
-                      <div>
-                        <p className="small text-muted mb-1">Mates</p>
-                        <p className="mb-0">{friendships.length}</p>
-                      </div>
-                    </div>
-                    <div className="d-flex pt-1">
-                      <Button outline className="me-1 flex-grow-1">Chat</Button>
-                      <Button className="flex-grow-1">Follow</Button>
-                    </div>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-          ))}
+        <Row xs={1} sm={1} md={2} lg={3} xl={4} className="justify-content-center">
+            {userProfiles?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
+            <Col key={id} className='mb-5'>
+              <Card style={{ color: 'white' }} className="bg-dark" key={id}>
+                  <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                  <Card.Body>
+                    <Card.Link href={`profile/${id}`}>
+                      <Card.Title>{username}</Card.Title>
+                    </Card.Link>
+                      <Card.Subtitle>{first_name}</Card.Subtitle>
+                      <Card.Text>{country}</Card.Text> 
+                      <Card.Subtitle>{about}</Card.Subtitle>
+                      <Card.Title>Groups</Card.Title>
+                      {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
+                          <Card className="bg-dark">
+                              <Card.Img src={media_location_url}/>
+                              <Card.Title>{group_name}</Card.Title>
+                          </Card>
+                      )) : (
+                          <Card className="bg-dark">
+                              <Card.Text>Join a Group</Card.Text>
+                          </Card>
+                      )}
+                  </Card.Body>
+                  <Card.Footer>
+                      <Card.Title>Games</Card.Title>
+                      {games?.length > 0 ? games?.map((game) => (
+                          <Card className="bg-dark" >
+                              <Card.Text>{game.title}</Card.Text>
+                          </Card>
+                      )) : (
+                          <Card className="bg-dark">
+                              <Card.Text>No Games</Card.Text>
+                          </Card>
+                      )
+                  }
+                  </Card.Footer>
+              </Card>
+            </Col>
+            ))}
         </Row>
       </Fragment>
   );

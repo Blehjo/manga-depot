@@ -3,13 +3,15 @@ import { Card, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 import { utcConverter } from '../utils/date/Date';
+import { useParams } from 'react-router';
 
-const EventsTab = () => {
+const UserEventsTab = () => {
     const [events, setEvents] = useState();
+    const { id } = useParams();
     
     useEffect(() => {
         const getEvents = async () => {
-            await axios.get(`/api/events/`, {
+            await axios.get(`/events/${id}`, {
                 mode: 'no cors'
             })
             .then((resp) => setEvents(resp.data)); 
@@ -47,4 +49,4 @@ const EventsTab = () => {
     )
 }
 
-export default EventsTab;
+export default UserEventsTab;
