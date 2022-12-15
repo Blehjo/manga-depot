@@ -11,7 +11,6 @@ import { UserContext } from '../contexts/user.context';
 import { ResultContext } from '../contexts/result.context';
 import { ProfileContext } from '../contexts/profile.context';
 import { SearchContext } from '../contexts/search.context';
-import { UserProfilesContext } from '../contexts/userprofiles.context';
 
 import axios from 'axios';
 
@@ -20,7 +19,6 @@ function NavBar() {
   const { isProfileOpen } = useContext(ProfileContext);
   const { searchField, setSearchField } = useContext(SearchContext);
   const { setResults } = useContext(ResultContext);
-  const { userProfiles, setUserProfiles } = useContext(UserProfilesContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -57,19 +55,6 @@ function NavBar() {
 
     getGames();
   };
-
-  useEffect(() => {
-    function searchUsers () {
-      axios.get('/users', {
-        mode: 'no-cors'
-      })
-      .then((response) => {
-        setUserProfiles(response.data)
-      });
-      console.log(userProfiles);
-    }
-    searchUsers();
-  }, [])
 
   return (
     <Fragment>
