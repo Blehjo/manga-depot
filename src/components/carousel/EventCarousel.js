@@ -18,7 +18,6 @@ const EventCarousel = () => {
         getEvents();
     }, []);
 
-    console.log(typeof events)
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="my-5" key="events">
