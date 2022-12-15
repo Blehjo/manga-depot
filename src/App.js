@@ -24,6 +24,7 @@ import Discovery from "./components/pages/Discovery";
 import SingleProfile from "./components/pages/SingleProfile";
 
 import './App.css';
+import GameProfile from "./components/GameProfile";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path='/profiles/' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>
         <Route path='/games' element={<Games />}/>
+        <Route path='/games/:id' element={<GameProfile />}/>
       </Route>
     </Routes>
   );
