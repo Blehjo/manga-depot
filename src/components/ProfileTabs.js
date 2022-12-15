@@ -10,7 +10,7 @@ const ProfileTabs = () => {
         defaultActiveKey="posts"
         id="justify-tab-example"
         justify
-        className='mb-5'
+        className='mt-2 mb-5'
         variant='pills'
         bg='dark'
         >

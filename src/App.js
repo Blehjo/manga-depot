@@ -8,7 +8,6 @@ import Home from "./components/pages/Home";
 import Dashboard from "./components/pages/Dashboard";
 import Explore from "./components/pages/Explore";
 import Interactions from "./components/pages/Interactions";
-import Groups from "./components/pages/Groups";
 import Group from "./components/pages/Group"
 import Connections from "./components/pages/Connections";
 import About from "./components/About";

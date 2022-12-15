@@ -1,11 +1,13 @@
 import { Row, Col} from 'react-bootstrap';
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import ProfileCard from '../ProfileCard';
 import ProfileTabs from '../ProfileTabs';
+import { UserContext } from '../../contexts/user.context';
 
 export default function Profile() {
+  const { currentUser } = useContext(UserContext);
   const [profile, setProfile] = useState();
 
   useEffect( () => {
@@ -22,6 +24,7 @@ export default function Profile() {
 
   return (
     <Fragment>
+      {/* {currentUser ?  */}
       <Row className="mediatoggle m-5" lg={2} xl={2}>
         <Col md={4} lg={4} xl={4}>
           <ProfileCard />
@@ -29,7 +32,9 @@ export default function Profile() {
         <Col md={8} lg={8} xl={8}>
           <ProfileTabs />
         </Col>
-      </Row>
+      </Row> 
+      {/* <Navigate to='/authentication'/> */}
+      {/* } */}
     </Fragment>
   );
 }
