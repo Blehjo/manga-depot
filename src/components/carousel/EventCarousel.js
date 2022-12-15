@@ -18,6 +18,7 @@ const EventCarousel = () => {
         getEvents();
     }, []);
 
+    console.log(typeof events)
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="my-5" key="events">
@@ -78,7 +79,7 @@ const EventCarousel = () => {
                         sliderClass=""
                         swipeable
                     >    
-                        {events?.map(({ event_name, event_description, id, media_location_url }) => (
+                        {Array.from(events)?.map(({ event_name, event_description, id, media_location_url }) => (
                             <Card style={{ height: '13rem' }} className="mx-2 bg-dark text-white" key={id}>
                                 <Card.Link className="event-card card-info"href={`/event/${id}`}>
                                     <Card.Img src={media_location_url}/>

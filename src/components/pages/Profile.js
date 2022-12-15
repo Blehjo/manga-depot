@@ -22,7 +22,7 @@ export default function Profile() {
 
   return (
     <Fragment>
-      <Row className="m-5" lg={2} xl={2}>
+      <Row className="mediatoggle m-5" lg={2} xl={2}>
         <Col md={4} lg={4} xl={4}>
           <ProfileCard />
         </Col>

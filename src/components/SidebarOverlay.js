@@ -12,7 +12,7 @@ const SidebarOverlay = () => {
             >
                 <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
                     <House className='' color="white" size={20}/>
-                    <Nav.Link href="/" className="ms-4">
+                    <Nav.Link href="/profile" className="ms-4">
                         Home
                     </Nav.Link>
                 </Nav.Item>
