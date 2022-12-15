@@ -80,7 +80,7 @@ const EventCarousel = () => {
                     >    
                         {events?.map(({ event_name, event_description, id, media_location_url }) => (
                             <Card style={{ height: '13rem' }} className="mx-2 bg-dark text-white" key={id}>
-                                <Card.Link className="event-card card-info"href={`/event/${event_name}`}>
+                                <Card.Link className="event-card card-info"href={`/event/${id}`}>
                                     <Card.Img src={media_location_url}/>
                                     <Card.Body className="event-card">
                                         <Card.Title>

@@ -17,7 +17,7 @@ const UserGroupsTab = () => {
             .then((resp) => setGroups(resp.data)); 
         }
         getGroups();
-    }, [])
+    }, [id])
 
     return (
         <Fragment>

@@ -10,7 +10,7 @@ const GroupCarousel = () => {
 
     useEffect(() => {
         async function getGroups() {
-            await axios.get("/api/groups",
+            await axios.get("/groups",
             {
                 mode: 'no-cors',
             })
@@ -22,7 +22,7 @@ const GroupCarousel = () => {
     return (
         <>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
-                <h1 className="text-white">Groups</h1>
+                <h1 href='/groups' className="text-white">Groups</h1>
                 <Col >
                     <Carousel
                         additionalTransfrom={0}

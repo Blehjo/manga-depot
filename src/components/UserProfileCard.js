@@ -42,7 +42,7 @@ const UserProfileCard = () => {
                 <Card.Footer>
                     <Card.Title>Games</Card.Title>
                     {games?.length > 0 ? games?.map((game) => (
-                        <Card key='top'className="bg-dark" >
+                        <Card key={game} className="bg-dark" >
                             <Card.Text>{game.title}</Card.Text>
                         </Card>
                     )) : (

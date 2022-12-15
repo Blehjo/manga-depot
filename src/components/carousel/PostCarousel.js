@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
+import { utcConverter } from "../../utils/date/Date";
 
 const PostCarousel = () => {
     const [posts, setPosts] = useState([]);
@@ -22,7 +23,7 @@ const PostCarousel = () => {
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
-                <h1 className="text-white">Groups</h1>
+                <h1 className="text-white">Posts</h1>
                 <Col >
                     <Carousel
                         additionalTransfrom={0}
@@ -79,16 +80,17 @@ const PostCarousel = () => {
                         sliderClass=""
                         swipeable
                     >
-                        {genres?.map((genre) => (
-                                <Card className="mx-2 bg-dark text-white h-100" key={genre.id}>
-                                    <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
-                                        <Card.Body className="genre-card">
-                                            <Card.Title>
-                                                    {genre.name}
-                                            </Card.Title>
-                                        </Card.Body>
-                                    </Card.Link>
-                                </Card>
+                        {posts?.map(({ created_date_time, id, media_location_url, profile_id, written_text, userprofile }) => (
+                            <Card className="mx-2 bg-dark text-white h-100" key={id}>
+                                <Card.Img src={media_location_url} />
+                                <Card.Link href={`/profile/${profile_id}`}>
+                                    <Card.Title>{userprofile.username}</Card.Title>
+                                </Card.Link>
+                                    <Card.Body >
+                                        <Card.Subtitle>{written_text}</Card.Subtitle>
+                                    </Card.Body>
+                                <Card.Footer>Posted: {utcConverter(created_date_time)}</Card.Footer>
+                            </Card>
                         ))} 
                     </Carousel>
                 </Col>

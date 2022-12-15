@@ -85,7 +85,7 @@ function NavBar() {
               <Navbar.Toggle key="navbarToggle" aria-controls={`navBarItems}`} />
               <Navbar.Collapse key="navbarCollapse" id="navBarItems">
                 <Col key="searchColumn" className=''>
-                  <Nav key="navForm" className='m-auto'>
+                  <Nav key="navForm">
                     <Form onSubmit={handleClickEvent} className="d-flex">
                       <Form.Control
                         onChange={handleInputChange}

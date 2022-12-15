@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
@@ -29,7 +29,7 @@ const GenreCarousel = () => {
     }, [errorMessage]);
 
     return (
-        <>
+        <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
                 <h1 className="text-white">Genres</h1>
                 <Col >
@@ -89,20 +89,20 @@ const GenreCarousel = () => {
                         swipeable
                     >    
                         {genres?.map((genre) => (
-                                <Card className="mx-2 bg-dark text-white" key={genre.id}>
-                                    <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
-                                        <Card.Body className="genre-card">
-                                            <Card.Title>
-                                                    {genre.name}
-                                            </Card.Title>
-                                        </Card.Body>
-                                    </Card.Link>
-                                </Card>
+                            <Card className="mx-2 bg-dark text-white" key={genre.id}>
+                                <Card.Link className="genre-card card-info"href={`/genre/${genre.name}`}>
+                                    <Card.Body className="genre-card">
+                                        <Card.Title>
+                                            {genre.name}
+                                        </Card.Title>
+                                    </Card.Body>
+                                </Card.Link>
+                            </Card>
                         ))}   
                     </Carousel>
                 </Col>
             </Row>
-        </>
+        </Fragment>
     )
 }
 
