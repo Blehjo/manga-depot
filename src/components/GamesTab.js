@@ -27,14 +27,14 @@ const GamesTab = () => {
                 </Col>
             </Row>
             {games?.length > 0 ? games?.map(({ id, media_location_url, title }) => (
-                <Card key={id} style={{ marginBottom: '2rem', color: 'white' }} className="bg-dark">
+                <Card key={id} style={{ marginBottom: '2rem', color: 'white', textAlign: 'center' }} className="bg-dark">
                     <Card.Img src={media_location_url}/>
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>
                     </Card.Body>
                 </Card>
             )) : (
-                <Card style={{ color: 'white' }}className="bg-dark">
+                <Card style={{ color: 'white', textAlign: 'center' }}className="bg-dark">
                     <Card.Title>"Stay tuned. Currently no games..."</Card.Title>
                 </Card>
             )}

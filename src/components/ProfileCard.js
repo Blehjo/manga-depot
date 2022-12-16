@@ -1,10 +1,10 @@
 import { Fragment, useContext } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import { AuthContext } from "../contexts/auth.context";
 
 const ProfileCard = () => {
     const { auth } = useContext(AuthContext);
-    
+
     return (
         <Fragment>
             {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
@@ -20,12 +20,24 @@ const ProfileCard = () => {
                     <Card.Title>Groups</Card.Title>
                     {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
                         <Card className="bg-dark">
-                            <Card.Img src={media_location_url}/>
-                            <Card.Title>{group_name}</Card.Title>
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                    <Card.Img src={media_location_url}/>
+                                </Col>
+                                <Col>
+                                    <Card.Title>{group_name}</Card.Title>
+                                </Col>
+                            </Row>
                         </Card>
                     )) : (
                         <Card className="bg-dark">
-                            <Card.Text>Join a Group</Card.Text>
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                </Col>
+                                <Col>
+                                    <Card.Text>Create a Group</Card.Text>
+                                </Col>
+                            </Row>
                         </Card>
                     )}
                 </Card.Body>
@@ -33,7 +45,14 @@ const ProfileCard = () => {
                     <Card.Title>Games</Card.Title>
                     {games?.length > 0 ? games?.map((game) => (
                         <Card className="bg-dark" >
-                            <Card.Text>{game.title}</Card.Text>
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                    <Card.Img style={{ width: '1rem'}}src={game.media_location_url} />
+                                </Col>
+                                <Col>
+                                    <Card.Text>{game.title}</Card.Text>
+                                </Col>
+                            </Row>
                         </Card>
                     )) : (
                         <Card className="bg-dark">

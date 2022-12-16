@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 const UserProfileCard = () => {
@@ -42,8 +42,15 @@ const UserProfileCard = () => {
                 <Card.Footer>
                     <Card.Title>Games</Card.Title>
                     {games?.length > 0 ? games?.map((game) => (
-                        <Card key={game} className="bg-dark" >
-                            <Card.Text>{game.title}</Card.Text>
+                        <Card className="bg-dark" >
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                    <Card.Img style={{ width: '1rem'}}src={game.media_location_url} />
+                                </Col>
+                                <Col>
+                                    <Card.Text>{game.title}</Card.Text>
+                                </Col>
+                            </Row>
                         </Card>
                     )) : (
                         <Card key='bottom' className="bg-dark">

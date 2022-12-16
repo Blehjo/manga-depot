@@ -32,7 +32,7 @@ const UserPostsTab = () => {
                     </Card.Footer>
                 </Card>
             )) : 
-            <Card style={{ color: 'white' }}className="bg-dark">
+            <Card style={{ color: 'white', textAlign: 'center' }}className="bg-dark">
                 <Card.Title>"Stay tuned. Currently no posts..."</Card.Title>
             </Card>
             }

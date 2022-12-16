@@ -24,7 +24,6 @@ export default function Profile() {
 
   return (
     <Fragment>
-      {/* {currentUser ?  */}
       <Row className="mediatoggle m-5" lg={2} xl={2}>
         <Col md={4} lg={4} xl={4}>
           <ProfileCard />
@@ -33,8 +32,6 @@ export default function Profile() {
           <ProfileTabs />
         </Col>
       </Row> 
-      {/* <Navigate to='/authentication'/> */}
-      {/* } */}
     </Fragment>
   );
 }

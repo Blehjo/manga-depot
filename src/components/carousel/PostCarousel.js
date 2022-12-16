@@ -23,7 +23,7 @@ const PostCarousel = () => {
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
-                <h1 className="text-white">Posts</h1>
+                <h1 style={{ color: 'white' }}>Posts</h1>
                 <Col >
                     <Carousel
                         additionalTransfrom={0}
@@ -84,7 +84,7 @@ const PostCarousel = () => {
                             <Card className="mx-2 bg-dark text-white h-100" key={id}>
                                 <Card.Img src={media_location_url} />
                                 <Card.Link href={`/profile/${profile_id}`}>
-                                    <Card.Title>{userprofile.username}</Card.Title>
+                                    <Card.Title style={{ color: 'white', textAlign: 'center', marginTop: '.7rem'}} >{userprofile.username}</Card.Title>
                                 </Card.Link>
                                     <Card.Body >
                                         <Card.Subtitle>{written_text}</Card.Subtitle>

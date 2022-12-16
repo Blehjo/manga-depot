@@ -42,7 +42,7 @@ const UserGroupsTab = () => {
                     </Card>
                 </Card.Link>
             )) : (
-                <Card key='excuse' style={{ color: 'white' }}className="bg-dark">
+                <Card key='excuse' style={{ color: 'white', textAlign: 'center' }}className="bg-dark">
                     <Card.Title>"Stay tuned. Currently no groups..."</Card.Title>
                 </Card>
             )}

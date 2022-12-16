@@ -40,7 +40,7 @@ const GroupsTab = () => {
                         </Card>
                     </Card.Link>
             )) : (
-                <Card style={{ color: 'white' }}className="bg-dark">
+                <Card style={{ color: 'white', textAlign: 'center'}}className="bg-dark">
                     <Card.Title>"Stay tuned. Currently no groups..."</Card.Title>
                 </Card>
             )}
