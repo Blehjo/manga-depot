@@ -48,7 +48,7 @@ function App() {
         <Route path='/profiles/' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>
         <Route path='/games' element={<Games />}/>
-        <Route path='/games/:id' element={<GameProfile />}/>
+        <Route path='/games/:id/:imageId' element={<GameProfile />}/>
       </Route>
     </Routes>
   );

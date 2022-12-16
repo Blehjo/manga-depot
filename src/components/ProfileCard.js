@@ -1,6 +1,5 @@
 import { Fragment, useContext } from "react";
-import { Card, Col, Row, Nav } from "react-bootstrap";
-import { LinkedinFilled, GithubFilled, MailFilled, PaperClipOutlined } from '@ant-design/icons';
+import { Card } from "react-bootstrap";
 import { AuthContext } from "../contexts/auth.context";
 
 const ProfileCard = () => {
@@ -16,6 +15,8 @@ const ProfileCard = () => {
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
+                    <Card.Title>Posts</Card.Title>
+                    <Card.Text>{userposts.length}</Card.Text>
                     <Card.Title>Groups</Card.Title>
                     {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
                         <Card className="bg-dark">

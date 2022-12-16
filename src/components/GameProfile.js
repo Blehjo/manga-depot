@@ -7,7 +7,7 @@ import axios from "axios";
 const GameProfile = () => {
     const [game, setGame] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
-    const { id } = useParams();
+    const { id, imageId } = useParams();
 
     useEffect(() => {
         async function getGame() {
@@ -38,7 +38,7 @@ const GameProfile = () => {
                 <Col style={{ margin: 'auto' }} xl={4}>
                     {game?.map(({ name, cover, first_release_date, summary }) => (
                         <Card style={{ color: 'white' }}className="bg-dark">
-                            <Card.Img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${"scb1p5"}.jpg`} />
+                            <Card.Img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${imageId}.jpg`} />
                             <Card.Title>{name}</Card.Title>
                             <Card.Body>
                                 <Card.Subtitle>{summary}</Card.Subtitle>

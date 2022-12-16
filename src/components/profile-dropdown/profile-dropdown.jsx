@@ -10,7 +10,7 @@ import './profile-dropdown.styles.scss';
 
 
 const ProfileDropdown = () => {
-    const { auth, setAuth } = useContext(AuthContext);
+    const { setAuth } = useContext(AuthContext);
 
     async function handleSignOut() {
         signOutUser();
@@ -19,8 +19,6 @@ const ProfileDropdown = () => {
         })
         .then((response) => setAuth(response.data));
     }
-
-    console.log(auth);
 
     return (
         <div className='profile-dropdown-container'>
