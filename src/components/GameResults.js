@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { Row, Col, Card, Badge, Modal, Button, Form, Image } from "react-bootstrap";
+import { Row, Col, Card, Badge, Modal, Button, Form } from "react-bootstrap";
 import { unixConverter } from "../utils/date/Date";
 import { ResultContext } from "../contexts/result.context";
 import { useNavigate } from "react-router";
@@ -56,7 +56,7 @@ const GameResults = () => {
     }
 
     function addToCatalogue(event) {
-        // event.preventDefault();
+        event.preventDefault();
         async function getInfo() {
             await axios.post('/api/games/', {
                 title: event.target.className,

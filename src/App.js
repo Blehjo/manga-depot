@@ -9,6 +9,8 @@ import Dashboard from "./components/pages/Dashboard";
 import Explore from "./components/pages/Explore";
 import Interactions from "./components/pages/Interactions";
 import Group from "./components/pages/Group"
+import Events from "./components/pages/Events";
+import Groups from "./components/pages/Groups";
 import Connections from "./components/pages/Connections";
 import About from "./components/About";
 import Authentication from "./components/pages/Authentication";
@@ -35,20 +37,22 @@ function App() {
         <Route path='/authentication' element={<Authentication />}/>
         <Route path='/connections' element={<Connections />}/>
         <Route path="/dashboard" element={<Dashboard />}/>
+        <Route path='/discovery' element={<Discovery />}/>
         <Route path='/explore' element={<Explore />}/>
-        <Route path='/discovery/' element={<Discovery />}/>
+        <Route path='/events' element={<Events />}/>
+        <Route path='/games' element={<Games />}/>
+        <Route path='/games/:id/:imageId' element={<GameProfile />}/>
         <Route path='/groups/:id' element={<Group />}/>
+        <Route path='/groups' element={<Groups />}/>
         <Route path='/interactions' element={<Interactions />}/>
         <Route path='/messages' element={<Messages />}/>
         <Route path='/messages/:id' element={<Message />}/>
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
-        <Route path='/profile/' element={<Profile />}/>
+        <Route path='/profile' element={<Profile />}/>
         <Route path='/profile/:id' element={<SingleProfile />}/>
-        <Route path='/profiles/' element={<Profiles />}/>
+        <Route path='/profiles' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>
-        <Route path='/games' element={<Games />}/>
-        <Route path='/games/:id/:imageId' element={<GameProfile />}/>
       </Route>
     </Routes>
   );
