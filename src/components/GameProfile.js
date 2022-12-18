@@ -39,7 +39,6 @@ const GameProfile = () => {
                     {game?.map(({ name, cover, first_release_date, summary }) => (
                         <Card style={{ color: 'white' }}className="bg-dark">
                             <Card.Img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${imageId}.jpg`} />
-                            <Card.Title>{name}</Card.Title>
                             <Card.Body>
                                 <Card.Subtitle>{summary}</Card.Subtitle>
                             </Card.Body>
