@@ -54,7 +54,7 @@ const GroupCarousel = () => {
                             },
                             mobile: {
                                 breakpoint: {
-                                    max: 464,
+                                    max: 764,
                                     min: 0
                                 },
                                 items: 1,
