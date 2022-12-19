@@ -15,6 +15,7 @@ import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
+import { GroupResultProvider } from './contexts/groupresult.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,11 +26,13 @@ root.render(
           <ListProvider>
             <SearchProvider>
               <ResultProvider>
-                <UserProfilesProvider>
-                  <BrowserRouter>
-                    <App />
-                  </BrowserRouter>
-                </UserProfilesProvider>
+                <GroupResultProvider>
+                  <UserProfilesProvider>
+                    <BrowserRouter>
+                      <App />
+                    </BrowserRouter>
+                  </UserProfilesProvider>
+                </GroupResultProvider>
               </ResultProvider>
             </SearchProvider>
           </ListProvider>

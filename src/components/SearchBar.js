@@ -3,11 +3,13 @@ import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 
 import { ResultContext } from "../contexts/result.context";
+import { GroupResultContext } from "../contexts/groupresult.context";
 
 const SearchBar = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
     const { setResults } = useContext(ResultContext);
+    const { groupResults } = useContext(GroupResultContext);
 
     const handleInputChange = (evt) => {
         evt.preventDefault();
@@ -16,6 +18,7 @@ const SearchBar = () => {
 
     const handleClickEvent = async (evt) => {
         evt.preventDefault();
+
         await axios({
             url: process.env.REACT_APP_URL,
             method: 'POST',
@@ -32,6 +35,17 @@ const SearchBar = () => {
             setErrorMessage(err);
             console.error(errorMessage);
         });
+
+        function getAllIndexes(arr, val) {
+            var indexes = [], i;
+            for(i = 0; i < arr.length; i++)
+                if (arr[i].group_name === val)
+                    indexes.push(arr[i]);
+            return indexes;
+        }
+
+        console.log(groupResults)
+        console.log(getAllIndexes(groupResults, searchField));
     };
 
     return (
