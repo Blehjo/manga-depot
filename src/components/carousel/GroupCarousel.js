@@ -64,7 +64,7 @@ const GroupCarousel = () => {
                             tablet: {
                                 breakpoint: {
                                     max: 1024,
-                                    min: 464
+                                    min: 764
                                 },
                                 items: 2,
                                 partialVisibilityGutter: 30,

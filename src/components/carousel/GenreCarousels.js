@@ -63,7 +63,7 @@ const GenreCarousel = () => {
                             },
                             mobile: {
                                 breakpoint: {
-                                    max: 464,
+                                    max: 764,
                                     min: 0
                                 },
                                 items: 1,
@@ -73,7 +73,7 @@ const GenreCarousel = () => {
                             tablet: {
                                 breakpoint: {
                                     max: 1024,
-                                    min: 464
+                                    min: 764
                                 },
                                 items: 2,
                                 partialVisibilityGutter: 30,

@@ -63,11 +63,11 @@ const EventCarousel = () => {
                             tablet: {
                                 breakpoint: {
                                     max: 1024,
-                                    min: 464
+                                    min: 764
                                 },
-                                items: 1,
+                                items: 2,
                                 partialVisibilityGutter: 30,
-                                slidesToSlide: 1
+                                slidesToSlide: 2
                             }
                         }}
                         rewind={false}
