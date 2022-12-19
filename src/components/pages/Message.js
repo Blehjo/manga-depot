@@ -34,7 +34,7 @@ export default function Message() {
             .then((response) => setMessages(response.data));
         }
         getMessages();
-    }, []);
+    }, [id]);
     
     useEffect(() => {
         bottomRef.current?.scrollIntoView({behavior: 'smooth'});
