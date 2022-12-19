@@ -6,7 +6,7 @@ import { utcConverter } from '../../utils/date/Date';
 
 export default function Message() {
     const bottomRef = useRef(null);
-    const [groups, setMessages] = useState({});
+    const [messages, setMessages] = useState([]);
     const { id } = useParams();
     const [messageText, setMessageText] = useState('');
     
@@ -17,7 +17,7 @@ export default function Message() {
             from_profile: id,
             message_text: messageText
         })
-        .then((response) => setMessages(response.data));
+        // .then((response) => setMessages(response.data));
     }
 
     function messageHandler(evt) {
@@ -34,10 +34,8 @@ export default function Message() {
             .then((response) => setMessages(response.data));
         }
         getMessages();
-    }, [id]);
+    }, []);
     
-    const messages = groups.messages;
-
     useEffect(() => {
         bottomRef.current?.scrollIntoView({behavior: 'smooth'});
     }, [messages])
@@ -47,8 +45,9 @@ export default function Message() {
             <h1 style={{ color: 'white' }}>Messages</h1>
             <div style={{ padding: '15px' }}>
                 <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
-                    {messages?.map(({ from_profile, message_text, sent_datetime}) => (
-                        <Card.Link style={{ textDecoration: 'none' }} href={`/messages/${from_profile}`}>
+                    {messages?.map(({ messages }) => (
+                        messages.map(({ message_text, from_profile, sent_datetime }) => (
+                            <Card.Link style={{ textDecoration: 'none' }} href={`/messages/${from_profile}`}>
                             <Card text='white' className='' bg='dark'>
                                 <Row>
                                     <Col xl={4}>
@@ -63,7 +62,7 @@ export default function Message() {
                                 </Row>
                             </Card>
                         </Card.Link>
-                    ))}
+                    ))))}
                     <Form ref={bottomRef} onSubmit={postMessages}>
                         <Row>
                             <Col lg={10} xl={10}>

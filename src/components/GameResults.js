@@ -29,14 +29,12 @@ const GameResults = () => {
     function handleModalImage(event) {
         event.preventDefault();
         setModalImage(event.target.id);
-        console.log("Modal Image: ", modalImage);
         handleShow();
     }
 
     function handleModalChange(event) {
         event.preventDefault();
         setModalValue(event.target.value);
-        console.log("Modal Value: ", modalValue)
     }
 
     function postGame(event) {
@@ -99,32 +97,32 @@ const GameResults = () => {
                 </Col>
             ))}
             <Modal  show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Post Game</Modal.Title>
-                        </Modal.Header>
-                        <Form style={{ backgroundColor: 'black' }} onSubmit={postGame}>
-                            <Card >
-                                <Card.Img id={`https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`} src={`https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`}/>
-                            </Card>
-                            <Modal.Body>
-                                    <Form.Group
-                                    className="mb-3"
-                                    controlId="ControlTextarea"
-                                    >
-                                    <Form.Label>Write your thoughts on the game here</Form.Label>
-                                    <Form.Control value={modalValue} onChange={handleModalChange} as="textarea" rows={3} />
-                                    </Form.Group>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="dark" onClick={handleClose}>
-                                    Close
-                                </Button>
-                                <Button variant="dark" type="submit">
-                                    Post
-                                </Button>
-                            </Modal.Footer>
-                        </Form>
-                    </Modal>
+                <Modal.Header closeButton>
+                    <Modal.Title>Post Game</Modal.Title>
+                </Modal.Header>
+                <Form style={{ backgroundColor: 'black' }} onSubmit={postGame}>
+                    <Card >
+                        <Card.Img id={`https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`} src={`https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`}/>
+                    </Card>
+                    <Modal.Body>
+                            <Form.Group
+                            className="mb-3"
+                            controlId="ControlTextarea"
+                            >
+                            <Form.Label>Write your thoughts on the game here</Form.Label>
+                            <Form.Control value={modalValue} onChange={handleModalChange} as="textarea" rows={3} />
+                            </Form.Group>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="dark" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="dark" type="submit">
+                            Post
+                        </Button>
+                    </Modal.Footer>
+                </Form>
+            </Modal>
         </Row>
     );
 }

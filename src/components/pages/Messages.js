@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, Fragment } from 'react';
-import { Card, Col, Row, Form, Button } from 'react-bootstrap';
+import { Card, Col, Row, Form, Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 
 import { utcConverter } from '../../utils/date/Date';
@@ -9,14 +9,64 @@ import { UserProfilesContext } from '../../contexts/userprofiles.context';
 import ProfileCard from '../ProfileCard';
 
 export default function Messages() {
+    const [errorMessage, setErrorMessage] = useState('');
+    const [conversationId, setConversationId] = useState(null);
+    const [show, setShow] = useState(false);
+    const [messageText, setMessageText] = useState('');
     const { userProfiles } = useContext(UserProfilesContext);
     const [conversations, setConversations] = useState([]);
     const [friends, setFriends] = useState([]);
     const [query, setQuery] = useState('');
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    function handleMessageChange(event) {
+        event.preventDefault();
+        setMessageText(event.target.value);
+    }
+
     function handleChange(event) {
         event.preventDefault();
         setQuery(event.target.value);
+    }
+
+    async function createConversation() {
+        await axios.post('/api/conversations/', {
+            mode: 'no-cors'
+        })
+        .then((response) => setConversationId(response.data.id))
+        .catch(err => {
+            setErrorMessage(err);
+            console.error(errorMessage);
+        });
+    }
+
+    function startConversation(event) {
+        event.preventDefault();
+        createConversation();
+        handleShow();
+    }
+
+    function sendMessage(event) {
+        event.preventDefault();
+        const addChatMember = async () => {
+            await axios.post(`/api/chatmembers/${conversationId}`, 
+            {
+                mode: 'no-cors'
+            })
+        }
+        const postMessage = async () => {
+            await axios.post(`/api/messages/${conversationId}`,
+            {
+                message_text: messageText,
+                mode: 'no-cors', 
+            })
+        }
+        console.log(conversationId);
+        addChatMember();
+        postMessage();
+        handleClose();
     }
 
     useEffect(() => {
@@ -62,18 +112,44 @@ export default function Messages() {
             </Col>
             <Col md={6} lg={8} xl={8}>
                 {Object.keys(friends).length ? 
+                    <Fragment>
                     <Card style={{ color: 'white' }} className='bg-dark'>
                         <Row xs={3} sm={3} md={3} lg={3} xl={3}>
                             <Col xs={2} sm={2} md={2} lg={2} xl={2}></Col>
                             <Col><Card.Title>{friends.username}</Card.Title></Col>
-                            <Col style={{ textAlign: 'end'}}><Button>Message</Button></Col>
+                            <Col style={{ textAlign: 'end'}}><Button onClick={startConversation}>Message</Button></Col>
                         </Row>
                     </Card>
+                    <Modal  show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Write a message</Modal.Title>
+                    </Modal.Header>
+                    <Form style={{ backgroundColor: 'black' }} onSubmit={sendMessage}>
+                        <Modal.Body>
+                                <Form.Group
+                                className="mb-3"
+                                controlId="ControlTextarea"
+                                >
+                                <Form.Label>Write your thoughts on the game here</Form.Label>
+                                <Form.Control value={messageText} onChange={handleMessageChange} as="textarea" rows={3} />
+                                </Form.Group>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="dark" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="dark" type="submit">
+                                Post
+                            </Button>
+                        </Modal.Footer>
+                    </Form>
+                </Modal>
+                </Fragment>
                  : 
                 <Fragment>
                     {conversations?.length ? (Array.from(conversations)?.map(({ id, messages,  }) => (
                         <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/messages/${id}`}>
-                            <Card text='white' className='' bg='dark'>
+                            <Card text='white' className='mb-4' bg='dark'>
                                 <Row>
                                     <Col xl={4}>
                                         <Card.Img height='100' style={{ objectFit:'cover'}} src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
