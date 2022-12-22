@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
@@ -28,28 +29,31 @@ import SingleProfile from "./components/pages/SingleProfile";
 import './App.css';
 import GameProfile from "./components/GameProfile";
 
+import { UserContext } from "./contexts/user.context";
+
 function App() {
+  const { currentUser } = useContext(UserContext);
   return (
     <Routes>
       <Route path='/' element={<><NavBar/><SidebarIndex/><Footer/></>} >
         <Route index element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/authentication' element={<Authentication />}/>
-        <Route path='/connections' element={<Connections />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path='/discovery' element={<Discovery />}/>
+        <Route path='/connections' element={currentUser ? <Connections /> : <Authentication /> }/>
+        <Route path="/dashboard" element={currentUser ? <Dashboard /> : <Authentication /> }/>
+        <Route path='/discovery' element={currentUser ? <Discovery /> : <Authentication /> }/>
         <Route path='/explore' element={<Explore />}/>
         <Route path='/events' element={<Events />}/>
         <Route path='/games' element={<Games />}/>
         <Route path='/games/:id/:imageId' element={<GameProfile />}/>
-        <Route path='/groups/:id' element={<Group />}/>
+        <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
         <Route path='/groups' element={<Groups />}/>
-        <Route path='/interactions' element={<Interactions />}/>
-        <Route path='/messages' element={<Messages />}/>
-        <Route path='/messages/:id' element={<Message />}/>
+        <Route path='/interactions' element={currentUser ? <Interactions /> : <Authentication /> }/>
+        <Route path='/messages' element={currentUser ? <Messages /> : <Authentication /> }/>
+        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
-        <Route path='/profile' element={<Profile />}/>
+        <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/>
         <Route path='/profile/:id' element={<SingleProfile />}/>
         <Route path='/profiles' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>
