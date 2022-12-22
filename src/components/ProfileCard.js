@@ -47,7 +47,7 @@ const ProfileCard = () => {
                         <Card className="bg-dark" >
                             <Row xs={2} sm={2} md={2} lg={2} xl={2}>
                                 <Col xs={1} sm={1} md={1} lg={1} xl={1}>
-                                    <Card.Img style={{ width: '1rem'}}src={game.media_location_url} />
+                                    <Card.Img style={{ width: '1rem'}} src={game.media_location_url} />
                                 </Col>
                                 <Col>
                                     <Card.Text>{game.title}</Card.Text>

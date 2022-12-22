@@ -21,12 +21,12 @@ const UserGroupsTab = () => {
 
     return (
         <Fragment>
-            {groups?.length > 0 ? Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time }) => (
+            {groups?.length > 0 ? Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time, media_location_url }) => (
                 <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                     <Card key='information' style={{ margin: '1rem', color: 'white' }} bg='dark'>
                         <Row>
                             <Col key='img' xl={4}>
-                                <Card.Img height='200' style={{ objectFit:'cover'}} src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
+                                <Card.Img height='200' style={{ objectFit:'cover'}} src={media_location_url} />
                             </Col>
                             <Col xl={8} key={id}>
                                 <Card.Header>{group_name}</Card.Header>
