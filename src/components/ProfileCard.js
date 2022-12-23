@@ -1,9 +1,14 @@
-import { Fragment, useContext } from "react";
-import { Card, Row, Col } from "react-bootstrap";
+import { Fragment, useContext, useState } from "react";
+import { Card, Row, Col, Modal } from "react-bootstrap";
 import { AuthContext } from "../contexts/auth.context";
+import CreateGroup from "./CreateGroup";
 
 const ProfileCard = () => {
     const { auth } = useContext(AuthContext);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <Fragment>
@@ -17,7 +22,7 @@ const ProfileCard = () => {
                     <Card.Subtitle>{about}</Card.Subtitle>
                     <Card.Title>Posts</Card.Title>
                     <Card.Text>{userposts.length}</Card.Text>
-                    <Card.Title>Groups</Card.Title>
+                    <Card.Title>Shells</Card.Title>
                     {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
                         <Card className="bg-dark">
                             <Row xs={2} sm={2} md={2} lg={2} xl={2}>
@@ -35,7 +40,7 @@ const ProfileCard = () => {
                                 <Col xs={1} sm={1} md={1} lg={1} xl={1}>
                                 </Col>
                                 <Col>
-                                    <Card.Text>Create a Group</Card.Text>
+                                    <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Create a Shell</Card.Text>
                                 </Col>
                             </Row>
                         </Card>
@@ -63,6 +68,9 @@ const ProfileCard = () => {
                 </Card.Footer>
             </Card>
             ))}
+            <Modal  show={show} onHide={handleClose}>
+                <CreateGroup />
+            </Modal>
         </Fragment>
     )
 }

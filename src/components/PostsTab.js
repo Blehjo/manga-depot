@@ -39,7 +39,7 @@ const PostsTab = () => {
     return (
         <Fragment>
             <Form onSubmit={post}>
-                <Row style={{ marginBottom: '3rem' }} md={1} lg={2} xl={2}>
+                <Row style={{ marginBottom: '3rem', justifyContent: 'center' }} md={1} lg={2} xl={2}>
                     <Col lg={8}xl={8} >
                         <Form.Control className="mb-3" onChange={handleMediaChange} type='text' placeholder="Media Url"/>
                         <textarea type="textarea" onChange={handlePostChange} placeholder=" Write your post here" style={{ width: '100%'}}/>

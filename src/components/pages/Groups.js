@@ -1,10 +1,20 @@
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useContext } from "react";
 import axios from "axios";
-import { Row, Col, Card, Badge } from "react-bootstrap";
+import { Row, Col, Card, Badge, Button } from "react-bootstrap";
 import { utcConverter } from "../../utils/date/Date";
 
+import { AuthContext } from "../../contexts/auth.context";
+
 const Groups = () => {
+    const { auth } = useContext(AuthContext);
     const [groups, setGroups] = useState({});
+
+    async function handleClickEvent(event) {
+        await axios.post(`/api/groupmembers/`, {
+            group_id: event.target.id
+        })
+        .then((response) => console.log(response));
+    }
     
     function getGroups() {
         axios.get(`/groups/`,
@@ -21,7 +31,7 @@ const Groups = () => {
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 mt-2 m-5" key="groups">
-                {Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time, media_location_url }) => (
+                {Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time, media_location_url, groupmembers }) => (
                     <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                         <Card text='white' className='' bg='dark'>
                             <Row>
@@ -34,8 +44,9 @@ const Groups = () => {
                                         <Card.Text>
                                             {group_description}
                                         </Card.Text>
-                                        <Card.Text>{`Established ${utcConverter(created_date_time)}`}</Card.Text>
+                                        <Card.Text>{`Established ${utcConverter(created_date_time)}`} | Members: {groupmembers.length}</Card.Text>
                                         {'Platform:  '}<Badge pill='info'>{platform}</Badge>
+                                        {(groupmembers.some(({ profile_id }) => profile_id === auth[0].id)) || <Button id={id} onClick={handleClickEvent}>Join</Button> }
                                     </Card.Body>
                                 </Col>
                             </Row>

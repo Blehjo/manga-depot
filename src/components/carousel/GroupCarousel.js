@@ -79,9 +79,9 @@ const GroupCarousel = () => {
                         sliderClass=""
                         swipeable
                     >
-                        {groups?.map(({id, group_name}) => (
+                        {groups?.map(({ id, group_name, media_location_url, description }) => (
                                 <Card className="mx-2 bg-dark text-white" key={id}>
-                                    {<Card.Img style={{ objectFit:'cover'}} variant="top" src={`https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg`} />}
+                                    {<Card.Img style={{ objectFit:'cover'}} variant="top" src={media_location_url} />}
                                     <Card.Link className="genre-card card-info"href={`/genre/${group_name}`}>
                                         <Card.Body className="genre-card">
                                             <Card.Title>

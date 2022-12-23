@@ -1,16 +1,12 @@
-import { Fragment, useState, useEffect, useContext } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 
 import ProfileCard from '../ProfileCard';
 import ProfileTabs from '../ProfileTabs';
 
-import { UserContext } from '../../contexts/user.context';
-import Authentication from './Authentication';
-
 export default function Profile() {
   const [profile, setProfile] = useState();
-  const { currentUser } = useContext(UserContext);
 
   useEffect( () => {
 

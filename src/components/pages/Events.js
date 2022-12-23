@@ -20,7 +20,7 @@ const Events = () => {
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 mt-2 m-5" key="events">
-                {Array.from(events)?.map(({ id, event_name, event_description, group, group_id, media_location_url, groupmembers }) => (
+                {Array.from(events)?.map(({ id, event_name, event_description, group, group_id, media_location_url, eventmembers }) => (
                     <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                         <Card text='white' className='' bg='dark'>
                             <Row>
@@ -37,7 +37,7 @@ const Events = () => {
                                         {/* <Badge pill='info'>{platform}</Badge>{' '} */}
                                     </Card.Body>
                                     <Card.Footer>
-                                        Group Name: {group.group_name} | Created: {utcConverter(group.created_date_time)} | Members: {groupmembers.length}
+                                        Group Name: {group.group_name} | Created: {utcConverter(group.created_date_time)} | Members: {eventmembers.length}
                                     </Card.Footer>
                                 </Col>
                             </Row>
