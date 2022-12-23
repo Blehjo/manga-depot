@@ -14,7 +14,7 @@ const ProfileCard = () => {
         <Fragment>
             {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
-                <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
                     <Card.Title>{username}</Card.Title>
                     <Card.Subtitle>{first_name}</Card.Subtitle>
@@ -24,6 +24,29 @@ const ProfileCard = () => {
                     <Card.Text>{userposts.length}</Card.Text>
                     <Card.Title>Shells</Card.Title>
                     {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
+                        <Card className="m-1 bg-dark">
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col style={{ width: '3rem' }} xs={1} sm={1} md={1} lg={1} xl={1}>
+                                    <Card.Img src={media_location_url}/>
+                                </Col>
+                                <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+                                    <Card.Text>{group_name}</Card.Text>
+                                </Col>
+                            </Row>
+                        </Card>
+                    )) : (
+                        <Card className="bg-dark">
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                </Col>
+                                <Col>
+                                    <Card.Text show={show} onHide={handleClose} onClick={handleShow}>No Shells Yet</Card.Text>
+                                </Col>
+                            </Row>
+                        </Card>
+                    )}
+                    <Card.Title>Friends</Card.Title>
+                    {friendships?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
                         <Card className="m-1 bg-dark">
                             <Row xs={2} sm={2} md={2} lg={2} xl={2}>
                                 <Col style={{ width: '3rem' }} xs={1} sm={1} md={1} lg={1} xl={1}>
@@ -65,8 +88,7 @@ const ProfileCard = () => {
                         <Card className="bg-dark">
                             <Card.Text>No Games</Card.Text>
                         </Card>
-                    )
-                }
+                    )}
                 </Card.Footer>
             </Card>
             ))}

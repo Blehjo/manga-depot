@@ -44,11 +44,12 @@ export default function Message() {
         <div className="groups-container">
             <h1 style={{ color: 'white' }}>Messages</h1>
             <div style={{ padding: '15px' }}>
-                <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
+                <Row style={{ position: 'relative', height: '70vh', margin: '1rem' }} xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="groups">
+                    <Col>
                     {messages?.map(({ messages }) => (
                         messages.map(({ message_text, from_profile, sent_datetime }) => (
-                            <Card.Link style={{ textDecoration: 'none' }} href={`/messages/${from_profile}`}>
-                            <Card text='white' className='' bg='dark'>
+                            <Card.Link style={{ textDecoration: 'none' }} href={`/profile/${from_profile}`}>
+                            <Card text='white' className='m-2' bg='dark'>
                                 <Row>
                                     <Col xl={4}>
                                         <Card.Img height='100' style={{ objectFit:'cover'}} src={`${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
@@ -63,7 +64,8 @@ export default function Message() {
                             </Card>
                         </Card.Link>
                     ))))}
-                    <Form ref={bottomRef} onSubmit={postMessages}>
+                    </Col>
+                    <Form style={{ position: 'absolute', bottom: '0' }} ref={bottomRef} onSubmit={postMessages}>
                         <Row>
                             <Col lg={10} xl={10}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

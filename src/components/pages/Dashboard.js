@@ -32,7 +32,7 @@ const Dashboard = () => {
                             key={id}
                         >
                             {<Card.Img  href={`/groups/${id}`} style={{ objectFit:'cover'}} variant="top" src={media_location_url ? media_location_url : `${"https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />}
-                                <Card.ImgOverlay>
+                                {/* <Card.ImgOverlay>
                                     <Nav style={{ justifyContent: 'start', fontSize: '25px', color: 'white' }}>
                                         <Nav.Item>
                                             <Nav.Link><FontAwesomeIcon className="icon-item" icon={faArrowRight} /></Nav.Link>
@@ -44,7 +44,7 @@ const Dashboard = () => {
                                             <Nav.Link href={`/groups/${id}`}><FontAwesomeIcon className="icon-item" icon={faEye} /></Nav.Link>
                                         </Nav.Item>
                                     </Nav>
-                                </Card.ImgOverlay>
+                                </Card.ImgOverlay> */}
                             <Card.Body className=''>
                                 <Card.Title>{group_name}</Card.Title>
                                 {group_description.length > 20 ? `Description` : <Card.Subtitle>{group_description}</Card.Subtitle>}

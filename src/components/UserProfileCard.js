@@ -29,9 +29,15 @@ const UserProfileCard = () => {
                     <Card.Subtitle>{about}</Card.Subtitle>
                     <Card.Title>Groups</Card.Title>
                     {groups?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
-                        <Card key='top' className="bg-dark">
-                            <Card.Img src={media_location_url}/>
-                            <Card.Title>{group_name}</Card.Title>
+                        <Card className="m-1 bg-dark">
+                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                <Col style={{ width: '3rem' }} xs={1} sm={1} md={1} lg={1} xl={1}>
+                                    <Card.Img src={media_location_url}/>
+                                </Col>
+                                <Col xs={10} sm={10} md={10} lg={10} xl={10}>
+                                    <Card.Text>{group_name}</Card.Text>
+                                </Col>
+                            </Row>
                         </Card>
                     )) : (
                         <Card key='bottom' className="bg-dark">
@@ -41,19 +47,21 @@ const UserProfileCard = () => {
                 </Card.Body>
                 <Card.Footer>
                     <Card.Title>Games</Card.Title>
-                    {games?.length > 0 ? games?.map((game) => (
-                        <Card className="bg-dark" >
-                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
-                                    <Card.Img style={{ width: '1rem'}}src={game.media_location_url} />
-                                </Col>
-                                <Col>
-                                    <Card.Text>{game.title}</Card.Text>
-                                </Col>
-                            </Row>
+                    {games?.length > 0 ? games?.map(({ id, media_location_url, title}) => (
+                        <Card className="m-1 bg-dark" >
+                            <Card.Link style={{ textDecoration: 'none' }} href={`/games/${id}`}>
+                                <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                    <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+                                        <Card.Img style={{ width: '1rem'}} src={media_location_url} />
+                                    </Col>
+                                    <Col style={{ position: 'relative' }}>
+                                        <Card.Text style={{ position: 'absolute', bottom: '0' }}>{title}</Card.Text>
+                                    </Col>
+                                </Row>
+                            </Card.Link>
                         </Card>
                     )) : (
-                        <Card key='bottom' className="bg-dark">
+                        <Card className="bg-dark">
                             <Card.Text>No Games</Card.Text>
                         </Card>
                     )}
