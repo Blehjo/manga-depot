@@ -86,13 +86,26 @@ const GameResults = () => {
                                 </div>
                             </Card.ImgOverlay>
                         <Card.Body className=''>
-                            <Card.Text key={first_release_date} >{unixConverter(first_release_date)}</Card.Text>
-                            {platforms?.map((platform) => (
-                                <Badge key={platform.abbreviation} pill bg="primary">
-                                    {`${platform.abbreviation}`}
-                                </Badge>
+                            <Row >
+                            {platforms?.slice(0, 5).map(({ abbreviation }) => (
+                                <Col>
+                                    <Badge key={abbreviation} pill bg="primary">
+                                        {`${abbreviation}`}
+                                    </Badge>
+                                </Col>
                             ))}
+                            {platforms.length > 5 &&
+                                <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+                                    <Card className="bg-dark">
+                                        {platforms?.length} More Platforms
+                                    </Card>
+                                </Col>
+                            }
+                            </Row>
                         </Card.Body>
+                        <Card.Footer>
+                            <Card.Text key={first_release_date} >{unixConverter(first_release_date)}</Card.Text>
+                        </Card.Footer>
                     </Card>
                 </Col>
             ))}

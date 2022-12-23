@@ -4,8 +4,6 @@ import { Collection, Globe, House, Eye, Speedometer2, Router, ChatDots } from 'r
 
 import axios from 'axios';
 
-import { utcConverter } from '../utils/date/Date';
-
 const SidebarOverlay = () => {
     const [groups, setGroups] = useState();
     
@@ -72,20 +70,22 @@ const SidebarOverlay = () => {
                     <Nav.Link href="/" className="ms-4">
                         Search
                     </Nav.Link>
-                </Nav.Item>
-                {groups?.length > 0 && <Nav>Groups</Nav>}
+                </Nav.Item >
+                {groups?.length > 0 && <Nav className="ms-4 align-items-center">Groups</Nav>}
                 {groups?.length > 0 && Array.from(groups)?.map(({ id, group_name, media_location_url }) => (
-                    <Nav.Item className="mb-3 ms-3 d-flex align-items-center">
-                        <Card className="bg-dark">
-                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
-                                    <Card.Img style={{ width: '1rem'}} src={media_location_url} />
-                                </Col>
-                                <Col>
-                                    <Card.Text>{group_name}</Card.Text>
-                                </Col>
-                            </Row>
-                        </Card>
+                    <Nav.Item className="mb-1 ms-3 align-items-center">
+                        <Nav.Link href={`/groups/${id}`}>
+                            <Card className="m-1 bg-dark">
+                                <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                    <Col xs={2} sm={2} md={2} lg={2} xl={2}>
+                                        <Card.Img style={{ width: '1.5rem'}} src={media_location_url} />
+                                    </Col>
+                                    <Col style={{ position: 'relative' }} xs={10} sm={10} md={10} lg={10} xl={10}>
+                                        <Card.Text style={{ position: 'absolute', bottom:'0' }}>{group_name}</Card.Text>
+                                    </Col>
+                                </Row>
+                            </Card>
+                        </Nav.Link>
                     </Nav.Item>
                 ))}
             </Row>

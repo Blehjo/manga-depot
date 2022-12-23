@@ -13,7 +13,6 @@ const Groups = () => {
         await axios.post(`/api/groupmembers/`, {
             group_id: event.target.id
         })
-        .then((response) => console.log(response));
     }
     
     function getGroups() {
@@ -39,14 +38,20 @@ const Groups = () => {
                                     <Card.Img height='200' style={{ objectFit:'cover'}} src={media_location_url} />
                                 </Col>
                                 <Col xl={8} key={id}>
-                                    <Card.Header>{group_name}</Card.Header>
+                                    <Row xs={2} sm={2} md={2} lg={2} xl={2}>
+                                        <Col>
+                                            <Card.Header>{group_name}</Card.Header>
+                                        </Col>
+                                        <Col>
+                                            {(groupmembers.some(({ profile_id }) => profile_id === auth[0].id)) || <Button id={id} onClick={handleClickEvent}>Join Shell</Button> }
+                                        </Col>
+                                    </Row>
                                     <Card.Body>
                                         <Card.Text>
                                             {group_description}
                                         </Card.Text>
                                         <Card.Text>{`Established ${utcConverter(created_date_time)}`} | Members: {groupmembers.length}</Card.Text>
                                         {'Platform:  '}<Badge pill='info'>{platform}</Badge>
-                                        {(groupmembers.some(({ profile_id }) => profile_id === auth[0].id)) || <Button id={id} onClick={handleClickEvent}>Join</Button> }
                                     </Card.Body>
                                 </Col>
                             </Row>
