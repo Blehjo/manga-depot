@@ -24,52 +24,45 @@
 ---
 &nbsp;
   ## Installation:
-The application is deployed [here](https://)
+The application is deployed [here](https://shellgeist.com).
 
-
-  However, if you would like to clone to your local machine:
-  &nbsp;
-  1. `git clone` this repository and the [backend repo](https://github.com/Blehjo/shell-geist-back-end)
-  2. In the project's terminal, run `yarn` to install the dependencies
-  4. Run `npm run seed` in the backend repository
-  5. To run the application, run `yarn start` in both repositories
 
   &nbsp;
   ## Usage:
   The application is fully responsive. These screenshots are taken from a desktop computer.
 
 &nbsp;
-> Landing Page
+Landing Page
 ![Landing Page](./.github/images/landingpage.png) 
 
 &nbsp;
 ![Landing Page](./.github/images/parttwo.png) 
 
 &nbsp;
-> Group Pages
+Group Pages
 ![Groups Page](./.github/images/groups.png) 
 
 &nbsp;
 ![Groups Page Continued](./.github/images/groupspage.png) 
 
 &nbsp;
-> Interactions page
+Interactions page
 ![Interactions Page](./.github/images/interactionspage.png) 
 
 &nbsp;
-> User Interfaces
+User Interfaces
 ![User Interfaces](./.github/images/interfaces.png) 
 
 &nbsp;
-> Explore Page
+Explore Page
 ![Explore Page](./.github/images/explorepage.png)
 
 &nbsp;
-> Messages Page
+Messages Page
 ![Messages Page](./.github/images/messagespage.png)
 
 &nbsp;
-> Search Pages
+Search Pages
 ![Search Page](./.github/images/searchpage.png)
 
 &nbsp;
@@ -79,7 +72,7 @@ The application is deployed [here](https://)
 ![Search Page Continued](./.github/images/searchpage3.png)
 
 &nbsp;
-> Log in & Sign Up
+Log in & Sign Up
 ![Log in](./.github/images/signinpage.png)
 
 &nbsp;
