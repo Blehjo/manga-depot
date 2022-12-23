@@ -11,7 +11,7 @@
 
   [React](https://reactjs.org/), [Bootstrap](https://react-bootstrap.github.io/), [Node.js](https://nodejs.org/en/), [Express](https://expressjs.com/), and [Sequelize](https://www.sequelize.org/) were used to create this application.
 
- The deployed site can be found [here](https://discord.gg/sKywbh5R).
+ The deployed site can be found [here](https://shellgeist.com).
 
 
   &nbsp;
