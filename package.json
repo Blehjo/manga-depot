@@ -85,5 +85,5 @@
       "REACT_APP_MEASUREMENT_ID"
     ]
   },
-  "proxy": "http://localhost:3001/"
+  "proxy": "https://shellgeistapi.herokuapp.com/"
 }
