@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
@@ -19,8 +19,9 @@ const GroupCarousel = () => {
         getGroups();
     }, []);
 
+    // console.log(Array.isArray(groups));
     return (
-        <>
+        <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
                 <h1 href='/groups' className="text-white">Groups</h1>
                 <Col >
@@ -94,7 +95,7 @@ const GroupCarousel = () => {
                     </Carousel>
                 </Col>
             </Row>
-        </>
+        </Fragment>
     )
 }
 

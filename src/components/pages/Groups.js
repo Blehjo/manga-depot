@@ -18,19 +18,15 @@ const Groups = () => {
     }
 
     useEffect(() => {
-        // async function getGroups() {
-        //     await axios.get(`/groups/`,
-        //     {
-        //         mode: 'no-cors',
-        //     })
-        //     .then((response) => setGroups(response.data));
-        // }
-
-        // getGroups();
-        setGroups(groupResults);
-    }, [groups]);
-
-    console.log(groups);
+        async function getGroups() {
+            await axios.get("/groups",
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setGroups(response.data));
+        }
+        getGroups();
+    }, []);
 
     return (
         <Fragment>

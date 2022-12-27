@@ -28,6 +28,8 @@ const GenreCarousel = () => {
             });
     }, [errorMessage]);
 
+    // console.log(Array.isArray(genres));
+
     return (
         <Fragment>
             <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
