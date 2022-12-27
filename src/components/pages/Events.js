@@ -4,7 +4,7 @@ import { Row, Col, Card } from "react-bootstrap";
 import { utcConverter } from "../../utils/date/Date";
 
 const Events = () => {
-    const [events, setEvents] = useState({});
+    const [events, setEvents] = useState([]);
 
     useEffect(() => {
         async function getEvents() {

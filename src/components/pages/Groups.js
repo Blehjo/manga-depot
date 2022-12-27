@@ -4,28 +4,33 @@ import { Row, Col, Card, Badge, Button } from "react-bootstrap";
 import { utcConverter } from "../../utils/date/Date";
 
 import { AuthContext } from "../../contexts/auth.context";
+import { GroupResultContext } from "../../contexts/groupresult.context";
 
 const Groups = () => {
     const { auth } = useContext(AuthContext);
-    const [groups, setGroups] = useState({});
+    const { groupResults } = useContext(GroupResultContext);
+    const [groups, setGroups] = useState([]);
 
     async function handleClickEvent(event) {
         await axios.post(`/api/groupmembers/`, {
             group_id: event.target.id
         })
     }
-    
-    function getGroups() {
-        axios.get(`/groups/`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setGroups(response.data));
-    }
 
     useEffect(() => {
-        getGroups();
-    }, []);
+        // async function getGroups() {
+        //     await axios.get(`/groups/`,
+        //     {
+        //         mode: 'no-cors',
+        //     })
+        //     .then((response) => setGroups(response.data));
+        // }
+
+        // getGroups();
+        setGroups(groupResults);
+    }, [groups]);
+
+    console.log(groups);
 
     return (
         <Fragment>
