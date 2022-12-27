@@ -31,8 +31,6 @@ const GameCarousel = () => {
             });
     }, [errorMessage]);
 
-    // console.log(Array.isArray(games));
-
     return (
         <>
             <Row>

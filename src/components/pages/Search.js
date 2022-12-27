@@ -13,37 +13,39 @@ import Events from "./Events";
 
 const Search = () => {
     const { results } = useContext(ResultContext);
-    const { groupResults } = useContext(GroupResultContext);
-    const { userProfiles } = useContext(UserProfilesContext);
+    // const { groupResults } = useContext(GroupResultContext);
+    // const { userProfiles } = useContext(UserProfilesContext);
 
     return (
         <Fragment>
-            {results.length === 0 || groupResults.length === 0 ? (
+            {results ? (
+            // results.length === 0 || groupResults.length === 0 ? (
                 <SearchBar/>
             ) : (
-                <Fragment>
-                    <Tabs
-                        defaultActiveKey="games"
-                        id="justify-tab-example"
-                        justify
-                        className='mt-2 mb-5'
-                        variant='pills'
-                        bg='dark'
-                    >
-                        <Tab eventKey="games" title="Games">
-                            <GameResults />
-                        </Tab>
-                        <Tab eventKey="people" title="People">
-                            <Profiles />
-                        </Tab>
-                        <Tab eventKey="groups" title="Groups">
-                            <GroupResults />
-                        </Tab>
-                        <Tab eventKey="events" title="Events">
-                            <Events />
-                        </Tab>
-                    </Tabs>
-                </Fragment>
+                // <Fragment>
+                //     <Tabs
+                //         defaultActiveKey="games"
+                //         id="justify-tab-example"
+                //         justify
+                //         className='mt-2 mb-5'
+                //         variant='pills'
+                //         bg='dark'
+                //     >
+                //         <Tab eventKey="games" title="Games">
+                //             <GameResults />
+                //         </Tab>
+                //         <Tab eventKey="people" title="People">
+                //             <Profiles />
+                //         </Tab>
+                //         <Tab eventKey="groups" title="Groups">
+                //             <GroupResults />
+                //         </Tab>
+                //         <Tab eventKey="events" title="Events">
+                //             <Events />
+                //         </Tab>
+                //     </Tabs>
+                // </Fragment>
+                <GameResults />
             )}
         </Fragment>
     )

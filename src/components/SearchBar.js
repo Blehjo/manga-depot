@@ -9,7 +9,7 @@ const SearchBar = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
     const { setResults } = useContext(ResultContext);
-    const { groupResults } = useContext(GroupResultContext);
+    // const { groupResults } = useContext(GroupResultContext);
 
     const handleInputChange = (evt) => {
         evt.preventDefault();
@@ -44,8 +44,8 @@ const SearchBar = () => {
             return indexes;
         }
 
-        console.log(groupResults)
-        console.log(getAllIndexes(groupResults, searchField));
+        // console.log(groupResults)
+        // console.log(getAllIndexes(groupResults, searchField));
     };
 
     return (
