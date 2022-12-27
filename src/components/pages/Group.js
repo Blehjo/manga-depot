@@ -6,24 +6,34 @@ import { utcConverter } from "../../utils/date/Date";
 
 const Group = () => {
     const [group, setGroup] = useState({});
-    const [messages, setMessages] = useState({});
+    const [messages, setMessages] = useState([]);
+    const [events, setEvents] = useState([]);
     const [messageText, setMessageText] = useState('');
-    const [value, setValue] = useState('');
+    const [channel, setChannel] = useState(null);
     const { id } = useParams();
 
-    function handleChange(event) {
-        event.preventDefault();
-        setValue(event.target.value);
-    }
-
-    function postMessages() {
-        // evt.preventDefault();
-        axios.post(`/api/messages/${id}/`,
+    async function getChannelContent() {
+        await axios.get(`/api/channels/${channel}`,
         {
-            from_profile: id,
-            message_text: messageText
+            mode: 'no-cors',
         })
         .then((response) => setMessages(response.data));
+    }
+
+    function handleClickEvent(event) {
+        event.preventDefault();
+        setChannel(event.target.id);
+        getChannelContent();
+    }
+
+    async function postMessage(evt) {
+        evt.preventDefault();
+        await axios.post(`/api/channelcomments/${channel}/`,
+        {
+            channel_comment_text: messageText
+        })
+        setMessageText('');
+        // .then((response) => setMessages(response.data));
     }
 
     function messageHandler(evt) {
@@ -31,14 +41,6 @@ const Group = () => {
     }
 
     useEffect(() => {
-        // async function getMessages() {
-        //     await axios.get(`/api/conversations/${id}`,
-        //     {
-        //         mode: 'no-cors',
-        //     })
-        //     .then((response) => setMessages(response.data));
-        // }
-
         async function getGroup() {
             await axios.get(`/api/groups/${id}`,
             {
@@ -48,54 +50,96 @@ const Group = () => {
         }
 
         getGroup();
-        // getMessages();
-    }, [id]);
+    }, [id, channel]);
 
     const channels = group.groupchannels;
+    useEffect(() => {
+        async function getEvents() {
+            await axios.get(`/api/events/${id}`, {
+                mode: 'no-cors'
+            })
+            .then((response) => setEvents(response.data));
+        }
+
+        getEvents();
+    }, [])
+    console.log(events)
 
     return (
         <Fragment>
+            <Row md={2}>
+                <Col md={9}>
             <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
-                <Row style={{ color: 'white' }}>
-                    <Col key='list' sm={4} md={4} lg={2} xl={2}>
+                <Row style={{ color: 'white', position: 'relative' }}>
+                    <Col key='list' sm={4} md={4} lg={2} xl={3}>
                         <Nav variant="pills" className="flex-column">
                             <h1>Channels</h1>
+                            <img style={{ width: '90%', marginBottom: '1rem', borderRadius: '.5rem' }} src={group.media_location_url} />
                             {channels?.map(({id, channel_name}) => (
-                                <Nav.Item  variant="light" style={{ color: 'white' }} href={`#${id}`} key={id}>
-                                    <Nav.Link eventKey={id}>
+                                <Nav.Item id={id} onClick={handleClickEvent} variant="light" style={{ color: 'white' }} href={`#${id}`} key={id}>
+                                    <Nav.Link id={id} eventKey={id} >
+                                        <div id={id} >
                                         {channel_name}
+                                        </div>
                                     </Nav.Link>
                                 </Nav.Item>
                             ))}
                         </Nav>
                     </Col>
-                    <Col className='mt-3' style={{ width: '70%', margin: 'auto' }} key='content' sm={8} md={8} lg={10} xl={10}>
+                    <Col className='mt-3' style={{margin: 'auto' }} key='content' md={6}>
                         <Tab.Content>
-                            {channels?.map(({id, channel_description}) => (
-                                <Tab.Pane key={id} eventKey={id}>
+                            {channels?.map(({id, channel_description }) => (
+                                <Tab.Pane id={id} key={id} eventKey={id}>
                                     {channel_description}
+                                    <Row style={{ marginTop: '2rem', height: '40vh', overflowY: 'auto', overflowX: 'hidden' }} key={id}>
+                                        <Col> 
+                                    {messages?.map(({ channelcomments, id}) => (
+                                        channelcomments?.map(({ channel_comment_text, created_date_time, id }) => (
+                                            <Card key={id} className="bg-dark" style={{ marginTop: '1rem' }}>
+                                                <Card.Body>
+                                                    <Card.Text>
+                                                        {channel_comment_text}
+                                                    </Card.Text>
+                                                <Card.Text>{utcConverter(created_date_time)}</Card.Text>
+                                                </Card.Body>
+                                            </Card>
+                                        ))
+                                        ))}
+                                        </Col>
+                                    </Row> 
+                                    <Form onSubmit={postMessage} style={{ position: 'absolute', bottom: '0', width: '100%' }}>
+                                        <Row md={2} >
+                                            <Col sm={8} xl={5}>
+                                                <Form.Control as="textarea" value={messageText} onChange={messageHandler}/>
+                                            </Col>
+                                            <Col>
+                                                <Button variant="light" type="submit">
+                                                    Send
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
                                 </Tab.Pane>
                             ))}
                         </Tab.Content>
-                        <Form>
-                            <Row md={1} lg={2} xl={2}>
-                                <Col lg={10} xl={10}>
-                                    <form>
-                                        <textarea style={{ width: '100%'}} value={value} onChange={handleChange}>
-
-                                        </textarea>
-                                    </form>
-                                </Col>
-                                <Col lg={2} xl={2}>
-                                    <Button variant="primary" type="submit">
-                                        Send
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
                     </Col>
                 </Row>
             </Tab.Container>
+            </Col>
+            <Col style={{ height: '65vh', overflowY: 'auto', color: 'white' }} md={3}>
+                <h3>Events</h3>
+                {Array.from(events)?.map(({ id, event_name, media_location_url }) => (
+                    <Card className="bg-dark" style={{ marginTop: '1rem'}}>
+                        <Card.Link style={{ textDecoration: 'none' }} href={`/events/${id}`}>
+                        <Card.Img src={media_location_url} alt={event_name} />
+                        <Card.Body>
+                            <Card.Text>{event_name}</Card.Text>
+                        </Card.Body>
+                        </Card.Link>
+                    </Card>
+                ))}
+            </Col>
+            </Row>
         </Fragment>
     )
 }
