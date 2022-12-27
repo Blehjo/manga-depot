@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input";
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 
 import CountrySelect from 'react-bootstrap-country-select';
 
@@ -10,8 +10,6 @@ import axios from "axios";
 import { 
     createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase.utils';
-
-import './sign-up-form.styles.scss';
 
 const defaultFormFields = {
     displayName: '',
@@ -75,80 +73,116 @@ const SignUpForm = () => {
     }
 
     return (
-        <div className="sign-up-container">
+        <Row style={{ justifyContent: 'center', color: 'white', marginTop: '5rem' }} xs={1}>
+            <Col lg={6}>
             <h2>Don't have an account?</h2>
             <span>Sign up with your email and password</span>
-            <form onSubmit={handleSubmit}>
-                <FormInput 
-                    label="Display Name"
-                    type="text" 
-                    required 
-                    onChange={handleChange} 
-                    name="displayName" 
-                    value={displayName} 
-                />
-
-                <FormInput 
-                    label="Email"
-                    type="email" 
-                    required 
-                    onChange={handleChange} 
-                    name="email" 
-                    value={email} 
-                />
-
-                <FormInput 
-                    label="Password"
-                    type="password" 
-                    required 
-                    onChange={handleChange} 
-                    name="password" 
-                    value={password} 
-                />
-
-                <FormInput 
-                    label="Confirm Password"
-                    type="password" 
-                    required 
-                    onChange={handleChange} 
-                    name="confirmPassword" 
-                    value={confirmPassword} 
-                />
-
-                <CountrySelect
+            <form style={{ color: 'white', marginTop: '1rem' }} onSubmit={handleSubmit} class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputDisplayName" class="form-label">Display Name</label>
+                    <input 
+                        required 
+                        onChange={handleChange} 
+                        name="displayName" 
+                        value={displayName} 
+                        type="text" 
+                        class="form-control" 
+                        id="inputDisplayName" 
+                        placeholder="User123"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        required 
+                        onChange={handleChange} 
+                        name="email" 
+                        value={email} 
+                        class="form-control" 
+                        id="inputEmail"
+                        placeholder="Kusanagi@shellgeist.com"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputFirstName" class="form-label">First Name</label>
+                    <input 
+                        type="text" 
+                        required 
+                        onChange={handleChange} 
+                        name="firstName" 
+                        value={firstName} 
+                        class="form-control" 
+                        id="inputFirstName"
+                        placeholder="Major"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputLastName" class="form-label">Last Name</label>
+                    <input 
+                        type="text" 
+                        required 
+                        onChange={handleChange} 
+                        name="lastName" 
+                        value={lastName} 
+                        class="form-control" 
+                        id="inputLastName"
+                        placeholder="Kusanagi"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input 
+                        label="Password"
+                        type="password" 
+                        required 
+                        onChange={handleChange} 
+                        name="password" 
+                        value={password} 
+                        class="form-control" 
+                        id="inputPassword"
+                        placeholder="Password"
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input 
+                        label="Confirm Password"
+                        type="password" 
+                        required 
+                        onChange={handleChange} 
+                        name="confirmPassword" 
+                        value={confirmPassword} 
+                        class="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Confirm Password"
+                    />
+                </div>
+                <div  class="col-md-6">
+                    <label for="selectCountry" class="form-label">Country</label>
+                    <CountrySelect 
                     value={country}
                     onChange={setCountry}
-                />
-
-                <FormInput 
-                    label=""
-                    type="date" 
-                    required 
-                    onChange={handleChange} 
-                    name="dateOfBirth" 
-                    value={dateOfBirth} 
-                />
-
-                <FormInput 
-                    label="First Name"
-                    type="text" 
-                    required 
-                    onChange={handleChange} 
-                    name="firstName" 
-                    value={firstName} 
-                />
-                <FormInput 
-                    label="Last Name"
-                    type="text" 
-                    required 
-                    onChange={handleChange} 
-                    name="lastName" 
-                    value={lastName} 
-                />
-
-                <Button type="submit">Submit</Button>
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">Date of Birth</label>
+                    <input 
+                        required 
+                        onChange={handleChange} 
+                        type="date" 
+                        name="dateOfBirth" 
+                        value={dateOfBirth} 
+                        id="selectDateOfBirth" 
+                        class="form-control" 
+                    />
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-light">Join</button>
+                </div>
             </form>
-        </div>
+            </Col>
+        </Row>
     )
 }
 

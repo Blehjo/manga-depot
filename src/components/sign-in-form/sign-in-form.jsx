@@ -1,13 +1,11 @@
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input";
-import { Button } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 import axios from "axios";
 
 import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
-
-import './sign-in-form.styles.scss';
 
 const SignInForm = () => {
     const [password, setPassword] = useState('');
@@ -65,33 +63,47 @@ const SignInForm = () => {
     }
 
     return (
-        <div className="sign-in-container">
+        <Row style={{ justifyContent: 'center', color: 'white' }} xs={1}>
+            <Col lg={6}>
             <h2>Already have an account?</h2>
             <span>Sign in with your email and password</span>
-            <form onSubmit={handleSubmit}>
-                <FormInput 
-                    label="Email"
-                    type="email" 
-                    required 
-                    onChange={handleEmailChange} 
-                    name="email" 
-                    value={email} 
-                />
-
-                <FormInput 
-                    label="Password"
-                    type="password" 
-                    required 
-                    onChange={handlePasswordChange} 
-                    name="password" 
-                    value={password} 
-                />
-                <div className="buttons-container">
-                    <Button type="submit">Sign in</Button>
-                    <Button onClick={signInWithGoogle} variant="info" type='button'>Sign in with Google</Button>
-                </div>
-            </form>
-        </div>
+            <Form onSubmit={handleSubmit} style={{ color: 'white', marginTop: '1rem' }}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        name="email"
+                        required
+                        placeholder="Enter email"
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                    <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control 
+                        type="password" 
+                        placeholder="Password" 
+                        required 
+                        onChange={handlePasswordChange} 
+                        name="password" 
+                        value={password} 
+                    />
+                </Form.Group>
+                <Row xs={1}>
+                    <Col style={{ marginBottom: '1rem' }}>
+                        <Button onClick={signInWithGoogle} variant="light" type='button'>Sign in with Google</Button>
+                    </Col>
+                    <Col>
+                        <Button variant="light" type="submit">Sign in</Button>
+                    </Col>
+                </Row>
+            </Form>
+            </Col>
+        </Row>
     )
 }
 
