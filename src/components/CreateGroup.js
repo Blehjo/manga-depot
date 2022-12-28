@@ -107,10 +107,10 @@ const CreateGroup = () => {
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="dark" onClick={handleClose}>
+                    <Button variant="light" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="dark" type="submit">
+                    <Button variant="light" type="submit">
                         Create
                     </Button>
                 </Modal.Footer>

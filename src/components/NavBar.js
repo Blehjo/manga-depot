@@ -80,12 +80,12 @@ function NavBar() {
                         aria-label="Search"
                         key="form-controller"
                         />
-                      <Button key="button-search" type="submit" variant="info">Search</Button>
+                      <Button key="button-search" type="submit" variant="light">Search</Button>
                     </Form>
                   </Nav>
                 </Col>
                 <Col key="navigationIcons">
-                    <Nav key="navIcons" variant='dark'className="justify-content-end flex-grow-1 pe-3">
+                    <Nav key="navIcons" variant='dark'className="justify-content-end pe-3">
                       {
                         currentUser ? (
                             <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>

@@ -33,8 +33,8 @@ const ProfileCard = () => {
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
-                    <Card.Title>Posts</Card.Title>
-                    <Card.Text>{userposts.length}</Card.Text>
+                    {userposts.length > 0 && <><Card.Title>Posts</Card.Title>
+                    <Card.Text>{userposts.length}</Card.Text></>}
                     <Row xs={2} >
                         <Col xs={6} >
                             <Card.Title>Shells</Card.Title>
@@ -62,7 +62,7 @@ const ProfileCard = () => {
                             </Col>
                         </Row>
                     ))}
-                    <Card.Title>Friends</Card.Title>
+                    <Card.Title style={{ marginTop: '1rem' }}>Mates</Card.Title>
                     {friendships?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
                         <Row xs={2} >
                             <Col style={{ width: '3rem' }} xs={1} >
@@ -73,9 +73,7 @@ const ProfileCard = () => {
                             </Col>
                         </Row>
                     )) : (
-                        <Row xs={2} >
-                            <Col xs={1} >
-                            </Col>
+                        <Row >
                             <Col>
                                 <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Follow mates</Card.Text>
                             </Col>

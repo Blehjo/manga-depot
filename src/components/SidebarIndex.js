@@ -12,13 +12,13 @@ function SidebarIndex() {
 
   return (
     <Row >
-      <Col xs={1} sm={1} md={1} lg={1} xl={1}>
+      <Col xs={1} >
         <div style={{ zIndex:200 }} className="fixed-top">
           <SidebarMenu/>
           {isNavOpen && <SidebarOverlay/>}
         </div>
       </Col>
-      <Col className="mediatoggle" style={{ margin: '2rem' }} xs={10} sm={10} md={10} lg={10} xl={10}>
+      <Col style={{ margin: '2rem' }} xs={10} >
         <Outlet/>
       </Col>
     </Row>

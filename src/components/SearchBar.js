@@ -58,7 +58,7 @@ const SearchBar = () => {
                     className="me-2 "
                     aria-label="Search"
                 />
-                <Button type="submit" variant="info">Search</Button>
+                <Button type="submit" variant="light">Search</Button>
             </Form>
         </Col>
     );

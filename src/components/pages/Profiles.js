@@ -19,6 +19,8 @@ export default function Profiles() {
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
+                    {userposts.length > 0 && <><Card.Title style={{ marginTop: '1rem' }}>Posts</Card.Title>
+                    <Card.Text>{userposts.length}</Card.Text></>}
                     {groups?.length > 0 && 
                     <>
                     <Card.Title style={{ marginTop: '1rem' }}>Shells</Card.Title>
@@ -26,10 +28,10 @@ export default function Profiles() {
                         <Row xs={2} >
                             <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                                 <Row xs={2} >
-                                    <Col xs={2} >
+                                    <Col xs={1} >
                                         <Card.Img style={{ width: '1.2rem' }} src={media_location_url}/>
                                     </Col>
-                                    <Col style={{ position: 'relative' }} xs={10} >
+                                    <Col style={{ marginLeft: '2rem', position: 'relative' }} xs={11} >
                                         <Card.Text style={{ position: 'absolute', bottom: '0' }}>{group_name}</Card.Text>
                                     </Col>
                                 </Row>
@@ -40,7 +42,7 @@ export default function Profiles() {
                     }
                     {friendships?.length > 0 && 
                     <>
-                     <Card.Title style={{ marginTop: '1rem' }} >Friends</Card.Title>
+                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
                     {friendships?.map(({ username, media_location_url }) => (
                         <Row xs={2} >
                             <Col style={{ width: '3rem' }} xs={1} >

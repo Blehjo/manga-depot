@@ -4,14 +4,14 @@ import { Form, Button, Modal } from "react-bootstrap";
 
 import { ResultContext } from "../contexts/result.context";
 import { GroupResultContext } from "../contexts/groupresult.context";
-import Groups from "./pages/Groups";
+import Events from "./pages/Events";
 
-const SearchGroup = () => {
+const SearchEvent = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
     const { setResults } = useContext(ResultContext);
     const { groupResults } = useContext(GroupResultContext);
-    const [groups, setGroups] = useState({});
+    const [events, setEvents] = useState({});
 
     const handleInputChange = (evt) => {
         evt.preventDefault();
@@ -19,55 +19,23 @@ const SearchGroup = () => {
     };    
 
     useEffect(() => {
-        async function getGroups() {
-            await axios.get(`/groups/`,
+        async function getEvents() {
+            await axios.get(`/events/`,
             {
                 mode: 'no-cors',
             })
-            .then((response) => setGroups(response.data));
+            .then((response) => setEvents(response.data));
         }
 
-        getGroups();
+        getEvents();
     }, []);
-
-    const handleClickEvent = async (evt) => {
-        evt.preventDefault();
-
-        await axios({
-            url: process.env.REACT_APP_URL,
-            method: 'POST',
-            headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
-            },
-            mode: 'no-cors',
-            data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
-        })
-        .then(response => {
-            setResults(response.data);
-        })
-        .catch(err => {
-            setErrorMessage(err);
-            console.error(errorMessage);
-        });
-
-        function getAllIndexes(arr, val) {
-            var indexes = [], i;
-            for(i = 0; i < arr.length; i++)
-                if (arr[i].group_name === val)
-                    indexes.push(arr[i]);
-            return indexes;
-        }
-
-        console.log(groupResults)
-        console.log(getAllIndexes(groupResults, searchField));
-    };
 
     return (
         <Fragment>
             <Modal.Header className="bg-dark" style={{ color: 'white' }} closeButton>
                 <Modal.Title>Search for a shell</Modal.Title>
             </Modal.Header>
-            <Form className="bg-dark" onSubmit={handleClickEvent} >
+            <Form className="bg-dark" onSubmit={handleInputChange} >
                 <Modal.Body>
                     <Form.Group
                     className="mb-3"
@@ -86,10 +54,10 @@ const SearchGroup = () => {
                         Search
                     </Button>
                 </Modal.Body>
-                <Groups />
+                <Events />
             </Form>
         </Fragment>
     );
 }
 
-export default SearchGroup;
+export default SearchEvent;

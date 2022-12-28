@@ -27,6 +27,8 @@ const UserProfileCard = () => {
                 <Card.Subtitle>{first_name}</Card.Subtitle>
                 <Card.Text>{country}</Card.Text> 
                 <Card.Subtitle>{about}</Card.Subtitle>
+                {userposts.length > 0 && <><Card.Title style={{ marginTop: '1rem' }}>Posts</Card.Title>
+                <Card.Text>{userposts.length}</Card.Text></>}
                 {groups?.length > 0 && 
                 <>
                 <Card.Title style={{ marginTop: '1rem' }}>Shells</Card.Title>
@@ -48,7 +50,7 @@ const UserProfileCard = () => {
                 }
                 {friendships?.length > 0 && 
                 <>
-                 <Card.Title style={{ marginTop: '1rem' }} >Friends</Card.Title>
+                 <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
                 {friendships?.map(({ username, media_location_url }) => (
                     <Row xs={2} >
                         <Col style={{ width: '3rem' }} xs={1} >

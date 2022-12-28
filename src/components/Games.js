@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap/';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faDownload, faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import axios from 'axios';
 
 import { unixConverter } from '../utils/date/Date';
@@ -40,13 +37,6 @@ const Games = () => {
           <Col className="mb-5" key={id}>
             <Card className="bg-dark card-container h-100 mb-4" key={id}>
                 {<Card.Img height='485' style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />}
-                <Card.ImgOverlay>
-                    <FontAwesomeIcon className="icon" icon={faEye} />
-                      <FontAwesomeIcon className="icon-item icon2" icon={faHeart} />
-                      <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                      <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                    <Card.Text className="icon3"><FontAwesomeIcon className="" icon={faDownload} /></Card.Text>
-                </Card.ImgOverlay>
                 <Card.Body>
                   <Card.Text>{name}</Card.Text>
                   <Card.Text>{unixConverter(first_release_date)}</Card.Text>
