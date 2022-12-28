@@ -52,18 +52,18 @@ const Dashboard = () => {
     return (
         <Fragment>
             <h1 style={{ color: 'white' }}>Dashboard</h1>
-            <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={1} md={2} className="" key="groups">
+            <Row xs={1} md={2} key="groups">
                 {contentArray?.map(({ id, media_location_url, type }) => (
-                    <Col key={id}>
+                    <Col style={{ marginBottom: '1.5rem' }} key={id}>
                         <Card.Link href={`/${type}`}>
                         <Card 
                             style={{ color: 'white' }} 
-                            className="mx-2 my-5 bg-dark card-container" 
+                            className="bg-dark" 
                             key={id}
                         >
-                            <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "25rem", objectFit: "cover" }} variant="top" src={media_location_url} alt={type}/>
+                            <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "25rem", objectFit: "cover" }} src={media_location_url} alt={type}/>
                             <Card.ImgOverlay >
-                            <div style={{ width: '100%', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-15%, -50%)' }} className="text-white">
+                            <div style={{ position: 'absolute', left: '50%', top: '50%',  borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
                                 <Card.Title style={{ fontSize: '500%' }}>{type}</Card.Title>
                             </div>
                             </Card.ImgOverlay>

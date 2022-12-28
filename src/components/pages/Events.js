@@ -19,7 +19,7 @@ const Events = () => {
 
     return (
         <Fragment>
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 mt-2 m-5" key="events">
+            <Row xs={1} className="g-4 mt-2 m-1" key="events">
                 {Array.from(events)?.map(({ id, event_name, event_description, group, group_id, media_location_url, eventmembers }) => (
                     <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                         <Card text='white' className='' bg='dark'>

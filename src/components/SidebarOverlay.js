@@ -5,7 +5,8 @@ import { Collection, Globe, House, Eye, Speedometer2, Router, ChatDots } from 'r
 import axios from 'axios';
 
 const SidebarOverlay = () => {
-    const [groups, setGroups] = useState();
+    const [groups, setGroups] = useState([]);
+    const [events, setEvents] = useState([]);
     
     useEffect(() => {
         const getGroups = async () => {
@@ -15,6 +16,16 @@ const SidebarOverlay = () => {
             .then((resp) => setGroups(resp.data)); 
         }
         getGroups();
+    }, [])
+
+    useEffect(() => {
+        const getEvents = async () => {
+            await axios.get(`/api/events/`, {
+                mode: 'no cors'
+            })
+            .then((resp) => setEvents(resp.data)); 
+        }
+        getEvents();
     }, [])
 
     return (
@@ -71,23 +82,44 @@ const SidebarOverlay = () => {
                         Search
                     </Nav.Link>
                 </Nav.Item >
-                {groups?.length > 0 && <Nav className="ms-4 align-items-center">Groups</Nav>}
-                {groups?.length > 0 && Array.from(groups)?.map(({ id, group_name, media_location_url }) => (
+                {groups?.length > 0 && 
+                <>
+                <Nav className="ms-4 align-items-center">Groups</Nav>
+                {Array.from(groups)?.map(({ id, group_name, media_location_url }) => (
                     <Nav.Item className="mb-1 ms-3 align-items-center">
                         <Nav.Link href={`/groups/${id}`}>
-                            <Card className="m-1 bg-dark">
-                                <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                    <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-                                        <Card.Img style={{ width: '1.5rem'}} src={media_location_url} />
+                                <Row xs={2} >
+                                    <Col xs={2} >
+                                        <Card.Img style={{ width: '1.5rem', borderRadius: '.2rem' }} src={media_location_url} />
                                     </Col>
-                                    <Col style={{ position: 'relative' }} xs={10} sm={10} md={10} lg={10} xl={10}>
+                                    <Col style={{ position: 'relative' }} xs={10}>
                                         <Card.Text style={{ position: 'absolute', bottom:'0' }}>{group_name}</Card.Text>
                                     </Col>
                                 </Row>
-                            </Card>
                         </Nav.Link>
                     </Nav.Item>
                 ))}
+                </>
+                }
+                {events?.length > 0 && 
+                <>
+                <Nav className="ms-4 align-items-center">Events</Nav>
+                {Array.from(events)?.map(({ id, event_name, media_location_url }) => (
+                    <Nav.Item className="mb-1 ms-3 align-items-center">
+                        <Nav.Link href={`/groups/${id}`}>
+                                <Row xs={2} >
+                                    <Col xs={2} >
+                                        <Card.Img style={{ width: '1.5rem', borderRadius: '.2rem' }} src={media_location_url} />
+                                    </Col>
+                                    <Col style={{ position: 'relative' }} xs={10}>
+                                        <Card.Text style={{ position: 'absolute', bottom:'0' }}>{event_name}</Card.Text>
+                                    </Col>
+                                </Row>
+                        </Nav.Link>
+                    </Nav.Item>
+                ))}
+                </>
+                }
             </Row>
         </div>
     )

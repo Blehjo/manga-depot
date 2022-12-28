@@ -25,7 +25,7 @@ const OnlineActivities = () => {
 
     return (
         <Fragment>
-            <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} sm={3} md={3} lg={3} xl={3}>
+            <Row style={{ display: 'flex', justifyContent: 'space-between' }} xs={1} md={3}>
                 {items.map(({ title, image, link, description }) => (
                     <Col key={title} className="text-white pb-5">
                         <Card className="bg-dark" key={title}>

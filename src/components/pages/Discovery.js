@@ -10,10 +10,9 @@ const Discovery = () => {
             defaultActiveKey="groups"
             id="justify-tab-example"
             justify
-            className="m-5"
+            className="m-2"
             variant='pills'
             bg='dark'
-            // style={{ backgroundColor: 'black'}}
             >
                 <Tab eventKey="groups" title="Groups">
                     <Groups/>

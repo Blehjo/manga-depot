@@ -22,7 +22,7 @@ export default function Profile() {
 
   return (
     <Fragment>
-      <Row className="mediatoggle m-5" lg={2}>
+      <Row lg={2}>
         <Col lg={4} style={{ marginBottom: '2rem' }}>
           <ProfileCard />
         </Col>

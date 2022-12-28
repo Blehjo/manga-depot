@@ -20,7 +20,7 @@ const EventCarousel = () => {
 
     return (
         <Fragment>
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="my-5" key="events">
+            <Row xs={1}  className="my-5" key="events">
                 <h1 className="text-white">Events</h1>
                 <Col >
                     <Carousel
@@ -83,7 +83,7 @@ const EventCarousel = () => {
                                 <Card.Link className="event-card card-info"href={`/event/${id}`}>
                                     <Card.Img style={{ position: 'relative',  width: "100%", height: "25rem", objectFit: "cover" }} variant="top" src={media_location_url} alt={event_name}/>
                                     <Card.ImgOverlay style={{  }}>
-                                    <div style={{ textAlign: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)', width: 'auto%', height: 'auto%', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
+                                    <div style={{ textAlign: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)', width: 'auto', height: 'auto', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
                                         <Card.Title style={{ fontSize: '200%' }}>{event_name}</Card.Title>
                                     </div>
                                     </Card.ImgOverlay>
