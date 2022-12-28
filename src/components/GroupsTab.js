@@ -30,7 +30,7 @@ const GroupsTab = () => {
 
     return (
         <Fragment>
-            <Row style={{ margin: '1rem' }} xs={1} sm={1} md={2} lg={2} xl={2}>
+            <Row xs={2} >
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
@@ -48,7 +48,7 @@ const GroupsTab = () => {
             </Row>
             {groups?.length > 0 ? Array.from(groups)?.map(({ id, group_name, group_description, platform, media_location_url, country, created_date_time }) => (
                     <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
-                        <Card style={{ margin: '1rem', color: 'white' }} bg='dark'>
+                        <Card style={{ marginTop: '1rem', color: 'white' }} bg='dark'>
                             <Row>
                                 <Col xl={4}>
                                     <Card.Img height='200' style={{ objectFit:'cover'}} src={media_location_url} />

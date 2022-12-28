@@ -15,6 +15,10 @@ const ProfileCard = () => {
         
     }
 
+    const deleteGroup = async (event) => {
+        await axios.delete(`/api/groups/${event.target.id}`);
+    }
+
     const deleteGame = async (event) => {
         await axios.delete(`/api/games/${event.target.id}`);
     }
@@ -31,72 +35,73 @@ const ProfileCard = () => {
                     <Card.Subtitle>{about}</Card.Subtitle>
                     <Card.Title>Posts</Card.Title>
                     <Card.Text>{userposts.length}</Card.Text>
-                        <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <Card.Title>Shells</Card.Title>
+                    <Row xs={2} >
+                        <Col xs={6} >
+                            <Card.Title>Shells</Card.Title>
+                        </Col>
+                        <Col style={{ position: 'relative' }} xs={6} >
+                            <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%' }} show={show} onHide={handleClose} onClick={handleShow}>Create a shell</Card.Title>
+                        </Col>
+                    </Row>
+                    {groups?.length > 0 && groups?.map(({ id, group_name, media_location_url }) => (
+                        <Row xs={3} >
+                            <Col xs={9} >
+                                <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
+                                    <Row xs={2} >
+                                    <Col xs={1} >
+                                        <Card.Img style={{ width: '1.2rem' }} src={media_location_url}/>
+                                    </Col>
+                                    <Col style={{ position: 'relative' }} xs={10} >
+                                        <Card.Text style={{ position: 'absolute', bottom: '0' }}>{group_name}</Card.Text>
+                                    </Col>
+                                    </Row>
+                                </Card.Link>
                             </Col>
-                            <Col style={{ position: 'relative' }} xs={6} sm={6} md={6} lg={6} xl={6}>
-                                <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%' }} show={show} onHide={handleClose} onClick={handleShow}>Create a shell</Card.Title>
+                            <Col xs={3} >
+                                <Card.Text id={id} onClick={deleteGroup}>Delete</Card.Text>
                             </Col>
                         </Row>
-                    {groups?.length > 0 && groups?.map(({ group_name, media_location_url }) => (
-                        <Card className="m-1 bg-dark">
-                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                <Col style={{ width: '3rem' }} xs={1} sm={1} md={1} lg={1} xl={1}>
-                                    <Card.Img src={media_location_url}/>
-                                </Col>
-                                <Col xs={10} sm={10} md={10} lg={10} xl={10}>
-                                    <Card.Text>{group_name}</Card.Text>
-                                </Col>
-                            </Row>
-                        </Card>
                     ))}
                     <Card.Title>Friends</Card.Title>
                     {friendships?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
-                        <Card className="m-1 bg-dark">
-                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                <Col style={{ width: '3rem' }} xs={1} sm={1} md={1} lg={1} xl={1}>
-                                    <Card.Img src={media_location_url}/>
-                                </Col>
-                                <Col xs={10} sm={10} md={10} lg={10} xl={10}>
-                                    <Card.Text>{group_name}</Card.Text>
-                                </Col>
-                            </Row>
-                        </Card>
+                        <Row xs={2} >
+                            <Col style={{ width: '3rem' }} xs={1} >
+                                <Card.Img src={media_location_url}/>
+                            </Col>
+                            <Col xs={10}>
+                                <Card.Text>{group_name}</Card.Text>
+                            </Col>
+                        </Row>
                     )) : (
-                        <Card className="bg-dark">
-                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
-                                </Col>
-                                <Col>
-                                    <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Follow mates</Card.Text>
-                                </Col>
-                            </Row>
-                        </Card>
+                        <Row xs={2} >
+                            <Col xs={1} >
+                            </Col>
+                            <Col>
+                                <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Follow mates</Card.Text>
+                            </Col>
+                        </Row>
                     )}
                 </Card.Body>
                 <Card.Footer>
                     <Card.Title>Games</Card.Title>
                     {games?.length > 0 ? games?.map(({ id, media_location_url, title}) => (
-                        <Card className="m-1 bg-dark" >
-                                <Row xs={3} sm={3} md={3} lg={3} xl={3}>
-                                    <Col xs={9} sm={9} md={9} lg={9} xl={9}>
-                                        <Card.Link style={{ textDecoration: 'none' }} href={`/games/${id}`}>
-                                            <Row xs={2} sm={2} md={2} lg={2} xl={2}>
-                                                <Col xs={1} sm={1} md={1} lg={1} xl={1}>
-                                                    <Card.Img style={{ width: '1rem'}} src={media_location_url} />
-                                                </Col>
-                                                <Col xs={10} sm={10} md={10} lg={10} xl={10} style={{ position: 'relative' }}>
-                                                    <Card.Text style={{ position: 'absolute', bottom: '0' }}>{title}</Card.Text>
-                                                </Col>
-                                            </Row>
-                                        </Card.Link>
-                                    </Col>
-                                    <Col xs={3} sm={3} md={3} lg={3} xl={3}>
-                                        <Card.Text id={id} onClick={deleteGame}>Delete</Card.Text>
-                                    </Col>
-                                </Row>
-                        </Card>
+                        <Row xs={3} >
+                            <Col xs={9} >
+                                <Card.Link style={{ textDecoration: 'none' }} href={`/games/${id}`}>
+                                    <Row xs={2} >
+                                        <Col xs={1} >
+                                            <Card.Img style={{ width: '1rem'}} src={media_location_url} />
+                                        </Col>
+                                        <Col xs={10} style={{ position: 'relative' }}>
+                                            <Card.Text style={{ position: 'absolute', bottom: '0' }}>{title}</Card.Text>
+                                        </Col>
+                                    </Row>
+                                </Card.Link>
+                            </Col>
+                            <Col xs={3}>
+                                <Card.Text id={id} onClick={deleteGame}>Delete</Card.Text>
+                            </Col>
+                        </Row>
                     )) : (
                         <Card className="bg-dark">
                             <Card.Text>No Games</Card.Text>
@@ -105,7 +110,7 @@ const ProfileCard = () => {
                 </Card.Footer>
             </Card>
             ))}
-            <Modal  show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
                 <CreateGroup />
             </Modal>
         </Fragment>

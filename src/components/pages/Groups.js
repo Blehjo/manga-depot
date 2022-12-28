@@ -43,16 +43,17 @@ const Groups = () => {
                                         <Col>
                                             <Card.Header>{group_name}</Card.Header>
                                         </Col>
-                                        <Col>
-                                            {(groupmembers.some(({ profile_id }) => profile_id === auth[0].id)) || <Button id={id} onClick={handleClickEvent}>Join Shell</Button> }
-                                        </Col>
+                                       
                                     </Row>
                                     <Card.Body>
                                         <Card.Text>
                                             {group_description}
                                         </Card.Text>
                                         <Card.Text>{`Established ${utcConverter(created_date_time)}`} | Members: {groupmembers.length}</Card.Text>
-                                        {'Platform:  '}<Badge pill='info'>{platform}</Badge>
+                                            {platform && 'Platform:  '}<Badge pill='info'>{platform}</Badge>
+                                            <Col style={{ marginTop: '1rem' }}>
+                                                {(groupmembers.some(({ profile_id }) => profile_id === auth[0].id)) || <Button variant="light" id={id} onClick={handleClickEvent}>Join Shell</Button> }
+                                            </Col>
                                     </Card.Body>
                                 </Col>
                             </Row>

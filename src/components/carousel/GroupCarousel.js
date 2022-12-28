@@ -80,16 +80,22 @@ const GroupCarousel = () => {
                         swipeable
                     >
                         {groups?.map(({ id, group_name, media_location_url, description }) => (
-                                <Card className="mx-2 bg-dark text-white" key={id}>
-                                    {<Card.Img style={{ objectFit:'cover'}} variant="top" src={media_location_url} />}
-                                    <Card.Link className="genre-card card-info"href={`/genre/${group_name}`}>
-                                        <Card.Body className="genre-card">
-                                            <Card.Title>
-                                                    {group_name}
-                                            </Card.Title>
-                                        </Card.Body>
-                                    </Card.Link>
+                            <Col key={id}>
+                                <Card.Link href={`/groups/${id}`}>
+                                <Card 
+                                    style={{ color: 'white' }} 
+                                    className="mx-2 my-5 bg-dark card-container" 
+                                    key={id}
+                                >
+                                    <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "25rem", objectFit: "cover" }} variant="top" src={media_location_url} alt={group_name}/>
+                                    <Card.ImgOverlay >
+                                    <div style={{ width: '100%', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-35%, -50%)' }} className="text-white">
+                                        <Card.Title style={{ fontSize: '400%' }}>{group_name}</Card.Title>
+                                    </div>
+                                    </Card.ImgOverlay>
                                 </Card>
+                                </Card.Link>
+                            </Col>
                         ))} 
                     </Carousel>
                 </Col>

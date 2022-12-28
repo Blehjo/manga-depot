@@ -58,14 +58,16 @@ const GameResults = () => {
         async function getInfo() {
             await axios.post('/api/games/', {
                 title: event.target.className,
-                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
+                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`,
+                link: `/games/${event.target.value}/${event.target.className}`
             })
             .catch(err => {
                 setErrorMessage(err);
                 console.error(errorMessage);
             });
         }
-        getInfo();
+        // getInfo();
+        console.log(event.target.value);
     }
 
     return (
@@ -73,7 +75,7 @@ const GameResults = () => {
             {games?.map(({ id, name, platforms, first_release_date, cover, age_ratings, summary }) => (
                 <Col key={cover?.image_id}>
                     <Card key={cover?.image_id} className="groups mx-2 mb-5 bg-dark card-container" >
-                            <Card.Img key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`${cover ? `https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg` : "https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
+                            <Card.Img key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />
                             <Card.ImgOverlay>
                                 <div  id={cover?.image_id} onClick={addToCatalogue} className={name} key={first_release_date}>
                                     Add

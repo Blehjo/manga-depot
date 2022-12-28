@@ -35,7 +35,7 @@ function App() {
   const { currentUser } = useContext(UserContext);
   return (
     <Routes>
-      <Route path='/' element={<><NavBar/><SidebarIndex/><Footer/></>} >
+      <Route path='/' element={<><NavBar/><SidebarIndex/></>} >
         <Route index element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/authentication' element={<Authentication />}/>

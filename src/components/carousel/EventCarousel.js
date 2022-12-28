@@ -78,18 +78,15 @@ const EventCarousel = () => {
                         sliderClass=""
                         swipeable
                     >    
-                        {Array.from(events)?.map(({ event_name, event_description, id, media_location_url }) => (
-                            <Card style={{ height: '13rem' }} className="mx-2 bg-dark text-white" key={id}>
+                        {Array.from(events)?.map(({ event_name, id, media_location_url }) => (
+                            <Card style={{ borderRadius: "1rem", height: '13rem' }} className="mx-2 bg-dark text-white" key={id}>
                                 <Card.Link className="event-card card-info"href={`/event/${id}`}>
-                                    <Card.Img src={media_location_url}/>
-                                    <Card.Body className="event-card">
-                                        <Card.Title>
-                                            {event_name}
-                                        </Card.Title>
-                                        <Card.Text>
-                                            {event_description}
-                                        </Card.Text>
-                                    </Card.Body>
+                                    <Card.Img style={{ position: 'relative',  width: "100%", height: "25rem", objectFit: "cover" }} variant="top" src={media_location_url} alt={event_name}/>
+                                    <Card.ImgOverlay style={{  }}>
+                                    <div style={{ textAlign: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)', width: 'auto%', height: 'auto%', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
+                                        <Card.Title style={{ fontSize: '200%' }}>{event_name}</Card.Title>
+                                    </div>
+                                    </Card.ImgOverlay>
                                 </Card.Link>
                             </Card>
                         ))}   

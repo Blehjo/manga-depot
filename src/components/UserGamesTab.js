@@ -20,7 +20,7 @@ const UserGamesTab = () => {
     return (
         <Fragment>
             {games?.length > 0 ? games?.map(({ id, media_location_url, title }) => (
-                <Card key={id} style={{ color: 'white', textAlign: 'center' }} className="bg-dark">
+                <Card key={id} style={{ color: 'white', textAlign: 'center', marginBottom: '1rem' }} className="bg-dark">
                     <Card.Img src={media_location_url}/>
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>

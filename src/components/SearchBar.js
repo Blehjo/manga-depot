@@ -1,6 +1,6 @@
 import { useState, Fragment, useContext } from "react";
 import axios from "axios";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 
 import { ResultContext } from "../contexts/result.context";
 import { GroupResultContext } from "../contexts/groupresult.context";
@@ -49,8 +49,8 @@ const SearchBar = () => {
     };
 
     return (
-        <Fragment>
-            <Form onSubmit={handleClickEvent} style={{ width: '50%', margin: 'auto' }} className="mt-5 d-flex">
+        <Col>
+            <Form onSubmit={handleClickEvent} className="mt-5 d-flex">
                 <Form.Control
                     onChange={handleInputChange}
                     type="search"
@@ -60,7 +60,7 @@ const SearchBar = () => {
                 />
                 <Button type="submit" variant="info">Search</Button>
             </Form>
-        </Fragment>
+        </Col>
     );
 }
 

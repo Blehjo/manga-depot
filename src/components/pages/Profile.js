@@ -22,11 +22,11 @@ export default function Profile() {
 
   return (
     <Fragment>
-      <Row className="mediatoggle m-5" lg={2} xl={2}>
-        <Col md={4} lg={4} xl={4}>
+      <Row className="mediatoggle m-5" lg={2}>
+        <Col lg={4} style={{ marginBottom: '2rem' }}>
           <ProfileCard />
         </Col>
-        <Col md={8} lg={8} xl={8}>
+        <Col lg={8} >
           <ProfileTabs />
         </Col>
       </Row> 

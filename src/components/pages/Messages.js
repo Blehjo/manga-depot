@@ -94,28 +94,22 @@ export default function Messages() {
 
   return (
     <Fragment>
-        <Row md={2} lg={2} xl={2}>
-            <Col md={4} lg={4} xl={4}>
+        <Row md={2} >
+            <Col md={4} >
                 <h1 style={{ color: 'white' }}>Messages</h1>
             </Col>
-            <Col md={3} lg={3} xl={3}>
-                <Form  >
-                    <Form.Group>
-                        <Form.Control value={query} onChange={handleChange} type="search" placeholder="Search for a friend to message" />
-                    </Form.Group>
-                </Form>
-            </Col>
+            
         </Row>
-        <Row xs={1} sm={1} md={2} lg={2} xl={2} className="g-4 pt-3" key="conversations">
-            <Col md={6} lg={4} xl={4}>
+        <Row xs={1} md={3} className="g-4 pt-3" key="conversations">
+            <Col md={3} >
                 <ProfileCard/>
             </Col>
-            <Col md={6} lg={8} xl={8}>
+            <Col md={6}>
                 {Object.keys(friends).length ? 
                     <Fragment>
                     <Card style={{ color: 'white' }} className='bg-dark'>
-                        <Row xs={3} sm={3} md={3} lg={3} xl={3}>
-                            <Col xs={2} sm={2} md={2} lg={2} xl={2}></Col>
+                        <Row xs={3} >
+                            <Col xs={2} ></Col>
                             <Col><Card.Title>{friends.username}</Card.Title></Col>
                             <Col style={{ textAlign: 'end'}}><Button onClick={startConversation}>Message</Button></Col>
                         </Row>
@@ -147,6 +141,13 @@ export default function Messages() {
                 </Fragment>
                  : 
                 <Fragment>
+                    <Col >
+                        <Form style={{ marginBottom: '1rem' }} >
+                            <Form.Group>
+                                <Form.Control value={query} onChange={handleChange} type="search" placeholder="Search for a friend to message" />
+                            </Form.Group>
+                        </Form>
+                    </Col>
                     {conversations?.length ? (Array.from(conversations)?.map(({ id, messages,  }) => (
                         <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/messages/${id}`}>
                             <Card text='white' className='mb-4' bg='dark'>
@@ -170,6 +171,8 @@ export default function Messages() {
                     )}
                 </Fragment>
                 }
+            </Col>
+            <Col md={3}>
             </Col>
         </Row>
     </Fragment>

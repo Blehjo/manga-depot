@@ -10,11 +10,11 @@ const SingleProfile = () => {
     
 
     return (
-        <Row className="m-5" lg={2} xl={2}>
-            <Col md={4} lg={4} xl={4}>
+        <Row lg={2}>
+            <Col style={{ marginBottom: '2rem' }}lg={4}>
                 <UserProfileCard/>
             </Col>
-            <Col md={8} lg={8} xl={8}>
+            <Col lg={8}>
             <Tabs
                 defaultActiveKey="posts"
                 id="justify-tab-example"
