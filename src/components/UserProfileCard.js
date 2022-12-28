@@ -7,6 +7,13 @@ const UserProfileCard = () => {
     const [profile, setProfile] = useState([]);
     const { id } = useParams();
 
+    const followMate = async (event) => {
+        event.preventDefault();
+        await axios.post(`/api/friendships/${id}`, {})
+        .then((response) => console.log(response));
+        console.log(id)
+    }
+
     useEffect(() => {
         async function getProfile(id) {
             await axios.get(`/api/users/${id}`, {
@@ -49,19 +56,14 @@ const UserProfileCard = () => {
                 </>
                 }
                 {friendships?.length > 0 && 
-                <>
-                 <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
-                {friendships?.map(({ username, media_location_url }) => (
-                    <Row xs={2} >
-                        <Col style={{ width: '3rem' }} xs={1} >
-                            <Card.Img src={media_location_url}/>
-                        </Col>
-                        <Col xs={10}>
-                            <Card.Text>{username}</Card.Text>
-                        </Col>
-                    </Row>
-                ))}
-                </>
+                    <>
+                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
+                        <Row >
+                            <Col xs={10}>
+                                <Card.Text>{friendships.length}</Card.Text>
+                            </Col>
+                        </Row>
+                    </>
                 }
             </Card.Body>
             <Card.Footer>
@@ -86,6 +88,7 @@ const UserProfileCard = () => {
                 ))} 
                 </>
                 }
+                <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text>
             </Card.Footer>
         </Card>
             ))}

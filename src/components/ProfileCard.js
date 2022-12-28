@@ -33,7 +33,7 @@ const ProfileCard = () => {
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
-                    {userposts.length > 0 && <><Card.Title>Posts</Card.Title>
+                    {userposts.length > 0 && <><Card.Title href={`/posts`}>Posts</Card.Title>
                     <Card.Text>{userposts.length}</Card.Text></>}
                     <Row xs={2} >
                         <Col xs={6} >
@@ -63,16 +63,16 @@ const ProfileCard = () => {
                         </Row>
                     ))}
                     <Card.Title style={{ marginTop: '1rem' }}>Mates</Card.Title>
-                    {friendships?.length > 0 ? groups?.map(({ group_name, media_location_url }) => (
-                        <Row xs={2} >
-                            <Col style={{ width: '3rem' }} xs={1} >
-                                <Card.Img src={media_location_url}/>
-                            </Col>
+                    {friendships?.length > 0 ?
+                    <>
+                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
+                        <Row >
                             <Col xs={10}>
-                                <Card.Text>{group_name}</Card.Text>
+                                <Card.Text>{friendships.length}</Card.Text>
                             </Col>
                         </Row>
-                    )) : (
+                    </>
+                    : (
                         <Row >
                             <Col>
                                 <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Follow mates</Card.Text>
@@ -101,10 +101,8 @@ const ProfileCard = () => {
                             </Col>
                         </Row>
                     )) : (
-                        <Card className="bg-dark">
-                            <Card.Text>No Games</Card.Text>
-                        </Card>
-                    )}
+                        <Card.Text>No Games</Card.Text>
+                    )}     
                 </Card.Footer>
             </Card>
             ))}

@@ -98,19 +98,14 @@ const ProfileCarousel = () => {
                             </>
                             }
                             {friendships?.length > 0 && 
-                            <>
-                             <Card.Title style={{ marginTop: '1rem' }} >Friends</Card.Title>
-                            {friendships?.map(({ username, media_location_url }) => (
-                                <Row xs={2} >
-                                    <Col style={{ width: '3rem' }} xs={1} >
-                                        <Card.Img src={media_location_url}/>
-                                    </Col>
-                                    <Col xs={10}>
-                                        <Card.Text>{username}</Card.Text>
-                                    </Col>
-                                </Row>
-                            ))}
-                            </>
+                                <>
+                                <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
+                                    <Row >
+                                        <Col xs={10}>
+                                            <Card.Text>{friendships.length}</Card.Text>
+                                        </Col>
+                                    </Row>
+                                </>
                             }
                         </Card.Body>
                         <Card.Footer>

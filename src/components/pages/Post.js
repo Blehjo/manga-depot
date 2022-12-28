@@ -1,14 +1,31 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { useParams } from "react-router";
 import axios from "axios";
-import { Row, Col, Card } from "react-bootstrap";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCommentAlt, faRetweet, faHeart } from '@fortawesome/free-solid-svg-icons';
+
+import { Row, Col, Card, Modal, Button, Form } from "react-bootstrap";
 import { utcConverter } from "../../utils/date/Date";
-import { useParams } from "react-router-dom";
+
 
 const Post = () => {
-    const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [commentText, setCommentText] = useState('');
+    const [show, setShow] = useState(false);
     const { id } = useParams();
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    function handleTextChange(event) {
+        event.preventDefault();
+        setCommentText(event.target.value);
+    }
+
+    async function postComment(event) {
+        await axios.post('/api/comments/', {
+            post_id: event.target.id,
+            comment_text: commentText,
+        });
+    }
     
     useEffect(() => {
         async function getPost() {
@@ -16,38 +33,72 @@ const Post = () => {
             {
                 mode: 'no-cors',
             })
-            .then((response) => setPost(response.data));
+            .then((response) => setPosts(response.data));
         }
         getPost();
     }, [id]); 
 
     return (
-        <div className="queries-container">
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className=" g-4 pt-3" key="groups">
-                {Array.from(post).map(({ written_text, media_location_url, created_date_time }) => (
+            <Fragment>
+            <h1 style={{ color: 'white' }}>Posts</h1>
+            <Row xs={1} md={3} key="posts">
+                {Array.from(posts)?.map(({ id, profile_id, written_text, created_date_time, media_location_url, postcomments }) => (
+                    <Fragment key={id}>
                     <Col>
-                    <Card className="groups mx-2 mb-5 bg-dark card-container" key={id}>
-                        <div className='card-container'>
-                        <Card.Link className='card-info' href={`/posts/${id}`}>
-                            <Card.Img  style={{ objectFit:'cover'}} variant="top" src={`${media_location_url ? media_location_url : "https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/2019-10/PICASSO%2C%20Pablo%20Ruiz_Corrida%20de%20toros_706%20%281976.83%29_FOTOH%20%23F21.jpg"}`} />
-                        </Card.Link>
-                        <Card.ImgOverlay>
-                            <Card.Text className="icon2">
-                                <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                                <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                                <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                            </Card.Text>
-                        </Card.ImgOverlay>
-                        </div>
-                        <Card.Body className=''>
-                            <Card.Subtitle>{written_text}</Card.Subtitle>
-                            <Card.Text>{`Posted ${utcConverter(created_date_time)}`}</Card.Text>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                        <Card className="bg-dark" key={id}>
+                            <div className='card-container'>
+                            <Card.Link className='card-info' href={`posts/${id}`}>
+                                {media_location_url && <Card.Img  style={{ objectFit:'cover'}} variant="top" src={media_location_url} />}
+                            </Card.Link>
+                            </div>
+                            <Card.Body style={{ color: 'white' }} >
+                                <Card.Subtitle>{written_text}</Card.Subtitle>
+                                <Card.Text>{`Posted ${utcConverter(created_date_time)}`}</Card.Text>
+                            </Card.Body>
+                            <Card.Footer>
+                                <Card.Text id={id} onClick={handleShow}>Comment</Card.Text>
+                            </Card.Footer>
+                        </Card>
+                    </Col>
+                    <Modal show={show} onHide={handleClose}>
+                    <Card  className="bg-dark" key={id}>
+                            <div className='card-container'>
+                            <Card.Link className='card-info' href={`posts/${id}`}>
+                                {media_location_url && <Card.Img  style={{ objectFit:'cover'}} variant="top" src={media_location_url} />}
+                            </Card.Link>
+                            </div>
+                            <Card.Body >
+                                <Card.Subtitle style={{ color: 'white' }}>{written_text}</Card.Subtitle>
+                                <Card.Text>{`Posted ${utcConverter(created_date_time)}`}</Card.Text>
+                            </Card.Body>
+                            <Card.Body style={{ height: '200px', overflowY: 'auto' }}>
+                                {Array.from(postcomments)?.map(({ id, profile_id, comment_text, created_date_time }) => (
+                                    <Col key={id} className="bg-dark" id={id}>
+                                        <Card.Text>{comment_text}</Card.Text>
+                                        <Card.Text>{utcConverter(created_date_time)}</Card.Text>
+                                    </Col>
+                                ))}
+                            </Card.Body>
+                            <Card.Footer>
+                                <Form id={id} onSubmit={postComment}>
+                                <Row style={{ marginBottom: '3rem', justifyContent: 'center' }} xs={2}>
+                                    <Col xs={9} >
+                                        <Form.Control as="textarea" onChange={handleTextChange} placeholder=" Write your comment here" />
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Button id={id} style={{ width: '100%', height: '100%'}} variant="light" type="submit">
+                                            Post
+                                        </Button>
+                                    </Col>                
+                                </Row>
+                                </Form>
+                            </Card.Footer>
+                        </Card>
+                    </Modal>
+                    </Fragment>
                 ))}
             </Row>
-        </div>
+        </Fragment>
     )
 }
 

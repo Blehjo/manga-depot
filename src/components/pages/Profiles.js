@@ -7,19 +7,19 @@ export default function Profiles() {
   const { userProfiles } = useContext(UserProfilesContext);
 
   return (
-    <Row xs={1} sm={1} md={2} lg={3} xl={4} className="justify-content-center">
+    <Row xs={1} sm={1} md={2} lg={3} className="justify-content-center">
         {userProfiles?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
         <Col key={id} className='mb-5'>
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
-                <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
-                <Card.Link style={{ textDecoration: 'none' }} href={`profile/${id}`}>
+                <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`profile/${id}`}>
                     <Card.Title>{username}</Card.Title>
                 </Card.Link>
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
-                    {userposts.length > 0 && <><Card.Title style={{ marginTop: '1rem' }}>Posts</Card.Title>
+                    {userposts.length > 0 && <><Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/posts/${id}`}><Card.Title style={{ marginTop: '1rem' }}  >Posts</Card.Title></Card.Link>
                     <Card.Text>{userposts.length}</Card.Text></>}
                     {groups?.length > 0 && 
                     <>
@@ -43,16 +43,11 @@ export default function Profiles() {
                     {friendships?.length > 0 && 
                     <>
                      <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
-                    {friendships?.map(({ username, media_location_url }) => (
-                        <Row xs={2} >
-                            <Col style={{ width: '3rem' }} xs={1} >
-                                <Card.Img src={media_location_url}/>
-                            </Col>
+                        <Row >
                             <Col xs={10}>
-                                <Card.Text>{username}</Card.Text>
+                                <Card.Text>{friendships.length}</Card.Text>
                             </Col>
                         </Row>
-                    ))}
                     </>
                     }
                 </Card.Body>
