@@ -3,16 +3,36 @@ import { useParams } from "react-router-dom";
 import { Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
+// import { AuthContext } from "../contexts/auth.context";
+
 const UserProfileCard = () => {
+    // const { auth } = useContext(AuthContext);
     const [profile, setProfile] = useState([]);
+    const [auth, setAuth] = useState();
     const { id } = useParams();
 
     const followMate = async (event) => {
         event.preventDefault();
-        await axios.post(`/api/friendships/${id}`, {})
+        await axios.post(`/api/friendships/${id}`)
         .then((response) => console.log(response));
-        console.log(id)
     }
+
+    const unfollowMate = async (event) => {
+        event.preventDefault();
+        await axios.delete(`/api/friendships/${id}`)
+        .then((response) => console.log(response));
+    }
+
+    useEffect(() => {
+        const information = async () => {
+            await axios.get('/api/users/', {
+                mode: 'no-cors'
+            })
+            .then((response) => setAuth(response.data));
+        };
+
+        return information;
+    }, []);
 
     useEffect(() => {
         async function getProfile(id) {
@@ -88,7 +108,7 @@ const UserProfileCard = () => {
                 ))} 
                 </>
                 }
-                <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text>
+                {(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
             </Card.Footer>
         </Card>
             ))}
