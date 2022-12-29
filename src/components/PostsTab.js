@@ -12,10 +12,14 @@ const PostsTab = () => {
     const [comments, setComments] = useState('');
     const [writtenText, setWrittenText] = useState('');
     const [mediaUrl, setMediaUrl] = useState();
+    const [showEdit, setShowEdit] = useState(false);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleShowEdit = () => setShowEdit(true);
 
     function handlePostChange(event) {
         event.preventDefault();
@@ -104,7 +108,7 @@ const PostsTab = () => {
                                         <Card.Text id={id} onClick={deletePost}>Delete</Card.Text>
                                     </Col>
                                     <Col>
-                                        <Card.Text id={id} onClick={handleShow}>Edit</Card.Text>
+                                        <Card.Text id={id} onClick={handleShowEdit}>Edit</Card.Text>
                                     </Col>
                                 </Row>
                             </Col>
@@ -114,7 +118,7 @@ const PostsTab = () => {
                         <Card.Text id={id} onClick={handleShow}>Comment</Card.Text>
                     </Card.Footer>
                 </Card>
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={showEdit} onHide={handleCloseEdit}>
                     <EditPost props={id} />
                 </Modal>
                 <Modal show={show} onHide={handleClose}>

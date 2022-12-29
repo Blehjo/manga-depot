@@ -10,7 +10,7 @@ const Discovery = () => {
             defaultActiveKey="groups"
             id="justify-tab-example"
             justify
-            className="m-2"
+            className="mb-5"
             variant='pills'
             bg='dark'
             >

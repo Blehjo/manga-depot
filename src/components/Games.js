@@ -32,7 +32,7 @@ const Games = () => {
   }, [errorMessage]);
 
   return (
-      <Row xs={1} sm={1} md={2} lg={3} xl={4} key={1}>
+      <Row xs={1} md={2} lg={3} key={1}>
         {games?.map(({ cover, first_release_date, id, name, platforms, rating, summary }) => (
           <Col className="mb-5" key={id}>
             <Card className="bg-dark card-container h-100 mb-4" key={id}>

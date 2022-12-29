@@ -13,11 +13,11 @@ const ProfileDropdown = () => {
     const { setAuth } = useContext(AuthContext);
 
     async function handleSignOut() {
-        signOutUser();
         await axios.post('api/users/logout', {
             mode: 'no-cors'
         })
         .then((response) => setAuth(response.data));
+        signOutUser();
     }
 
     return (

@@ -12,18 +12,9 @@ const Group = () => {
     const [channel, setChannel] = useState(null);
     const { id } = useParams();
 
-    async function getChannelContent() {
-        await axios.get(`/api/channels/${channel}`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setMessages(response.data));
-    }
-
     function handleClickEvent(event) {
         event.preventDefault();
         setChannel(event.target.id);
-        getChannelContent();
     }
 
     async function postMessage(evt) {
@@ -33,7 +24,6 @@ const Group = () => {
             channel_comment_text: messageText
         })
         setMessageText('');
-        // .then((response) => setMessages(response.data));
     }
 
     function messageHandler(evt) {
@@ -41,6 +31,14 @@ const Group = () => {
     }
 
     useEffect(() => {
+        async function getChannelContent() {
+            await axios.get(`/api/channels/${channel}`,
+            {
+                mode: 'no-cors',
+            })
+            .then((response) => setMessages(response.data));
+        }
+
         async function getGroup() {
             await axios.get(`/api/groups/${id}`,
             {
@@ -49,11 +47,6 @@ const Group = () => {
             .then((response) => setGroup(response.data));
         }
 
-        getGroup();
-    }, [id, channel]);
-
-    const channels = group.groupchannels;
-    useEffect(() => {
         async function getEvents() {
             await axios.get(`/api/events/${id}`, {
                 mode: 'no-cors'
@@ -61,9 +54,12 @@ const Group = () => {
             .then((response) => setEvents(response.data));
         }
 
+        getChannelContent();
+        getGroup();
         getEvents();
-    }, [])
-    console.log(events)
+    }, [id, channel]);
+
+    const channels = group.groupchannels;
 
     return (
         <Fragment>
@@ -74,7 +70,7 @@ const Group = () => {
                     <Col key='list' sm={4} md={4} lg={2} xl={3}>
                         <Nav variant="pills" className="flex-column">
                             <h1>Channels</h1>
-                            <img style={{ width: '90%', marginBottom: '1rem', borderRadius: '.5rem' }} src={group.media_location_url} />
+                            <img style={{ width: '90%', marginBottom: '1rem', borderRadius: '.5rem' }} src={group.media_location_url} alt={group.group_name}/>
                             {channels?.map(({id, channel_name}) => (
                                 <Nav.Item id={id} onClick={handleClickEvent} variant="light" style={{ color: 'white' }} href={`#${id}`} key={id}>
                                     <Nav.Link id={id} eventKey={id} >
@@ -126,8 +122,9 @@ const Group = () => {
                 </Row>
             </Tab.Container>
             </Col>
-            <Col style={{ height: '65vh', overflowY: 'auto', color: 'white' }} md={3}>
-                <h3>Events</h3>
+            <Col md={3}>
+                <h3 className="text-white">Events</h3>
+                <div style={{ height: '75vh', overflowY: 'auto', color: 'white' }}>
                 {Array.from(events)?.map(({ id, event_name, media_location_url }) => (
                     <Card className="bg-dark" style={{ marginTop: '1rem'}}>
                         <Card.Link style={{ textDecoration: 'none' }} href={`/events/${id}`}>
@@ -138,6 +135,7 @@ const Group = () => {
                         </Card.Link>
                     </Card>
                 ))}
+                </div>
             </Col>
             </Row>
         </Fragment>

@@ -18,30 +18,33 @@ const EditPost = ({props}) => {
     function handleTextChange(event) {
         event.preventDefault();
         setModalText(event.target.value);
+        console.log(modalText)
     }
 
     function handleImageChange(event) {
         event.preventDefault();
         setModalImage(event.target.value);
+        console.log(modalImage)
     }
-
-    function handleClickEvent() {
-        navigate(`/profile`);
-    }    
 
     function makeEdit(event) {
         event.preventDefault();
 
+        function handleClickEvent() {
+            navigate(`/profile`);
+        }  
+
         async function editPost() {
-            await axios.put(`/api/posts/${id}`, {
-                media_location_url: modalImage,
-                written_text: modalText,
-            })
-            // .then((response) => console.log(response.data))
-            .catch(err => {
+            try {
+                await axios.put(`/api/posts/${id}`, {
+                    media_location_url: modalImage,
+                    written_text: modalText,
+                })
+                .then((response) => console.log(response.data))
+            } catch(err) {
                 setErrorMessage(err);
                 console.error(errorMessage);
-            });
+            }
         }
 
         editPost();
@@ -50,21 +53,24 @@ const EditPost = ({props}) => {
 
     useEffect(() => {
         async function getPost() {
-            await axios.get(`/api/posts/${id}`, {
-                mode: 'no-cors'
-            })
-            .then((response) => setModalValues(response.data[0]))
+            try {
+                await axios.get(`/posts/${id}`, {
+                    mode: 'no-cors'
+                })
+                .then((response) => setModalValues(response.data[0]));
+            } catch (err) {
+                setErrorMessage(err);
+                console.error(errorMessage);
+            }
         }
-        const { media_location_url, written_text } = modalValues;
-        console.log(media_location_url)
-        setModalImage(media_location_url);
-        setModalText(written_text);
-
+        
         getPost();
+        setModalImage(modalValues.media_location_url);
+        setModalText(modalValues.written_text);
     }, [])
 
     return (
-        <Fragment>
+        <Fragment >
         <Modal.Header className="bg-dark" style={{ color: 'white' }} closeButton>
             <Modal.Title>Edit Post</Modal.Title>
         </Modal.Header>

@@ -25,7 +25,7 @@ export default function Profiles() {
             await axios.get('/api/users/', {
                 mode: 'no-cors'
             })
-            .then((response) => setAuth(response.data));
+            .then((response) => setAuth(response.data[0]));
         };
 
         return information;
@@ -44,7 +44,7 @@ export default function Profiles() {
                     <Card.Title>{username}</Card.Title>
                     </Card.Link>
                     </Col>
-                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === auth.id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
                     </Row>
                     <Row style={{ marginBottom: '1rem' }} xs={2}>
                         <Col>
