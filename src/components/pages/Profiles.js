@@ -32,20 +32,41 @@ export default function Profiles() {
     }, []);
 
     return (
-    <Row xs={1} sm={1} md={2} lg={3} className="justify-content-center">
+    <Row xs={1} md={2} lg={3} className="justify-content-center">
         {userProfiles?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
         <Col key={id} className='mb-5'>
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
                 <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
-                <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`profile/${id}`}>
+                    <Row xs={2}>
+                    <Col xs={9}>
+                    <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`profile/${id}`}>
                     <Card.Title>{username}</Card.Title>
-                </Card.Link>
-                    <Card.Subtitle>{first_name}</Card.Subtitle>
+                    </Card.Link>
+                    </Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    </Row>
+                    <Row style={{ marginBottom: '1rem' }} xs={2}>
+                        <Col>
+                        {friendships?.length > 0 && 
+                        <>
+                        <Card.Title >Ghosts</Card.Title>
+                            <Row >
+                                <Col xs={10}>
+                                    <Card.Text>{friendships.length}</Card.Text>
+                                </Col>
+                            </Row>
+                        </>
+                        }
+                        </Col>
+                        <Col>
+                        {userposts.length > 0 && <><Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/posts/${id}`}><Card.Title>Posts</Card.Title></Card.Link>
+                        <Card.Text>{userposts.length}</Card.Text></>}
+                        </Col>
+                    </Row>
+                    <Card.Text>{first_name}</Card.Text>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
-                    {userposts.length > 0 && <><Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/posts/${id}`}><Card.Title style={{ marginTop: '1rem' }}  >Posts</Card.Title></Card.Link>
-                    <Card.Text>{userposts.length}</Card.Text></>}
                     {groups?.length > 0 && 
                     <>
                     <Card.Title style={{ marginTop: '1rem' }}>Shells</Card.Title>
@@ -63,16 +84,6 @@ export default function Profiles() {
                             </Card.Link>
                         </Row>
                     ))} 
-                    </>
-                    }
-                    {friendships?.length > 0 && 
-                    <>
-                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
-                        <Row >
-                            <Col xs={10}>
-                                <Card.Text>{friendships.length}</Card.Text>
-                            </Col>
-                        </Row>
                     </>
                     }
                 </Card.Body>
@@ -98,7 +109,6 @@ export default function Profiles() {
                     ))} 
                     </>
                     }
-                    {(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
                 </Card.Footer>
             </Card>
         </Col>

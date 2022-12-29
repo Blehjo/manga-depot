@@ -30,7 +30,7 @@ const GenreCarousel = () => {
 
     return (
         <Fragment>
-            <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
+            <Row xs={1} className="my-5" key="genres">
                 <h1 className="text-white">Genres</h1>
                 <Col >
                     <Carousel

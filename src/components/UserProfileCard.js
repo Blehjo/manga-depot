@@ -42,75 +42,87 @@ const UserProfileCard = () => {
             .then((response) => setProfile(response.data))
         } 
         getProfile(id);
-    }, [id])
+    }, [])
 
     return (
         <Fragment>
             {profile?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
-            <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
-            <Card.Body>
-                <Card.Title>{username}</Card.Title>
-                <Card.Subtitle>{first_name}</Card.Subtitle>
-                <Card.Text>{country}</Card.Text> 
-                <Card.Subtitle>{about}</Card.Subtitle>
-                {userposts.length > 0 && <><Card.Title style={{ marginTop: '1rem' }}>Posts</Card.Title>
-                <Card.Text>{userposts.length}</Card.Text></>}
-                {groups?.length > 0 && 
-                <>
-                <Card.Title style={{ marginTop: '1rem' }}>Shells</Card.Title>
-                {groups?.map(({ id, group_name, media_location_url }) => (
-                    <Row xs={2} >
-                        <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
-                            <Row xs={2} >
-                                <Col xs={2} >
-                                    <Card.Img style={{ width: '1.2rem' }} src={media_location_url}/>
-                                </Col>
-                                <Col style={{ position: 'relative' }} xs={10} >
-                                    <Card.Text style={{ position: 'absolute', bottom: '0' }}>{group_name}</Card.Text>
+                <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                <Card.Body>
+                    <Row xs={2}>
+                    <Col xs={9}>
+                    <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`profile/${id}`}>
+                    <Card.Title>{username}</Card.Title>
+                    </Card.Link>
+                    </Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    </Row>
+                    <Row style={{ marginBottom: '1rem' }} xs={2}>
+                        <Col>
+                        {friendships?.length > 0 && 
+                        <>
+                        <Card.Title >Ghosts</Card.Title>
+                            <Row >
+                                <Col xs={10}>
+                                    <Card.Text>{friendships.length}</Card.Text>
                                 </Col>
                             </Row>
-                        </Card.Link>
+                        </>
+                        }
+                        </Col>
+                        <Col>
+                        {userposts.length > 0 && <><Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/posts/${id}`}><Card.Title>Posts</Card.Title></Card.Link>
+                        <Card.Text>{userposts.length}</Card.Text></>}
+                        </Col>
                     </Row>
-                ))} 
-                </>
-                }
-                {friendships?.length > 0 && 
+                    <Card.Text>{first_name}</Card.Text>
+                    {/* <Card.Text>{country}</Card.Text>  */}
+                    <Card.Subtitle>{about}</Card.Subtitle>
+                    {groups?.length > 0 && 
                     <>
-                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
-                        <Row >
-                            <Col xs={10}>
-                                <Card.Text>{friendships.length}</Card.Text>
-                            </Col>
-                        </Row>
-                    </>
-                }
-            </Card.Body>
-            <Card.Footer>
-                {games?.length > 0 && 
-                <>
-                <Card.Title>Games</Card.Title>
-                {games?.map(({ id, media_location_url, title}) => (
-                    <Row xs={2} >
-                        <Col xs={9} >
-                            <Card.Link style={{ textDecoration: 'none' }} href={`/games/${id}`}>
+                    <Card.Title style={{ marginTop: '1rem' }}>Shells</Card.Title>
+                    {groups?.map(({ id, group_name, media_location_url }) => (
+                        <Row xs={2} >
+                            <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                                 <Row xs={2} >
                                     <Col xs={1} >
-                                        <Card.Img style={{ width: '1rem'}} src={media_location_url} />
+                                        <Card.Img style={{ width: '1.2rem' }} src={media_location_url}/>
                                     </Col>
-                                    <Col xs={10} style={{ position: 'relative' }}>
-                                        <Card.Text style={{ position: 'absolute', bottom: '0' }}>{title}</Card.Text>
+                                    <Col style={{ marginLeft: '2rem', position: 'relative' }} xs={11} >
+                                        <Card.Text style={{ position: 'absolute', bottom: '0' }}>{group_name}</Card.Text>
                                     </Col>
                                 </Row>
                             </Card.Link>
-                        </Col>
-                    </Row>
-                ))} 
-                </>
-                }
-                {(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
-            </Card.Footer>
-        </Card>
+                        </Row>
+                    ))} 
+                    </>
+                    }
+                </Card.Body>
+                <Card.Footer>
+                    {games?.length > 0 && 
+                    <>
+                    <Card.Title>Games</Card.Title>
+                    {games?.map(({ id, media_location_url, title}) => (
+                        <Row xs={2} >
+                            <Col xs={9} >
+                                <Card.Link style={{ textDecoration: 'none' }} href={`/games/${id}`}>
+                                    <Row xs={2} >
+                                        <Col xs={1} >
+                                            <Card.Img style={{ width: '1rem'}} src={media_location_url} />
+                                        </Col>
+                                        <Col xs={10} style={{ position: 'relative' }}>
+                                            <Card.Text style={{ position: 'absolute', bottom: '0' }}>{title}</Card.Text>
+                                        </Col>
+                                    </Row>
+                                </Card.Link>
+                            </Col>
+                        </Row>
+                    ))} 
+                    </>
+                    }
+                </Card.Footer>
+            </Card>
             ))}
         </Fragment>
     );

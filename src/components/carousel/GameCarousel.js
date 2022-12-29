@@ -32,102 +32,100 @@ const GameCarousel = () => {
     }, [errorMessage]);
 
     return (
-        <>
-            <Row>
-                <h1 className="text-white">Games</h1>
-                <Col >
-                    <Carousel
-                        additionalTransfrom={0}
-                        arrows
-                        autoPlaySpeed={3000}
-                        centerMode={false}
-                        className=""
-                        containerClass=""
-                        dotListClass=""
-                        draggable
-                        focusOnSelect={false}
-                        infinite
-                        itemClass=""
-                        keyBoardControl
-                        minimumTouchDrag={80}
-                        pauseOnHover
-                        renderArrowsWhenDisabled={false}
-                        renderButtonGroupOutside={false}
-                        renderDotsOutside={false}
-                        responsive={{
-                            desktop: {
-                                breakpoint: {
-                                    max: 3000,
-                                    min: 1024
-                                },
-                                items: 4,
-                                partialVisibilityGutter: 0,
-                                slidesToSlide: 4
+        <Row>
+            <h1 className="text-white">Games</h1>
+            <Col >
+                <Carousel
+                    additionalTransfrom={0}
+                    arrows
+                    autoPlaySpeed={3000}
+                    centerMode={false}
+                    className=""
+                    containerClass=""
+                    dotListClass=""
+                    draggable
+                    focusOnSelect={false}
+                    infinite
+                    itemClass=""
+                    keyBoardControl
+                    minimumTouchDrag={80}
+                    pauseOnHover
+                    renderArrowsWhenDisabled={false}
+                    renderButtonGroupOutside={false}
+                    renderDotsOutside={false}
+                    responsive={{
+                        desktop: {
+                            breakpoint: {
+                                max: 3000,
+                                min: 1024
                             },
-                            mobile: {
-                                breakpoint: {
-                                    max: 764,
-                                    min: 0
-                                },
-                                items: 1,
-                                partialVisibilityGutter: 30,
-                                slidesToSlide: 1
+                            items: 3,
+                            partialVisibilityGutter: 0,
+                            slidesToSlide: 3
+                        },
+                        mobile: {
+                            breakpoint: {
+                                max: 764,
+                                min: 0
                             },
-                            tablet: {
-                                breakpoint: {
-                                    max: 1024,
-                                    min: 764
-                                },
-                                items: 2,
-                                partialVisibilityGutter: 30,
-                                slidesToSlide: 2
-                            }
-                        }}
-                        rewind={false}
-                        rewindWithAnimation={false}
-                        rtl={false}
-                        shouldResetAutoplay
-                        showDots={false}
-                        sliderClass=""
-                        swipeable
-                        >
-                        {games?.map((game) => (
-                            <Card style={{ }} className="mx-2 bg-dark card-container" key={game.id}>
-                            <div className='card-container'>
-                            <Card.Link className='card-info' href={`/${game.name}`}>
-                            {<Card.Img height='485' style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${game.cover?.image_id}.jpg`} />}
-                            </Card.Link>
-                            <Card.ImgOverlay>
-                                <Card.Text>
-                                <FontAwesomeIcon className="icon" icon={faEye} />
-                                </Card.Text>
-                                <Card.Text className='icon2'>
-                                    <FontAwesomeIcon className="icon-item" icon={faHeart} />
-                                    <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
-                                    <FontAwesomeIcon className="icon-item" icon={faRetweet} />
-                                </Card.Text>
-                                <Card.Text className="icon3">
-                                    <FontAwesomeIcon className="" icon={faDownload} />
-                                </Card.Text>
-                            </Card.ImgOverlay>
-                            </div>
-                            <Card.Body className=''>
-                                <Card.Text>
-                                {unixConverter(game.first_release_date)}
-                                </Card.Text>
-                                <Card.Text>
-                                {game.rating !== undefined ? `Rating: ${Math.round(game.rating)}` : ''}
-                                </Card.Text>
-                                <Card.Text>
-                                {`Platforms: ${game.platforms?.map((element) => (`\n${element.abbreviation}`))}`}
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                        ))}
-                    </Carousel>
-                </Col>
-            </Row>
-        </>
+                            items: 1,
+                            partialVisibilityGutter: 30,
+                            slidesToSlide: 1
+                        },
+                        tablet: {
+                            breakpoint: {
+                                max: 1024,
+                                min: 764
+                            },
+                            items: 2,
+                            partialVisibilityGutter: 30,
+                            slidesToSlide: 2
+                        }
+                    }}
+                    rewind={false}
+                    rewindWithAnimation={false}
+                    rtl={false}
+                    shouldResetAutoplay
+                    showDots={false}
+                    sliderClass=""
+                    swipeable
+                    >
+                    {games?.map((game) => (
+                        <Card style={{ }} className="mx-2 bg-dark card-container" key={game.id}>
+                        <div className='card-container'>
+                        <Card.Link className='card-info' href={`/${game.name}`}>
+                        {<Card.Img height='485' style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${game.cover?.image_id}.jpg`} />}
+                        </Card.Link>
+                        <Card.ImgOverlay>
+                            <Card.Text>
+                            <FontAwesomeIcon className="icon" icon={faEye} />
+                            </Card.Text>
+                            <Card.Text className='icon2'>
+                                <FontAwesomeIcon className="icon-item" icon={faHeart} />
+                                <FontAwesomeIcon className="icon-item" icon={faCommentAlt} />
+                                <FontAwesomeIcon className="icon-item" icon={faRetweet} />
+                            </Card.Text>
+                            <Card.Text className="icon3">
+                                <FontAwesomeIcon className="" icon={faDownload} />
+                            </Card.Text>
+                        </Card.ImgOverlay>
+                        </div>
+                        <Card.Body className=''>
+                            <Card.Text>
+                            {unixConverter(game.first_release_date)}
+                            </Card.Text>
+                            <Card.Text>
+                            {game.rating !== undefined ? `Rating: ${Math.round(game.rating)}` : ''}
+                            </Card.Text>
+                            <Card.Text>
+                            {`Platforms: ${game.platforms?.map((element) => (`\n${element.abbreviation}`))}`}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    ))}
+                </Carousel>
+            </Col>
+        </Row>
     )
 }
 

@@ -58,23 +58,21 @@ const GameResults = () => {
         async function getInfo() {
             await axios.post('/api/games/', {
                 title: event.target.className,
-                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`,
-                link: `/games/${event.target.value}/${event.target.className}`
+                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
             })
             .catch(err => {
                 setErrorMessage(err);
                 console.error(errorMessage);
             });
         }
-        // getInfo();
-        console.log(event.target.value);
+        getInfo();
     }
 
     return (
-        <Row xs={1} sm={1} md={1} lg={2} xl={3} className="g-4 pt-3" key="groups">
+        <Row xs={1} lg={2} xl={3} className="g-4 pt-3" key="groups">
             {games?.map(({ id, name, platforms, first_release_date, cover, age_ratings, summary }) => (
                 <Col key={cover?.image_id}>
-                    <Card key={cover?.image_id} className="groups mx-2 mb-5 bg-dark card-container" >
+                    <Card key={cover?.image_id} className="text-white mx-2 mb-5 bg-dark" >
                             <Card.Img key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />
                             <Card.ImgOverlay>
                                 <div  id={cover?.image_id} onClick={addToCatalogue} className={name} key={first_release_date}>
@@ -96,8 +94,8 @@ const GameResults = () => {
                                     </Badge>
                                 </Col>
                             ))}
-                            {platforms.length > 5 &&
-                                <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+                            {platforms?.length > 5 &&
+                                <Col xs={4}>
                                     <Card className="bg-dark">
                                         {platforms?.length} More Platforms
                                     </Card>

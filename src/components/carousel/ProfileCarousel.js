@@ -1,16 +1,41 @@
-import { useContext } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { useContext, useState, useEffect } from "react";
+import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import { utcConverter } from "../../utils/date/Date";
+
+import axios from "axios";
 
 import { UserProfilesContext } from '../../contexts/userprofiles.context';
 
 const ProfileCarousel = () => {
     const { userProfiles } = useContext(UserProfilesContext);
+    const [auth, setAuth] = useState();
+
+    const followMate = async (event) => {
+        event.preventDefault();
+        await axios.post(`/api/friendships/${event.target.id}`)
+        .then((response) => console.log(response));
+    }
+
+    const unfollowMate = async (event) => {
+        event.preventDefault();
+        await axios.delete(`/api/friendships/${event.target.id}`)
+        .then((response) => console.log(response));
+    }
+
+    useEffect(() => {
+        const information = async () => {
+            await axios.get('/api/users/', {
+                mode: 'no-cors'
+            })
+            .then((response) => setAuth(response.data));
+        };
+
+        return information;
+    }, [userProfiles]);
     
     return (
-        <Row xs={1} sm={1} md={1} lg={1} xl={1} className="g-4 pt-3" key="genres">
+        <Row xs={1} className="my-5" key="genres">
             <h1 style={{ color: 'white' }}>Users</h1>
             <Col >
                 <Carousel
@@ -37,9 +62,9 @@ const ProfileCarousel = () => {
                                 max: 3000,
                                 min: 1024
                             },
-                            items: 4,
+                            items: 3,
                             partialVisibilityGutter: 0,
-                            slidesToSlide: 4
+                            slidesToSlide: 3
                         },
                         mobile: {
                             breakpoint: {
@@ -72,9 +97,16 @@ const ProfileCarousel = () => {
                         <Card style={{ color: 'white', margin: '.5rem' }} className="bg-dark" key={id}>
                         <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                         <Card.Body>
-                        <Card.Link href={`profile/${id}`}>
-                            <Card.Title>{username}</Card.Title>
-                        </Card.Link>
+                            <Row>
+                                <Col>
+                                <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`profile/${id}`}>
+                                    <Card.Title>{username}</Card.Title>
+                                </Card.Link>
+                                </Col>
+                                <Col>
+                                {(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
+                                </Col>
+                            </Row>
                             <Card.Subtitle>{first_name}</Card.Subtitle>
                             <Card.Text>{country}</Card.Text> 
                             <Card.Subtitle>{about}</Card.Subtitle>
@@ -85,10 +117,10 @@ const ProfileCarousel = () => {
                                 <Row xs={2} >
                                     <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                                         <Row xs={2} >
-                                            <Col xs={2} >
+                                            <Col xs={1} >
                                                 <Card.Img style={{ width: '1.2rem' }} src={media_location_url}/>
                                             </Col>
-                                            <Col style={{ position: 'relative' }} xs={10} >
+                                            <Col style={{ marginLeft: '2rem', position: 'relative' }} xs={11} >
                                                 <Card.Text style={{ position: 'absolute', bottom: '0' }}>{group_name}</Card.Text>
                                             </Col>
                                         </Row>
