@@ -23,9 +23,11 @@ const ProfileCard = () => {
         await axios.delete(`/api/games/${event.target.id}`);
     }
 
+    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
+
     return (
         <Fragment>
-            {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
+            {/* {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => ( */}
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
                 <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
@@ -62,7 +64,6 @@ const ProfileCard = () => {
                             </Col>
                         </Row>
                     ))}
-                    <Card.Title style={{ marginTop: '1rem' }}>Mates</Card.Title>
                     {friendships?.length > 0 ?
                     <>
                      <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
@@ -105,7 +106,7 @@ const ProfileCard = () => {
                     )}     
                 </Card.Footer>
             </Card>
-            ))}
+            {/* ))} */}
             <Modal show={show} onHide={handleClose}>
                 <CreateGroup />
             </Modal>

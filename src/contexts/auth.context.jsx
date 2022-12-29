@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             await axios.get('/api/users/', {
                 mode: 'no-cors'
             })
-            .then((response) => setAuth(response.data));
+            .then((response) => setAuth(response.data[0]));
         };
 
         return information;

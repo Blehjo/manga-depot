@@ -1,11 +1,8 @@
 import { useState } from "react";
-
-import FormInput from "../form-input/form-input";
-import { Button, Row, Col } from "react-bootstrap";
-
+import { Row, Col } from "react-bootstrap";
 import CountrySelect from 'react-bootstrap-country-select';
-
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { 
     createAuthUserWithEmailAndPassword,
@@ -22,6 +19,7 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
     const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
+    const navigate = useNavigate();
 
     const resetForm = () => {
         setFormFields();
@@ -60,8 +58,9 @@ const SignUpForm = () => {
             );
 
             await signInWithReact();
-            await createAuthUserWithEmailAndPassword(user);
-            resetForm();
+            // await createAuthUserWithEmailAndPassword(user);
+            navigate('/');
+            // resetForm();
 
         } catch(error) {
             if (error.code === 'auth/email-already-in-use') {

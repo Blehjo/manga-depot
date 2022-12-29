@@ -101,7 +101,7 @@ export default function Messages() {
             
         </Row>
         <Row xs={1} md={3} className="g-4 pt-3" key="conversations">
-            <Col md={3} >
+            <Col md={6} lg={4} >
                 <ProfileCard/>
             </Col>
             <Col md={6}>

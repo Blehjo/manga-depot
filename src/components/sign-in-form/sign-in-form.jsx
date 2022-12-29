@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-import FormInput from "../form-input/form-input";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -10,6 +9,7 @@ import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '..
 const SignInForm = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const navigate = useNavigate();
 
     const resetFormFields = () => {
         setEmail('');
@@ -42,12 +42,13 @@ const SignInForm = () => {
         event.preventDefault();
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(
-                email, 
-                password
-            );
+            // const { user } = await signInAuthUserWithEmailAndPassword(
+            //     email, 
+            //     password
+            // );
             signInWithReact();
-            resetFormFields();
+            navigate('/profile')
+
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
