@@ -57,9 +57,6 @@ const SearchGroup = () => {
                     indexes.push(arr[i]);
             return indexes;
         }
-
-        console.log(groupResults)
-        console.log(getAllIndexes(groupResults, searchField));
     };
 
     return (

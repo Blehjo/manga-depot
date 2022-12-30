@@ -22,11 +22,11 @@ const UserGroupsTab = () => {
     return (
         <Fragment>
             {groups?.length > 0 ? Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time, media_location_url }) => (
-                <Card.Link key={id} style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
-                    <Card key='information' style={{ margin: '1rem', color: 'white' }} bg='dark'>
+                <Card.Link key={id} style={{ textDecoration: 'none', color: 'white', margin: '1rem' }} href={`/groups/${id}`}>
+                    {/* <Card key='information' style={{ margin: '1rem', color: 'white' }} bg='dark'> */}
                         <Row>
                             <Col key='img' xl={4}>
-                                <Card.Img height='200' style={{ objectFit:'cover'}} src={media_location_url} />
+                                <Card.Img height='200' style={{ objectFit:'cover', borderRadius: '.5rem' }} src={media_location_url} />
                             </Col>
                             <Col xl={8} key={id}>
                                 <Card.Header>{group_name}</Card.Header>
@@ -39,7 +39,7 @@ const UserGroupsTab = () => {
                                 </Card.Body>
                             </Col>
                         </Row>
-                    </Card>
+                    {/* </Card> */}
                 </Card.Link>
             )) : (
                 <Card key='excuse' style={{ color: 'white', textAlign: 'center' }}className="bg-dark">

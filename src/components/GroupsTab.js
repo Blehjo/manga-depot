@@ -65,28 +65,28 @@ const GroupsTab = () => {
                 </Col>
             </Row>
             {groups?.length > 0 ? Array.from(groups)?.map(({ id, group_name, group_description, platform, media_location_url, country, created_date_time, groupmembers }) => (
-                <Row style={{ marginBottom: '2rem', color: 'white' }}>
-                            <Col xl={4}>
-                            <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/groups/${id}`}>
-                                <Card.Img height='200' style={{ objectFit:'cover', borderRadius: '.5rem' }} src={media_location_url} />
-                            </Card.Link>
+                <Row style={{ marginBottom: '2rem', color: 'white', justifyContent: 'center' }}>
+                    <Col xl={4}>
+                    <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/groups/${id}`}>
+                        <Card.Img height='200' style={{ objectFit:'cover', borderRadius: '.5rem' }} src={media_location_url} />
+                    </Card.Link>
+                    </Col>
+                    <Col xl={8} key={id}>
+                        <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/groups/${id}`}>
+                        <Card.Header>{group_name}</Card.Header>
+                        </Card.Link>
+                        <Card.Body>
+                            <Card.Text>
+                                {group_description}
+                            </Card.Text>
+                            <Card.Text>{`Established ${utcConverter(created_date_time)}`}</Card.Text>
+                            {'Platform:  '}<Badge pill='info'>{platform}</Badge>
+                            <Col style={{ marginTop: '1rem' }}>
+                                {(groupmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowGroup}>Leave Shell</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Shell</Button>}
                             </Col>
-                            <Col xl={8} key={id}>
-                                <Card.Link style={{ textDecoration: 'none', color: 'white' }} href={`/groups/${id}`}>
-                                <Card.Header>{group_name}</Card.Header>
-                                </Card.Link>
-                                <Card.Body>
-                                    <Card.Text>
-                                        {group_description}
-                                    </Card.Text>
-                                    <Card.Text>{`Established ${utcConverter(created_date_time)}`}</Card.Text>
-                                    {'Platform:  '}<Badge pill='info'>{platform}</Badge>
-                                    <Col style={{ marginTop: '1rem' }}>
-                                        {(groupmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowGroup}>Leave Shell</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Shell</Button>}
-                                    </Col>
-                                </Card.Body>
-                            </Col>
-                        </Row>
+                        </Card.Body>
+                    </Col>
+                </Row>
             )) : (
                 <Row style={{ marginTop: '1rem' }}>
                     <Col>

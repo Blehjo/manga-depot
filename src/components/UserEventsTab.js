@@ -22,11 +22,11 @@ const UserEventsTab = () => {
     return (
         <Fragment>
             {events?.length > 0 ? Array.from(events)?.map(({ id, group_name, group_description, media_location_url, platform, country, created_date_time }) => (
-                    <Card.Link style={{ textDecoration: 'none' }} href={`/events/${id}`}>
-                        <Card style={{ margin: '1rem', color: 'white', textAlign: 'center' }} bg='dark'>
+                    <Card.Link style={{ textDecoration: 'none', margin: '1rem', color: 'white', textAlign: 'center' }} href={`/events/${id}`}>
+                        {/* <Card style={{ margin: '1rem', color: 'white', textAlign: 'center' }} bg='dark'> */}
                             <Row>
                                 <Col xl={4}>
-                                    <Card.Img height='200' style={{ objectFit:'cover'}} src={media_location_url} />
+                                    <Card.Img height='200' style={{ objectFit:'cover', borderRadius: '.5rem' }} src={media_location_url} />
                                 </Col>
                                 <Col xl={8} key={id}>
                                     <Card.Header>{group_name}</Card.Header>
@@ -38,7 +38,7 @@ const UserEventsTab = () => {
                                     </Card.Body>
                                 </Col>
                             </Row>
-                        </Card>
+                        {/* </Card> */}
                     </Card.Link>
             )) : (
                 <Card style={{ color: 'white', textAlign: 'center' }}className="bg-dark">
