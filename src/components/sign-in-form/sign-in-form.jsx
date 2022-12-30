@@ -39,7 +39,7 @@ const SignInForm = () => {
     }
 
     const handleSubmit = async (event) => {
-        // event.preventDefault();
+        event.preventDefault();
 
         try {
             // const { user } = await signInAuthUserWithEmailAndPassword(
