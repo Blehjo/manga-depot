@@ -4,9 +4,9 @@ import CountrySelect from 'react-bootstrap-country-select';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { 
-    createAuthUserWithEmailAndPassword,
-} from '../../utils/firebase/firebase.utils';
+// import { 
+//     createAuthUserWithEmailAndPassword,
+// } from '../../utils/firebase/firebase.utils';
 
 const defaultFormFields = {
     displayName: '',
@@ -52,10 +52,10 @@ const SignUpForm = () => {
         }
 
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(
-                email, 
-                password
-            );
+            // const { user } = await createAuthUserWithEmailAndPassword(
+            //     email, 
+            //     password
+            // );
 
             await signInWithReact();
             // await createAuthUserWithEmailAndPassword(user);

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
+// import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
 const SignInForm = () => {
     const [password, setPassword] = useState('');
@@ -23,10 +23,10 @@ const SignInForm = () => {
         });
     }
 
-    const signInWithGoogle = async () => {
-        const { user } = await signInWithGoogleRedirect();
-        console.log(user);
-    }
+    // const signInWithGoogle = async () => {
+    //     const { user } = await signInWithGoogleRedirect();
+    //     console.log(user);
+    // }
 
     const handleEmailChange = (event) => {
         event.preventDefault();
@@ -95,9 +95,9 @@ const SignInForm = () => {
                     />
                 </Form.Group>
                 <Row xs={1}>
-                    <Col style={{ marginBottom: '1rem' }}>
+                    {/* <Col style={{ marginBottom: '1rem' }}>
                         <Button onClick={signInWithGoogle} variant="light" type='button'>Sign in with Google</Button>
-                    </Col>
+                    </Col> */}
                     <Col>
                         <Button variant="light" type="submit">Sign in</Button>
                     </Col>
