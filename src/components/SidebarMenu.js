@@ -3,7 +3,7 @@ import Saved from './Saved'
 
 const SidebarMenu = () => {
     return (
-        <div id="newSidebar" className='sticky-top bg-dark hidden' style={{width: 100}}>
+        <div id="newSidebar" className='sticky-top bg-dark hidden' style={{ width: 100 }}>
             <Nav 
                 className='justify-content-center'
                 >

@@ -7,7 +7,7 @@ import axios from 'axios';
 const SidebarOverlay = () => {
     const [groups, setGroups] = useState([]);
     const [events, setEvents] = useState([]);
-    
+
     useEffect(() => {
         const getGroups = async () => {
             await axios.get(`/api/groups/`, {
@@ -15,16 +15,15 @@ const SidebarOverlay = () => {
             })
             .then((resp) => setGroups(resp.data)); 
         }
-        getGroups();
-    }, [])
-
-    useEffect(() => {
+        
         const getEvents = async () => {
             await axios.get(`/api/events/`, {
                 mode: 'no cors'
             })
             .then((resp) => setEvents(resp.data)); 
         }
+
+        getGroups();
         getEvents();
     }, [])
 
