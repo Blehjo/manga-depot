@@ -38,7 +38,7 @@ const Groups = () => {
         <Row xs={1} key="groups">
         {Array.from(groups)?.map(({ id, group_name, group_description, platform, country, created_date_time, media_location_url, groupmembers }) => (
             <Row style={{ marginBottom: '3rem', margin: 'auto', color: 'white' }}>
-                <Col xl={4}>
+                <Col style={{ marginBottom: '1rem' }} xl={4}>
                 <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
                     <Card.Img height='200' style={{ objectFit:'cover', borderRadius: '.5rem' }} src={media_location_url} />
                 </Card.Link>
