@@ -47,7 +47,7 @@ const SignInForm = () => {
             //     password
             // );
             signInWithReact();
-            navigate('/profile')
+            navigate('/profile');
 
         } catch(error) {
             switch (error.code) {

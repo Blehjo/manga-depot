@@ -37,12 +37,12 @@ const Search = () => {
                         <Tab eventKey="people" title="People">
                             <Profiles />
                         </Tab>
-                        <Tab eventKey="groups" title="Groups">
+                        {/* <Tab eventKey="groups" title="Groups">
                             <GroupResults />
-                        </Tab>
-                        <Tab eventKey="events" title="Events">
+                        </Tab> */}
+                        {/* <Tab eventKey="events" title="Events">
                             <Events />
-                        </Tab>
+                        </Tab> */}
                     </Tabs>
                 </Fragment>
             {/* )} */}
