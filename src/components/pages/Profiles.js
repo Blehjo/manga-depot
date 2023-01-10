@@ -1,11 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import axios from 'axios';
 
-import { UserProfilesContext } from '../../contexts/userprofiles.context';
 
 export default function Profiles() {
-    // const { userProfiles } = useContext(UserProfilesContext);
     const [auth, setAuth] = useState();
     const [userProfiles, setUserProfiles] = useState();
 
@@ -24,7 +22,8 @@ export default function Profiles() {
     useEffect(() => {
         const information = async () => {
             await axios.get('/users/', {
-                mode: 'no-cors'
+                mode: 'no-cors',
+                withCredentials: true 
             })
             .then((response) => setUserProfiles(response.data));
         };
@@ -35,7 +34,8 @@ export default function Profiles() {
     useEffect(() => {
         const information = async () => {
             await axios.get('/api/users/', {
-                mode: 'no-cors'
+                mode: 'no-cors',
+                withCredentials: true 
             })
             .then((response) => setAuth(response.data[0]));
         };

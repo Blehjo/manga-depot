@@ -7,8 +7,6 @@ import UserEventsTab from "../UserEventsTab";
 import UserProfileCard from "../UserProfileCard";
 
 const SingleProfile = () => {
-    
-
     return (
         <Row lg={2}>
             <Col style={{ marginBottom: '2rem' }}lg={4}>

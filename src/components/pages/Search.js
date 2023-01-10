@@ -1,15 +1,12 @@
 import { Fragment, useContext } from "react";
 import { Tabs, Tab } from "react-bootstrap";
-import SearchBar from "../SearchBar";
 import GameResults from "../GameResults";
 
 import { ResultContext } from "../../contexts/result.context";
 import { GroupResultContext } from "../../contexts/groupresult.context";
 import { UserProfilesContext } from "../../contexts/userprofiles.context";
 
-import GroupResults from "../GroupResults";
 import Profiles from "./Profiles";
-import Events from "./Events";
 
 const Search = () => {
     const { results } = useContext(ResultContext);
@@ -18,10 +15,6 @@ const Search = () => {
 
     return (
         <Fragment>
-            {/* {results ? (
-            results.length === 0 || groupResults.length === 0 ? 
-                <SearchBar/>
-            ) : ( */}
                 <Fragment>
                     <Tabs
                         defaultActiveKey="games"
@@ -45,7 +38,6 @@ const Search = () => {
                         </Tab> */}
                     </Tabs>
                 </Fragment>
-            {/* )} */}
         </Fragment>
     )
 }

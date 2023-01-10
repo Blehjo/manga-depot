@@ -18,7 +18,8 @@ export const AuthProvider = ({ children }) => {
                 url: '/api/users/',
                 headers: {
                   'Content-Type': 'application/json',
-                }
+                },
+                withCredentials: true
             })
             .then((response) => setAuth(response.data[0]))
         };

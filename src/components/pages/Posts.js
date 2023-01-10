@@ -32,6 +32,7 @@ const Posts = () => {
             axios.get(`/api/posts/`,
         {
             mode: 'no-cors',
+            withCredentials: true 
         })
         .then((response) => setPosts(response.data));
         } 
@@ -43,6 +44,7 @@ const Posts = () => {
             axios.get(`/api/comments/`,
         {
             mode: 'no-cors',
+            withCredentials: true 
         })
         .then((response) => setComments(response.data));
         } 
