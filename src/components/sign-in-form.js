@@ -28,6 +28,7 @@ const SignInForm = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
+            withCredentials: true 
         })
     }
 
