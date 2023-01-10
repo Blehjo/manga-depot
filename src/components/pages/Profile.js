@@ -10,11 +10,16 @@ export default function Profile() {
 
   useEffect( () => {
     const getProfile = async () => {
-        await axios.get('/api/users/',
-       {
-           mode: 'no-cors',
-       })
-       .then((response) => setProfile(response.data));
+        await axios({
+          url: 'https://shellgeist.herokuapp.com/api/users/',
+          method: 'get',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        })
+        .then(function (response) {
+          console.log(response);
+        });
     }
     getProfile();
   }, [])

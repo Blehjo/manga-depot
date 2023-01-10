@@ -13,20 +13,18 @@ export const UserProvider = ({ children }) => {
     const value = { currentUser, setCurrentUser };
 
     useEffect(() => {
-        // const unsubscribe = onAuthStateChangedListener((user) => {
-        //     if (user) {
-        //         createUserDocumentFromAuth(user);
-        //     }
-        //     setCurrentUser(user);
-        // });
-
-        // return unsubscribe;
-
         const information = async () => {
-            await axios.get('/api/users/', {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/api/users',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: false,
             })
-            .then((response) => setCurrentUser(response.data[0]))
+            .then(function (response) {
+                console.log(response.data.user)
+            });
         }
 
         return information;

@@ -17,7 +17,7 @@ const defaultFormFields = {
 }
 
 const SignUpForm = () => {
-    // const { auth, setAuth } = useContext(AuthContext);
+    const { auth, setAuth } = useContext(AuthContext);
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
     const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
@@ -28,18 +28,28 @@ const SignUpForm = () => {
     }
 
     const signInWithReact = async () => {
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/users/`,
+        await axios(
         {
-            username: displayName,
-            email: email,
-            password: password,
-            country: country.name,
-            date_of_birth: dateOfBirth,
-            first_name: firstName,
-            last_name: lastName
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/users/`,
+            data: JSON.stringify({
+                username: displayName,
+                email: email,
+                password: password,
+                country: country.name,
+                date_of_birth: dateOfBirth,
+                first_name: firstName,
+                last_name: lastName
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: false,
         })
-        // .then((response) => setAuth(response));
-        // console.log(auth)
+        .then(function (response) { 
+            console.log(response);
+            // setAuth(response);
+        });
     }
 
     const handleChange = (event) => {

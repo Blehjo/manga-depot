@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/user.context";
 
 import axios from "axios";
 
 // import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
 
 const SignInForm = () => {
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -17,21 +19,24 @@ const SignInForm = () => {
     }
 
     const signInWithReact = async () => {
-        await axios.post({
+        await axios({
             method: 'post',
             url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
-            body: {
+            data: JSON.stringify({
                 email: email,
                 password: password,
-            }
-        });
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: false,
+        })
+        .then(function (response) {
+            setCurrentUser(response.data.user);
+            // console.log(currentUser)
+        })
         // navigate('/profile');
     }
-
-    // const signInWithGoogle = async () => {
-    //     const { user } = await signInWithGoogleRedirect();
-    //     console.log(user);
-    // }
 
     const handleEmailChange = (event) => {
         event.preventDefault();
@@ -45,18 +50,8 @@ const SignInForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            // const { user } = await signInAuthUserWithEmailAndPassword(
-            //     email, 
-            //     password
-            // );
-            const response = await signInWithReact();
-            response();
-            console.log(email);
-            console.log(password);
-            console.log(response);
-
+            await signInWithReact();
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
