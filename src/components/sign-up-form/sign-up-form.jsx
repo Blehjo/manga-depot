@@ -26,7 +26,7 @@ const SignUpForm = () => {
     }
 
     const signInWithReact = async () => {
-        await axios.post(`/api/users/`,
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/users/`,
         {
             username: displayName,
             email: email,
