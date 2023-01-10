@@ -95,7 +95,7 @@ const PostCarousel = () => {
                 swipeable
             >
                 {posts?.map(({ postcomments, created_date_time, id, media_location_url, profile_id, written_text, userprofile }) => (
-                    <>
+                    <div key={id}>
                     <Card className="mx-2 bg-dark text-white h-100" key={id}>
                         <Card.Img src={media_location_url} />
                         <Card.Link style={{ textDecoration: 'none' }} href={`/profile/${profile_id}`}>
@@ -150,7 +150,7 @@ const PostCarousel = () => {
                             </Card.Footer>
                         </Card>
                     </Modal>
-                    </>
+                    </div>
                 ))} 
             </Carousel>
         </Row>

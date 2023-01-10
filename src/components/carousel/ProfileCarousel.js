@@ -28,7 +28,7 @@ const ProfileCarousel = () => {
             await axios.get('/api/users/', {
                 mode: 'no-cors'
             })
-            .then((response) => setAuth(response.data));
+            .then((response) => setAuth(response.data[0]));
         };
 
         return information;
@@ -104,7 +104,7 @@ const ProfileCarousel = () => {
                                 </Card.Link>
                                 </Col>
                                 <Col>
-                                {(friendships.some(({ profile_request }) => profile_request === auth[0].id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
+                                {(friendships.some(({ profile_request }) => profile_request === auth.id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
                                 </Col>
                             </Row>
                             <Card.Subtitle>{first_name}</Card.Subtitle>
