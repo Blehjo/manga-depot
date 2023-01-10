@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Row, Col } from "react-bootstrap";
 import CountrySelect from 'react-bootstrap-country-select';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/auth.context";
 
 // import { 
 //     createAuthUserWithEmailAndPassword,
@@ -16,6 +17,7 @@ const defaultFormFields = {
 }
 
 const SignUpForm = () => {
+    // const { auth, setAuth } = useContext(AuthContext);
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
     const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
@@ -36,6 +38,8 @@ const SignUpForm = () => {
             first_name: firstName,
             last_name: lastName
         })
+        // .then((response) => setAuth(response));
+        // console.log(auth)
     }
 
     const handleChange = (event) => {
@@ -58,8 +62,13 @@ const SignUpForm = () => {
             // );
 
             await signInWithReact();
+            // if (signInWithReact.ok) {
+            //     document.location.replace('/')
+            // } else {
+            //     alert("response.statusText");
+            // }
             // await createAuthUserWithEmailAndPassword(user);
-            navigate('/');
+            // navigate('/');
             // resetForm();
 
         } catch(error) {

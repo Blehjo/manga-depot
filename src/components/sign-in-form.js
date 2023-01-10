@@ -17,10 +17,15 @@ const SignInForm = () => {
     }
 
     const signInWithReact = async () => {
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/users/login`, {
-            email: email,
-            password: password,
+        await axios.post({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
+            body: {
+                email: email,
+                password: password,
+            }
         });
+        // navigate('/profile');
     }
 
     // const signInWithGoogle = async () => {
@@ -46,8 +51,11 @@ const SignInForm = () => {
             //     email, 
             //     password
             // );
-            signInWithReact();
-            navigate('/profile');
+            const response = await signInWithReact();
+            response();
+            console.log(email);
+            console.log(password);
+            console.log(response);
 
         } catch(error) {
             switch (error.code) {
