@@ -20,25 +20,19 @@ import { GroupResultProvider } from './contexts/groupresult.context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserProvider>
       <AuthProvider>
         <ProfileProvider>
           <ListProvider>
             <SearchProvider>
               <ResultProvider>
-                <GroupResultProvider>
-                  <UserProfilesProvider>
                     <BrowserRouter>
                       <App />
                     </BrowserRouter>
-                  </UserProfilesProvider>
-                </GroupResultProvider>
               </ResultProvider>
             </SearchProvider>
           </ListProvider>
         </ProfileProvider>
       </AuthProvider>
-    </UserProvider>
   </React.StrictMode>
 );
 

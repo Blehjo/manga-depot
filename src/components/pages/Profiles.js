@@ -5,8 +5,9 @@ import axios from 'axios';
 import { UserProfilesContext } from '../../contexts/userprofiles.context';
 
 export default function Profiles() {
-    const { userProfiles } = useContext(UserProfilesContext);
+    // const { userProfiles } = useContext(UserProfilesContext);
     const [auth, setAuth] = useState();
+    const [userProfiles, setUserProfiles] = useState();
 
     const followMate = async (event) => {
         event.preventDefault();
@@ -19,6 +20,17 @@ export default function Profiles() {
         await axios.delete(`/api/friendships/${event.target.id}`)
         .then((response) => console.log(response));
     }
+
+    useEffect(() => {
+        const information = async () => {
+            await axios.get('/users/', {
+                mode: 'no-cors'
+            })
+            .then((response) => setUserProfiles(response.data));
+        };
+
+        return information;
+    })
 
     useEffect(() => {
         const information = async () => {

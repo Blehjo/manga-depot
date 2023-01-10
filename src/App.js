@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 import NavBar from "./components/NavBar";
+import Loading from "./components/Loading";
 import SidebarIndex from "./components/SidebarIndex";
 import Footer from "./components/Footer";
 
@@ -29,32 +31,60 @@ import SingleProfile from "./components/pages/SingleProfile";
 import './App.css';
 import GameProfile from "./components/GameProfile";
 
-import { UserContext } from "./contexts/user.context";
+import { AuthContext } from "./contexts/auth.context";
 
 function App() {
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const { auth, setAuth } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchPeopleData();
+  }, []);
+
+  const fetchPeopleData = async () => {
+    setLoading(true);
+    try {
+      const data = await axios({
+        url: "https://shellgeist.herokuapp.com/api/users", 
+        method: 'get',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setAuth(data);
+      console.log(auth)
+    } catch (error) {
+      console.error(error.response.data);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <Loading/>;
+  }
+
   return (
     <Routes>
       <Route path='/' element={<><NavBar/><SidebarIndex/></>} >
         <Route index element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/authentication' element={<Authentication />}/>
-        <Route path='/connections' element={currentUser ? <Connections /> : <Authentication /> }/>
-        <Route path="/dashboard" element={currentUser ? <Dashboard /> : <Authentication /> }/>
-        <Route path='/discovery' element={currentUser ? <Discovery /> : <Authentication /> }/>
+        <Route path='/connections' element={auth ? <Connections /> : <Authentication /> }/>
+        <Route path="/dashboard" element={auth ? <Dashboard /> : <Authentication /> }/>
+        <Route path='/discovery' element={auth ? <Discovery /> : <Authentication /> }/>
+        <Route path='/groups/:id' element={auth ? <Group /> : <Authentication /> }/>
+        <Route path='/interactions' element={auth ? <Interactions /> : <Authentication /> }/>
+        <Route path='/messages' element={auth ? <Messages /> : <Authentication /> }/>
+        <Route path='/messages/:id' element={auth ? <Message /> : <Authentication /> }/>
+        <Route path='/profile' element={auth ? <Profile /> : <Authentication /> }/>
         <Route path='/explore' element={<Explore />}/>
         <Route path='/events' element={<Events />}/>
         <Route path='/games' element={<Games />}/>
         <Route path='/games/:id/:imageId' element={<GameProfile />}/>
-        <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
         <Route path='/groups' element={<Groups />}/>
-        <Route path='/interactions' element={currentUser ? <Interactions /> : <Authentication /> }/>
-        <Route path='/messages' element={currentUser ? <Messages /> : <Authentication /> }/>
-        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
-        <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/>
         <Route path='/profile/:id' element={<SingleProfile />}/>
         <Route path='/profiles' element={<Profiles />}/>
         <Route path='/search' element={<Search />}/>

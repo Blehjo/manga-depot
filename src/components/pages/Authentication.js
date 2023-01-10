@@ -2,8 +2,8 @@ import { UserContext } from '../../contexts/user.context';
 import { Fragment, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
-import SignUpForm from '../../components/sign-up-form';
-import SignInForm from '../../components/sign-in-form';
+import SignUpForm from '../sign-up-form';
+import SignInForm from '../sign-in-form';
 
 const Authentication = () => {
     const { currentUser } = useContext(UserContext);

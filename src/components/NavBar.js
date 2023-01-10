@@ -1,21 +1,20 @@
 import { Fragment, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
-
-import ListIcon from './list-icon/list-icon';
+import axios from 'axios';
 
 import ProfileIcon from './profile-icon/profile-icon';
 import ProfileDropdown from './profile-dropdown/profile-dropdown';
+import ListIcon from './list-icon/list-icon';
 
-import { UserContext } from '../contexts/user.context';
 import { ResultContext } from '../contexts/result.context';
 import { ProfileContext } from '../contexts/profile.context';
 import { SearchContext } from '../contexts/search.context';
 
-import axios from 'axios';
+import { AuthContext } from '../contexts/auth.context';
 
 function NavBar() {
-  const { currentUser } = useContext(UserContext);
+  const { auth } = useContext(AuthContext);
   const { isProfileOpen } = useContext(ProfileContext);
   const { searchField, setSearchField } = useContext(SearchContext);
   const { setResults } = useContext(ResultContext);
@@ -87,7 +86,7 @@ function NavBar() {
                 <Col key="navigationIcons">
                     <Nav key="navIcons" variant='dark'className="justify-content-end pe-3">
                       {
-                        currentUser ? (
+                        auth ? (
                             <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>
                         ) : (
                             <Nav.Link className='nav-link' href='/authentication'>

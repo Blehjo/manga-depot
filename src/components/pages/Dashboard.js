@@ -1,5 +1,3 @@
-import { Fragment, useEffect, useState } from "react";
-import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 
 const contentArray = [
@@ -36,43 +34,30 @@ const contentArray = [
 ]
 
 const Dashboard = () => {
-    const [groups, setGroups] = useState([]);
-
-    useEffect(() => {
-        async function getGroups() {
-            await axios.get("/groups",
-            {
-                mode: 'no-cors',
-            })
-            .then((response) => setGroups(response.data));
-        }
-        getGroups();
-    }, []);
-
     return (
-        <Fragment>
-            <h1 style={{ color: 'white' }}>Dashboard</h1>
-            <Row xs={1} md={2} key="groups">
-                {contentArray?.map(({ id, media_location_url, type }) => (
-                    <Col style={{ marginBottom: '1.5rem' }} key={id}>
-                        <Card.Link href={`/${type}`}>
-                        <Card 
-                            style={{ color: 'white' }} 
-                            className="bg-dark" 
-                            key={id}
-                        >
-                            <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "25rem", objectFit: "cover" }} src={media_location_url} alt={type}/>
-                            <Card.ImgOverlay >
-                            <div style={{ position: 'absolute', left: '50%', top: '50%',  borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
-                                <Card.Title style={{ fontSize: '500%' }}>{type}</Card.Title>
-                            </div>
-                            </Card.ImgOverlay>
-                        </Card>
-                        </Card.Link>
-                    </Col>
-                ))}
-            </Row>
-        </Fragment>
+        <Row xs={1} md={2} key="groups">
+            <Col xs={12} md={12}>
+                <h1 style={{ color: 'white' }}>Dashboard</h1>
+            </Col>
+            {contentArray?.map(({ id, media_location_url, type }) => (
+                <Col style={{ marginBottom: '1.5rem' }} key={id}>
+                    <Card.Link href={`/${type}`}>
+                    <Card 
+                        style={{ color: 'white' }} 
+                        className="bg-dark" 
+                        key={id}
+                    >
+                        <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "25rem", objectFit: "cover" }} src={media_location_url} alt={type}/>
+                        <Card.ImgOverlay >
+                        <div style={{ position: 'absolute', left: '50%', top: '50%',  borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} className="text-white">
+                            <Card.Title style={{ fontSize: '500%' }}>{type}</Card.Title>
+                        </div>
+                        </Card.ImgOverlay>
+                    </Card>
+                    </Card.Link>
+                </Col>
+            ))}
+        </Row>
     )
 }
 

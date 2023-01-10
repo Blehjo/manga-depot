@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { createContext, useState, useEffect } from 'react';
-
-// import { createUserDocumentFromAuth, onAuthStateChangedListener } from '../utils/firebase/firebase.utils';
+import axios from 'axios';
 
 export const UserContext = createContext({
     setCurrentUser: () => null,
@@ -20,14 +18,12 @@ export const UserProvider = ({ children }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                withCredentials: false,
             })
-            .then(function (response) {
-                console.log(response.data.user)
-            });
         }
+        // setCurrentUser(information);
+        // console.log(currentUser);
 
-        return information;
+        // setCurrentUser(information);
     }, []);
 
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>

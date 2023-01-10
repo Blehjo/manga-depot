@@ -24,6 +24,7 @@ const ProfileCard = () => {
     }
 
     const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
+    console.log('hello: ', auth);
 
     return (
         <Fragment>

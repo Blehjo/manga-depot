@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/user.context";
 
 import axios from "axios";
-
-// import { signInAuthUserWithEmailAndPassword, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils'
+import { AuthContext } from "../contexts/auth.context";
 
 const SignInForm = () => {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { auth, setAuth } = useContext(AuthContext);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -20,8 +18,9 @@ const SignInForm = () => {
 
     const signInWithReact = async () => {
         await axios({
+            mode: 'no-cors',
             method: 'post',
-            url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
+            url: `/api/users/login`, 
             data: JSON.stringify({
                 email: email,
                 password: password,
@@ -29,13 +28,7 @@ const SignInForm = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: false,
         })
-        .then(function (response) {
-            setCurrentUser(response.data.user);
-            // console.log(currentUser)
-        })
-        // navigate('/profile');
     }
 
     const handleEmailChange = (event) => {
@@ -52,6 +45,7 @@ const SignInForm = () => {
         event.preventDefault();
         try {
             await signInWithReact();
+            navigate('/profile')
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -97,10 +91,7 @@ const SignInForm = () => {
                         value={password} 
                     />
                 </Form.Group>
-                <Row xs={1}>
-                    {/* <Col style={{ marginBottom: '1rem' }}>
-                        <Button onClick={signInWithGoogle} variant="light" type='button'>Sign in with Google</Button>
-                    </Col> */}
+                <Row>
                     <Col>
                         <Button variant="light" type="submit">Sign in</Button>
                     </Col>

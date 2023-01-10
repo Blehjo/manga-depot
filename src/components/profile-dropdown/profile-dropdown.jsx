@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Nav, Row } from "react-bootstrap";
 import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
 
-import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { AuthContext } from "../../contexts/auth.context";
 
 import './profile-dropdown.styles.scss';
@@ -17,7 +16,6 @@ const ProfileDropdown = () => {
             mode: 'no-cors'
         })
         .then((response) => setAuth(response.data));
-        signOutUser();
     }
 
     return (

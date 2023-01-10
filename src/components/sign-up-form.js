@@ -95,61 +95,61 @@ const SignUpForm = () => {
             <Col lg={6}>
             <h2>Don't have an account?</h2>
             <span>Sign up with your email and password</span>
-            <form style={{ color: 'white', marginTop: '1rem' }} onSubmit={handleSubmit} class="row g-3">
-                <div class="col-md-6">
-                    <label for="inputDisplayName" class="form-label">Display Name</label>
+            <form style={{ color: 'white', marginTop: '1rem' }} onSubmit={handleSubmit} className="row g-3">
+                <div className="col-md-6">
+                    <label htmlFor="inputDisplayName" className="form-label">Display Name</label>
                     <input 
                         required 
                         onChange={handleChange} 
                         name="displayName" 
                         value={displayName} 
                         type="text" 
-                        class="form-control" 
+                        className="form-control" 
                         id="inputDisplayName" 
                         placeholder="User123"
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="inputEmail" class="form-label">Email</label>
+                <div className="col-md-6">
+                    <label htmlFor="inputEmail" className="form-label">Email</label>
                     <input 
                         type="email" 
                         required 
                         onChange={handleChange} 
                         name="email" 
                         value={email} 
-                        class="form-control" 
+                        className="form-control" 
                         id="inputEmail"
                         placeholder="Kusanagi@shellgeist.com"
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="inputFirstName" class="form-label">First Name</label>
+                <div className="col-md-6">
+                    <label htmlFor="inputFirstName" className="form-label">First Name</label>
                     <input 
                         type="text" 
                         required 
                         onChange={handleChange} 
                         name="firstName" 
                         value={firstName} 
-                        class="form-control" 
+                        className="form-control" 
                         id="inputFirstName"
                         placeholder="Major"
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="inputLastName" class="form-label">Last Name</label>
+                <div className="col-md-6">
+                    <label htmlFor="inputLastName" className="form-label">Last Name</label>
                     <input 
                         type="text" 
                         required 
                         onChange={handleChange} 
                         name="lastName" 
                         value={lastName} 
-                        class="form-control" 
+                        className="form-control" 
                         id="inputLastName"
                         placeholder="Kusanagi"
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="inputPassword" class="form-label">Password</label>
+                <div className="col-md-6">
+                    <label htmlFor="inputPassword" className="form-label">Password</label>
                     <input 
                         label="Password"
                         type="password" 
@@ -157,13 +157,13 @@ const SignUpForm = () => {
                         onChange={handleChange} 
                         name="password" 
                         value={password} 
-                        class="form-control" 
+                        className="form-control" 
                         id="inputPassword"
                         placeholder="Password"
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <div className="col-md-6">
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                     <input 
                         label="Confirm Password"
                         type="password" 
@@ -171,20 +171,20 @@ const SignUpForm = () => {
                         onChange={handleChange} 
                         name="confirmPassword" 
                         value={confirmPassword} 
-                        class="form-control" 
+                        className="form-control" 
                         id="confirmPassword" 
                         placeholder="Confirm Password"
                     />
                 </div>
-                <div  class="col-md-6">
-                    <label for="selectCountry" class="form-label">Country</label>
+                <div  className="col-md-6">
+                    <label htmlFor="selectCountry" className="form-label">Country</label>
                     <CountrySelect 
                     value={country}
                     onChange={setCountry}
                     />
                 </div>
-                <div class="col-md-6">
-                    <label for="" class="form-label">Date of Birth</label>
+                <div className="col-md-6">
+                    <label htmlFor="" className="form-label">Date of Birth</label>
                     <input 
                         required 
                         onChange={handleChange} 
@@ -192,11 +192,11 @@ const SignUpForm = () => {
                         name="dateOfBirth" 
                         value={dateOfBirth} 
                         id="selectDateOfBirth" 
-                        class="form-control" 
+                        className="form-control" 
                     />
                 </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-light">Join</button>
+                <div className="col-12">
+                    <button type="submit" className="btn btn-light">Join</button>
                 </div>
             </form>
             </Col>

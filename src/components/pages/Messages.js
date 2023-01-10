@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import { utcConverter } from '../../utils/date/Date';
 
-import { UserProfilesContext } from '../../contexts/userprofiles.context';
-
 import ProfileCard from '../ProfileCard';
 
 export default function Messages() {
@@ -13,7 +11,7 @@ export default function Messages() {
     const [conversationId, setConversationId] = useState(null);
     const [show, setShow] = useState(false);
     const [messageText, setMessageText] = useState('');
-    const { userProfiles } = useContext(UserProfilesContext);
+    const [userProfiles, setUserProfiles] = useState(null);
     const [conversations, setConversations] = useState([]);
     const [friends, setFriends] = useState([]);
     const [query, setQuery] = useState('');
@@ -82,6 +80,13 @@ export default function Messages() {
     }, []);
 
     useEffect(() => {
+        const information = async () => {
+            await axios.get('/users/', {
+                mode: 'no-cors'
+            })
+            .then((response) => setUserProfiles(response.data));
+        };
+
         function getProfile() {
             userProfiles.find((element) => {
                 if (element.username == query) {
@@ -89,6 +94,8 @@ export default function Messages() {
                 }
             });
         }
+        
+        information();
         getProfile();
     }, [query])
 

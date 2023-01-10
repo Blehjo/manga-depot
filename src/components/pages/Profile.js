@@ -1,6 +1,6 @@
-import { Fragment, useState, useEffect } from 'react';
-import { Row, Col} from 'react-bootstrap';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Row, Col} from 'react-bootstrap';
 
 import ProfileCard from '../ProfileCard';
 import ProfileTabs from '../ProfileTabs';
@@ -10,30 +10,23 @@ export default function Profile() {
 
   useEffect( () => {
     const getProfile = async () => {
-        await axios({
-          url: 'https://shellgeist.herokuapp.com/api/users/',
-          method: 'get',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        })
-        .then(function (response) {
-          console.log(response);
-        });
+        await axios.get('/api/users/',
+       {
+           mode: 'no-cors',
+       })
+       .then((response) => setProfile(response.data));
     }
     getProfile();
   }, [])
 
   return (
-    <Fragment>
-      <Row lg={2}>
-        <Col lg={4} style={{ marginBottom: '2rem' }}>
-          <ProfileCard />
-        </Col>
-        <Col lg={8} >
-          <ProfileTabs />
-        </Col>
-      </Row> 
-    </Fragment>
+    <Row lg={2}>
+      <Col lg={4} style={{ marginBottom: '2rem' }}>
+        <ProfileCard />
+      </Col>
+      <Col lg={8} >
+        <ProfileTabs />
+      </Col>
+    </Row> 
   );
 }

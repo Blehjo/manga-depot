@@ -13,17 +13,16 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const information = async () => {
             await axios({
+                mode: 'no-cors',
                 method: 'get',
-                url: 'https://shellgeist.herokuapp.com/api/users/',
+                url: '/api/users/',
                 headers: {
                   'Content-Type': 'application/json',
-                },
-                withCredentials: false,
+                }
             })
-            .then(function (response) {
-                setAuth(response.data.user)
-            })
+            .then((response) => setAuth(response.data[0]))
         };
+        // console.log('data: ', information.data);
 
         return information;
     }, []);
