@@ -19,6 +19,7 @@ const SignInForm = () => {
     const signInWithReact = async () => {
         await axios({
             mode: 'no-cors',
+            withCredentials: true,
             method: 'post',
             url: `/api/users/login`, 
             data: JSON.stringify({
@@ -28,7 +29,6 @@ const SignInForm = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true 
         })
     }
 
