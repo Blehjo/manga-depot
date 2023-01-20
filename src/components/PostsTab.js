@@ -105,17 +105,17 @@ const PostsTab = () => {
                             <Col style={{ justifyContent: 'end'}} xs={4}>
                                 <Row xs={2}>
                                     <Col>
-                                        <Card.Text id={id} onClick={deletePost}>Delete</Card.Text>
+                                        <Card.Text id={id} style={{ cursor: 'pointer' }} onClick={deletePost}>Delete</Card.Text>
                                     </Col>
                                     <Col>
-                                        <Card.Text id={id} onClick={handleShowEdit}>Edit</Card.Text>
+                                        <Card.Text id={id} style={{ cursor: 'pointer' }} onClick={handleShowEdit}>Edit</Card.Text>
                                     </Col>
                                 </Row>
                             </Col>
                         </Row>
                     </Card.Footer>
                     <Card.Footer>
-                        <Card.Text id={id} onClick={handleShow}>Comment</Card.Text>
+                        <Card.Text id={id} style={{ cursor: 'pointer' }} onClick={handleShow}>Comment</Card.Text>
                     </Card.Footer>
                 </Card>
                 <Modal show={showEdit} onHide={handleCloseEdit}>

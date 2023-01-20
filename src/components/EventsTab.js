@@ -50,14 +50,14 @@ const EventsTab = () => {
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create an event</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create an event</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join an event</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join an event</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>

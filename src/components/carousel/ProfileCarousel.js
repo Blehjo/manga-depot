@@ -5,11 +5,21 @@ import 'react-multi-carousel/lib/styles.css';
 
 import axios from "axios";
 
-import { UserProfilesContext } from '../../contexts/userprofiles.context';
-
 const ProfileCarousel = () => {
-    const { userProfiles } = useContext(UserProfilesContext);
     const [auth, setAuth] = useState();
+    const [userProfiles, setUserProfiles] = useState([]);
+
+
+    useEffect(() => {
+        const information = async () => {
+            await axios.get('/users', {
+                mode: 'no-cors'
+            })
+            .then((response) => setUserProfiles(response.data));
+        };
+
+        return information;
+    }, []);
 
     const followMate = async (event) => {
         event.preventDefault();

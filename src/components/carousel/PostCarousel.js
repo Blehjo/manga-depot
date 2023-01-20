@@ -45,7 +45,7 @@ const PostCarousel = () => {
                 autoPlaySpeed={3000}
                 centerMode={false}
                 className=""
-                containerClass="container-with-dots"
+                containerClass=""
                 dotListClass=""
                 draggable
                 focusOnSelect={false}
@@ -96,7 +96,7 @@ const PostCarousel = () => {
             >
                 {posts?.map(({ postcomments, created_date_time, id, media_location_url, profile_id, written_text, userprofile }) => (
                     <div key={id}>
-                    <Card className="mx-2 bg-dark text-white h-100" key={id}>
+                    <Card className="mx-2 bg-dark " key={id}>
                         <Card.Img src={media_location_url} />
                         <Card.Link style={{ textDecoration: 'none' }} href={`/profile/${profile_id}`}>
                             <Card.Title style={{ color: 'white', textAlign: 'center', marginTop: '.7rem'}} >{userprofile.username}</Card.Title>

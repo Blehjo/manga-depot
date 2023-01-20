@@ -4,22 +4,25 @@ import { unixConverter } from "../utils/date/Date";
 import { ResultContext } from "../contexts/result.context";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { AuthContext } from "../contexts/auth.context";
 
 const GameResults = () => {
+    const { auth } = useContext(AuthContext);
     const [show, setShow] = useState(false);
-    const [games, setGames] = useState([]);
+    const [gameList, setGames] = useState([]);
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
     const [errorMessage, setErrorMessage] = useState([]);
     const { results } = useContext(ResultContext);
     const navigate = useNavigate();
+    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     useEffect(() => {
         setGames(results);
-    }, [results])
+    }, [results, games])
 
     function handleClickEvent(event) {
         event.preventDefault();
@@ -70,18 +73,18 @@ const GameResults = () => {
 
     return (
         <Row xs={1} lg={2} xl={3} className="g-4 pt-3" key="groups">
-            {games?.map(({ id, name, platforms, first_release_date, cover, age_ratings, summary }) => (
+            {gameList?.map(({ id, name, platforms, first_release_date, cover, age_ratings, summary }) => (
                 <Col key={cover?.image_id}>
                     <Card key={cover?.image_id} className="text-white mx-2 mb-5 bg-dark" >
                             <Card.Img key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />
                             <Card.ImgOverlay>
-                                <div  id={cover?.image_id} onClick={addToCatalogue} className={name} key={first_release_date}>
-                                    Add
+                                <div  id={cover?.image_id} style={{ cursor: 'pointer' }} onClick={addToCatalogue} className={name} key={first_release_date}>
+                                    {games?.some(({ title }) => title == name) ? 'Added' : 'Add'}
                                 </div>
-                                <div id={cover?.image_id} className={name} onClick={handleModalImage}>
+                                <div id={cover?.image_id} style={{ cursor: 'pointer' }} className={name} onClick={handleModalImage}>
                                     Post
                                 </div>
-                                <div id={id} className={cover?.image_id} onClick={handleClickEvent}>
+                                <div id={id} style={{ cursor: 'pointer' }} className={cover?.image_id} onClick={handleClickEvent}>
                                     Look
                                 </div>
                             </Card.ImgOverlay>

@@ -107,9 +107,6 @@ const CreateGroup = () => {
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="light" onClick={handleClose}>
-                        Cancel
-                    </Button>
                     <Button variant="light" type="submit">
                         Create
                     </Button>

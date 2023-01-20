@@ -12,7 +12,7 @@ const Explore = () => {
     return (
         <Fragment>
             <h1 style={{ color: 'white' }}>Explore</h1>
-            <ProfileCarousel />
+            {/* <ProfileCarousel /> */}
             <GenreCarousel/>
             <GameCarousel/>
             <GroupCarousel/>

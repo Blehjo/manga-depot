@@ -52,14 +52,14 @@ const GroupsTab = () => {
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create a shell</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create a shell</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join a shell</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join a shell</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>

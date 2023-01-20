@@ -5,7 +5,12 @@ import axios from 'axios';
 
 export default function Profiles() {
     const [auth, setAuth] = useState();
+    const [userId, setId] = useState();
     const [userProfiles, setUserProfiles] = useState();
+    const getAuth = async () => {
+        
+
+    }
 
     const followMate = async (event) => {
         event.preventDefault();
@@ -38,6 +43,8 @@ export default function Profiles() {
                 withCredentials: true 
             })
             .then((response) => setAuth(response.data[0]));
+            const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
+            setId(id);
         };
 
         return information;
@@ -56,7 +63,7 @@ export default function Profiles() {
                     <Card.Title>{username}</Card.Title>
                     </Card.Link>
                     </Col>
-                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === auth?.id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === userId)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
                     </Row>
                     <Row style={{ marginBottom: '1rem' }} xs={2}>
                         <Col>

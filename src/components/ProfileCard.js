@@ -7,13 +7,10 @@ import CreateGroup from "./CreateGroup";
 const ProfileCard = () => {
     const { auth } = useContext(AuthContext);
     const [show, setShow] = useState(false);
+    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const handleClickEvent = () => {
-        
-    }
 
     const deleteGroup = async (event) => {
         await axios.delete(`/api/groups/${event.target.id}`);
@@ -23,12 +20,9 @@ const ProfileCard = () => {
         await axios.delete(`/api/games/${event.target.id}`);
     }
 
-    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
-    console.log('hello: ', auth);
 
     return (
         <Fragment>
-            {/* {auth?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => ( */}
             <Card style={{ color: 'white' }} className="bg-dark" key={id}>
                 <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
@@ -43,7 +37,7 @@ const ProfileCard = () => {
                             <Card.Title>Shells</Card.Title>
                         </Col>
                         <Col style={{ position: 'relative' }} xs={6} >
-                            <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%' }} show={show} onHide={handleClose} onClick={handleShow}>Create a shell</Card.Title>
+                            <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%', cursor: 'pointer' }} show={show} onHide={handleClose} onClick={handleShow}>Create a shell</Card.Title>
                         </Col>
                     </Row>
                     {groups?.length > 0 && groups?.map(({ id, group_name, media_location_url }) => (
@@ -99,7 +93,7 @@ const ProfileCard = () => {
                                 </Card.Link>
                             </Col>
                             <Col xs={3}>
-                                <Card.Text id={id} onClick={deleteGame}>Delete</Card.Text>
+                                <Card.Text id={id} style={{ cursor: 'pointer' }} onClick={deleteGame}>Delete</Card.Text>
                             </Col>
                         </Row>
                     )) : (
@@ -107,7 +101,6 @@ const ProfileCard = () => {
                     )}     
                 </Card.Footer>
             </Card>
-            {/* ))} */}
             <Modal show={show} onHide={handleClose}>
                 <CreateGroup />
             </Modal>

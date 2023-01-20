@@ -9,35 +9,29 @@ import { UserProfilesContext } from "../../contexts/userprofiles.context";
 import Profiles from "./Profiles";
 
 const Search = () => {
-    const { results } = useContext(ResultContext);
-    const { groupResults } = useContext(GroupResultContext);
-    const { userProfiles } = useContext(UserProfilesContext);
-
     return (
         <Fragment>
-                <Fragment>
-                    <Tabs
-                        defaultActiveKey="games"
-                        id="justify-tab-example"
-                        justify
-                        className='mt-2 mb-5'
-                        variant='pills'
-                        bg='dark'
-                    >
-                        <Tab eventKey="games" title="Games">
-                            <GameResults />
-                        </Tab>
-                        <Tab eventKey="people" title="People">
-                            <Profiles />
-                        </Tab>
-                        {/* <Tab eventKey="groups" title="Groups">
-                            <GroupResults />
-                        </Tab> */}
-                        {/* <Tab eventKey="events" title="Events">
-                            <Events />
-                        </Tab> */}
-                    </Tabs>
-                </Fragment>
+            {/* <Tabs
+                defaultActiveKey="games"
+                id="justify-tab-example"
+                justify
+                className='mt-2 mb-5'
+                variant='pills'
+                bg='dark'
+            > */}
+                {/* <Tab eventKey="games" title="Games"> */}
+                    <GameResults />
+                {/* </Tab> */}
+                {/* <Tab eventKey="people" title="People">
+                    <Profiles />
+                </Tab> */}
+                {/* <Tab eventKey="groups" title="Groups">
+                    <GroupResults />
+                </Tab> */}
+                {/* <Tab eventKey="events" title="Events">
+                    <Events />
+                </Tab> */}
+            {/* </Tabs> */}
         </Fragment>
     )
 }
