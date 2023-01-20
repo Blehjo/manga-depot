@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const information = async () => {
             await axios({
-                mode: 'no-cors',
                 method: 'get',
                 url: 'https://shellgeistapi.herokuapp.com/api/users/',
                 headers: {

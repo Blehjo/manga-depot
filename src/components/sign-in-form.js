@@ -18,8 +18,6 @@ const SignInForm = () => {
 
     const signInWithReact = async () => {
         await axios({
-            mode: 'no-cors',
-            withCredentials: true,
             method: 'post',
             url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
             data: {
