@@ -32,14 +32,14 @@ const PostsTab = () => {
     }
 
     async function post() {
-        await axios.post('/api/posts/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/posts/', {
             written_text: writtenText,
             media_location_url: mediaUrl,
         });
     }
 
     const deletePost = async (event) => {
-        await axios.delete(`/api/posts/${event.target.id}`);
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/posts/${event.target.id}`);
     }
 
     function handleTextChange(event) {
@@ -48,7 +48,7 @@ const PostsTab = () => {
     }
 
     async function postComment(event) {
-        await axios.post('/api/comments/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
             post_id: event.target.id,
             comment_text: commentText,
         });
@@ -56,7 +56,7 @@ const PostsTab = () => {
     
     useEffect(() => {
         const getPosts = async () => {
-            await axios.get(`/api/posts/`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/posts/`, {
                 mode: 'no cors'
             })
             .then((resp) => setPosts(resp.data)); 
@@ -66,7 +66,7 @@ const PostsTab = () => {
 
     useEffect(() => {
         const getComments = () => {
-            axios.get(`/api/comments/`,
+            axios.get(`https://shellgeistapi.herokuapp.com/api/comments/`,
         {
             mode: 'no-cors',
         })

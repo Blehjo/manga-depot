@@ -43,7 +43,7 @@ const GameResults = () => {
     function postGame(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('/api/posts/', {
+            await axios.post('https://shellgeistapi.herokuapp.com/api/posts/', {
                 written_text: modalValue,
                 media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`
             })
@@ -59,7 +59,7 @@ const GameResults = () => {
     function addToCatalogue(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('/api/games/', {
+            await axios.post('https://shellgeistapi.herokuapp.com/api/games/', {
                 title: event.target.className,
                 media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
             })

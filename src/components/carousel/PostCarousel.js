@@ -19,7 +19,7 @@ const PostCarousel = () => {
     }
 
     async function postComment(event) {
-        await axios.post('/api/comments/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
             post_id: event.target.id,
             comment_text: commentText,
         });

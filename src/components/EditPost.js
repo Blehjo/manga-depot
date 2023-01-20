@@ -36,7 +36,7 @@ const EditPost = ({props}) => {
 
         async function editPost() {
             try {
-                await axios.put(`/api/posts/${id}`, {
+                await axios.put(`https://shellgeistapi.herokuapp.com/api/posts/${id}`, {
                     media_location_url: modalImage,
                     written_text: modalText,
                 })

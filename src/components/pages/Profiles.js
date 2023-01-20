@@ -14,19 +14,19 @@ export default function Profiles() {
 
     const followMate = async (event) => {
         event.preventDefault();
-        await axios.post(`/api/friendships/${event.target.id}`)
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/friendships/${event.target.id}`)
         .then((response) => console.log(response));
     }
 
     const unfollowMate = async (event) => {
         event.preventDefault();
-        await axios.delete(`/api/friendships/${event.target.id}`)
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/friendships/${event.target.id}`)
         .then((response) => console.log(response));
     }
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('/users/', {
+            await axios.get('https://shellgeistapi.herokuapp.com/users/', {
                 mode: 'no-cors',
                 withCredentials: true 
             })
@@ -38,7 +38,7 @@ export default function Profiles() {
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('/api/users/', {
+            await axios.get('https://shellgeistapi.herokuapp.com/api/users/', {
                 mode: 'no-cors',
                 withCredentials: true 
             })

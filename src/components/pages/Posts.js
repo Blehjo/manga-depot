@@ -21,7 +21,7 @@ const Posts = () => {
     }
 
     async function postComment(event) {
-        await axios.post('/api/comments/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
             post_id: event.target.id,
             comment_text: commentText,
         });
@@ -29,7 +29,7 @@ const Posts = () => {
 
     useEffect(() => {
         const getPosts = () => {
-            axios.get(`/api/posts/`,
+            axios.get(`https://shellgeistapi.herokuapp.com/api/posts/`,
         {
             mode: 'no-cors',
             withCredentials: true 
@@ -41,7 +41,7 @@ const Posts = () => {
 
     useEffect(() => {
         const getComments = () => {
-            axios.get(`/api/comments/`,
+            axios.get(`https://shellgeistapi.herokuapp.com/api/comments/`,
         {
             mode: 'no-cors',
             withCredentials: true 

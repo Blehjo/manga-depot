@@ -32,7 +32,7 @@ const SignUpForm = () => {
         {
             method: 'post',
             url: `https://shellgeistapi.herokuapp.com/api/users/`,
-            data: JSON.stringify({
+            data: {
                 username: displayName,
                 email: email,
                 password: password,
@@ -40,7 +40,7 @@ const SignUpForm = () => {
                 date_of_birth: dateOfBirth,
                 first_name: firstName,
                 last_name: lastName
-            }),
+            },
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -21,7 +21,7 @@ const Post = () => {
     }
 
     async function postComment(event) {
-        await axios.post('/api/comments/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
             post_id: event.target.id,
             comment_text: commentText,
         });
@@ -29,7 +29,7 @@ const Post = () => {
     
     useEffect(() => {
         async function getPost() {
-            await axios.get(`/api/posts/${id}`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/posts/${id}`,
             {
                 mode: 'no-cors',
             })

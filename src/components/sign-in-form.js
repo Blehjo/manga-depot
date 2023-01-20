@@ -22,10 +22,10 @@ const SignInForm = () => {
             withCredentials: true,
             method: 'post',
             url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
-            data: JSON.stringify({
+            data: {
                 email: email,
                 password: password,
-            }),
+            },
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -10,14 +10,14 @@ const SidebarOverlay = () => {
 
     useEffect(() => {
         const getGroups = async () => {
-            await axios.get(`/api/groups/`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/groups/`, {
                 mode: 'no cors'
             })
             .then((resp) => setGroups(resp.data)); 
         }
         
         const getEvents = async () => {
-            await axios.get(`/api/events/`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/events/`, {
                 mode: 'no cors'
             })
             .then((resp) => setEvents(resp.data)); 

@@ -10,7 +10,7 @@ const GamesTab = () => {
     
     useEffect(() => {
         const getGames = async () => {
-            await axios.get(`/api/games/`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/games/`, {
                 mode: 'no cors'
             })
             .then((resp) => setGames(resp.data)); 

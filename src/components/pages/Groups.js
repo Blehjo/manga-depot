@@ -8,23 +8,23 @@ const Groups = () => {
     const [groups, setGroups] = useState([]);
 
     async function handleClickEvent(event) {
-        await axios.post(`/api/groupmembers/`, {
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/groupmembers/`, {
             group_id: event.target.id
         })
     }
     
     async function unfollowGroup(event) {
-        await axios.delete(`/api/groupmembers/${event.target.id}`)
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/groupmembers/${event.target.id}`)
     }
 
     useEffect(() => {
         async function getUser() {
-            await axios.get('/api/users')
+            await axios.get('https://shellgeistapi.herokuapp.com/api/users')
             .then((response) => setAuth(response.data[0]));
         }
 
         async function getGroups() {
-            await axios.get("/groups",
+            await axios.get("https://shellgeistapi.herokuapp.com/groups",
             {
                 mode: 'no-cors',
             })

@@ -51,7 +51,7 @@ const CreateGroup = () => {
         event.preventDefault();
 
         async function postGroup() {
-            await axios.post('/api/groups/', {
+            await axios.post('https://shellgeistapi.herokuapp.com/api/groups/', {
                 group_name: modalName,
                 media_location_url: modalImage,
                 group_description: modalDescription,
@@ -69,7 +69,7 @@ const CreateGroup = () => {
         }
 
         async function joinGroup() {
-            await axios.post(`/api/groupmembers/`, {
+            await axios.post(`https://shellgeistapi.herokuapp.com/api/groupmembers/`, {
                 group_id: id.data.id
             })
             .catch(err => {

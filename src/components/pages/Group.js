@@ -19,7 +19,7 @@ const Group = () => {
 
     async function postMessage(evt) {
         evt.preventDefault();
-        await axios.post(`/api/channelcomments/${channel}/`,
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/channelcomments/${channel}/`,
         {
             channel_comment_text: messageText
         })
@@ -32,7 +32,7 @@ const Group = () => {
 
     useEffect(() => {
         async function getChannelContent() {
-            await axios.get(`/api/channels/${channel}`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/channels/${channel}`,
             {
                 mode: 'no-cors',
             })
@@ -40,7 +40,7 @@ const Group = () => {
         }
 
         async function getGroup() {
-            await axios.get(`/api/groups/${id}`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/groups/${id}`,
             {
                 mode: 'no-cors',
             })
@@ -48,7 +48,7 @@ const Group = () => {
         }
 
         async function getEvents() {
-            await axios.get(`/api/events/${id}`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/events/${id}`, {
                 mode: 'no-cors'
             })
             .then((response) => setEvents(response.data));

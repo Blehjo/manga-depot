@@ -7,23 +7,23 @@ const Events = () => {
     const [events, setEvents] = useState([]);
 
     async function handleClickEvent(event) {
-        await axios.post(`/api/eventMembers/`, {
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/eventMembers/`, {
             event_id: event.target.id
         })
     }
     
     async function unfollowEvent(event) {
-        await axios.delete(`/api/eventMembers/${event.target.id}`)
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/eventMembers/${event.target.id}`)
     }
 
     useEffect(() => {
         async function getUser() {
-            await axios.get('/api/users')
+            await axios.get('https://shellgeistapi.herokuapp.com/api/users')
             .then((response) => setAuth(response.data[0]));
         }
 
         async function getEvents() {
-            await axios.get(`/events/`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/events/`,
             {
                 mode: 'no-cors',
             })

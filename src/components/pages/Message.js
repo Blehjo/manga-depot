@@ -12,7 +12,7 @@ export default function Message() {
     
     function postMessages(evt) {
         // evt.preventDefault();
-        axios.post(`/api/messages/${id}/`,
+        axios.post(`https://shellgeistapi.herokuapp.com/api/messages/${id}/`,
         {
             from_profile: id,
             message_text: messageText
@@ -27,7 +27,7 @@ export default function Message() {
 
     useEffect(() => {
         async function getMessages() {
-            await axios.get(`/api/conversations/${id}`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/conversations/${id}`,
             {
                 mode: 'no-cors',
             })

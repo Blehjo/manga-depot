@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
             await axios({
                 mode: 'no-cors',
                 method: 'get',
-                url: '/api/users/',
+                url: 'https://shellgeistapi.herokuapp.com/api/users/',
                 headers: {
                   'Content-Type': 'application/json',
                 },
@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
             })
             .then((response) => setAuth(response.data[0]))
         };
-        // console.log('data: ', information.data);
 
         return information;
     }, []);

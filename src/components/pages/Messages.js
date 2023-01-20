@@ -30,7 +30,7 @@ export default function Messages() {
     }
 
     async function createConversation() {
-        await axios.post('/api/conversations/', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/conversations/', {
             mode: 'no-cors'
         })
         .then((response) => setConversationId(response.data.id))
@@ -49,19 +49,19 @@ export default function Messages() {
     function sendMessage(event) {
         event.preventDefault();
         const addChatMember = async () => {
-            await axios.post(`/api/chatmembers/${conversationId}`, 
+            await axios.post(`https://shellgeistapi.herokuapp.com/api/chatmembers/${conversationId}`, 
             {
                 mode: 'no-cors'
             })
         }
         const postMessage = async () => {
-            await axios.post(`/api/messages/${conversationId}`,
+            await axios.post(`https://shellgeistapi.herokuapp.com/api/messages/${conversationId}`,
             {
                 message_text: messageText,
                 mode: 'no-cors', 
             })
         }
-        console.log(conversationId);
+
         addChatMember();
         postMessage();
         handleClose();
@@ -69,7 +69,7 @@ export default function Messages() {
 
     useEffect(() => {
         const getConversations = async () => {
-            await axios.get(`/api/conversations/`,
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/conversations/`,
             {
                 mode: 'no-cors',
             })

@@ -18,23 +18,23 @@ const EventsTab = () => {
     const handleShowSearchGroup= () => setShowSearchGroup(true);
 
     async function handleClickEvent(event) {
-        await axios.post(`/api/eventMembers/`, {
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/eventMembers/`, {
             event_id: event.target.id
         })
     }
     
     async function unfollowEvent(event) {
-        await axios.delete(`/api/eventMembers/${event.target.id}`)
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/eventMembers/${event.target.id}`)
     }
     
     useEffect(() => {
         async function getUser() {
-            await axios.get('/api/users')
+            await axios.get('https://shellgeistapi.herokuapp.com/api/users')
             .then((response) => setAuth(response.data[0]));
         }
 
         const getEvents = async () => {
-            await axios.get(`/api/events/`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/events/`, {
                 mode: 'no cors'
             })
             .then((resp) => setEvents(resp.data)); 

@@ -10,24 +10,24 @@ const UserProfileCard = () => {
 
     const followMate = async (event) => {
         event.preventDefault();
-        await axios.post(`/api/friendships/${id}`)
+        await axios.post(`https://shellgeistapi.herokuapp.com/api/friendships/${id}`)
     }
 
     const unfollowMate = async (event) => {
         event.preventDefault();
-        await axios.delete(`/api/friendships/${id}`)
+        await axios.delete(`https://shellgeistapi.herokuapp.com/api/friendships/${id}`)
     }
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('/api/users/', {
+            await axios.get('https://shellgeistapi.herokuapp.com/api/users/', {
                 mode: 'no-cors'
             })
             .then((response) => setAuth(response.data[0]));
         };
 
         async function getProfile(id) {
-            await axios.get(`/api/users/${id}`, {
+            await axios.get(`https://shellgeistapi.herokuapp.com/api/users/${id}`, {
                 mode: 'no-cors'
             })
             .then((response) => setProfile(response.data))
