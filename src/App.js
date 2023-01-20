@@ -45,7 +45,7 @@ function App() {
     setLoading(true);
     try {
       const data = await axios({
-        url: "https://shellgeist.herokuapp.com/api/users", 
+        url: "https://shellgeistapi.herokuapp.com/api/users", 
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
