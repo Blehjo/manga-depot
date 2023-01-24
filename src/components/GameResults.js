@@ -15,7 +15,7 @@ const GameResults = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const { results } = useContext(ResultContext);
     const navigate = useNavigate();
-    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
+    const { about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
