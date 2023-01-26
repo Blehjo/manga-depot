@@ -6,7 +6,6 @@ import SearchEvent from './SearchEvent';
 import CreateEvent from './CreateEvent';
 
 const EventsTab = () => {
-    const [auth, setAuth] = useState([]);
     const [events, setEvents] = useState();
     const [showCreateGroup, setShowCreateGroup] = useState(false);
     const [showSearchGroup, setShowSearchGroup] = useState(false);
@@ -30,7 +29,6 @@ const EventsTab = () => {
     useEffect(() => {
         async function getUser() {
             await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-            .then((response) => setAuth(response.data[0]));
         }
 
         const getEvents = async () => {
@@ -78,7 +76,7 @@ const EventsTab = () => {
                                 {event_description}
                             </Card.Text>
                             <Col style={{ marginTop: '1rem' }}>
-                                {eventmembers.length > 0 && (eventmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowEvent}>Leave Event</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Event</Button>}
+                                {eventmembers.length > 0 && (eventmembers.some(({ profile_id }) => profile_id === 'auth.id')) ? <Button variant="light" id={id} onClick={unfollowEvent}>Leave Event</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Event</Button>}
                             </Col>
                         </Card.Body>
                     </Col>

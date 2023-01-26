@@ -2,7 +2,8 @@ import { Fragment, useEffect, useState } from "react";
 import { Card, Badge, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router";
 import { unixConverter } from "../utils/date/Date";
-import axios from "axios";
+import { getGame } from "../utils/igdb/IGDB";
+
 
 const GameProfile = () => {
     const [game, setGame] = useState([]);
@@ -10,27 +11,8 @@ const GameProfile = () => {
     const { id, imageId } = useParams();
 
     useEffect(() => {
-        async function getGame() {
-            await axios({
-                url: process.env.REACT_APP_URL,
-                method: 'POST',
-                headers: {
-                    'x-api-key': process.env.REACT_APP_X_API_KEY,
-                },
-                mode: 'no-cors',
-                data: `fields screenshots.*, name, first_release_date, summary; where id = ${id};`
-            })
-            .then(response => {
-                setGame(response.data);
-            })
-            .catch(err => {
-                setErrorMessage(err);
-                console.error(errorMessage);
-            });
-        }
-        getGame();
-    }, [])
-    console.log(game)
+        getGame(id);
+    }, []);
 
     return (
         <Fragment>

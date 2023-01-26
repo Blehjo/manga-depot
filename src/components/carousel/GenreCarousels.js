@@ -9,25 +9,6 @@ const GenreCarousel = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [genres, setGenres] = useState([]);
 
-    useEffect(() => {
-        axios({
-            url: process.env.REACT_APP_URL,
-            method: 'POST',
-            headers: {
-                'x-api-key': process.env.REACT_APP_X_API_KEY,
-            },
-            mode: 'no-cors',
-            data: `fields name; limit 50;`
-          })
-            .then(response => {
-                setGenres(response.data);
-            })
-            .catch(err => {
-                setErrorMessage(err);
-                console.error(errorMessage);
-            });
-    }, [errorMessage]);
-
     return (
         <Fragment>
             <Row xs={1} className="my-5" key="genres">

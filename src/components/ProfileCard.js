@@ -1,13 +1,12 @@
 import axios from "axios";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useState } from "react";
 import { Card, Row, Col, Modal } from "react-bootstrap";
-import { AuthContext } from "../contexts/auth.context";
+
 import CreateGroup from "./CreateGroup";
 
 const ProfileCard = () => {
-    const { auth } = useContext(AuthContext);
+
     const [show, setShow] = useState(false);
-    const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -23,7 +22,7 @@ const ProfileCard = () => {
 
     return (
         <Fragment>
-            <Card style={{ color: 'white' }} className="bg-dark" key={id}>
+            {/* <Card style={{ color: 'white' }} className="bg-dark" key={'id'}>
                 <Card.Img variant="top" src={media_location ? media_location : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                 <Card.Body>
                     <Card.Title>{username}</Card.Title>
@@ -103,7 +102,7 @@ const ProfileCard = () => {
             </Card>
             <Modal show={show} onHide={handleClose}>
                 <CreateGroup />
-            </Modal>
+            </Modal> */}
         </Fragment>
     )
 }

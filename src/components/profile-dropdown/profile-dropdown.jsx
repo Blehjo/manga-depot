@@ -1,21 +1,19 @@
-import { useContext } from "react";
+
 import axios from 'axios';
 import { Nav, Row } from "react-bootstrap";
 import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
 
-import { AuthContext } from "../../contexts/auth.context";
 
 import './profile-dropdown.styles.scss';
 
 
 const ProfileDropdown = () => {
-    const { setAuth } = useContext(AuthContext);
+
 
     async function handleSignOut() {
         await axios.post('api/users/logout', {
             mode: 'no-cors'
         })
-        .then((response) => setAuth(response.data));
     }
 
     return (

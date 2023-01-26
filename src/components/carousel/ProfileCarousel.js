@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
@@ -6,7 +6,7 @@ import 'react-multi-carousel/lib/styles.css';
 import axios from "axios";
 
 const ProfileCarousel = () => {
-    const [auth, setAuth] = useState();
+
     const [userProfiles, setUserProfiles] = useState([]);
 
 
@@ -38,7 +38,7 @@ const ProfileCarousel = () => {
             await axios.get('https://shellgeistapi.herokuapp.com/api/users/', {
                 mode: 'no-cors'
             })
-            .then((response) => setAuth(response.data[0]));
+
         };
 
         return information;
@@ -114,7 +114,7 @@ const ProfileCarousel = () => {
                                 </Card.Link>
                                 </Col>
                                 <Col>
-                                {(friendships.some(({ profile_request }) => profile_request === auth.id)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
+                                {(friendships.some(({ profile_request }) => profile_request === 'auth.id')) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow Mate</Card.Text> }
                                 </Col>
                             </Row>
                             <Card.Subtitle>{first_name}</Card.Subtitle>

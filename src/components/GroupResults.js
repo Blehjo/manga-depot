@@ -1,7 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col, Card, Badge, Modal, Button, Form } from "react-bootstrap";
 import { utcConverter } from "../utils/date/Date";
-import { GroupResultContext } from "../contexts/groupresult.context";
+
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ const GroupResults = () => {
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
     const [errorMessage, setErrorMessage] = useState([]);
-    const { groupResults } = useContext(GroupResultContext);
+
     const navigate = useNavigate();
 
     const handleClose = () => setShow(false);

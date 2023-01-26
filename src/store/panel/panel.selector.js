@@ -1,0 +1,1 @@
+export const selectPanelReducer = (state) => state.panel;

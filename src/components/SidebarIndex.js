@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import { Outlet } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 
-import { ListContext } from '../contexts/list.context';
-
 import SidebarOverlay from './SidebarOverlay';
 import SidebarMenu from './SidebarMenu';
+import { useSelector } from 'react-redux';
+import { selectIsNavOpen } from '../store/nav/nav.selector';
 
 function SidebarIndex() {
-  const { isNavOpen } = useContext(ListContext);
+  const isNavOpen = useSelector(selectIsNavOpen);
 
   return (
     <Row >

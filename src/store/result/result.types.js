@@ -1,0 +1,3 @@
+export const RESULT_ACTION_TYPES = {
+    SET_RESULT_ITEMS: 'result/SET_RESULT_ITEMS',
+};

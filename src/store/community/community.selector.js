@@ -1,0 +1,1 @@
+export const selectCommunityReducer = (state) => state.community;

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 export default function Profiles() {
-    const [auth, setAuth] = useState();
+
     const [userId, setId] = useState();
     const [userProfiles, setUserProfiles] = useState();
     const getAuth = async () => {
@@ -42,9 +42,8 @@ export default function Profiles() {
                 mode: 'no-cors',
                 withCredentials: true 
             })
-            .then((response) => setAuth(response.data[0]));
-            const { id, about, first_name, country, friendships, games, media_location, username, userposts, groups } = auth;
-            setId(id);
+
+            // setId(id);
         };
 
         return information;

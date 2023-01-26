@@ -1,11 +1,10 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
 import NavBar from "./components/NavBar";
 import Loading from "./components/Loading";
 import SidebarIndex from "./components/SidebarIndex";
-import Footer from "./components/Footer";
 
 import Home from "./components/pages/Home";
 import Dashboard from "./components/pages/Dashboard";
@@ -30,35 +29,25 @@ import SingleProfile from "./components/pages/SingleProfile";
 
 import './App.css';
 import GameProfile from "./components/GameProfile";
-
-import { AuthContext } from "./contexts/auth.context";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "./store/user/user.selector";
 
 function App() {
-  const { auth, setAuth } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    fetchPeopleData();
-  }, []);
+    const handleLoading = async () => {
+      setLoading(true);
 
-  const fetchPeopleData = async () => {
-    setLoading(true);
-    try {
-      const data = await axios({
-        url: "https://shellgeistapi.herokuapp.com/api/users", 
-        method: 'get',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      setAuth(data);
-      console.log(auth)
-    } catch (error) {
-      console.error(error.response.data);
-    } finally {
+      await axios.get('https://shellgeistapi.herokuapp.com/api/users')
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
+
       setLoading(false);
     }
-  };
+    handleLoading();
+  }, []);
 
   if (loading) {
     return <Loading/>;
@@ -70,23 +59,23 @@ function App() {
         <Route index element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/authentication' element={<Authentication />}/>
-        <Route path='/connections' element={auth ? <Connections /> : <Authentication /> }/>
-        <Route path="/dashboard" element={auth ? <Dashboard /> : <Authentication /> }/>
-        <Route path='/discovery' element={auth ? <Discovery /> : <Authentication /> }/>
-        <Route path='/groups/:id' element={auth ? <Group /> : <Authentication /> }/>
-        <Route path='/interactions' element={auth ? <Interactions /> : <Authentication /> }/>
-        <Route path='/messages' element={auth ? <Messages /> : <Authentication /> }/>
-        <Route path='/messages/:id' element={auth ? <Message /> : <Authentication /> }/>
-        <Route path='/profile' element={auth ? <Profile /> : <Authentication /> }/>
+        {/* <Route path='/connections' element={currentUser ? <Connections /> : <Authentication /> }/>
+        <Route path="/dashboard" element={currentUser ? <Dashboard /> : <Authentication /> }/> */}
+        <Route path='/discovery' element={currentUser ? <Discovery /> : <Authentication /> }/>
+        {/* <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
+        <Route path='/interactions' element={currentUser ? <Interactions /> : <Authentication /> }/>
+        <Route path='/messages' element={currentUser ? <Messages /> : <Authentication /> }/>
+        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>
+        <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/> */}
         <Route path='/explore' element={<Explore />}/>
-        <Route path='/events' element={<Events />}/>
+        {/* <Route path='/events' element={<Events />}/>
         <Route path='/games' element={<Games />}/>
         <Route path='/games/:id/:imageId' element={<GameProfile />}/>
         <Route path='/groups' element={<Groups />}/>
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
         <Route path='/profile/:id' element={<SingleProfile />}/>
-        <Route path='/profiles' element={<Profiles />}/>
+        <Route path='/profiles' element={<Profiles />}/>  */}
         <Route path='/search' element={<Search />}/>
       </Route>
     </Routes>

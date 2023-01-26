@@ -1,16 +1,14 @@
-import { useState, Fragment, useContext, useEffect } from "react";
+import { useState, Fragment, useEffect } from "react";
 import axios from "axios";
 import { Form, Button, Modal } from "react-bootstrap";
 
-import { ResultContext } from "../contexts/result.context";
-import { GroupResultContext } from "../contexts/groupresult.context";
 import Events from "./pages/Events";
 
 const SearchEvent = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
-    const { setResults } = useContext(ResultContext);
-    const { groupResults } = useContext(GroupResultContext);
+
+
     const [events, setEvents] = useState({});
 
     const handleInputChange = (evt) => {

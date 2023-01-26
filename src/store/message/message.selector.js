@@ -1,0 +1,1 @@
+export const selectMessageReducer = (state) => state.message;

@@ -1,13 +1,8 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import CountrySelect from 'react-bootstrap-country-select';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../contexts/auth.context";
-
-// import { 
-//     createAuthUserWithEmailAndPassword,
-// } from '../../utils/firebase/firebase.utils';
 
 const defaultFormFields = {
     displayName: '',
@@ -17,7 +12,7 @@ const defaultFormFields = {
 }
 
 const SignUpForm = () => {
-    const { auth, setAuth } = useContext(AuthContext);
+
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
     const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
@@ -46,10 +41,6 @@ const SignUpForm = () => {
             },
             withCredentials: false,
         })
-        .then(function (response) { 
-            console.log(response);
-            // setAuth(response);
-        });
     }
 
     const handleChange = (event) => {

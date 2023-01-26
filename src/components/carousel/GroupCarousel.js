@@ -9,7 +9,7 @@ const GroupCarousel = () => {
 
     useEffect(() => {
         async function getGroups() {
-            await axios.get("/groups",
+            await axios.get("https://shellgeistapi.herokuapp.com/groups",
             {
                 mode: 'no-cors',
             })

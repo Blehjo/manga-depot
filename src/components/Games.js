@@ -9,28 +9,6 @@ const Games = () => {
   const [games, setGames] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    async function getGames() {
-      await axios({
-        url: process.env.REACT_APP_URL,
-        method: 'POST',
-        headers: {
-            'x-api-key': process.env.REACT_APP_X_API_KEY,
-        },
-        mode: 'no-cors',
-        data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; where rating >= 90; limit 72;`
-      })
-      .then(response => {
-          setGames(response.data);
-      })
-      .catch(err => {
-          setErrorMessage(err);
-          console.error(errorMessage);
-      });
-      }
-      getGames();
-  }, [errorMessage]);
-
   return (
       <Row xs={1} md={2} lg={3} key={1}>
         {games?.map(({ cover, first_release_date, id, name, platforms, rating, summary }) => (

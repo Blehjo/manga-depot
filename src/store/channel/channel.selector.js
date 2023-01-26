@@ -1,0 +1,1 @@
+export const selectChannelReducer = (state) => state.channel;

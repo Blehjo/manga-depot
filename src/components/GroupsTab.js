@@ -8,7 +8,7 @@ import CreateGroup from './CreateGroup';
 import SearchGroup from './SearchGroup';
 
 const GroupsTab = () => {
-    const [auth, setAuth] = useState([]);
+
     const [groups, setGroups] = useState();
     const [showCreateGroup, setShowCreateGroup] = useState(false);
     const [showSearchGroup, setShowSearchGroup] = useState(false);
@@ -22,7 +22,7 @@ const GroupsTab = () => {
     useEffect(() => {
         async function getUser() {
             await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-            .then((response) => setAuth(response.data[0]));
+
         }
 
         const getGroups = async () => {
@@ -82,7 +82,7 @@ const GroupsTab = () => {
                             <Card.Text>{`Established ${utcConverter(created_date_time)}`}</Card.Text>
                             {'Platform:  '}<Badge pill='info'>{platform}</Badge>
                             <Col style={{ marginTop: '1rem' }}>
-                                {(groupmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowGroup}>Leave Shell</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Shell</Button>}
+                                {/* {(groupmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowGroup}>Leave Shell</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Shell</Button>} */}
                             </Col>
                         </Card.Body>
                     </Col>

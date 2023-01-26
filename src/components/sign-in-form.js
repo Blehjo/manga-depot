@@ -1,12 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import axios from "axios";
-import { AuthContext } from "../contexts/auth.context";
 
 const SignInForm = () => {
-    const { auth, setAuth } = useContext(AuthContext);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -44,7 +41,8 @@ const SignInForm = () => {
         event.preventDefault();
         try {
             await signInWithReact();
-            navigate('/profile')
+            resetFormFields();
+            // navigate('/profile');
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':

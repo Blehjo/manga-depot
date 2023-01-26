@@ -1,7 +1,8 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
+import axios from "axios";
+
 import 'react-multi-carousel/lib/styles.css';
 
 const EventCarousel = () => {
@@ -9,7 +10,7 @@ const EventCarousel = () => {
 
     useEffect(() => {
         async function getEvents() {
-            await axios.get("/events",
+            await axios.get("https://shellgeistapi.herokuapp.com/events",
             {
                 mode: 'no-cors',
             })

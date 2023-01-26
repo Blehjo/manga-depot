@@ -1,0 +1,1 @@
+export const selectMemberReducer = (state) => state.member;

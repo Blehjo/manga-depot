@@ -1,68 +1,39 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Button, Form, Col, Row, Nav, Navbar } from 'react-bootstrap';
-import axios from 'axios';
-
 import ProfileIcon from './profile-icon/profile-icon';
 import ProfileDropdown from './profile-dropdown/profile-dropdown';
 import ListIcon from './list-icon/list-icon';
 
-import { ResultContext } from '../contexts/result.context';
-import { ProfileContext } from '../contexts/profile.context';
-import { SearchContext } from '../contexts/search.context';
+import { selectIsProfileOpen } from '../store/profile/profile.selector';
+import { selectCurrentUser } from '../store/user/user.selector';
+import { signOutStart } from '../store/user/user.action';
 
-import { AuthContext } from '../contexts/auth.context';
+import { useSelector, useDispatch } from 'react-redux';
+import { ResultItems, searchGame } from '../utils/igdb/IGDB';
 
 function NavBar() {
-  const { auth } = useContext(AuthContext);
-  const { isProfileOpen } = useContext(ProfileContext);
-  const { searchField, setSearchField } = useContext(SearchContext);
-  const { setResults } = useContext(ResultContext);
   const navigate = useNavigate();
-
-  const [errorMessage, setErrorMessage] = useState('');
+  const [searchField, setSearchField] = useState('');
+  const currentUser = useSelector(selectCurrentUser);
+  const isProfileOpen  = useSelector(selectIsProfileOpen);
 
   const handleInputChange = (evt) => {
     evt.preventDefault();
     setSearchField(evt.target.value);
   };
 
-  const handleClickEvent = async (evt) => {
-    evt.preventDefault();
-
-    async function getGames () {
-      await axios({
-        url: process.env.REACT_APP_URL,
-        method: 'POST',
-        headers: {
-            'x-api-key': process.env.REACT_APP_X_API_KEY,
-        },
-        mode: 'no-cors',
-        data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
-      })
-      .then(response => {
-        setResults(response.data);
-      })
-      .then(() => {
-        navigate('/search');
-      })
-      .catch(err => {
-          setErrorMessage(err);
-          console.error(errorMessage);
-      });
-    }
-
-    getGames();
-  };
-
+  const handleClickEvent = () => {
+    // navigate('/');
+  }
   return (
     <Fragment>
       {['sm'].map((expand) => (
           <Row key="sm"style={{ margin: '2rem' }} >
             <Navbar fixed='top' style={{ zIndex: 1000 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
               <ListIcon key='listicon'/>
-              <Col key="listColumn" className=''>
-                <Nav key="listColumn" className=''>
+              <Col key="listColumn">
+                <Nav >
                   <Navbar.Brand href="/" className='text-white'>Shell Geist</Navbar.Brand>
                 </Nav>
               </Col>
@@ -71,6 +42,7 @@ function NavBar() {
                 <Col key="searchColumn" className=''>
                   <Nav key="navForm">
                     <Form onSubmit={handleClickEvent} className="d-flex">
+                      <ResultItems searchField={searchField}/>
                       <Form.Control
                         onChange={handleInputChange}
                         type="search"
@@ -86,7 +58,7 @@ function NavBar() {
                 <Col key="navigationIcons">
                     <Nav key="navIcons" variant='dark'className="justify-content-end pe-3">
                       {
-                        auth ? (
+                        currentUser ? (
                             <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>
                         ) : (
                             <Nav.Link className='nav-link' href='/authentication'>

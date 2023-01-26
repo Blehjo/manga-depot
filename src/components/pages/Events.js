@@ -3,7 +3,7 @@ import axios from "axios";
 import { Row, Col, Card, Button } from "react-bootstrap";
 
 const Events = () => {
-    const [auth, setAuth] = useState([]);
+
     const [events, setEvents] = useState([]);
 
     async function handleClickEvent(event) {
@@ -19,7 +19,7 @@ const Events = () => {
     useEffect(() => {
         async function getUser() {
             await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-            .then((response) => setAuth(response.data[0]));
+
         }
 
         async function getEvents() {
@@ -60,7 +60,7 @@ const Events = () => {
                                     Attending: {eventmembers.length > 0 && eventmembers.length}
                                 </Col>
                                 <Col style={{ marginTop: '1rem' }}>
-                                    {eventmembers.length > 0 && (eventmembers.some(({ profile_id }) => profile_id === auth.id)) ? <Button variant="light" id={id} onClick={unfollowEvent}>Leave Event</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Event</Button>}
+                                    {eventmembers.length > 0 && (eventmembers.some(({ profile_id }) => profile_id === 'auth.id')) ? <Button variant="light" id={id} onClick={unfollowEvent}>Leave Event</Button> : <Button variant="light" id={id} onClick={handleClickEvent}>Join Event</Button>}
                                 </Col>
                             </Row>
                         </Card.Footer>

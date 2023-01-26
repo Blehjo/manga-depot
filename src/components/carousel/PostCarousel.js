@@ -27,7 +27,7 @@ const PostCarousel = () => {
 
     useEffect(() => {
         async function getPosts() {
-            await axios.get('/posts', {
+            await axios.get('https://shellgeistapi.herokuapp.com/posts', {
                 mode: 'no-cors'
             })
             .then((response) => setPosts(response.data));

@@ -1,0 +1,1 @@
+export const selectNoteReducer = (state) => state.note;

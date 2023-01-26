@@ -1,15 +1,16 @@
-import { useContext } from "react";
 import { List } from "react-bootstrap-icons";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsNavOpen } from '../../store/nav/nav.selector';
+import { setIsNavOpen } from '../../store/nav/nav.action';
 
-import { ListContext } from "../../contexts/list.context";
 
 const ListIcon = () => {
-    const { isNavOpen, setIsNavOpen } = useContext(ListContext);
+    const dispatch = useDispatch();
+    const isNavOpen = useSelector(selectIsNavOpen);
+    const toggleIsNavOpen = () => dispatch(setIsNavOpen(!isNavOpen));
 
-    const toggleIsNavOpen = () => setIsNavOpen(!isNavOpen);
-    
     return (
-        <div className='' onClick={toggleIsNavOpen}>
+        <div onClick={toggleIsNavOpen}>
             <List style={{cursor: "pointer"}} className='ms-3 m-2' size={25} color="white" />
         </div>
     )
