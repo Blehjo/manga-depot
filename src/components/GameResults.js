@@ -4,12 +4,16 @@ import { unixConverter } from "../utils/date/Date";
 
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { selectResultItems } from "../store/result/result.selector";
 
 
 const GameResults = () => {
+    const gameList = useSelector(selectResultItems);
+    console.log(gameList);
 
     const [show, setShow] = useState(false);
-    const [gameList, setGames] = useState([]);
+    // const [gameList, setGames] = useState([]);
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
     const [errorMessage, setErrorMessage] = useState([]);
@@ -18,10 +22,6 @@ const GameResults = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    useEffect(() => {
-        setGames();
-    }, [])
 
     function handleClickEvent(event) {
         event.preventDefault();

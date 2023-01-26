@@ -20,11 +20,11 @@ function NavBar() {
 
   const handleInputChange = (evt) => {
     evt.preventDefault();
+    navigate('/search');
     setSearchField(evt.target.value);
   };
 
   const handleClickEvent = () => {
-    // navigate('/');
   }
   return (
     <Fragment>

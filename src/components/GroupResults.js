@@ -17,9 +17,7 @@ const GroupResults = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    useEffect(() => {
-        setGroups(groupResults);
-    }, [groupResults])
+
 
     function handleClickEvent(event) {
         event.preventDefault();

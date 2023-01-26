@@ -8,36 +8,35 @@ import { rootSaga } from './root-saga';
 
 import { rootReducer } from './root-reducer';
 
-//const persistConfig = {
-//    key: 'root',
-//    storage,
-//    whitelist: ['cart'],
-//};
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['result, nav, profile'],
+};
 
 const sagaMiddleware = createSagaMiddleware();
 
-//const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middleWares = [
-    process.env.NODE_ENV !== 'production' && logger,
-    sagaMiddleware,
+  process.env.NODE_ENV !== 'production' && logger,
+  sagaMiddleware,
 ].filter(Boolean);
 
 const composeEnhancer =
-    (process.env.NODE_ENV !== 'production' &&
-        window &&
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-    compose;
+  (process.env.NODE_ENV !== 'production' &&
+    window &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
 export const store = createStore(
-    //persistedReducer,
-    rootReducer,
-    undefined,
-    composedEnhancers
+  persistedReducer,
+  undefined,
+  composedEnhancers
 );
 
 sagaMiddleware.run(rootSaga);
 
-//export const persistor = persistStore(store);
+export const persistor = persistStore(store);
