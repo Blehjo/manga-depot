@@ -19,19 +19,19 @@ export const signInSuccess = (user) =>
 export const signInFailed = (error) =>
     createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
 
-export const signUpStart = (email, password, username, profileImage, dateOfBirth, firstName, lastName) =>
+export const signUpStart = (email, password, username, country, dateOfBirth, firstName, lastName) =>
     createAction(USER_ACTION_TYPES.SIGN_UP_START, {
-        email,
         password,
+        email,
         username,
-        profileImage,
+        country,
         dateOfBirth,
         firstName,
         lastName
     });
 
-export const signUpSuccess = (user, additionalDetails) =>
-    createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });
+export const signUpSuccess = (user) =>
+    createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, user );
 
 export const signUpFailed = (error) =>
     createAction(USER_ACTION_TYPES.SIGN_UP_FAILED, error);

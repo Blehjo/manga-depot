@@ -20,9 +20,7 @@ import {
    signOutUser,
 } from '../../utils/firebase';
 
-import { userDocument } from '../../utils/userDocument';
-
-import { apiCall } from '../../utils/userDocument';
+import { userDocument, getUser, apiCall, signUpUser } from '../../utils/userDocument';
 
 export function* userLoginCall(email, password) {
     try {
@@ -70,22 +68,27 @@ export function* signInWithEmail({ payload: { email, password } }) {
 
 export function* isUserAuthenticated() {
    try {
-       const userAuth = yield call(getCurrentUser);
+       const userAuth = yield call(getUser);
        if (!userAuth) return;
-       yield call(getSnapshotFromUserAuth, userAuth);
+       yield call(userDocument, userAuth);
    } catch (error) {
        yield put(signInFailed(error));
    }
 }
 
-export function* signUp({ payload: { email, password, displayName } }) {
+export function* signUp({ payload: { email, password, username, firstName, lastName, dateOfBirth, country } }) {
    try {
-       const { user } = yield call(
-           createAuthUserWithEmailAndPassword,
+       const user = yield call(
+           signUpUser,
            email,
-           password
+           password,
+           username,
+           firstName,
+           lastName,
+           dateOfBirth,
+           country
        );
-       yield put(signUpSuccess(user, { displayName }));
+       yield put(signUpSuccess({ data: user.data }));
    } catch (error) {
        yield put(signUpFailed(error));
    }
@@ -100,8 +103,8 @@ export function* signOut() {
    }
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
-   yield call(getSnapshotFromUserAuth, user, additionalDetails);
+export function* signInAfterSignUp(user) {
+   yield call(userDocument, user );
 }
 
 export function* onGoogleSignInStart() {

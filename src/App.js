@@ -31,11 +31,16 @@ import './App.css';
 import GameProfile from "./components/GameProfile";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "./store/user/user.selector";
+import { checkUserSession } from "./store/user/user.action";
 
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
 
   if (loading) {
     return <Loading/>;

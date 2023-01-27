@@ -1,77 +1,51 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import CountrySelect from 'react-bootstrap-country-select';
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../store/user/user.action";
 
 const defaultFormFields = {
-    displayName: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
+    dateOfBirth: '',
+    firstName: '',
+    lastName: ''
 }
 
 const SignUpForm = () => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
-    const { displayName, email, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
-    const navigate = useNavigate();
-
+    const { email, username, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
+    
     const resetForm = () => {
-        setFormFields();
+        setFormFields(defaultFormFields);
     }
 
-    const signInWithReact = async () => {
-        await axios(
-        {
-            method: 'post',
-            url: `https://shellgeistapi.herokuapp.com/api/users/`,
-            data: {
-                username: displayName,
-                email: email,
-                password: password,
-                country: country.name,
-                date_of_birth: dateOfBirth,
-                first_name: firstName,
-                last_name: lastName
-            },
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            withCredentials: false,
-        })
+    const signUpWithReact = (formFields) => {
+        console.log("formFields: ", formFields);
+        dispatch(signUpStart(email, username, password, confirmPassword,  dateOfBirth, firstName, lastName));
+        resetForm();
+        navigate('/profile');
     }
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-
         setFormFields({ ...formFields, [name]: value })
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
-            alert('error message');
+            alert('Passwords do not match');
             return;
         }
-
         try {
-            // const { user } = await createAuthUserWithEmailAndPassword(
-            //     email, 
-            //     password
-            // );
-
-            await signInWithReact();
-            // if (signInWithReact.ok) {
-            //     document.location.replace('/')
-            // } else {
-            //     alert("response.statusText");
-            // }
-            // await createAuthUserWithEmailAndPassword(user);
-            // navigate('/');
-            // resetForm();
-
+            signUpWithReact();
         } catch(error) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use');
@@ -88,15 +62,15 @@ const SignUpForm = () => {
             <span>Sign up with your email and password</span>
             <form style={{ color: 'white', marginTop: '1rem' }} onSubmit={handleSubmit} className="row g-3">
                 <div className="col-md-6">
-                    <label htmlFor="inputDisplayName" className="form-label">Display Name</label>
+                    <label htmlFor="inputUsername" className="form-label">Display Name</label>
                     <input 
                         required 
                         onChange={handleChange} 
-                        name="displayName" 
-                        value={displayName} 
-                        type="text" 
+                        name="username" 
+                        value={username} 
+                        type="username" 
                         className="form-control" 
-                        id="inputDisplayName" 
+                        id="inputUsername" 
                         placeholder="User123"
                     />
                 </div>
@@ -116,7 +90,7 @@ const SignUpForm = () => {
                 <div className="col-md-6">
                     <label htmlFor="inputFirstName" className="form-label">First Name</label>
                     <input 
-                        type="text" 
+                        type="firstName" 
                         required 
                         onChange={handleChange} 
                         name="firstName" 
@@ -129,7 +103,7 @@ const SignUpForm = () => {
                 <div className="col-md-6">
                     <label htmlFor="inputLastName" className="form-label">Last Name</label>
                     <input 
-                        type="text" 
+                        type="lastName" 
                         required 
                         onChange={handleChange} 
                         name="lastName" 

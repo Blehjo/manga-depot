@@ -12,8 +12,7 @@ const ProfileCard = () => {
     const handleShow = () => setShow(true);
     const currentUser = useSelector(selectCurrentUser);
     const { media_location, username, first_name, country, about,  } = currentUser.data;
-
-    console.log("Profile Card: ", currentUser);
+    // console.log("Current User: ", currentUser.data.user);
 
     const deleteGroup = async (event) => {
         await axios.delete(`https://shellgeistapi.herokuapp.com/api/groups/${event.target.id}`);
