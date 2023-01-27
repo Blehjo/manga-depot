@@ -29,10 +29,11 @@ import SingleProfile from "./components/pages/SingleProfile";
 
 import './App.css';
 import GameProfile from "./components/GameProfile";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "./store/user/user.selector";
 
 function App() {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
 
@@ -41,8 +42,8 @@ function App() {
       setLoading(true);
 
       await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-      .then((response) => response.data)
-      .catch((error) => console.log(error));
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log("Error: ", error));
 
       setLoading(false);
     }
@@ -65,8 +66,8 @@ function App() {
         {/* <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
         <Route path='/interactions' element={currentUser ? <Interactions /> : <Authentication /> }/>
         <Route path='/messages' element={currentUser ? <Messages /> : <Authentication /> }/>
-        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>
-        <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/> */}
+        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>*/}
+        <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/> 
         <Route path='/explore' element={<Explore />}/>
         {/* <Route path='/events' element={<Events />}/>
         <Route path='/games' element={<Games />}/>

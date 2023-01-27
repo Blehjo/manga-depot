@@ -25,6 +25,7 @@ const SignInForm = () => {
                 'Content-Type': 'application/json',
             },
         })
+        .then((response) => console.log("response: ", response));
     }
 
     const handleEmailChange = (event) => {
@@ -40,9 +41,10 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await signInWithReact();
+            await signInWithReact()
+            
             resetFormFields();
-            // navigate('/profile');
+            navigate('/profile');
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':
@@ -52,7 +54,7 @@ const SignInForm = () => {
                     alert('no user associated with this email');
                     break;
                 default: 
-                    console.log(error);
+                    console.log(error.message);
             }
         }
     }

@@ -91,16 +91,14 @@ const GameResults = () => {
                             <Row >
                             {platforms?.slice(0, 5).map(({ abbreviation }) => (
                                 <Col>
-                                    <Badge key={abbreviation} pill bg="primary">
+                                    <Badge key={abbreviation} style={{ color: 'black', marginBottom: '1rem' }} pill bg="light">
                                         {`${abbreviation}`}
                                     </Badge>
                                 </Col>
                             ))}
                             {platforms?.length > 5 &&
-                                <Col xs={4}>
-                                    <Card className="bg-dark">
-                                        {platforms?.length} More Platforms
-                                    </Card>
+                                <Col xs={12}>
+                                    {platforms?.length} More Platforms
                                 </Col>
                             }
                             </Row>
