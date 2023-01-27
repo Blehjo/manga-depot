@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUser } from "../store/user/user.selector";
+import { emailSignInStart } from "../store/user/user.action";
 
 const SignInForm = () => {
+    const dispatch = useDispatch();
+    const currentUser = useSelector(selectCurrentUser);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
@@ -13,19 +17,8 @@ const SignInForm = () => {
         setPassword('');
     }
 
-    const signInWithReact = async () => {
-        await axios({
-            method: 'post',
-            url: `https://shellgeistapi.herokuapp.com/api/users/login`, 
-            data: {
-                email: email,
-                password: password,
-            },
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then((response) => console.log("response: ", response));
+    const signInWithReact = () => {
+        dispatch(emailSignInStart(email, password));
     }
 
     const handleEmailChange = (event) => {
@@ -41,7 +34,7 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await signInWithReact()
+            signInWithReact()
             
             resetFormFields();
             navigate('/profile');

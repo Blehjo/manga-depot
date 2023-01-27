@@ -37,19 +37,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
 
-  useEffect(() => {
-    const handleLoading = async () => {
-      setLoading(true);
-
-      await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log("Error: ", error));
-
-      setLoading(false);
-    }
-    handleLoading();
-  }, []);
-
   if (loading) {
     return <Loading/>;
   }

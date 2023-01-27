@@ -1,5 +1,4 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
-import axios from 'axios';
 
 import { USER_ACTION_TYPES } from './user.types';
 
@@ -21,20 +20,14 @@ import {
    signOutUser,
 } from '../../utils/firebase';
 
-export async function* userLoginCall(email, password) {
+import { userDocument } from '../../utils/userDocument';
+
+import { apiCall } from '../../utils/userDocument';
+
+export function* userLoginCall(email, password) {
     try {
-        const userSnapshot = yield call(await axios({
-            method: 'POST',
-            url: 'https://shellgeistapi.herokuapp.com/api/users/login',
-            data: {
-                email: email,
-                password: password
-            },
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }))
-        yield put(signInSuccess({ id: userSnapshot.data.id, ...userSnapshot.data }))
+        const userSnapshot = yield call(apiCall, email, password)
+        yield put(signInSuccess({ data: userSnapshot.data.user }))
     } catch (error) {
         yield put(signInFailed(error));
     }
@@ -64,12 +57,12 @@ export function* signInWithGoogle() {
 
 export function* signInWithEmail({ payload: { email, password } }) {
    try {
-       const { user } = yield call(
-           signInAuthUserWithEmailAndPassword,
+       const user = yield call(
+           userLoginCall,
            email,
            password
        );
-       yield call(getSnapshotFromUserAuth, user);
+       yield call(userDocument, user);
    } catch (error) {
        yield put(signInFailed(error));
    }
@@ -120,7 +113,7 @@ export function* onCheckUserSession() {
 }
 
 export function* onEmailSignInStart() {
-   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, userLoginCall);
+   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
 export function* onSignUpStart() {
