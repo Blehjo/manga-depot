@@ -88,7 +88,7 @@ export function* signUp({ payload: { email, password, username, firstName, lastN
            dateOfBirth,
            country
        );
-       yield put(signUpSuccess({ data: user.data }));
+       yield put(signUpSuccess({ data: user.data.user }));
    } catch (error) {
        yield put(signUpFailed(error));
    }
