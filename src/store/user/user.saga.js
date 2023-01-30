@@ -58,8 +58,8 @@ export function* signUp({ payload: { username, email, password, country, date_of
     }
 }
 
-export function* signInAfterSignUp(user) {
-   yield put(userDocument, user );
+export function* signInAfterSignUp({ payload: user }) {
+   yield call(userDocument, user );
 }
 
 export function* signOut() {

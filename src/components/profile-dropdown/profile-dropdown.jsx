@@ -1,17 +1,12 @@
-
 import axios from 'axios';
 import { Nav, Row } from "react-bootstrap";
 import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
 
-
 import './profile-dropdown.styles.scss';
 
-
 const ProfileDropdown = () => {
-
-
     async function handleSignOut() {
-        await axios.post('api/users/logout', {
+        await axios.post('https://shellgeistapi.herokuapp.com/api/users/logout', {
             mode: 'no-cors'
         })
     }

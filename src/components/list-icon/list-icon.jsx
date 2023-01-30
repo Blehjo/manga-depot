@@ -11,7 +11,7 @@ const ListIcon = () => {
 
     return (
         <div onClick={toggleIsNavOpen}>
-            <List style={{cursor: "pointer"}} className='ms-3 m-2' size={25} color="white" />
+            <List style={{ cursor: "pointer" }} className='ms-3 m-2' size={25} color="white" />
         </div>
     )
 }

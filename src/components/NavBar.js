@@ -26,6 +26,7 @@ function NavBar() {
 
   const handleClickEvent = () => {
   }
+  
   return (
     <Fragment>
       {['sm'].map((expand) => (
@@ -59,7 +60,7 @@ function NavBar() {
                     <Nav key="navIcons" variant='dark'className="justify-content-end pe-3">
                       {
                         currentUser ? (
-                            <Nav.Link key='profile' href="#profile" ><ProfileIcon/></Nav.Link>
+                            <Nav.Link key='profile' href="#profile" ><ProfileIcon /></Nav.Link>
                         ) : (
                             <Nav.Link className='nav-link' href='/authentication'>
                                 SIGN IN

@@ -15,7 +15,6 @@ import { postReducer } from './post/post.reducer';
 import { userReducer } from './user/user.reducer';
 import { toolReducer } from './tool/tool.reducer';
 import { listReducer } from './list/list.reducer';
-import { toolboxReducer } from './toolbox/toolbox.reducer';
 import { profileReducer } from './profile/profile.reducer';
 import { resultReducer } from './result/result.reducer';
 import { navReducer } from './nav/nav.reducer';
@@ -37,7 +36,6 @@ export const rootReducer = combineReducers({
     aicompletion: aicompletionReducer,
     tool: toolReducer,
     list: listReducer,
-    toolbox: toolboxReducer,
     profile: profileReducer,
     result: resultReducer,
     nav: navReducer
