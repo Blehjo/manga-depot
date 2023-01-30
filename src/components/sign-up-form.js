@@ -10,9 +10,9 @@ const defaultFormFields = {
     email: '',
     password: '',
     confirmPassword: '',
-    dateOfBirth: '',
-    firstName: '',
-    lastName: ''
+    date_of_birth: '',
+    first_name: '',
+    last_name: ''
 }
 
 const SignUpForm = () => {
@@ -20,15 +20,14 @@ const SignUpForm = () => {
     const navigate = useNavigate();
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [country, setCountry] = useState(null);
-    const { email, username, password, confirmPassword,  dateOfBirth, firstName, lastName } = formFields;
+    const { email, username, password, confirmPassword, date_of_birth, first_name, last_name } = formFields;
     
     const resetForm = () => {
         setFormFields(defaultFormFields);
     }
 
-    const signUpWithReact = (formFields) => {
-        console.log("formFields: ", formFields);
-        dispatch(signUpStart(email, username, password, confirmPassword,  dateOfBirth, firstName, lastName));
+    const signUpWithReact = () => {
+        dispatch(signUpStart(username, email, password, country.name, date_of_birth, first_name, last_name));
         resetForm();
         navigate('/profile');
     }
@@ -88,26 +87,26 @@ const SignUpForm = () => {
                     />
                 </div>
                 <div className="col-md-6">
-                    <label htmlFor="inputFirstName" className="form-label">First Name</label>
+                    <label htmlFor="inputFirst_Name" className="form-label">First Name</label>
                     <input 
-                        type="firstName" 
+                        type="first_name" 
                         required 
                         onChange={handleChange} 
-                        name="firstName" 
-                        value={firstName} 
+                        name="first_name" 
+                        value={first_name} 
                         className="form-control" 
                         id="inputFirstName"
                         placeholder="Major"
                     />
                 </div>
                 <div className="col-md-6">
-                    <label htmlFor="inputLastName" className="form-label">Last Name</label>
+                    <label htmlFor="inputLast_Name" className="form-label">Last Name</label>
                     <input 
-                        type="lastName" 
+                        type="last_name" 
                         required 
                         onChange={handleChange} 
-                        name="lastName" 
-                        value={lastName} 
+                        name="last_name" 
+                        value={last_name} 
                         className="form-control" 
                         id="inputLastName"
                         placeholder="Kusanagi"
@@ -154,8 +153,8 @@ const SignUpForm = () => {
                         required 
                         onChange={handleChange} 
                         type="date" 
-                        name="dateOfBirth" 
-                        value={dateOfBirth} 
+                        name="date_of_birth" 
+                        value={date_of_birth} 
                         id="selectDateOfBirth" 
                         className="form-control" 
                     />

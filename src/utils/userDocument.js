@@ -1,9 +1,7 @@
 import axios from "axios";
 
 export const userDocument = (user) => {
-    const userDocument = user;
-    console.log("User Document: ", userDocument);
-    return userDocument;
+    return user;
 }
 
 export const apiCall = async (email, password) => {
@@ -36,8 +34,9 @@ export const getUser = async () => {
     return user;
 }
 
-export const signUpUser = async (email, password, username, firstName, lastName, dateOfBirth, country) => {
+export const signUpUser = async (username, email, password, country, date_of_birth, first_name, last_name) => {
     const user = {};
+    console.log("User Input Data: ", username, email, password, country, date_of_birth, first_name, last_name);
     await axios({
         method: 'post',
         url: "https://shellgeistapi.herokuapp.com/api/users/",
@@ -45,10 +44,10 @@ export const signUpUser = async (email, password, username, firstName, lastName,
             username: username,
             email: email,
             password: password,
-            first_name: firstName,
-            last_name: lastName,
-            date_of_birth: dateOfBirth,
-            country: country
+            country: country,
+            date_of_birth: date_of_birth,
+            first_name: first_name,
+            last_name: last_name
         },
         headers: {
             'Content-Type': 'application/json'
