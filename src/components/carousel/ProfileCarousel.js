@@ -12,7 +12,7 @@ const ProfileCarousel = () => {
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('/users', {
+            await axios.get('https://shellgeistapi.herokuapp.com/users', {
                 mode: 'no-cors'
             })
             .then((response) => setUserProfiles(response.data));

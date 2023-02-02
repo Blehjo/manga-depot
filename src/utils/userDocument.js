@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const userDocument = (user) => {
     return user;
 }
@@ -13,11 +14,15 @@ export const apiCall = async (email, password) => {
             email: email,
             password: password
         },
-        headers: {
-            'Content-Type': 'application/json'
-        }
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // }
     })
-    .then((response) => user.data = (response.data));
+    .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data))
+        user.id = response.data;
+        user.data = response.data;
+    });
     return user;
 }
 

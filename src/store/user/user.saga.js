@@ -10,24 +10,28 @@ import { userDocument, getUser, apiCall, signUpUser } from '../../utils/userDocu
 
 export function* userLoginCall(email, password) {
     try {
-        const userSnapshot = yield call(apiCall, email, password)
-        yield put(signInSuccess({ data: userSnapshot.data.user }))
+        const userSnapshot = yield call(
+            apiCall, 
+            email, 
+            password
+        );
+        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
     } catch (error) {
         yield put(signInFailed(error));
     }
 }
 
 export function* signInWithEmail({ payload: { email, password } }) {
-   try {
-       const user = yield call(
-           userLoginCall,
-           email,
-           password
-       );
-       yield put(userDocument, user);
-   } catch (error) {
-       yield put(signInFailed(error));
-   }
+    try {
+        const user = yield call(
+            userLoginCall,
+            email,
+            password
+        );
+        yield call(userLoginCall, user);
+    } catch (error) {
+        yield put(signInFailed(error));
+    }
 }
 
 export function* isUserAuthenticated() {
@@ -59,7 +63,7 @@ export function* signUp({ payload: { username, email, password, country, date_of
 }
 
 export function* signInAfterSignUp({ payload: user }) {
-   yield call(userDocument, user );
+   yield call(userLoginCall, user );
 }
 
 export function* signOut() {

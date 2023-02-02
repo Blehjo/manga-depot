@@ -39,7 +39,7 @@ function App() {
   const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    dispatch(checkUserSession());
+    dispatch(checkUserSession(currentUser));
   }, []);
 
   if (loading) {
@@ -52,23 +52,23 @@ function App() {
         <Route index element={<Home />}/>
         <Route path='/about' element={<About />}/>
         <Route path='/authentication' element={<Authentication />}/>
-        {/* <Route path='/connections' element={currentUser ? <Connections /> : <Authentication /> }/>
-        <Route path="/dashboard" element={currentUser ? <Dashboard /> : <Authentication /> }/> */}
+        <Route path='/connections' element={currentUser ? <Connections /> : <Authentication /> }/>
+        <Route path="/dashboard" element={currentUser ? <Dashboard /> : <Authentication /> }/> 
         <Route path='/discovery' element={currentUser ? <Discovery /> : <Authentication /> }/>
-        {/* <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
+        <Route path='/groups/:id' element={currentUser ? <Group /> : <Authentication /> }/>
         <Route path='/interactions' element={currentUser ? <Interactions /> : <Authentication /> }/>
         <Route path='/messages' element={currentUser ? <Messages /> : <Authentication /> }/>
-        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>*/}
+        <Route path='/messages/:id' element={currentUser ? <Message /> : <Authentication /> }/>
         <Route path='/profile' element={currentUser ? <Profile /> : <Authentication /> }/> 
         <Route path='/explore' element={<Explore />}/>
-        {/* <Route path='/events' element={<Events />}/>
+        <Route path='/events' element={<Events />}/>
         <Route path='/games' element={<Games />}/>
         <Route path='/games/:id/:imageId' element={<GameProfile />}/>
         <Route path='/groups' element={<Groups />}/>
         <Route path='/posts' element={<Posts />}/>
         <Route path='/posts/:id' element={<Post />}/>
         <Route path='/profile/:id' element={<SingleProfile />}/>
-        <Route path='/profiles' element={<Profiles />}/>  */}
+        <Route path='/profiles' element={<Profiles />}/> 
         <Route path='/search' element={<Search />}/>
       </Route>
     </Routes>
