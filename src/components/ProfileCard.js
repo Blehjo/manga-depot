@@ -37,7 +37,7 @@ const ProfileCard = () => {
                             <Card.Title>Shells</Card.Title>
                         </Col>
                         <Col style={{ position: 'relative' }} xs={12}>
-                            <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%', cursor: 'pointer' }} show={show} onHide={handleClose} onClick={handleShow}>Create a shell</Card.Title>
+                            <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%', cursor: 'pointer' }} onClick={handleShow}>Create a shell</Card.Title>
                         </Col>
                     </Row>
                     {/* {groups?.length > 0 && groups?.map(({ id, group_name, media_location_url }) => (

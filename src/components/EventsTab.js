@@ -7,14 +7,14 @@ import CreateEvent from './CreateEvent';
 
 const EventsTab = () => {
     const [events, setEvents] = useState();
-    const [showCreateGroup, setShowCreateGroup] = useState(false);
-    const [showSearchGroup, setShowSearchGroup] = useState(false);
+    const [showCreateEvent, setShowCreateEvent] = useState(false);
+    const [showSearchEvent, setShowSearchEvent] = useState(false);
 
-    const handleCloseCreateGroup = () => setShowCreateGroup(false);
-    const handleShowCreateGroup= () => setShowCreateGroup(true);
+    const handleCloseCreateEvent = () => setShowCreateEvent(!showCreateEvent);
+    const handleShowCreateEvent= () => setShowCreateEvent(!showCreateEvent);
     
-    const handleCloseSearchGroup = () => setShowSearchGroup(false);
-    const handleShowSearchGroup= () => setShowSearchGroup(true);
+    const handleCloseSearchEvent = () => setShowSearchEvent(!showSearchEvent);
+    const handleShowSearchEvent= () => setShowSearchEvent(!showSearchEvent);
 
     async function handleClickEvent(event) {
         await axios.post(`https://shellgeistapi.herokuapp.com/api/eventMembers/`, {
@@ -48,14 +48,14 @@ const EventsTab = () => {
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create an event</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} onClick={handleShowCreateEvent}>Create an event</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join an event</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} onClick={handleShowSearchEvent}>Join an event</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -86,10 +86,10 @@ const EventsTab = () => {
                     <Card.Title>"Stay tuned. Currently no events..."</Card.Title>
                 </Card>
             )}
-            <Modal show={showCreateGroup} onHide={handleCloseCreateGroup}>
+            <Modal show={showCreateEvent} onHide={handleCloseCreateEvent}>
                 <CreateEvent />
             </Modal>
-            <Modal show={showSearchGroup} onHide={handleCloseSearchGroup}>
+            <Modal show={showSearchEvent} onHide={handleCloseSearchEvent}>
                 <SearchEvent />
             </Modal>
         </Fragment>

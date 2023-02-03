@@ -8,16 +8,15 @@ import CreateGroup from './CreateGroup';
 import SearchGroup from './SearchGroup';
 
 const GroupsTab = () => {
-
     const [groups, setGroups] = useState();
     const [showCreateGroup, setShowCreateGroup] = useState(false);
     const [showSearchGroup, setShowSearchGroup] = useState(false);
 
-    const handleCloseCreateGroup = () => setShowCreateGroup(false);
-    const handleShowCreateGroup= () => setShowCreateGroup(true);
+    const handleCreateGroupClose = () => setShowCreateGroup(!showCreateGroup);
+    const handleShowCreateGroup = () => setShowCreateGroup(!showCreateGroup);
     
-    const handleCloseSearchGroup = () => setShowSearchGroup(false);
-    const handleShowSearchGroup= () => setShowSearchGroup(true);
+    const handleSearchGroupClose = () => setShowSearchGroup(!showSearchGroup);
+    const handleShowSearchGroup = () => setShowSearchGroup(!showSearchGroup);
     
     useEffect(() => {
         async function getUser() {
@@ -52,14 +51,14 @@ const GroupsTab = () => {
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseCreateGroup} onClick={handleShowCreateGroup}>Create a shell</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} onClick={handleShowCreateGroup}>Create a shell</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col>
                     <Card style={{ color: 'white', textAlign: 'center' }} className='bg-dark'>
                         <Card.Body>
-                            <Card.Title style={{ cursor: 'pointer' }} show={showCreateGroup} onHide={handleCloseSearchGroup} onClick={handleShowSearchGroup}>Join a shell</Card.Title>
+                            <Card.Title style={{ cursor: 'pointer' }} onClick={handleShowSearchGroup}>Join a shell</Card.Title>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -96,10 +95,10 @@ const GroupsTab = () => {
                     </Col>
                 </Row>
             )}
-            <Modal show={showCreateGroup} onHide={handleCloseCreateGroup}>
+            <Modal show={showCreateGroup} onHide={handleCreateGroupClose}>
                 <CreateGroup />
             </Modal>
-            <Modal show={showSearchGroup} onHide={handleCloseSearchGroup}>
+            <Modal show={showSearchGroup} onHide={handleSearchGroupClose}>
                 <SearchGroup />
             </Modal>
         </Fragment>
