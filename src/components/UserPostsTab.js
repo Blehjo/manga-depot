@@ -19,12 +19,12 @@ const UserPostsTab = () => {
             post_id: event.target.id,
             comment_text: commentText,
         });
-    }
+    };
 
     function handleTextChange(event) {
         event.preventDefault();
         setCommentText(event.target.value);
-    }
+    };
 
     useEffect(() => {
         const getPosts = async () => {
@@ -34,9 +34,7 @@ const UserPostsTab = () => {
             .then((resp) => setPosts(resp.data)); 
         }
         getPosts();
-    }, [])
-
-    console.log(posts);
+    }, []);
 
     return (
         <Fragment>

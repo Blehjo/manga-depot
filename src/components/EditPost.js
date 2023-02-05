@@ -18,13 +18,11 @@ const EditPost = ({props}) => {
     function handleTextChange(event) {
         event.preventDefault();
         setModalText(event.target.value);
-        console.log(modalText)
     }
 
     function handleImageChange(event) {
         event.preventDefault();
         setModalImage(event.target.value);
-        console.log(modalImage)
     }
 
     function makeEdit(event) {

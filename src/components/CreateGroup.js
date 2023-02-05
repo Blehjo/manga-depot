@@ -65,7 +65,6 @@ const CreateGroup = () => {
                 setErrorMessage(err);
                 console.error(errorMessage);
             });
-            console.log(id)
         }
 
         async function joinGroup() {

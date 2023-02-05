@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const user = JSON.parse(localStorage.getItem("user"));
-console.log("User Document Bitch: ", user.req);
 const sessionUser = JSON.parse(sessionStorage.getItem("user"));
-console.log("User Document Dummy: ", sessionUser.req);
 
 export const userDocument = (user) => {
     return user;
@@ -48,7 +46,7 @@ export const getUser = async () => {
 
 export const signUpUser = async (username, email, password, country, date_of_birth, first_name, last_name) => {
     const user = {};
-    console.log("User Input Data: ", username, email, password, country, date_of_birth, first_name, last_name);
+
     await axios({
         method: 'post',
         url: "https://shellgeistapi.herokuapp.com/api/users/",

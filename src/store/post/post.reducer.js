@@ -2,12 +2,6 @@ import { useDispatch } from 'react-redux';
 import { postFetchAllStart } from './post.action';
 import { POST_ACTION_TYPES } from './post.types';
 
-// export const getPosts = () => {
-//     const dispatch = useDispatch();
-//     console.log(dispatch(postFetchAllStart));
-
-// }
-
 const INITIAL_STATE = {
     posts: [],
     isLoading: false,

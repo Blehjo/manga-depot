@@ -60,7 +60,6 @@ export const searchGame = async (searchField) => {
     data: `fields name, platforms.abbreviation, rating, genres, release_dates, first_release_date, cover.image_id, age_ratings, summary; search "${searchField}"; limit 50;`
   })
   .then(function (response) {
-    console.log(response.data)
     return response.data
   });
 }

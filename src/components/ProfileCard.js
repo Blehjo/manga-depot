@@ -8,11 +8,12 @@ import CreateGroup from "./CreateGroup";
 
 const ProfileCard = () => {
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     const currentUser = useSelector(selectCurrentUser);
     const { media_location, username, first_name, country, about } = currentUser;
-    console.log("User: ", currentUser)
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const deleteGroup = async (event) => {
         await axios.delete(`https://shellgeistapi.herokuapp.com/api/groups/${event.target.id}`);
     }
