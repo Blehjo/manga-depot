@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const user = JSON.parse(localStorage.getItem("user"));
+console.log("User Document Bitch: ", user.req);
+const sessionUser = JSON.parse(sessionStorage.getItem("user"));
+console.log("User Document Dummy: ", sessionUser.req);
 
 export const userDocument = (user) => {
     return user;
@@ -14,12 +18,14 @@ export const apiCall = async (email, password) => {
             email: email,
             password: password
         },
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // }
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        withCredentials: true
     })
     .then((response) => {
-        localStorage.setItem("user", JSON.stringify(response.data))
+        localStorage.setItem("user", JSON.stringify(response.data));
+        sessionStorage.setItem("user", JSON.stringify(response.data));
         user.id = response.data;
         user.data = response.data;
     });
@@ -32,8 +38,9 @@ export const getUser = async () => {
         method: 'get',
         url: "https://shellgeistapi.herokuapp.com/api/users/",
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
+        withCredentials: true
     })
     .then((response) => user.data = (response.data));
     return user;
