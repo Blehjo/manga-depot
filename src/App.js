@@ -37,11 +37,10 @@ function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
-  console.log("First current user: ", currentUser);
+  console.log("Current user: ", currentUser.then((response) => response.data));
 
   useEffect(() => {
     dispatch(checkUserSession(currentUser));
-    console.log("Second current user: ", currentUser);
   }, []);
 
   if (loading) {

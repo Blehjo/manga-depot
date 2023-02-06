@@ -33,7 +33,7 @@ export const getUser = async () => {
     })
     .then((response) => console.log(response))
     .then((info) => {
-        return info.data;
+        return info;
     });
     return user;
 }
