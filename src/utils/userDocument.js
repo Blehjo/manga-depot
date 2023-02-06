@@ -32,7 +32,8 @@ export const getUser = async () => {
         withCredentials: true
     })
     .then((response) => {
-        return response.data
+        console.log(response.data);
+        return response.data;
     });
 }
 
