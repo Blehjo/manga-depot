@@ -18,14 +18,24 @@ const Events = () => {
 
     useEffect(() => {
         async function getUser() {
-            await axios.get('https://shellgeistapi.herokuapp.com/api/users')
-
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/api/users',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
         }
 
         async function getEvents() {
-            await axios.get(`https://shellgeistapi.herokuapp.com/events/`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/events/',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setEvents(response.data));
         }

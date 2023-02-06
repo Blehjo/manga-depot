@@ -38,9 +38,13 @@ export default function Profiles() {
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('https://shellgeistapi.herokuapp.com/api/users/', {
-                mode: 'no-cors',
-                withCredentials: true 
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/api/users',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
 
             // setId(id);

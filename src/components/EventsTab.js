@@ -28,7 +28,14 @@ const EventsTab = () => {
     
     useEffect(() => {
         async function getUser() {
-            await axios.get('https://shellgeistapi.herokuapp.com/api/users')
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/api/users',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
         }
 
         const getEvents = async () => {

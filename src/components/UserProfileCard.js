@@ -20,14 +20,24 @@ const UserProfileCard = () => {
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('https://shellgeistapi.herokuapp.com/api/users/', {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/users/${id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
         };
 
         async function getProfile(id) {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/users/${id}`, {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/users/${id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setProfile(response.data))
         } 
