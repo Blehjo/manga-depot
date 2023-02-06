@@ -1,25 +1,7 @@
-import { useEffect, useState } from 'react';
 import { getUser } from '../../utils/userDocument';
 import { USER_ACTION_TYPES } from './user.types';
 
-const GetCurrentUser = () => {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const getInformation = () => {
-            getUser()
-            .then((response) => setUser(response))
-            .catch((error) => console.log(error));
-        }
-        getInformation();
-    }, []);
-
-    return (
-        user
-    );
-}
-
-const user = GetCurrentUser();
+const user = getUser();
 
 const USER_INITIAL_STATE = {
     currentUser: user ? user : null,
