@@ -31,6 +31,7 @@ export const getUser = async () => {
         },
         withCredentials: true
     });
+    return user;
 }
 
 export const signUpUser = async (username, email, password, country, date_of_birth, first_name, last_name) => {
