@@ -1,9 +1,10 @@
+import { getUser } from '../../utils/userDocument';
 import { USER_ACTION_TYPES } from './user.types';
 
-// const user = localStorage.getItem("user");
+const getCurrentUser = getUser();
 
 const USER_INITIAL_STATE = {
-    currentUser: null,
+    currentUser: getCurrentUser ? getCurrentUser : null,
     isLoading: false,
     error: null,
 };

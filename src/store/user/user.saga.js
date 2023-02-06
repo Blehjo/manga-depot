@@ -6,12 +6,12 @@ import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, signOutSucces
 
 import { signOutUser } from '../../utils/firebase';
 
-import { userDocument, getUser, apiCall, signUpUser } from '../../utils/userDocument';
+import { userDocument, getUser, login, signUpUser } from '../../utils/userDocument';
 
 export function* userLoginCall(email, password) {
     try {
         const userSnapshot = yield call(
-            apiCall, 
+            login, 
             email, 
             password
         );
