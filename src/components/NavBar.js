@@ -16,7 +16,6 @@ function NavBar() {
   const navigate = useNavigate();
   const [searchField, setSearchField] = useState('');
   const currentUser = useSelector(selectCurrentUser);
-  console.log("First current user: ", currentUser);
   const isProfileOpen  = useSelector(selectIsProfileOpen);
 
   const handleInputChange = (evt) => {
