@@ -11,13 +11,20 @@ export default function Message() {
     const [messageText, setMessageText] = useState('');
     
     function postMessages(evt) {
-        // evt.preventDefault();
-        axios.post(`https://shellgeistapi.herokuapp.com/api/messages/${id}/`,
-        {
-            from_profile: id,
-            message_text: messageText
+        evt.preventDefault();
+        axios({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/messages/${id}/`, 
+            data: {
+                from_profile: id,
+                message_text: messageText
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         })
-        // .then((response) => setMessages(response.data));
+        .then((response) => setMessages(response.data));
     }
 
     function messageHandler(evt) {
@@ -27,9 +34,13 @@ export default function Message() {
 
     useEffect(() => {
         async function getMessages() {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/conversations/${id}`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/conversations/${id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setMessages(response.data));
         }

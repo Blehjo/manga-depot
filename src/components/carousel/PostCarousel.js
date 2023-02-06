@@ -19,16 +19,29 @@ const PostCarousel = () => {
     }
 
     async function postComment(event) {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
-            post_id: event.target.id,
-            comment_text: commentText,
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/comments/',
+            data: {
+                post_id: event.target.id,
+                comment_text: commentText,
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         });
     }
 
     useEffect(() => {
         async function getPosts() {
-            await axios.get('https://shellgeistapi.herokuapp.com/posts', {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/posts', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setPosts(response.data));
         }

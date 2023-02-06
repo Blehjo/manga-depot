@@ -9,9 +9,13 @@ const GroupCarousel = () => {
 
     useEffect(() => {
         async function getGroups() {
-            await axios.get("https://shellgeistapi.herokuapp.com/groups",
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: "https://shellgeistapi.herokuapp.com/groups",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setGroups(response.data));
         }

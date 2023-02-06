@@ -15,9 +15,17 @@ const UserPostsTab = () => {
     const handleShow = () => setShow(true);
 
     async function postComment(event) {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
-            post_id: event.target.id,
-            comment_text: commentText,
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/comments/', 
+            data: {
+                post_id: event.target.id,
+                comment_text: commentText,
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         });
     };
 
@@ -28,8 +36,13 @@ const UserPostsTab = () => {
 
     useEffect(() => {
         const getPosts = async () => {
-            await axios.get(`/posts/${id}`, {
-                mode: 'no cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/posts/${id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((resp) => setPosts(resp.data)); 
         }

@@ -17,8 +17,6 @@ const GroupResults = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-
-
     function handleClickEvent(event) {
         event.preventDefault();
         navigate(`/groups/${event.target.id}/${event.target.className}`);
@@ -62,9 +60,17 @@ const GroupResults = () => {
     function joinGroup(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('https://shellgeistapi.herokuapp.com/api/groups/', {
-                title: event.target.className,
-                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
+            await axios({
+                method: 'post',
+                url: 'https://shellgeistapi.herokuapp.com/api/groups/', 
+                data: {
+                    title: event.target.className,
+                    media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .catch(err => {
                 setErrorMessage(err);

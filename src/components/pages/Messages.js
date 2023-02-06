@@ -30,8 +30,13 @@ export default function Messages() {
     }
 
     async function createConversation() {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/conversations/', {
-            mode: 'no-cors'
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/conversations/', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         })
         .then((response) => setConversationId(response.data.id))
         .catch(err => {
@@ -49,16 +54,27 @@ export default function Messages() {
     function sendMessage(event) {
         event.preventDefault();
         const addChatMember = async () => {
-            await axios.post(`https://shellgeistapi.herokuapp.com/api/chatmembers/${conversationId}`, 
-            {
-                mode: 'no-cors'
+            await axios( {
+                method: 'post',
+                url: `https://shellgeistapi.herokuapp.com/api/chatmembers/${conversationId}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
         }
         const postMessage = async () => {
-            await axios.post(`https://shellgeistapi.herokuapp.com/api/messages/${conversationId}`,
-            {
-                message_text: messageText,
-                mode: 'no-cors', 
+            await axios({
+                method: 'post',
+                url: `https://shellgeistapi.herokuapp.com/api/messages/${conversationId}`,
+                data: {
+                    message_text: messageText,
+                    mode: 'no-cors', 
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
         }
 
@@ -69,9 +85,13 @@ export default function Messages() {
 
     useEffect(() => {
         const getConversations = async () => {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/conversations/`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/conversations/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setConversations(response.data));
         }
@@ -81,8 +101,13 @@ export default function Messages() {
 
     useEffect(() => {
         const information = async () => {
-            await axios.get('https://shellgeistapi.herokuapp.com/users/', {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: 'https://shellgeistapi.herokuapp.com/users/', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setUserProfiles(response.data));
         };

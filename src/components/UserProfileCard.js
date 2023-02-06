@@ -10,12 +10,26 @@ const UserProfileCard = () => {
 
     const followMate = async (event) => {
         event.preventDefault();
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/friendships/${id}`)
+        await axios({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/friendships/${id}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
     }
 
     const unfollowMate = async (event) => {
         event.preventDefault();
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/friendships/${id}`)
+        await axios({
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/friendships/${id}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
     }
 
     useEffect(() => {

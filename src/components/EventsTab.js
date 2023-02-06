@@ -17,13 +17,24 @@ const EventsTab = () => {
     const handleShowSearchEvent= () => setShowSearchEvent(!showSearchEvent);
 
     async function handleClickEvent(event) {
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/eventMembers/`, {
-            event_id: event.target.id
+        await axios({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/eventMembers/`, 
+            data: {
+                event_id: event.target.id
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         })
     }
     
     async function unfollowEvent(event) {
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/eventMembers/${event.target.id}`)
+        await axios({ 
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/eventMembers/${event.target.id}`,
+        })
     }
     
     useEffect(() => {

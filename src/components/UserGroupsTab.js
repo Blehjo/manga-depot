@@ -11,8 +11,13 @@ const UserGroupsTab = () => {
     
     useEffect(() => {
         const getGroups = async () => {
-            await axios.get(`/groups/${id}`, {
-                mode: 'no cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/groups/${id}`, 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((resp) => setGroups(resp.data)); 
         }

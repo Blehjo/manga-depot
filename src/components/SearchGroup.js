@@ -8,7 +8,6 @@ const SearchGroup = () => {
     const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
 
-
     const [groups, setGroups] = useState({});
 
     const handleInputChange = (evt) => {
@@ -18,9 +17,9 @@ const SearchGroup = () => {
 
     useEffect(() => {
         async function getGroups() {
-            await axios.get(`/groups/`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/groups/`
             })
             .then((response) => setGroups(response.data));
         }
@@ -30,8 +29,6 @@ const SearchGroup = () => {
 
     const handleClickEvent = async (evt) => {
         evt.preventDefault();
-
-        
     };
 
     return (

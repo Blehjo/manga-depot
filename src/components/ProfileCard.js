@@ -15,11 +15,17 @@ const ProfileCard = () => {
     const handleShow = () => setShow(true);
 
     const deleteGroup = async (event) => {
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/groups/${event.target.id}`);
+        await axios({
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/groups/${event.target.id}`
+        });
     }
 
     const deleteGame = async (event) => {
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/games/${event.target.id}`);
+        await axios({
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/groups/${event.target.id}`
+        });
     }
 
     return (

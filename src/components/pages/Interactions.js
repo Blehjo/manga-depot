@@ -9,9 +9,13 @@ import { utcConverter } from "../../utils/date/Date";
 const Interactions = () => {
     const [posts, setPosts] = useState([]);
     function getPosts() {
-        axios.get(`/interactions/`,
-        {
-            mode: 'no-cors',
+        axios({
+            method: 'get',
+            url: `https://shellgeistapi.herokuapp.com/interactions/`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         })
         .then((response) => setPosts(response.data));
     }

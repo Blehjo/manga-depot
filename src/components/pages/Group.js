@@ -19,10 +19,17 @@ const Group = () => {
 
     async function postMessage(evt) {
         evt.preventDefault();
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/channelcomments/${channel}/`,
-        {
-            channel_comment_text: messageText
-        })
+        await axios({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/channelcomments/${channel}/`,
+            data: {
+                channel_comment_text: messageText
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+    })
         setMessageText('');
     }
 
@@ -32,24 +39,37 @@ const Group = () => {
 
     useEffect(() => {
         async function getChannelContent() {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/channels/${channel}`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/channels/${channel}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setMessages(response.data));
         }
 
         async function getGroup() {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/groups/${id}`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/groups/${id}`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setGroup(response.data));
         }
 
         async function getEvents() {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/events/${id}`, {
-                mode: 'no-cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/events/${id}`, 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setEvents(response.data));
         }

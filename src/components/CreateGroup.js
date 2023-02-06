@@ -51,12 +51,21 @@ const CreateGroup = () => {
         event.preventDefault();
 
         async function postGroup() {
-            await axios.post('https://shellgeistapi.herokuapp.com/api/groups/', {
-                group_name: modalName,
-                media_location_url: modalImage,
-                group_description: modalDescription,
-                country: modalCountry,
-                platform: modalPlatform
+            await axios({
+                method: 'post',
+                url: 'https://shellgeistapi.herokuapp.com/api/groups/', 
+                data: {
+                    group_name: modalName,
+                    media_location_url: modalImage,
+                    group_description: modalDescription,
+                    country: modalCountry,
+                    platform: modalPlatform
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+                
             })
             .then((response) => {
                 setId(response.data)
@@ -68,8 +77,16 @@ const CreateGroup = () => {
         }
 
         async function joinGroup() {
-            await axios.post(`https://shellgeistapi.herokuapp.com/api/groupmembers/`, {
-                group_id: id.data.id
+            await axios({
+                method: 'post',
+                url: `https://shellgeistapi.herokuapp.com/api/groupmembers/`,
+                data: {
+                    group_id: id.data.id
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .catch(err => {
                 setErrorMessage(err);

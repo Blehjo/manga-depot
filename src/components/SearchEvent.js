@@ -18,9 +18,13 @@ const SearchEvent = () => {
 
     useEffect(() => {
         async function getEvents() {
-            await axios.get(`/events/`,
-            {
-                mode: 'no-cors',
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/events/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((response) => setEvents(response.data));
         }

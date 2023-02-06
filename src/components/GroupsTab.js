@@ -48,13 +48,24 @@ const GroupsTab = () => {
     }, [])
 
     async function handleClickEvent(event) {
-        await axios.post(`https://shellgeistapi.herokuapp.com/api/groupmembers/`, {
-            group_id: event.target.id
+        await axios({
+            method: 'post',
+            url: `https://shellgeistapi.herokuapp.com/api/groupmembers/`, 
+            data: {
+                group_id: event.target.id
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         })
     }
     
     async function unfollowGroup(event) {
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/groupmembers/${event.target.id}`)
+        await axios({
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/groupmembers/${event.target.id}`
+        })
     }
 
     return (
