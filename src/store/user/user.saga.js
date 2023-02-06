@@ -4,9 +4,7 @@ import { USER_ACTION_TYPES } from './user.types';
 
 import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, signOutSuccess, signOutFailed } from './user.action';
 
-import { signOutUser } from '../../utils/firebase';
-
-import { userDocument, getUser, login, signUpUser } from '../../utils/userDocument';
+import { userDocument, getUser, login, signUpUser, signOutUser } from '../../utils/userDocument';
 
 export function* userLoginCall(email, password) {
     try {

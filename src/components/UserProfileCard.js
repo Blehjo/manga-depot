@@ -5,7 +5,6 @@ import axios from "axios";
 
 const UserProfileCard = () => {
     const [profile, setProfile] = useState([]);
-
     const { id } = useParams();
 
     const followMate = async (event) => {

@@ -1,20 +1,14 @@
-import axios from 'axios';
 import { Nav, Row } from "react-bootstrap";
 import { Inbox, Gear, Laptop, DoorOpen, QuestionCircle, MenuApp, Person } from 'react-bootstrap-icons';
+import { useDispatch } from 'react-redux';
+import { signOutStart } from '../../store/user/user.action';
 
 import './profile-dropdown.styles.scss';
 
 const ProfileDropdown = () => {
-    async function handleSignOut() {
-        await axios({
-            method: 'post',
-            url: 'https://shellgeistapi.herokuapp.com/api/users/logout',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true
-        })
-    }
+    const dispatch = useDispatch();
+    
+    const signOutUser = () => dispatch(signOutStart());
 
     return (
         <div className='profile-dropdown-container'>
@@ -57,7 +51,7 @@ const ProfileDropdown = () => {
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center ">
                         <DoorOpen className='' color="white" size={20}/>
                         <Nav.Link href="/authentication" className="ms-3">
-                        <span className='nav-link' onClick={handleSignOut}>Sign out</span>
+                        <span className='nav-link' onClick={signOutUser}>Sign out</span>
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="mb-3 ms-3 d-flex align-items-center">

@@ -13,10 +13,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ResultItems, searchGame } from '../utils/igdb/IGDB';
 
 function NavBar() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchField, setSearchField] = useState('');
   const currentUser = useSelector(selectCurrentUser);
   const isProfileOpen  = useSelector(selectIsProfileOpen);
+
+  const signOutUser = () => dispatch(signOutStart);
 
   const handleInputChange = (evt) => {
     evt.preventDefault();

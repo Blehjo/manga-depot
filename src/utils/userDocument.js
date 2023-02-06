@@ -49,7 +49,22 @@ export const signUpUser = async (username, email, password, country, date_of_bir
         },
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        withCredentials: true
+    })
+    .then((response) => {
+        return response.data;
+    });
+}
+
+export const signOutUser = async () => {
+    await axios({
+        method: 'post',
+        url: "https://shellgeistapi.herokuapp.com/api/users/logout",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        withCredentials: true
     })
     .then((response) => {
         return response.data;
