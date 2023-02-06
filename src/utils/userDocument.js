@@ -23,16 +23,13 @@ export const login = async (email, password) => {
 }
 
 export const getUser = async () => {
-    return new Promise(async function (resolve, reject) {
-        const user = await axios({
+    const user = await axios({
         method: 'get',
         url: "https://shellgeistapi.herokuapp.com/api/users/",
         headers: {
             'Content-Type': 'application/json',
         },
         withCredentials: true
-        });
-        resolve(user.json());
     });
 }
 
