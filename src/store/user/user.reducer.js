@@ -4,7 +4,10 @@ import { USER_ACTION_TYPES } from './user.types';
 const getCurrentUser = getUser()
 .then(response => {
     return response.data;
-});
+})
+.catch(err => {
+    console.error(err);
+});;
 
 const USER_INITIAL_STATE = {
     currentUser: getCurrentUser ? getCurrentUser : null,
