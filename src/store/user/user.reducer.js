@@ -4,7 +4,7 @@ import { USER_ACTION_TYPES } from './user.types';
 const user = getUser();
 
 const USER_INITIAL_STATE = {
-    currentUser: user != null ? user : null,
+    currentUser: null,
     isLoading: false,
     error: null,
 };
