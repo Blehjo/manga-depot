@@ -37,7 +37,7 @@ function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
-  console.log("Current user: ", currentUser.then((response) => response.data));
+  console.log("Current user: ", currentUser.then((response) => response));
 
   useEffect(() => {
     dispatch(checkUserSession(currentUser));
