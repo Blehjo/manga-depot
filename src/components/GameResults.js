@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Row, Col, Card, Badge, Modal, Button, Form } from "react-bootstrap";
 import { unixConverter } from "../utils/date/Date";
 
@@ -9,14 +9,11 @@ import { selectResultItems } from "../store/result/result.selector";
 
 
 const GameResults = () => {
-    const gameList = useSelector(selectResultItems);
-    console.log(gameList);
-
     const [show, setShow] = useState(false);
-    // const [gameList, setGames] = useState([]);
+    const [errorMessage, setErrorMessage] = useState([]);
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
-    const [errorMessage, setErrorMessage] = useState([]);
+    const gameList = useSelector(selectResultItems);
 
     const navigate = useNavigate();
 

@@ -7,7 +7,10 @@ import './profile-dropdown.styles.scss';
 const ProfileDropdown = () => {
     async function handleSignOut() {
         await axios.post('https://shellgeistapi.herokuapp.com/api/users/logout', {
-            mode: 'no-cors'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true
         })
     }
 
