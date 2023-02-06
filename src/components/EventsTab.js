@@ -32,8 +32,13 @@ const EventsTab = () => {
         }
 
         const getEvents = async () => {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/events/`, {
-                mode: 'no cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/events/`, 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((resp) => setEvents(resp.data)); 
         }

@@ -39,9 +39,17 @@ const GameResults = () => {
     function postGame(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('https://shellgeistapi.herokuapp.com/api/posts/', {
-                written_text: modalValue,
-                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`
+            await axios({
+                method: 'post',
+                url: 'https://shellgeistapi.herokuapp.com/api/posts/',
+                data: {
+                    written_text: modalValue,
+                    media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${modalImage}.jpg`
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .catch(err => {
                 setErrorMessage(err);
@@ -55,9 +63,17 @@ const GameResults = () => {
     function addToCatalogue(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('https://shellgeistapi.herokuapp.com/api/games/', {
-                title: event.target.className,
-                media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
+            await axios({
+                method: 'post',
+                url: 'https://shellgeistapi.herokuapp.com/api/games/',
+                data: {
+                    title: event.target.className,
+                    media_location_url: `https://images.igdb.com/igdb/image/upload/t_1080p/${event.target.id}.jpg`
+                },
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                withCredentials: true
             })
             .catch(err => {
                 setErrorMessage(err);
