@@ -21,32 +21,46 @@ const Posts = () => {
     }
 
     async function postComment(event) {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
-            post_id: event.target.id,
-            comment_text: commentText,
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/comments/', 
+            data: {
+                post_id: event.target.id,
+                comment_text: commentText,
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         });
     }
 
     useEffect(() => {
-        const getPosts = () => {
-            axios.get(`https://shellgeistapi.herokuapp.com/api/posts/`,
-        {
-            mode: 'no-cors',
-            withCredentials: true 
-        })
-        .then((response) => setPosts(response.data));
+        const getPosts = async () => {
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/posts/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            .then((response) => setPosts(response.data));
         } 
         getPosts();
     }, [id]);
 
     useEffect(() => {
-        const getComments = () => {
-            axios.get(`https://shellgeistapi.herokuapp.com/api/comments/`,
-        {
-            mode: 'no-cors',
-            withCredentials: true 
-        })
-        .then((response) => setComments(response.data));
+        const getComments = async () => {
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/comments/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            .then((response) => setComments(response.data));
         } 
         getComments();
     }, [id]);

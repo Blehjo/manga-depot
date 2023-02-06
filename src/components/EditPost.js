@@ -34,9 +34,17 @@ const EditPost = ({props}) => {
 
         async function editPost() {
             try {
-                await axios.put(`https://shellgeistapi.herokuapp.com/api/posts/${id}`, {
-                    media_location_url: modalImage,
-                    written_text: modalText,
+                await axios({
+                    method: 'put',
+                    url: `https://shellgeistapi.herokuapp.com/api/posts/${id}`,
+                    data: {
+                        media_location_url: modalImage,
+                        written_text: modalText,
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
                 })
                 .then((response) => console.log(response.data))
             } catch(err) {
@@ -52,8 +60,13 @@ const EditPost = ({props}) => {
     useEffect(() => {
         async function getPost() {
             try {
-                await axios.get(`/posts/${id}`, {
-                    mode: 'no-cors'
+                await axios({
+                    method: 'get',
+                    url: `https://shellgeistapi.herokuapp.com/posts/${id}`,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
                 })
                 .then((response) => setModalValues(response.data[0]));
             } catch (err) {

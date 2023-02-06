@@ -32,14 +32,29 @@ const PostsTab = () => {
     }
 
     async function post() {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/posts/', {
-            written_text: writtenText,
-            media_location_url: mediaUrl,
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/posts/',
+            data: {
+                written_text: writtenText,
+                media_location_url: mediaUrl,
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         });
     }
 
     const deletePost = async (event) => {
-        await axios.delete(`https://shellgeistapi.herokuapp.com/api/posts/${event.target.id}`);
+        await axios({
+            method: 'delete',
+            url: `https://shellgeistapi.herokuapp.com/api/posts/${event.target.id}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        });
     }
 
     function handleTextChange(event) {
@@ -48,16 +63,29 @@ const PostsTab = () => {
     }
 
     async function postComment(event) {
-        await axios.post('https://shellgeistapi.herokuapp.com/api/comments/', {
-            post_id: event.target.id,
-            comment_text: commentText,
+        await axios({
+            method: 'post',
+            url: 'https://shellgeistapi.herokuapp.com/api/comments/',
+            data: {
+                post_id: event.target.id,
+                comment_text: commentText,
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
         });
     }
     
     useEffect(() => {
         const getPosts = async () => {
-            await axios.get(`https://shellgeistapi.herokuapp.com/api/posts/`, {
-                mode: 'no cors'
+            await axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/posts/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .then((resp) => setPosts(resp.data)); 
         }
@@ -66,11 +94,15 @@ const PostsTab = () => {
 
     useEffect(() => {
         const getComments = () => {
-            axios.get(`https://shellgeistapi.herokuapp.com/api/comments/`,
-        {
-            mode: 'no-cors',
-        })
-        .then((response) => setComments(response.data));
+            axios({
+                method: 'get',
+                url: `https://shellgeistapi.herokuapp.com/api/comments/`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            .then((response) => setComments(response.data));
         } 
         getComments();
     }, []);

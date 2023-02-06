@@ -38,9 +38,17 @@ const GroupResults = () => {
     function postGroup(event) {
         event.preventDefault();
         async function getInfo() {
-            await axios.post('https://shellgeistapi.herokuapp.com/api/posts/', {
-                written_text: modalValue,
-                media_location_url: modalImage
+            await axios({
+                method: 'post',
+                url: 'https://shellgeistapi.herokuapp.com/api/posts/',
+                data: {
+                    written_text: modalValue,
+                    media_location_url: modalImage
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
             })
             .catch(err => {
                 setErrorMessage(err);
