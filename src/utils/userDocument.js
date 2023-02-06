@@ -30,6 +30,9 @@ export const getUser = async () => {
             'Content-Type': 'application/json',
         },
         withCredentials: true
+    })
+    .then((response) => {
+        return response.data;
     });
 }
 
