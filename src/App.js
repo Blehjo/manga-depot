@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 
 import NavBar from "./components/NavBar";
 import Loading from "./components/Loading";
@@ -26,20 +25,23 @@ import Profile from "./components/pages/Profile";
 import Games from "./components/Games";
 import Discovery from "./components/pages/Discovery";
 import SingleProfile from "./components/pages/SingleProfile";
-
-import './App.css';
 import GameProfile from "./components/GameProfile";
+
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "./store/user/user.selector";
 import { checkUserSession } from "./store/user/user.action";
+
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
+  console.log("First current user: ", currentUser);
 
   useEffect(() => {
     dispatch(checkUserSession(currentUser));
+    console.log("Second current user: ", currentUser);
   }, []);
 
   if (loading) {

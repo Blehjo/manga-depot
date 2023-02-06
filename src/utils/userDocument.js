@@ -37,8 +37,6 @@ export const getUser = async () => {
 }
 
 export const signUpUser = async (username, email, password, country, date_of_birth, first_name, last_name) => {
-    const user = {};
-
     await axios({
         method: 'post',
         url: "https://shellgeistapi.herokuapp.com/api/users/",
@@ -55,6 +53,7 @@ export const signUpUser = async (username, email, password, country, date_of_bir
             'Content-Type': 'application/json'
         }
     })
-    .then((response) => user.data = (response.data));
-    return user;
+    .then((response) => {
+        return response.data;
+    });
 }
