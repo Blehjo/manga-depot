@@ -2,7 +2,6 @@ import { getUser } from '../../utils/userDocument';
 import { USER_ACTION_TYPES } from './user.types';
 
 const getCurrentUser = getUser();
-console.log("Sagas page: ", getCurrentUser.then((response) => { console.log(response.data); return response.data; }));
 
 const USER_INITIAL_STATE = {
     currentUser: getCurrentUser ? getCurrentUser : null,
