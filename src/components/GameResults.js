@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { unixConverter } from "../utils/date/Date";
 import { selectResultItems } from "../store/result/result.selector";
 import { selectCurrentUser } from "../store/user/user.selector";
+import { getUser, userDocument } from "../utils/userDocument";
 
 const GameResults = () => {
     const [show, setShow] = useState(false);
@@ -14,8 +15,8 @@ const GameResults = () => {
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
     const gameList = useSelector(selectResultItems);
-    const currentUser = useSelector(selectCurrentUser);
-    const { games } = currentUser[0];
+    const currentUser = getUser();
+    // const { games } = currentUser;
     console.log(currentUser);
 
     const navigate = useNavigate();
