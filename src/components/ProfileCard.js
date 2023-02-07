@@ -9,7 +9,8 @@ import CreateGroup from "./CreateGroup";
 const ProfileCard = () => {
     const [show, setShow] = useState(false);
     const currentUser = useSelector(selectCurrentUser);
-    const { media_location, username, first_name, country, about } = currentUser.data;
+    const { media_location, username, first_name, country, about } = currentUser;
+    console.log(currentUser);
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
