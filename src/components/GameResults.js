@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Row, Col, Card, Badge, Modal, Button, Form } from "react-bootstrap";
-import { unixConverter } from "../utils/date/Date";
-
-import { useNavigate } from "react-router";
 import axios from "axios";
+import { Row, Col, Card, Badge, Modal, Button, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+import { unixConverter } from "../utils/date/Date";
 import { selectResultItems } from "../store/result/result.selector";
 import { selectCurrentUser } from "../store/user/user.selector";
-
 
 const GameResults = () => {
     const [show, setShow] = useState(false);
