@@ -2,9 +2,22 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 
 import { USER_ACTION_TYPES } from './user.types';
 
-import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, signOutSuccess, signOutFailed } from './user.action';
+import { 
+    signInSuccess, 
+    signInFailed, 
+    signUpSuccess, 
+    signUpFailed, 
+    signOutSuccess, 
+    signOutFailed 
+} from './user.action';
 
-import { userDocument, getUser, login, signUpUser, signOutUser } from '../../utils/userDocument';
+import { 
+    userDocument, 
+    getUser, 
+    login, 
+    signUpUser, 
+    signOutUser 
+} from '../../utils/userDocument';
 
 export function* userLoginCall(email, password) {
     try {
@@ -13,7 +26,7 @@ export function* userLoginCall(email, password) {
             email, 
             password
         );
-        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
+        yield put(signInSuccess({ id: userSnapshot.data[0].id, ...userSnapshot.data }));
     } catch (error) {
         yield put(signInFailed(error));
     }
@@ -44,7 +57,7 @@ export function* isUserAuthenticated() {
 
 export function* signUp({ payload: { username, email, password, country, date_of_birth, first_name, last_name } }) {
    try {
-        const user = yield call(
+        const { user } = yield call(
            signUpUser,
            username,
            email,
