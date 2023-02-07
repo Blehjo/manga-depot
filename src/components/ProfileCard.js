@@ -10,7 +10,6 @@ const ProfileCard = () => {
     const [show, setShow] = useState(false);
     const currentUser = useSelector(selectCurrentUser);
     const { id, email, friendships, games, groups, userposts, media_location, username, first_name, country, about } = currentUser[0];
-    console.log(currentUser);
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -67,23 +66,12 @@ const ProfileCard = () => {
                             </Col>
                         </Row>
                     ))}
-                    {friendships?.length > 0 ?
-                    <>
-                     <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
-                        <Row >
-                            <Col xs={10}>
-                                <Card.Text>{friendships.length}</Card.Text>
-                            </Col>
-                        </Row>
-                    </>
-                    : (
-                        <Row >
-                            <Col>
-                                <Card.Text show={show} onHide={handleClose} onClick={handleShow}>Follow mates</Card.Text>
-                            </Col>
-                        </Row>
-                    )}
-                    <Card.Footer>
+                    <Card.Title style={{ marginTop: '1rem' }} >Mates</Card.Title>
+                    <Row >
+                        <Col xs={10}>
+                            <Card.Text>{friendships.length}</Card.Text>
+                        </Col>
+                    </Row>
                     <Card.Title>Games</Card.Title>
                     {games?.length > 0 ? games?.map(({ id, media_location_url, title}) => (
                         <Row xs={3} >
@@ -106,7 +94,6 @@ const ProfileCard = () => {
                         )) : (
                             <Card.Text>No Games</Card.Text>
                             )}     
-                        </Card.Footer>
                         </Card.Body>
             </Card>
             <Modal show={show} onHide={handleClose}>
