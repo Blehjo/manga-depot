@@ -16,8 +16,9 @@ const GameResults = () => {
     const [modalValue, setModalValue] = useState('');
     const gameList = useSelector(selectResultItems);
     const currentUser = getUser();
+    const user = userDocument(currentUser);
     // const { games } = currentUser;
-    console.log(currentUser);
+    console.log(user[0]);
 
     const navigate = useNavigate();
 
