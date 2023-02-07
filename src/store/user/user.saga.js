@@ -54,13 +54,13 @@ export function* signUp({ payload: { username, email, password, country, date_of
            first_name,
            last_name
         );
-        yield put(signUpSuccess({ data: user.data.user }));
+        yield put(signUpSuccess(user));
     } catch (error) {
         yield put(signUpFailed(error));
     }
 }
 
-export function* signInAfterSignUp({ payload: user }) {
+export function* signInAfterSignUp({ payload: { user } }) {
    yield call(userLoginCall, user );
 }
 

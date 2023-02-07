@@ -18,6 +18,7 @@ export const login = async (email, password) => {
         withCredentials: true
     })
     .then((response) => {
+        console.log(response);
         return response.data;
     });
 }
