@@ -32,23 +32,23 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
     }
   }
 
-export function* userLoginCall(email, password) {
-    try {
-        const userSnapshot = yield call(
-            login, 
-            email, 
-            password
-        );
-        yield put(signInSuccess({ id: userSnapshot.data[0].id, ...userSnapshot.data }));
-    } catch (error) {
-        yield put(signInFailed(error));
-    }
-}
+// export function* userLoginCall(email, password) {
+//     try {
+//         const userSnapshot = yield call(
+//             login, 
+//             email, 
+//             password
+//         );
+//         yield put(signInSuccess({ id: userSnapshot.data[0].id, ...userSnapshot.data }));
+//     } catch (error) {
+//         yield put(signInFailed(error));
+//     }
+// }
 
 export function* signInWithEmail({ payload: { email, password } }) {
     try {
         const user = yield call(
-            userLoginCall,
+            login,
             email,
             password
         );
@@ -87,7 +87,7 @@ export function* signUp({ payload: { username, email, password, country, date_of
 }
 
 export function* signInAfterSignUp({ payload: { user } }) {
-   yield call(userLoginCall, user );
+   yield call(getSnapshotFromUserAuth, user );
 }
 
 export function* signOut() {
