@@ -17,10 +17,6 @@ const SignInForm = () => {
         setPassword('');
     }
 
-    const signInWithReact = () => {
-        dispatch(emailSignInStart(email, password));
-    }
-
     const handleEmailChange = (event) => {
         event.preventDefault();
         setEmail(event.target.value);
@@ -34,8 +30,7 @@ const SignInForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            signInWithReact()
-            
+            dispatch(emailSignInStart(email, password));
             resetFormFields();
             navigate('/profile');
         } catch(error) {

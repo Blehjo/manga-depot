@@ -19,7 +19,7 @@ function NavBar() {
   const currentUser = useSelector(selectCurrentUser);
   const isProfileOpen  = useSelector(selectIsProfileOpen);
 
-  const signOutUser = () => dispatch(signOutStart);
+  const signOutUser = () => dispatch(signOutStart());
 
   const handleInputChange = (evt) => {
     evt.preventDefault();

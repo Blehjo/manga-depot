@@ -40,7 +40,7 @@ function App() {
   console.log("Current user: ", currentUser);
 
   useEffect(() => {
-    dispatch(checkUserSession(currentUser));
+    dispatch(checkUserSession());
   }, []);
 
   if (loading) {

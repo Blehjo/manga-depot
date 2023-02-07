@@ -26,12 +26,6 @@ const SignUpForm = () => {
         setFormFields(defaultFormFields);
     }
 
-    const signUpWithReact = () => {
-        dispatch(signUpStart(username, email, password, country.name, date_of_birth, first_name, last_name));
-        resetForm();
-        navigate('/profile');
-    }
-
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormFields({ ...formFields, [name]: value })
@@ -44,7 +38,9 @@ const SignUpForm = () => {
             return;
         }
         try {
-            signUpWithReact();
+            dispatch(signUpStart(username, email, password, country.name, date_of_birth, first_name, last_name));
+            resetForm();
+            navigate('/profile');
         } catch(error) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use');

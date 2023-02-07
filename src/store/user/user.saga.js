@@ -16,8 +16,21 @@ import {
     getUser, 
     login, 
     signUpUser, 
-    signOutUser 
+    signOutUser
 } from '../../utils/userDocument';
+
+export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
+    try {
+      const userSnapshot = yield call(
+        getUser,
+        userAuth,
+        additionalDetails
+      );
+      yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
+    } catch (error) {
+      yield put(signInFailed(error));
+    }
+  }
 
 export function* userLoginCall(email, password) {
     try {
@@ -39,7 +52,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
             email,
             password
         );
-        yield call(getUser, user);
+        yield call(getSnapshotFromUserAuth, user);
     } catch (error) {
         yield put(signInFailed(error));
     }
@@ -49,7 +62,7 @@ export function* isUserAuthenticated() {
    try {
        const userAuth = yield call(getUser);
        if (!userAuth) return;
-       yield call(userDocument, userAuth);
+       yield call(getSnapshotFromUserAuth, userAuth);
    } catch (error) {
        yield put(signInFailed(error));
    }
