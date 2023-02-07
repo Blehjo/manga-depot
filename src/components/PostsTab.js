@@ -76,7 +76,7 @@ const PostsTab = () => {
             withCredentials: true
         });
     }
-    
+
     useEffect(() => {
         const getPosts = async () => {
             await axios({
@@ -89,10 +89,7 @@ const PostsTab = () => {
             })
             .then((resp) => setPosts(resp.data)); 
         }
-        getPosts();
-    }, [])
-
-    useEffect(() => {
+        
         const getComments = () => {
             axios({
                 method: 'get',
@@ -104,6 +101,8 @@ const PostsTab = () => {
             })
             .then((response) => setComments(response.data));
         } 
+
+        getPosts();
         getComments();
     }, []);
 

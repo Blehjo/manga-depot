@@ -84,7 +84,7 @@ export default function Profiles() {
                     <Card.Title>{username}</Card.Title>
                     </Card.Link>
                     </Col>
-                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === userId)) ? <Card.Text id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === userId)) ? <Card.Text style={{ cursor: 'pointer' }} id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text style={{ cursor: 'pointer' }} id={id} onClick={followMate}>Follow</Card.Text> }</Col>
                     </Row>
                     <Row style={{ marginBottom: '1rem' }} xs={2}>
                         <Col>

@@ -1,13 +1,8 @@
 import { useState } from "react";
-
 import { Form, Button, Col } from "react-bootstrap";
 
-
-
 const SearchBar = () => {
-    const [errorMessage, setErrorMessage] = useState([]);
     const [searchField, setSearchField] = useState('');
-
 
     const handleInputChange = (evt) => {
         evt.preventDefault();
@@ -16,12 +11,12 @@ const SearchBar = () => {
 
     const handleClickEvent = async (evt) => {
         evt.preventDefault();
-
     };
 
     return (
         <Col>
             <Form onSubmit={handleClickEvent} className="mt-5 d-flex">
+                <ResultItems searchField={searchField}/>
                 <Form.Control
                     onChange={handleInputChange}
                     type="search"
