@@ -12,7 +12,6 @@ import {
 } from './user.action';
 
 import { 
-    userDocument, 
     getUser, 
     login, 
     signUpUser, 
@@ -26,24 +25,11 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
         userAuth,
         additionalDetails
       );
-      yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
+      yield put(signInSuccess({ id: userSnapshot.data.id, ...userSnapshot.data }));
     } catch (error) {
       yield put(signInFailed(error));
     }
-  }
-
-// export function* userLoginCall(email, password) {
-//     try {
-//         const userSnapshot = yield call(
-//             login, 
-//             email, 
-//             password
-//         );
-//         yield put(signInSuccess({ id: userSnapshot.data[0].id, ...userSnapshot.data }));
-//     } catch (error) {
-//         yield put(signInFailed(error));
-//     }
-// }
+}
 
 export function* signInWithEmail({ payload: { email, password } }) {
     try {

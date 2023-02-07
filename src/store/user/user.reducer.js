@@ -1,7 +1,4 @@
-import { getUser } from '../../utils/userDocument';
 import { USER_ACTION_TYPES } from './user.types';
-
-const user = getUser();
 
 const USER_INITIAL_STATE = {
     currentUser: null,
