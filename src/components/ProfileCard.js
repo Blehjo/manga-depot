@@ -9,7 +9,7 @@ import CreateGroup from "./CreateGroup";
 const ProfileCard = () => {
     const [show, setShow] = useState(false);
     const currentUser = useSelector(selectCurrentUser);
-    const { media_location, username, first_name, country, about } = currentUser[0];
+    const { id, email, friendships, games, groups, userposts, media_location, username, first_name, country, about } = currentUser[0];
     console.log(currentUser);
     
     const handleClose = () => setShow(false);
@@ -38,8 +38,8 @@ const ProfileCard = () => {
                     <Card.Subtitle>{first_name}</Card.Subtitle>
                     <Card.Text>{country}</Card.Text> 
                     <Card.Subtitle>{about}</Card.Subtitle>
-                    {/* {userposts.length > 0 && <><Card.Title href={`/posts`}>Posts</Card.Title>
-                    <Card.Text>{userposts.length}</Card.Text></>} */}
+                    {userposts.length > 0 && <><Card.Title href={`/posts`}>Posts</Card.Title>
+                    <Card.Text>{userposts.length}</Card.Text></>}
                     <Row xs={1}>
                         <Col style={{ marginBottom: '1rem' }} xs={12}>
                             <Card.Title>Shells</Card.Title>
@@ -48,7 +48,7 @@ const ProfileCard = () => {
                             <Card.Title style={{ position: 'absolute', bottom: '0', fontSize: '75%', cursor: 'pointer' }} onClick={handleShow}>Create a shell</Card.Title>
                         </Col>
                     </Row>
-                    {/* {groups?.length > 0 && groups?.map(({ id, group_name, media_location_url }) => (
+                    {groups?.length > 0 && groups?.map(({ id, group_name, media_location_url }) => (
                         <Row xs={3} >
                             <Col xs={9} >
                                 <Card.Link style={{ textDecoration: 'none' }} href={`/groups/${id}`}>
@@ -106,7 +106,7 @@ const ProfileCard = () => {
                         )) : (
                             <Card.Text>No Games</Card.Text>
                             )}     
-                        </Card.Footer> */}
+                        </Card.Footer>
                         </Card.Body>
             </Card>
             <Modal show={show} onHide={handleClose}>
