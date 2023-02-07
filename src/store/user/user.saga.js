@@ -26,7 +26,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
             email,
             password
         );
-        yield call(userLoginCall, user);
+        yield call(getUser, user);
     } catch (error) {
         yield put(signInFailed(error));
     }
