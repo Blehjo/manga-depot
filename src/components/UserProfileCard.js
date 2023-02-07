@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Row, Col, Form } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 const UserProfileCard = () => {

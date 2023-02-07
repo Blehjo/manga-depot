@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentUser } from "../store/user/user.selector";
+import { useDispatch } from "react-redux";
 import { emailSignInStart } from "../store/user/user.action";
 
 const SignInForm = () => {
     const dispatch = useDispatch();
-    const currentUser = useSelector(selectCurrentUser);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();

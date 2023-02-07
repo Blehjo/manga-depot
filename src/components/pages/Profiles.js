@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 
 export default function Profiles() {
-
-    const [userId, setId] = useState();
     const [userProfiles, setUserProfiles] = useState();
-    const getAuth = async () => {
-        
-
-    }
+    const currentUser = useSelector(selectCurrentUser);
 
     const followMate = async (event) => {
         event.preventDefault();
@@ -84,7 +81,7 @@ export default function Profiles() {
                     <Card.Title>{username}</Card.Title>
                     </Card.Link>
                     </Col>
-                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === userId)) ? <Card.Text style={{ cursor: 'pointer' }} id={id} onClick={unfollowMate} >Unfollow</Card.Text> : <Card.Text style={{ cursor: 'pointer' }} id={id} onClick={followMate}>Follow</Card.Text> }</Col>
+                    <Col xs={3}>{(friendships.some(({ profile_request }) => profile_request === currentUser.id)) ? <Card.Text id={id} onClick={unfollowMate} style={{ cursor: 'pointer' }} >Unfollow</Card.Text> : <Card.Text id={id} onClick={followMate} style={{ cursor: 'pointer' }}>Follow</Card.Text> }</Col>
                     </Row>
                     <Row style={{ marginBottom: '1rem' }} xs={2}>
                         <Col>

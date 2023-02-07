@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const CreateGroup = () => {
-    const [show, setShow] = useState(false);
     const [modalName, setModalName] = useState('');
     const [modalImage, setModalImage] = useState('');
     const [modalDescription, setModalDescription] = useState('');
@@ -13,9 +12,6 @@ const CreateGroup = () => {
     const [id, setId] = useState();
     const [errorMessage, setErrorMessage] = useState([]);
     const navigate = useNavigate();
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     function handleNameChange(event) {
         event.preventDefault();

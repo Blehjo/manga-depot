@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
+import { ResultItems } from "../utils/igdb/IGDB";
 
 const SearchBar = () => {
     const [searchField, setSearchField] = useState('');

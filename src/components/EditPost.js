@@ -5,15 +5,11 @@ import axios from "axios";
 
 const EditPost = ({props}) => {
     const id = props;
-    const [show, setShow] = useState(false);
     const [modalImage, setModalImage] = useState('');
     const [modalValues, setModalValues] = useState({});
     const [modalText, setModalText] = useState('');
     const [errorMessage, setErrorMessage] = useState([]);
     const navigate = useNavigate();
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     function handleTextChange(event) {
         event.preventDefault();
@@ -98,9 +94,6 @@ const EditPost = ({props}) => {
                 </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="light" onClick={handleClose}>
-                    Cancel
-                </Button>
                 <Button variant="light" type="submit">
                     Edit
                 </Button>

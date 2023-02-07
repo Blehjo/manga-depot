@@ -9,7 +9,7 @@ import CreateGroup from "./CreateGroup";
 const ProfileCard = () => {
     const [show, setShow] = useState(false);
     const currentUser = useSelector(selectCurrentUser);
-    const { id, email, friendships, games, groups, userposts, media_location, username, first_name, country, about } = currentUser[0];
+    const { friendships, games, groups, userposts, media_location, username, first_name, country, about } = currentUser[0];
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

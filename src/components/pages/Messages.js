@@ -114,7 +114,7 @@ export default function Messages() {
 
         function getProfile() {
             userProfiles.find((element) => {
-                if (element.username == query) {
+                if (element.username === query) {
                     setFriends(element);
                 }
             });

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { selectResultItems } from "../store/result/result.selector";
+import { selectCurrentUser } from "../store/user/user.selector";
 
 
 const GameResults = () => {
@@ -14,6 +15,8 @@ const GameResults = () => {
     const [modalImage, setModalImage] = useState('');
     const [modalValue, setModalValue] = useState('');
     const gameList = useSelector(selectResultItems);
+    const currentUser = useSelector(selectCurrentUser);
+    const { games } = currentUser[0];
 
     const navigate = useNavigate();
 
@@ -87,11 +90,11 @@ const GameResults = () => {
         <Row xs={1} lg={2} xl={3} className="g-4 pt-3" key="groups">
             {gameList?.map(({ id, name, platforms, first_release_date, cover, age_ratings, summary }) => (
                 <Col key={cover?.image_id}>
-                    <Card key={cover?.image_id} className="text-white mx-2 mb-5 bg-dark" >
-                            <Card.Img key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />
+                    <Card key={cover?.image_id} className="mx-2 bg-dark card-container" >
+                            <Card.Img height='485' key={age_ratings} style={{ objectFit:'cover'}} variant="top" src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.jpg`} />
                             <Card.ImgOverlay>
                                 <div  id={cover?.image_id} style={{ cursor: 'pointer' }} onClick={addToCatalogue} className={name} key={first_release_date}>
-                                    {/* {games?.some(({ title }) => title == name) ? 'Added' : 'Add'} */}
+                                    {games?.some(({ title }) => title === name) ? 'Added' : 'Add'}
                                 </div>
                                 <div id={cover?.image_id} style={{ cursor: 'pointer' }} className={name} onClick={handleModalImage}>
                                     Post
