@@ -32,11 +32,11 @@ function NavBar() {
           <Row key="sm"style={{ margin: '2rem' }} >
             <Navbar fixed='top' style={{ zIndex: 1000 }}  key={expand}  bg='dark' variant='dark' expand={expand}>
               <ListIcon key='listicon'/>
-              {/* <Col key="listColumn"> */}
+              <Col key="listColumn">
                 <Nav >
                   <Navbar.Brand href="/" className='text-white'>Shell Geist</Navbar.Brand>
                 </Nav>
-              {/* </Col> */}
+              </Col>
               <Navbar.Toggle key="navbarToggle" aria-controls={`navBarItems}`} />
               <Navbar.Collapse key="navbarCollapse" id="navBarItems">
                 <Col key="searchColumn" className=''>
