@@ -122,7 +122,7 @@ const ProfileCarousel = () => {
                 >
                     {userProfiles?.map(({ id, about, first_name, country, friendships, games, media_location, username, userposts, groups }) => (
                         <Card style={{ color: 'white', margin: '.5rem' }} className="bg-dark" key={id}>
-                        <Card.Img variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
+                        <Card.Img style={{ height: '20rem', width: 'auto', objectFit: 'cover' }} variant="top" src={media_location ? require(media_location) : "https://www.cooperhewitt.org/wp-content/uploads/2018/07/20914_472d45b4ae377c5f_b1.jpg"} /> 
                         <Card.Body>
                             <Row>
                                 <Col>

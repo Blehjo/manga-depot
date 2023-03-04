@@ -7,13 +7,13 @@ const OnlineActivities = () => {
             image: "develop.png",
             title: "Start a group",
             description: "You don’t have to be an expert to gather people together and explore shared interests.",
-            link: "",
+            link: "/groups",
         },
         {
             image: "cloudnetwork.png",
             title: "Find an event",
             description: "Events are happening on just about any topic you can think of, from online gaming to photography.",
-            link: "",
+            link: "/events",
         },
         {
             image: "cyberspace.png",

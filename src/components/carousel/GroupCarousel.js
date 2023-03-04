@@ -89,7 +89,7 @@ const GroupCarousel = () => {
                                 className="mx-2 bg-dark" 
                                 key={id}
                             >
-                                <Card.Img  style={{ position: 'relative', borderRadius: ".5rem", width: "100%", height: "auto", objectFit: "cover" }} src={media_location_url} alt={group_name}/>
+                                <Card.Img style={{ position: 'relative', borderRadius: ".5rem", height: '20rem', width: "auto", height: "auto", objectFit: "cover" }} src={media_location_url} alt={group_name}/>
                                 <Card.ImgOverlay style={{ textAlign: 'center', width: 'auto', height: 'auto', position: 'absolute', top: '50%', left: '50%', borderRadius: '.5rem', transform: 'translate(-50%, -50%)' }} >
                                     <Card.Title >{group_name}</Card.Title>
                                 </Card.ImgOverlay>

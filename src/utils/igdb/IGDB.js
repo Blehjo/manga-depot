@@ -32,9 +32,8 @@ export const getGames = async () => {
         'x-api-key': process.env.REACT_APP_X_API_KEY,
     },
     mode: 'no-cors',
-    data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; where rating >= 90; limit 72;`
+    data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating desc; limit 72;`
   })
-  .then(response => response.data);
 }
 
 export const getGame = async (id) => {

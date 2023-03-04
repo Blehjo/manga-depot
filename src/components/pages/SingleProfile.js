@@ -1,4 +1,3 @@
-
 import { Col, Row, Tabs, Tab } from "react-bootstrap";
 import UserPostsTab from "../UserPostsTab";
 import UserGamesTab from "../UserGamesTab";

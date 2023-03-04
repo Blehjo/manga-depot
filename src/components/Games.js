@@ -1,13 +1,30 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap/';
-
-import axios from 'axios';
 
 import { unixConverter } from '../utils/date/Date';
 
 const Games = () => {
   const [games, setGames] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const loadGames = async () => {
+      await axios({
+        url: process.env.REACT_APP_URL,
+        method: 'POST',
+        headers: {
+            'x-api-key': process.env.REACT_APP_X_API_KEY,
+        },
+        mode: 'no-cors',
+        data: `fields name, first_release_date, platforms.abbreviation, summary, storyline, rating, cover.image_id; sort rating asc; where rating >= 90; limit 72;`
+      })
+      .then((response) => setGames(response.data));
+    }
+    loadGames();
+  }, []);
+
+  console.log("Games: ", games)
 
   return (
       <Row xs={1} md={2} lg={3} key={1}>
